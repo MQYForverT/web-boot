@@ -1,0 +1,47 @@
+// .vscode/settings.json
+{
+	"files.eol": "\n", // 文件结束符
+	"eslint.format.enable": true, // 开启保存时自动修复
+	"editor.codeLens": true, // 显示行号
+	"editor.tabSize": 2, // 重新设定tabsize
+	"editor.detectIndentation": false, // 禁用自动检测缩进
+	// 将prettier设置为默认格式化程序(在编辑器中有可能被其他Formatter占用，所以将prettier设置为默认Formatter)
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	// 关闭js/ts的默认format,统一用eslint进行格式化（tslint已经不维护了，所以转eslint吧）
+	"javascript.format.enable": false,
+	"typescript.format.enable": false,
+	// 保存时自动格式化 (根据根目录下'.prettierrc文件配置项')
+	"editor.formatOnSave": true,
+	// Enable per-language
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features",
+		"editor.formatOnSave": true
+	},
+	"[vue]": {
+		"editor.formatOnSave": true, // 交给 eslint
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	// 什么类型的文件需要遵守stylelint规则
+	"stylelint.validate": ["css", "less", "postcss", "scss", "sass", "vue"],
+	// 为ESLint启用"保存时自动修复"，并且仍然具有格式和快速修复功能
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "always",
+		"source.fixAll.stylelint": "always"
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": null,
+		"editor.formatOnSave": false
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "stylelint.vscode-stylelint"
+	}
+}
