@@ -19,4 +19,11 @@ export default [
 			},
 		},
 	},
+	{
+		files: ['tests/**/*'],
+		plugins: ['jest'],
+		env: {
+			'jest/globals': true,
+		},
+	},
 ]
