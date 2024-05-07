@@ -1,6 +1,6 @@
-# Farm + Vue
+# vite + Vue
 
-This template should help you start developing using Vue and TypeScript in Farm.
+This template should help you start developing using Vue and TypeScript in vite.
 
 ## Setup
 

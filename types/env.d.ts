@@ -1,4 +1,4 @@
-interface ImportMetaEnv {
+declare interface ImportMetaEnv {
 	/** 项目基本地址 */
 	readonly VITE_BASE_URL: string
 	/** 项目名称 */
@@ -19,10 +19,8 @@ interface ImportMetaEnv {
 	readonly VITE_COMPRESS?: 'Y' | 'N'
 	/** 压缩算法类型 */
 	readonly VITE_COMPRESS_TYPE?: 'gzip' | 'brotliCompress' | 'deflate' | 'deflateRaw'
-	/** 是否开启生产模式下的mock */
-	readonly VITE_PROD_MOCK?: 'Y' | 'N'
 }
 
-interface ImportMeta {
+declare interface ImportMeta {
 	readonly env: ImportMetaEnv
 }

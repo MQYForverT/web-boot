@@ -1,24 +1,33 @@
 {
 	"compilerOptions": {
 		// 使用项目引用时，每个被引用的项目应在其 tsconfig.json 中设置 composite 选项为 true。这个选项使得 TypeScript 编译器可以处理项目之间的依赖关系。
-		"composite": true,
 		"target": "ES2020",
 		"useDefineForClassFields": true,
+		// 用于指定在导入默认导出时是否应将其转换为具名导出或命名空间导入
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strictNullChecks": true,
+		"forceConsistentCasingInFileNames": true,
 		"module": "ESNext",
 		"lib": ["ES2020", "DOM", "DOM.Iterable"],
 		"skipLibCheck": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/": ["src/*"]
+		},
+		"types": ["vite/client", "node"],
 
 		/* Bundler mode */
 		// 用于选择模块解析策略，有'node'和'classic'两种类型
 		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
+		"noEmit": true,
 		// 指定 jsx 代码的生成: 'preserve', 'react-native', or 'react'
 		"jsx": "preserve",
 
 		/* Linting */
-		// 用来指定允许从没有默认导出的模块中默认导入
-		"allowSyntheticDefaultImports": true,
 		"strict": true,
 		// 默认false,是否检测定义了但是没使用的变量
 		"noUnusedLocals": true,
@@ -31,12 +40,13 @@
 		"src/**/*.ts",
 		"src/**/*.d.ts",
 		"src/**/*.tsx",
-		"src/**/*.vue",
 		"types/**/*.d.ts",
 		"types/**/*.ts",
 		"build/**/*.ts",
 		"build/**/*.d.ts",
 		"vite.config.ts",
 		"uno.config.ts"
-	]
+	],
+	"exclude": ["node_modules", "dist"],
+	"references": [{ "path": "./tsconfig.node.json" }]
 }

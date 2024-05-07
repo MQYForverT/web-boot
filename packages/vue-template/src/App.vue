@@ -3,7 +3,7 @@
 </script>
 
 <template>
-	<div>
+	<div class="fixed-tr">
 		<a href="https://farmfe.org/" target="_blank">
 			<img src="./assets/logo.png" class="logo" alt="Farm logo" />
 		</a>

@@ -1,17 +1,4 @@
 {
-	"compilerOptions": {
-		// 用于指示编译器是否应该生成输出文件（即ts代码编译为js文件）
-		"noEmit": true,
-		// 用于控制是否允许在模块导入语句中使用ts文件扩展名（.ts），这个选项必须在noEmit为true时生效
-		"allowImportingTsExtensions": true,
-		"baseUrl": ".",
-		"paths": {
-			"~/*": ["src/*"]
-		}
-	},
-	"vueCompilerOptions": {
-		"target": 3
-	},
-	"include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-	"references": [{ "path": "../../tsconfig.json" }]
+	"extends": "../../tsconfig.json",
+	"include": ["src/**/*.vue"]
 }
