@@ -4,6 +4,7 @@
 	defineProps<{ msg: string }>()
 
 	const count = ref(0)
+	const { x, y } = useMouse()
 </script>
 
 <template>
@@ -17,6 +18,10 @@
 		</p>
 	</div>
 
+	<div>
+		<p>{{ x }}</p>
+		<p>{{ y }}</p>
+	</div>
 	<p>
 		Install
 		<a href="https://github.com/vuejs/language-tools" target="_blank">Volar</a>

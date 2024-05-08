@@ -11,10 +11,6 @@
 		"module": "ESNext",
 		"lib": ["ES2020", "DOM", "DOM.Iterable"],
 		"skipLibCheck": true,
-		"baseUrl": ".",
-		"paths": {
-			"@/": ["src/*"]
-		},
 		"types": ["vite/client", "node"],
 
 		/* Bundler mode */
@@ -34,18 +30,23 @@
 		// 用于检查是否有在函数体中没有使用的参数
 		"noUnusedParameters": true,
 		// 用于检查switch中是否有case没有使用break跳出switch
-		"noFallthroughCasesInSwitch": true
+		"noFallthroughCasesInSwitch": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"]
+		}
 	},
 	"include": [
-		"src/**/*.ts",
-		"src/**/*.d.ts",
-		"src/**/*.tsx",
 		"types/**/*.d.ts",
 		"types/**/*.ts",
 		"build/**/*.ts",
 		"build/**/*.d.ts",
-		"vite.config.ts",
-		"uno.config.ts"
+		"uno.config.ts",
+		"packages/**/*.vue",
+		"packages/**/*.ts",
+		"packages/**/*.d.ts",
+		"packages/**/*.tsx",
+		"packages/**/*/vite.config.ts"
 	],
 	"exclude": ["node_modules", "dist"],
 	"references": [{ "path": "./tsconfig.node.json" }]

@@ -26,4 +26,16 @@ export default [
 			'jest/globals': true,
 		},
 	},
+	{
+		rules: {
+			'no-console': 'off',
+			'no-debugger': 'off',
+			'no-unused-vars': 'off',
+			'no-empty': 'off',
+			'no-undef': 'off',
+			'no-empty-pattern': 'off',
+			'no-extra-boolean-cast': 'off',
+			'no-duplicate-imports': 'off',
+		},
+	},
 ]

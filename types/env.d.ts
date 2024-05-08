@@ -1,4 +1,4 @@
-declare interface ImportMetaEnv {
+interface ImportMetaEnv {
 	/** 项目基本地址 */
 	readonly VITE_BASE_URL: string
 	/** 项目名称 */
@@ -21,6 +21,6 @@ declare interface ImportMetaEnv {
 	readonly VITE_COMPRESS_TYPE?: 'gzip' | 'brotliCompress' | 'deflate' | 'deflateRaw'
 }
 
-declare interface ImportMeta {
+interface ImportMeta {
 	readonly env: ImportMetaEnv
 }
