@@ -1,6 +1,7 @@
 // .vscode/settings.json
 {
 	"files.eol": "\n", // 文件结束符
+	"eslint.enable": true,
 	"eslint.format.enable": true, // 开启保存时自动修复
 	"editor.codeLens": true, // 显示行号
 	"editor.tabSize": 2, // 重新设定tabsize
@@ -49,5 +50,6 @@
 	"[scss]": {
 		"editor.defaultFormatter": "stylelint.vscode-stylelint"
 	},
-	"cSpell.words": ["vueuse"]
+	"cSpell.words": ["vueuse"],
+	"eslint.experimental.useFlatConfig": false
 }

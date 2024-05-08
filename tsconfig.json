@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		// 使用项目引用时，每个被引用的项目应在其 tsconfig.json 中设置 composite 选项为 true。这个选项使得 TypeScript 编译器可以处理项目之间的依赖关系。
+		// 指定ECMAScript目标版本
 		"target": "ES2020",
 		"useDefineForClassFields": true,
 		// 用于指定在导入默认导出时是否应将其转换为具名导出或命名空间导入
@@ -8,9 +8,12 @@
 		"allowSyntheticDefaultImports": true,
 		"strictNullChecks": true,
 		"forceConsistentCasingInFileNames": true,
+		// 指定生成哪个模块系统代码
 		"module": "ESNext",
 		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		// 忽略所有的声明文件（ *.d.ts）的类型检查
 		"skipLibCheck": true,
+		// 要包含的类型声明文件名列表
 		"types": ["vite/client", "node"],
 
 		/* Bundler mode */
@@ -24,6 +27,9 @@
 		"jsx": "preserve",
 
 		/* Linting */
+		// 启用所有严格类型检查选项。
+		// 启用 --strict相当于启用 --noImplicitAny, --noImplicitThis, --alwaysStrict，
+		// --strictNullChecks和 --strictFunctionTypes和--strictPropertyInitialization。
 		"strict": true,
 		// 默认false,是否检测定义了但是没使用的变量
 		"noUnusedLocals": true,
@@ -31,7 +37,9 @@
 		"noUnusedParameters": true,
 		// 用于检查switch中是否有case没有使用break跳出switch
 		"noFallthroughCasesInSwitch": true,
+		// 解析非相对模块名的基准目录
 		"baseUrl": ".",
+		// 模块名到基于 baseUrl的路径映射的列表。
 		"paths": {
 			"@/*": ["src/*"]
 		}
