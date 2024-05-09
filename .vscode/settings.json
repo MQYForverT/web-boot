@@ -1,11 +1,13 @@
 // .vscode/settings.json
 {
 	"files.eol": "\n", // 文件结束符
-	"eslint.enable": true,
+	"eslint.enable": true, // 开启eslint
+	"eslint.useFlatConfig": true, // 使用eslint的flat配置
 	"eslint.format.enable": true, // 开启保存时自动修复
 	"editor.codeLens": true, // 显示行号
 	"editor.tabSize": 2, // 重新设定tabsize
 	"editor.detectIndentation": false, // 禁用自动检测缩进
+	"eslint.validate": ["auto"],
 	// 将prettier设置为默认格式化程序(在编辑器中有可能被其他Formatter占用，所以将prettier设置为默认Formatter)
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	// 关闭js/ts的默认format,统一用eslint进行格式化（tslint已经不维护了，所以转eslint吧）
@@ -50,6 +52,5 @@
 	"[scss]": {
 		"editor.defaultFormatter": "stylelint.vscode-stylelint"
 	},
-	"cSpell.words": ["vueuse"],
-	"eslint.experimental.useFlatConfig": false
+	"cSpell.words": ["vueuse"]
 }
