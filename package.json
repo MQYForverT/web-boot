@@ -72,7 +72,7 @@
 			"pnpm run lint:stylelint"
 		],
 		"*.test.{js,jsx,ts,tsx}": [
-			"pnpm run test"
+			"vitest related --run --globals"
 		]
 	}
 }

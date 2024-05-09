@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { ConfigEnv, defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -6,7 +7,8 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 import VueDevTools from 'vite-plugin-vue-devtools'
 
-import { setupVitePlugins, setupViteResolve, setupViteServer } from '../../build'
+import { setupVitePlugins, setupViteResolve, setupViteServer } from '../../build/vite'
+import defineVitestConfig from '../../build/vitest'
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv: ConfigEnv) => {
@@ -32,7 +34,7 @@ export default defineConfig((configEnv: ConfigEnv) => {
 			vue(),
 			VueDevTools(),
 			AutoImport({
-				imports: ['vue', '@vueuse/core'],
+				imports: ['vue', '@vueuse/core', 'vitest'],
 				resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
 				vueTemplate: true,
 			}),
@@ -42,8 +44,8 @@ export default defineConfig((configEnv: ConfigEnv) => {
 				// allow auto import and register components used in markdown
 				include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
 				resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
-				dts: 'components.d.ts',
 			}),
 		],
+		defineVitestConfig,
 	}
 })

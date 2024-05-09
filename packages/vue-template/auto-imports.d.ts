@@ -6,8 +6,14 @@
 export {}
 declare global {
 	const EffectScope: (typeof import('vue'))['EffectScope']
+	const afterAll: (typeof import('vitest'))['afterAll']
+	const afterEach: (typeof import('vitest'))['afterEach']
+	const assert: (typeof import('vitest'))['assert']
 	const asyncComputed: (typeof import('@vueuse/core'))['asyncComputed']
 	const autoResetRef: (typeof import('@vueuse/core'))['autoResetRef']
+	const beforeAll: (typeof import('vitest'))['beforeAll']
+	const beforeEach: (typeof import('vitest'))['beforeEach']
+	const chai: (typeof import('vitest'))['chai']
 	const computed: (typeof import('vue'))['computed']
 	const computedAsync: (typeof import('@vueuse/core'))['computedAsync']
 	const computedEager: (typeof import('@vueuse/core'))['computedEager']
@@ -29,8 +35,10 @@ declare global {
 	const debouncedWatch: (typeof import('@vueuse/core'))['debouncedWatch']
 	const defineAsyncComponent: (typeof import('vue'))['defineAsyncComponent']
 	const defineComponent: (typeof import('vue'))['defineComponent']
+	const describe: (typeof import('vitest'))['describe']
 	const eagerComputed: (typeof import('@vueuse/core'))['eagerComputed']
 	const effectScope: (typeof import('vue'))['effectScope']
+	const expect: (typeof import('vitest'))['expect']
 	const extendRef: (typeof import('@vueuse/core'))['extendRef']
 	const getCurrentInstance: (typeof import('vue'))['getCurrentInstance']
 	const getCurrentScope: (typeof import('vue'))['getCurrentScope']
@@ -43,6 +51,7 @@ declare global {
 	const isReactive: (typeof import('vue'))['isReactive']
 	const isReadonly: (typeof import('vue'))['isReadonly']
 	const isRef: (typeof import('vue'))['isRef']
+	const it: (typeof import('vitest'))['it']
 	const makeDestructurable: (typeof import('@vueuse/core'))['makeDestructurable']
 	const markRaw: (typeof import('vue'))['markRaw']
 	const nextTick: (typeof import('vue'))['nextTick']
@@ -85,9 +94,11 @@ declare global {
 	const shallowReactive: (typeof import('vue'))['shallowReactive']
 	const shallowReadonly: (typeof import('vue'))['shallowReadonly']
 	const shallowRef: (typeof import('vue'))['shallowRef']
+	const suite: (typeof import('vitest'))['suite']
 	const syncRef: (typeof import('@vueuse/core'))['syncRef']
 	const syncRefs: (typeof import('@vueuse/core'))['syncRefs']
 	const templateRef: (typeof import('@vueuse/core'))['templateRef']
+	const test: (typeof import('vitest'))['test']
 	const throttledRef: (typeof import('@vueuse/core'))['throttledRef']
 	const throttledWatch: (typeof import('@vueuse/core'))['throttledWatch']
 	const toRaw: (typeof import('vue'))['toRaw']
@@ -262,6 +273,8 @@ declare global {
 	const useWindowFocus: (typeof import('@vueuse/core'))['useWindowFocus']
 	const useWindowScroll: (typeof import('@vueuse/core'))['useWindowScroll']
 	const useWindowSize: (typeof import('@vueuse/core'))['useWindowSize']
+	const vi: (typeof import('vitest'))['vi']
+	const vitest: (typeof import('vitest'))['vitest']
 	const watch: (typeof import('vue'))['watch']
 	const watchArray: (typeof import('@vueuse/core'))['watchArray']
 	const watchAtMost: (typeof import('@vueuse/core'))['watchAtMost']
@@ -303,8 +316,14 @@ declare module 'vue' {
 	interface GlobalComponents {}
 	interface ComponentCustomProperties {
 		readonly EffectScope: UnwrapRef<(typeof import('vue'))['EffectScope']>
+		readonly afterAll: UnwrapRef<(typeof import('vitest'))['afterAll']>
+		readonly afterEach: UnwrapRef<(typeof import('vitest'))['afterEach']>
+		readonly assert: UnwrapRef<(typeof import('vitest'))['assert']>
 		readonly asyncComputed: UnwrapRef<(typeof import('@vueuse/core'))['asyncComputed']>
 		readonly autoResetRef: UnwrapRef<(typeof import('@vueuse/core'))['autoResetRef']>
+		readonly beforeAll: UnwrapRef<(typeof import('vitest'))['beforeAll']>
+		readonly beforeEach: UnwrapRef<(typeof import('vitest'))['beforeEach']>
+		readonly chai: UnwrapRef<(typeof import('vitest'))['chai']>
 		readonly computed: UnwrapRef<(typeof import('vue'))['computed']>
 		readonly computedAsync: UnwrapRef<(typeof import('@vueuse/core'))['computedAsync']>
 		readonly computedEager: UnwrapRef<(typeof import('@vueuse/core'))['computedEager']>
@@ -326,8 +345,10 @@ declare module 'vue' {
 		readonly debouncedWatch: UnwrapRef<(typeof import('@vueuse/core'))['debouncedWatch']>
 		readonly defineAsyncComponent: UnwrapRef<(typeof import('vue'))['defineAsyncComponent']>
 		readonly defineComponent: UnwrapRef<(typeof import('vue'))['defineComponent']>
+		readonly describe: UnwrapRef<(typeof import('vitest'))['describe']>
 		readonly eagerComputed: UnwrapRef<(typeof import('@vueuse/core'))['eagerComputed']>
 		readonly effectScope: UnwrapRef<(typeof import('vue'))['effectScope']>
+		readonly expect: UnwrapRef<(typeof import('vitest'))['expect']>
 		readonly extendRef: UnwrapRef<(typeof import('@vueuse/core'))['extendRef']>
 		readonly getCurrentInstance: UnwrapRef<(typeof import('vue'))['getCurrentInstance']>
 		readonly getCurrentScope: UnwrapRef<(typeof import('vue'))['getCurrentScope']>
@@ -340,6 +361,7 @@ declare module 'vue' {
 		readonly isReactive: UnwrapRef<(typeof import('vue'))['isReactive']>
 		readonly isReadonly: UnwrapRef<(typeof import('vue'))['isReadonly']>
 		readonly isRef: UnwrapRef<(typeof import('vue'))['isRef']>
+		readonly it: UnwrapRef<(typeof import('vitest'))['it']>
 		readonly makeDestructurable: UnwrapRef<(typeof import('@vueuse/core'))['makeDestructurable']>
 		readonly markRaw: UnwrapRef<(typeof import('vue'))['markRaw']>
 		readonly nextTick: UnwrapRef<(typeof import('vue'))['nextTick']>
@@ -382,9 +404,11 @@ declare module 'vue' {
 		readonly shallowReactive: UnwrapRef<(typeof import('vue'))['shallowReactive']>
 		readonly shallowReadonly: UnwrapRef<(typeof import('vue'))['shallowReadonly']>
 		readonly shallowRef: UnwrapRef<(typeof import('vue'))['shallowRef']>
+		readonly suite: UnwrapRef<(typeof import('vitest'))['suite']>
 		readonly syncRef: UnwrapRef<(typeof import('@vueuse/core'))['syncRef']>
 		readonly syncRefs: UnwrapRef<(typeof import('@vueuse/core'))['syncRefs']>
 		readonly templateRef: UnwrapRef<(typeof import('@vueuse/core'))['templateRef']>
+		readonly test: UnwrapRef<(typeof import('vitest'))['test']>
 		readonly throttledRef: UnwrapRef<(typeof import('@vueuse/core'))['throttledRef']>
 		readonly throttledWatch: UnwrapRef<(typeof import('@vueuse/core'))['throttledWatch']>
 		readonly toRaw: UnwrapRef<(typeof import('vue'))['toRaw']>
@@ -559,6 +583,8 @@ declare module 'vue' {
 		readonly useWindowFocus: UnwrapRef<(typeof import('@vueuse/core'))['useWindowFocus']>
 		readonly useWindowScroll: UnwrapRef<(typeof import('@vueuse/core'))['useWindowScroll']>
 		readonly useWindowSize: UnwrapRef<(typeof import('@vueuse/core'))['useWindowSize']>
+		readonly vi: UnwrapRef<(typeof import('vitest'))['vi']>
+		readonly vitest: UnwrapRef<(typeof import('vitest'))['vitest']>
 		readonly watch: UnwrapRef<(typeof import('vue'))['watch']>
 		readonly watchArray: UnwrapRef<(typeof import('@vueuse/core'))['watchArray']>
 		readonly watchAtMost: UnwrapRef<(typeof import('@vueuse/core'))['watchAtMost']>
@@ -581,8 +607,14 @@ declare module '@vue/runtime-core' {
 	interface GlobalComponents {}
 	interface ComponentCustomProperties {
 		readonly EffectScope: UnwrapRef<(typeof import('vue'))['EffectScope']>
+		readonly afterAll: UnwrapRef<(typeof import('vitest'))['afterAll']>
+		readonly afterEach: UnwrapRef<(typeof import('vitest'))['afterEach']>
+		readonly assert: UnwrapRef<(typeof import('vitest'))['assert']>
 		readonly asyncComputed: UnwrapRef<(typeof import('@vueuse/core'))['asyncComputed']>
 		readonly autoResetRef: UnwrapRef<(typeof import('@vueuse/core'))['autoResetRef']>
+		readonly beforeAll: UnwrapRef<(typeof import('vitest'))['beforeAll']>
+		readonly beforeEach: UnwrapRef<(typeof import('vitest'))['beforeEach']>
+		readonly chai: UnwrapRef<(typeof import('vitest'))['chai']>
 		readonly computed: UnwrapRef<(typeof import('vue'))['computed']>
 		readonly computedAsync: UnwrapRef<(typeof import('@vueuse/core'))['computedAsync']>
 		readonly computedEager: UnwrapRef<(typeof import('@vueuse/core'))['computedEager']>
@@ -604,8 +636,10 @@ declare module '@vue/runtime-core' {
 		readonly debouncedWatch: UnwrapRef<(typeof import('@vueuse/core'))['debouncedWatch']>
 		readonly defineAsyncComponent: UnwrapRef<(typeof import('vue'))['defineAsyncComponent']>
 		readonly defineComponent: UnwrapRef<(typeof import('vue'))['defineComponent']>
+		readonly describe: UnwrapRef<(typeof import('vitest'))['describe']>
 		readonly eagerComputed: UnwrapRef<(typeof import('@vueuse/core'))['eagerComputed']>
 		readonly effectScope: UnwrapRef<(typeof import('vue'))['effectScope']>
+		readonly expect: UnwrapRef<(typeof import('vitest'))['expect']>
 		readonly extendRef: UnwrapRef<(typeof import('@vueuse/core'))['extendRef']>
 		readonly getCurrentInstance: UnwrapRef<(typeof import('vue'))['getCurrentInstance']>
 		readonly getCurrentScope: UnwrapRef<(typeof import('vue'))['getCurrentScope']>
@@ -618,6 +652,7 @@ declare module '@vue/runtime-core' {
 		readonly isReactive: UnwrapRef<(typeof import('vue'))['isReactive']>
 		readonly isReadonly: UnwrapRef<(typeof import('vue'))['isReadonly']>
 		readonly isRef: UnwrapRef<(typeof import('vue'))['isRef']>
+		readonly it: UnwrapRef<(typeof import('vitest'))['it']>
 		readonly makeDestructurable: UnwrapRef<(typeof import('@vueuse/core'))['makeDestructurable']>
 		readonly markRaw: UnwrapRef<(typeof import('vue'))['markRaw']>
 		readonly nextTick: UnwrapRef<(typeof import('vue'))['nextTick']>
@@ -660,9 +695,11 @@ declare module '@vue/runtime-core' {
 		readonly shallowReactive: UnwrapRef<(typeof import('vue'))['shallowReactive']>
 		readonly shallowReadonly: UnwrapRef<(typeof import('vue'))['shallowReadonly']>
 		readonly shallowRef: UnwrapRef<(typeof import('vue'))['shallowRef']>
+		readonly suite: UnwrapRef<(typeof import('vitest'))['suite']>
 		readonly syncRef: UnwrapRef<(typeof import('@vueuse/core'))['syncRef']>
 		readonly syncRefs: UnwrapRef<(typeof import('@vueuse/core'))['syncRefs']>
 		readonly templateRef: UnwrapRef<(typeof import('@vueuse/core'))['templateRef']>
+		readonly test: UnwrapRef<(typeof import('vitest'))['test']>
 		readonly throttledRef: UnwrapRef<(typeof import('@vueuse/core'))['throttledRef']>
 		readonly throttledWatch: UnwrapRef<(typeof import('@vueuse/core'))['throttledWatch']>
 		readonly toRaw: UnwrapRef<(typeof import('vue'))['toRaw']>
@@ -837,6 +874,8 @@ declare module '@vue/runtime-core' {
 		readonly useWindowFocus: UnwrapRef<(typeof import('@vueuse/core'))['useWindowFocus']>
 		readonly useWindowScroll: UnwrapRef<(typeof import('@vueuse/core'))['useWindowScroll']>
 		readonly useWindowSize: UnwrapRef<(typeof import('@vueuse/core'))['useWindowSize']>
+		readonly vi: UnwrapRef<(typeof import('vitest'))['vi']>
+		readonly vitest: UnwrapRef<(typeof import('vitest'))['vitest']>
 		readonly watch: UnwrapRef<(typeof import('vue'))['watch']>
 		readonly watchArray: UnwrapRef<(typeof import('@vueuse/core'))['watchArray']>
 		readonly watchAtMost: UnwrapRef<(typeof import('@vueuse/core'))['watchAtMost']>
