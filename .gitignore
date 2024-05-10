@@ -2,3 +2,5 @@ node_modules
 coverage
 .eslintcache
 .stylelintcache
+auto-imports.d.ts
+components.d.ts
