@@ -16,7 +16,7 @@ const Configuration = {
 				'fix', // 修复bug
 				'docs', // 文档
 				'style', // 不影响代码运行的变动
-				'refactor', // 重构
+				'refactor', // 重构、优化代码，不影响功能
 				'chore', //添加依赖等
 				'test', //单元测试、集成测试等
 				'revert', // 回滚到上一个版本

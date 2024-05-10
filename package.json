@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"start": "node ./script/start.js",
+		"start": "node script/start.js",
 		"start:vue": "vite packages/vue-template",
 		"start:react": "vite packages/react-template",
 		"test": "vitest --coverage.enabled --globals",

@@ -22,7 +22,7 @@ const questions = [
 	{
 		type: 'list',
 		name: 'type',
-		message: '启动哪个项目呢',
+		message: '官人想启动哪个项目',
 		choices: projects.map((x) => {
 			return {
 				name: x,
