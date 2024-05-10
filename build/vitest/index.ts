@@ -5,7 +5,7 @@ const webRegex = /\.[jt]sx$/
 // https://cn.vitest.dev/config
 export default defineConfig({
 	test: {
-		// 提供全局 API,同时在unplugin-auto-import中配置可自动导入
+		// 提供全局 API,同时在unplugin-auto-import中配置可自动导入，同时需要在命令上加入--globals
 		globals: true,
 		// 测试环境，模拟浏览器环境的库jsdom。默认值: 'node'
 		environment: 'jsdom',

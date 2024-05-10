@@ -1,6 +1,7 @@
 .husky
 .vscode
 node_modules
+coverage
 packages/*/node_modules
 packages/*/dist
 packages/*/public

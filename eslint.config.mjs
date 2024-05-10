@@ -11,9 +11,11 @@ import importPrettier from 'eslint-plugin-import'
 // 详细配置：https://eslint.nodejs.cn/docs/latest/use/configure/configuration-files
 export default defineFlatConfig([
 	{
+		ignores: ['**/.*', 'dist/*', '**/*.d.ts', '**/public/**', '**/assets/**', 'coverage/*'],
+	},
+	{
 		// eslint 默认推荐规则
 		...js.configs.recommended,
-		ignores: ['**/.*', 'dist/*', '**/*.d.ts', '**/public/**', '**/assets/**'],
 		languageOptions: {
 			globals: { ...globals.browser, ...globals.node },
 		},
@@ -33,7 +35,6 @@ export default defineFlatConfig([
 		},
 	},
 	{
-		files: ['**/*.?([cm])ts', '**/*.?([cm])tsx'],
 		languageOptions: {
 			parser: parserTypeScript,
 			// parserOptions告诉我们的解析器如何找到每个源文件的 TSConfig

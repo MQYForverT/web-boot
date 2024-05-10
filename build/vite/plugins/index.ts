@@ -10,9 +10,7 @@ import progress from 'vite-plugin-progress' //打包进度显示
  */
 export function setupVitePlugins(viteEnv: ImportMetaEnv): (PluginOption | PluginOption[])[] {
 	const plugins = [
-		UnoCSS({
-			configFile: '../../uno.config.ts',
-		}),
+		UnoCSS(),
 		// https://github.com/antfu/unocss
 		// see unocss.config.ts for config
 		progress(),

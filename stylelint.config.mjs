@@ -15,11 +15,11 @@ export default {
 	],
 	// 自定义规则
 	rules: {
-		// 禁止未知的伪类选择器，允许 global 、export 、v-deep等伪类
+		// 禁止未知的伪类选择器，允许 global 、export等伪类
 		'selector-pseudo-class-no-unknown': [
 			true,
 			{
-				ignorePseudoClasses: ['global', 'export', 'v-deep', 'deep'],
+				ignorePseudoClasses: ['global', 'export'],
 			},
 		],
 	},

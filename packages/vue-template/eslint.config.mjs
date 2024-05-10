@@ -8,7 +8,6 @@ export default defineFlatConfig([
 	...publicConfig,
 	{
 		files: ['**/*.vue'],
-		ignores: ['packages/react-template'],
 		// 提供了一些语言选项，用于配置 Vue 文件的解析器和解析器选项
 		languageOptions: {
 			// 指定了解析器为 parserVue
