@@ -11,6 +11,7 @@ import importPrettier from 'eslint-plugin-import'
 // 详细配置：https://eslint.nodejs.cn/docs/latest/use/configure/configuration-files
 export default defineFlatConfig([
 	{
+		// 公共配置只配置排除属性，不指定files属性，具体的生效范围在具体的文件中指定
 		ignores: ['**/.*', 'dist/*', '**/*.d.ts', '**/public/**', '**/assets/**', 'coverage/*'],
 	},
 	{
@@ -53,6 +54,7 @@ export default defineFlatConfig([
 					argsIgnorePattern: '^_',
 				},
 			],
+			'@typescript-eslint/no-non-null-assertion': 'off',
 		},
 	},
 	{

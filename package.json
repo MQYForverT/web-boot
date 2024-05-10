@@ -15,16 +15,18 @@
 		"lint:eslint-vue": "eslint --config packages/vue-template/eslint.config.mjs --cache --fix",
 		"lint:eslint-react": "eslint --config packages/react-template/eslint.config.mjs --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"packages/**/src/**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
-		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix",
-		"lint:stylelint-vue": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix --config packages/vue-template/stylelint.config.mjs",
-		"lint:stylelint-react": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix --config packages/react-template/stylelint.config.mjs"
+		"lint:stylelint": "pnpm run lint:stylelint-vue & pnpm run lint:stylelint-react",
+		"lint:stylelint-vue": "stylelint \"**/vue-template/**/*.{css,scss,vue,html}\" --cache --fix --config packages/vue-template/stylelint.config.mjs",
+		"lint:stylelint-react": "stylelint \"**/react-template/**/*.{css,scss,vue,html}\" --cache --fix --config packages/react-template/stylelint.config.mjs",
+		"clean": "rimraf -g \"**/node_modules\" & pnpm store prune"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879",
 	"dependencies": {
-		"inquirer": "^9.2.20"
+		"inquirer": "^9.2.20",
+		"rimraf": "^5.0.5"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.3.0",
@@ -45,13 +47,13 @@
 		"globals": "^15.1.0",
 		"husky": "^9.0.11",
 		"lint-staged": "^15.2.2",
+		"postcss-scss": "^4.0.9",
 		"prettier": "3.2.5",
 		"rollup-plugin-visualizer": "^5.12.0",
 		"stylelint": "^16.4.0",
 		"stylelint-config-html": "^1.1.0",
 		"stylelint-config-prettier": "^9.0.5",
 		"stylelint-config-recess-order": "^5.0.1",
-		"stylelint-config-recommended-scss": "^14.0.0",
 		"stylelint-config-standard": "^36.0.0",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.4.5",
@@ -63,17 +65,18 @@
 		"vitest": "^1.6.0"
 	},
 	"lint-staged": {
-		"packages/vue-template/**/*.{js,ts,jsx,tsx,vue}": [
+		"**/vue-template/**/*.{js,ts,jsx,tsx,vue}": [
 			"pnpm run lint:eslint-vue",
 			"pnpm run lint:format"
 		],
-		"packages/react-template/**/*.{js,ts,jsx,tsx}": [
+		"**/react-template/**/*.{js,ts,jsx,tsx}": [
+			"pnpm run lint:eslint-react",
 			"pnpm run lint:format"
 		],
-		"packages/vue-template/**/*.{css,scss,sass,less,vue,html}": [
+		"**/vue-template/**/*.{css,scss,sass,less,vue,html}": [
 			"pnpm run lint:stylelint-vue"
 		],
-		"packages/react-template/**/*.{css,scss,sass,less,vue,html}": [
+		"**/react-template/**/*.{css,scss,sass,less,vue,html}": [
 			"pnpm run lint:stylelint-react"
 		],
 		"*.test.{js,jsx,ts,tsx}": [

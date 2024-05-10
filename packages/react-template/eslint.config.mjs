@@ -8,7 +8,7 @@ import { defineFlatConfig } from 'eslint-define-config'
 export default defineFlatConfig([
 	...publicConfig,
 	{
-		files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
+		files: ['**/react-template/**/*.{js,jsx,mjs,cjs,ts,tsx}'],
 		// 提供了一些语言选项，用于配置 Vue 文件的解析器和解析器选项
 		languageOptions: {
 			//提供了解析器的选项

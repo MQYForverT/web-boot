@@ -17,6 +17,7 @@
 	"devDependencies": {
 		"@vitejs/plugin-vue": "^5.0.4",
 		"eslint-plugin-vue": "^9.25.0",
+		"stylelint-config-recommended-scss": "^14.0.0",
 		"stylelint-config-recommended-vue": "^1.5.0",
 		"unplugin-vue-components": "^0.26.0",
 		"vite-plugin-vue-devtools": "^7.1.2",

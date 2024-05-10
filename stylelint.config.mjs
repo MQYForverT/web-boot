@@ -1,13 +1,9 @@
 // .styleintrc.js
 export default {
 	// 继承推荐规范配置
-	extends: ['stylelint-config-standard', 'stylelint-config-recommended-scss', 'stylelint-config-recess-order'],
-	// 指定不同文件对应的解析器
+	extends: ['stylelint-config-standard', 'stylelint-config-recess-order'],
+	// 指定要应用配置的文件子集中不同文件对应的解析器
 	overrides: [
-		{
-			files: ['**/*.{vue,html}'],
-			customSyntax: 'postcss-html',
-		},
 		{
 			files: ['**/*.{css,scss}'],
 			customSyntax: 'postcss-scss',
@@ -19,7 +15,7 @@ export default {
 		'selector-pseudo-class-no-unknown': [
 			true,
 			{
-				ignorePseudoClasses: ['global', 'export'],
+				ignorePseudoClasses: ['global', 'export', ':deep'],
 			},
 		],
 	},

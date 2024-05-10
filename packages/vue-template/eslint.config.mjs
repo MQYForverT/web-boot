@@ -7,6 +7,10 @@ import { defineFlatConfig } from 'eslint-define-config'
 export default defineFlatConfig([
 	...publicConfig,
 	{
+		// 为公共配置指定生效范围
+		files: ['**/vue-template/**/*.{js,jsx,mjs,cjs,ts,tsx}'],
+	},
+	{
 		files: ['**/*.vue'],
 		// 提供了一些语言选项，用于配置 Vue 文件的解析器和解析器选项
 		languageOptions: {
