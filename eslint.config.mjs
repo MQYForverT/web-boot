@@ -12,7 +12,7 @@ import importPrettier from 'eslint-plugin-import'
 export default defineFlatConfig([
 	{
 		// 公共配置只配置排除属性，不指定files属性，具体的生效范围在具体的文件中指定
-		ignores: ['**/.*', 'dist/*', '**/*.d.ts', '**/public/**', '**/assets/**', 'coverage/*'],
+		ignores: ['dist/*', '**/*.d.ts', '**/public/**', '**/assets/**', 'coverage/*'],
 	},
 	{
 		// eslint 默认推荐规则

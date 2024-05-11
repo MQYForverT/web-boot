@@ -3,8 +3,10 @@ import { ConfigEnv, defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import AutoImport from 'unplugin-auto-import/vite'
 
-import { setupVitePlugins, setupViteResolve, setupViteServer } from '../../build/vite'
-import defineVitestConfig from '../../build/vitest'
+import { reactClickToComponent } from 'vite-plugin-react-click-to-component'
+
+import { setupVitePlugins, setupViteResolve, setupViteServer } from '../common/build/vite'
+import defineVitestConfig from '../common/build/vitest'
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv: ConfigEnv) => {
@@ -21,6 +23,8 @@ export default defineConfig((configEnv: ConfigEnv) => {
 		plugins: [
 			...setupVitePlugins(viteEnv),
 			react(),
+			// 通过 【option/alt】 + 鼠标右键 可以查看组件信息，及打开组件
+			reactClickToComponent(),
 			AutoImport({
 				imports: ['react', 'ahooks', 'vitest'],
 			}),

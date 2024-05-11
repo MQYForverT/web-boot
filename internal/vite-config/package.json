@@ -1,0 +1,13 @@
+{
+	"name": "@mqy/vite-config",
+	"version": "0.0.1",
+	"description": "vite-config",
+	"license": "MIT",
+	"files": [
+		"index.js"
+	],
+	"main": "index.js",
+	"publishConfig": {
+		"access": "public"
+	}
+}

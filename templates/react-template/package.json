@@ -20,6 +20,7 @@
 		"@vitejs/plugin-react-swc": "^3.6.0",
 		"eslint-plugin-react": "^7.34.1",
 		"eslint-plugin-react-hooks": "^4.6.2",
-		"eslint-plugin-react-refresh": "^0.4.7"
+		"eslint-plugin-react-refresh": "^0.4.7",
+		"vite-plugin-react-click-to-component": "^3.0.0"
 	}
 }

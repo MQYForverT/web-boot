@@ -148,6 +148,9 @@ importers:
       eslint-plugin-react-refresh:
         specifier: ^0.4.7
         version: 0.4.7(eslint@9.2.0)
+      vite-plugin-react-click-to-component:
+        specifier: ^3.0.0
+        version: 3.0.0(react@18.3.1)(vite@5.2.11(@types/node@20.12.11))
 
   packages/vue-template:
     dependencies:
@@ -845,24 +848,28 @@ packages:
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@swc/core-linux-arm64-musl@1.5.5':
     resolution: {integrity: sha512-DkzJc13ukXa7oJpyn24BjIgsiOybYrc+IxjsQyfNlDrrs1QXP4elStcpkD02SsIuSyHjZV8Hw2HFBMQB3OHPrA==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@swc/core-linux-x64-gnu@1.5.5':
     resolution: {integrity: sha512-kj4ZwWJGeBEUzHrRQP2VudN+kkkYH7OI1dPVDc6kWQx5X4329JeKOas4qY0l7gDVjBbRwN9IbbPI6TIn2KfAug==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@swc/core-linux-x64-musl@1.5.5':
     resolution: {integrity: sha512-6pTorCs4mYhPhYtC4jNOnhGgjNd3DZcRoZ9P0tzXXP69aCbYjvlgNH/NRvAROp9AaVFeZ7a7PmCWb6+Rbe7NKg==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@swc/core-win32-arm64-msvc@1.5.5':
     resolution: {integrity: sha512-o0/9pstmEjwZyrY/bA+mymF0zH7E+GT/XCVqdKeWW9Wn3gTTyWa5MZnrFgI2THQ+AXwdglMB/Zo76ARQPaz/+A==}
@@ -3548,6 +3555,12 @@ packages:
     engines: {node: '>=14', pnpm: '>=7.0.0'}
     peerDependencies:
       vite: '>2.0.0-0'
+
+  vite-plugin-react-click-to-component@3.0.0:
+    resolution: {integrity: sha512-ErVBJDIpq2WfjIrBKwIvGVN7QlsXb2MEqO+IBy15akoVpL4J0b7hBNQzPS74ZrJAmtNkvmE0lHyaQk7Whj1YGQ==}
+    peerDependencies:
+      react: '>=16'
+      vite: ^4 || ^5
 
   vite-plugin-vue-devtools@7.1.2:
     resolution: {integrity: sha512-TQm0sLGlAI9zEG6wZSzadBqzLOJ0VVUOvgRv2uqx/O1cEfH7UHuGkkGMFaeSQfbRWzD1OnOsJHsTMaUZB6m8iQ==}
@@ -7536,6 +7549,11 @@ snapshots:
       picocolors: 1.0.0
       progress: 2.0.3
       rd: 2.0.1
+      vite: 5.2.11(@types/node@20.12.11)
+
+  vite-plugin-react-click-to-component@3.0.0(react@18.3.1)(vite@5.2.11(@types/node@20.12.11)):
+    dependencies:
+      react: 18.3.1
       vite: 5.2.11(@types/node@20.12.11)
 
   vite-plugin-vue-devtools@7.1.2(rollup@4.17.2)(vite@5.2.11(@types/node@20.12.11))(vue@3.4.27(typescript@5.4.5)):
