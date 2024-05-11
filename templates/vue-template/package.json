@@ -1,0 +1,28 @@
+{
+	"name": "vue-template",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"start": "vite",
+		"build": "vue-tsc && vite build",
+		"preview": "vite preview"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@vueuse/core": "^10.9.0",
+		"vue": "^3.4.0"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^5.0.4",
+		"eslint-plugin-vue": "^9.25.0",
+		"stylelint-config-recommended-scss": "^14.0.0",
+		"stylelint-config-recommended-vue": "^1.5.0",
+		"unplugin-vue-components": "^0.26.0",
+		"vite-plugin-vue-devtools": "^7.1.2",
+		"vite-plugin-vue-setup-extend": "^0.4.0",
+		"vue-eslint-parser": "^9.4.2",
+		"vue-tsc": "^2.0.16"
+	}
+}
