@@ -1,4 +1,15 @@
+// tsconfig.json
 {
-	"extends": "./tsconfig.base.json",
-	"references": [{ "path": "./packages/vue-template" }, { "path": "./packages/vue-template" }]
+  "compilerOptions": {
+    "target": "ESNext",
+    "moduleResolution": "node",
+    // vite 会读取到这个 tsconfig 文件(位于工作空间根目录)，按照其推荐配置这两个选项
+    // https://cn.vitejs.dev/guide/features.html#typescript-compiler-options
+    "isolatedModules": true,
+    "useDefineForClassFields": true,
+  },
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.node.json" }
+  ],
 }

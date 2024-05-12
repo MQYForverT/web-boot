@@ -2,6 +2,6 @@
 .vscode
 node_modules
 coverage
-packages/*/node_modules
-packages/*/dist
-packages/*/public
+templates/*/node_modules
+templates/*/dist
+templates/*/public

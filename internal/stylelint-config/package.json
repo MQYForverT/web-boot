@@ -1,0 +1,21 @@
+{
+	"name": "@mqy/stylelint-config",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.mjs",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"postcss-scss": "^4.0.9",
+		"stylelint": "^16.4.0",
+		"stylelint-config-html": "^1.1.0",
+		"stylelint-config-prettier": "^9.0.5",
+		"stylelint-config-recess-order": "^5.0.1",
+		"stylelint-config-standard": "^36.0.0"
+	}
+}

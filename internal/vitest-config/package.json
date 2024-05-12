@@ -1,5 +1,5 @@
 {
-	"name": "@mqy/vite-config",
+	"name": "@mqy/vitest-config",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.ts",
@@ -11,10 +11,8 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"rollup-plugin-visualizer": "^5.12.0",
-		"unocss": "^0.59.4",
-		"vite-plugin-compression2": "^1.1.0",
-		"vite-plugin-progress": "^0.0.7",
-		"vite": "^5.2.11"
+		"@vitest/coverage-v8": "^1.6.0",
+		"@vitest/ui": "^1.6.0",
+		"vitest": "^1.6.0"
 	}
 }

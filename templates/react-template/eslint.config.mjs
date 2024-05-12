@@ -1,7 +1,7 @@
 import pluginReact from 'eslint-plugin-react'
 import pluginReactRefresh from 'eslint-plugin-react-refresh'
 import pluginReactHooks from 'eslint-plugin-react-hooks'
-import publicConfig from '../../eslint.config.mjs'
+import publicConfig from '@mqy/eslint-config'
 import { defineFlatConfig } from 'eslint-define-config'
 
 // 详细配置：https://eslint.nodejs.cn/docs/latest/use/configure/configuration-files

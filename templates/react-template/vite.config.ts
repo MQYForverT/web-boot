@@ -5,8 +5,8 @@ import AutoImport from 'unplugin-auto-import/vite'
 
 import { reactClickToComponent } from 'vite-plugin-react-click-to-component'
 
-import { setupVitePlugins, setupViteResolve, setupViteServer } from '../common/build/vite'
-import defineVitestConfig from '../common/build/vitest'
+import { setupVitePlugins, setupViteResolve, setupViteServer } from '@mqy/vite-config'
+import defineVitestConfig from '@mqy/vitest-config'
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv: ConfigEnv) => {
@@ -29,6 +29,6 @@ export default defineConfig((configEnv: ConfigEnv) => {
 				imports: ['react', 'ahooks', 'vitest'],
 			}),
 		],
-		defineVitestConfig,
+		...defineVitestConfig,
 	}
 })
