@@ -1,6 +1,6 @@
 import parserVue from 'vue-eslint-parser'
 import pluginVue from 'eslint-plugin-vue'
-import publicConfig from '../../eslint.config.mjs'
+import publicConfig from '@mqy/eslint-config'
 import { defineFlatConfig } from 'eslint-define-config'
 
 // 详细配置：https://eslint.nodejs.cn/docs/latest/use/configure/configuration-files

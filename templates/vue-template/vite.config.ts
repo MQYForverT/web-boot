@@ -7,8 +7,12 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 import VueDevTools from 'vite-plugin-vue-devtools'
 
-import { setupVitePlugins, setupViteResolve, setupViteServer } from '../common/build/vite'
-import defineVitestConfig from '../common/build/vitest'
+// import { setupVitePlugins, setupViteResolve, setupViteServer } from '@mqy/vite-config'
+// import defineVitestConfig from '@mqy/vitest-config'
+
+// 目前不支持动态导入ts问价，将等到开箱即用的解决方案，然后将相对路径替换为包名称
+import { setupVitePlugins, setupViteResolve, setupViteServer } from '../../internal/vite-config'
+import defineVitestConfig from '../../internal/vitest-config'
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv: ConfigEnv) => {
@@ -49,6 +53,6 @@ export default defineConfig((configEnv: ConfigEnv) => {
 				resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
 			}),
 		],
-		defineVitestConfig,
+		...defineVitestConfig,
 	}
 })
