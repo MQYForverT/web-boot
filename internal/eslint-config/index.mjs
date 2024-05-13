@@ -11,8 +11,12 @@ import unocss from '@unocss/eslint-config/flat'
 
 // 详细配置：https://eslint.nodejs.cn/docs/latest/use/configure/configuration-files
 export default defineFlatConfig([
+	{
+		ignores: ['**/dist/**', '**/*.d.ts', '**/public/**', '**/assets/**', '**/coverage/**'],
+	},
 	unocss,
 	{
+		files: ['**/*.{js,jsx,mjs,cjs,ts}'],
 		// eslint 默认推荐规则
 		...js.configs.recommended,
 		languageOptions: {
@@ -31,9 +35,11 @@ export default defineFlatConfig([
 					argsIgnorePattern: '^_',
 				},
 			],
+			'no-redeclare': 'error',
 		},
 	},
 	{
+		files: ['**/*.{ts,tsx}'],
 		languageOptions: {
 			parser: parserTypeScript,
 			// parserOptions告诉我们的解析器如何找到每个源文件的 TSConfig
@@ -43,21 +49,11 @@ export default defineFlatConfig([
 		},
 		plugins: {
 			'@typescript-eslint': pluginTypeScript,
+			import: importPrettier,
 		},
 		rules: {
 			...pluginTypeScript.configs.strict.rules,
-			'@typescript-eslint/no-unused-vars': [
-				'error',
-				{
-					argsIgnorePattern: '^_',
-				},
-			],
 			'@typescript-eslint/no-non-null-assertion': 'off',
-		},
-	},
-	{
-		plugins: { import: importPrettier },
-		rules: {
 			'import/no-duplicates': 'error',
 		},
 	},

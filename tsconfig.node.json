@@ -15,7 +15,6 @@
 	"include": [
 		"internal/**/*",
 		"internal/**/*.json",
-		"scripts/**/*",
 		// 目前项目中暂时只有配置文件，如 vite.config.ts，以后会逐步增加
 		"**/*.config.*",
 		"types/env.d.ts"

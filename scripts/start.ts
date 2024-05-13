@@ -1,10 +1,8 @@
 import inquirer from 'inquirer'
 import fs from 'fs'
-import { execSync } from 'child_process'
-import { execFileSync } from 'child_process'
+import { execSync, execFileSync } from 'child_process'
 
 // 定义包含项目名称的数组
-const projects: string[] = []
 const projects: string[] = []
 
 // 读取 templates 目录

@@ -1,6 +1,7 @@
 import parserVue from 'vue-eslint-parser'
 import pluginVue from 'eslint-plugin-vue'
 import publicConfig from '../index.mjs'
+import * as parserTypeScript from '@typescript-eslint/parser'
 import { defineFlatConfig } from 'eslint-define-config'
 
 // 详细配置：https://eslint.nodejs.cn/docs/latest/use/configure/configuration-files
@@ -15,7 +16,7 @@ export default defineFlatConfig([
 			//提供了解析器的选项
 			parserOptions: {
 				// 指定了解析器为 TypeScript 的解析器,这是因为 Vue 文件中也包含 TypeScript 代码
-				parser: '@typescript-eslint/parser',
+				parser: parserTypeScript,
 				sourceType: 'module',
 			},
 		},
@@ -28,6 +29,8 @@ export default defineFlatConfig([
 			...pluginVue.configs.base.rules,
 			...pluginVue.configs['vue3-essential'].rules,
 			...pluginVue.configs['vue3-recommended'].rules,
+			'vue/no-undef-components': 'error',
+			'vue/require-default-prop': 'error',
 		},
 	},
 ])

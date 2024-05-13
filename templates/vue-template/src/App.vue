@@ -1,4 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+	defineProps({
+		a: {
+			type: Number,
+			required: true,
+		},
+		e: Number,
+	})
+	const a = 33
+</script>
 
 <template>
 	<div class="fixed-tr">
@@ -10,7 +19,7 @@
 			<img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
 		</a>
 	</div>
-	<HelloWorld msg="Farm + Vue" />
+	<HelloWorld2 msg="Farm + Vue" />
 </template>
 
 <style scoped>

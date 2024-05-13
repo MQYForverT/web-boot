@@ -1,12 +1,12 @@
 {
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    // 要包含的类型声明文件名列表
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		// 要包含的类型声明文件名列表
 		"types": ["vite/client", "vitest/globals"],
-    "baseUrl": "./",
+		"baseUrl": "./",
 		"paths": {
-			"@/*": ["src/*"],
+			"@/*": ["src/*"]
 		}
 	},
 	"include": ["../../types/env.d.ts", "**/*.vue", "**/*.ts", "**/*.d.ts"]
