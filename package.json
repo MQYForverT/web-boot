@@ -5,13 +5,13 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"start": "node script/start.js",
+		"start": "tsx ./scripts/start.ts",
 		"start:vue": "vite templates/vue-template",
 		"start:react": "vite templates/react-template",
 		"test": "vitest --coverage.enabled --globals",
-		"test:ui": "vitest --ui --open --coverage.enabled",
+		"test:ui": "vitest --ui --open --coverage.enabled --globals",
 		"prepare": "husky",
-		"lint:eslint": "pnpm run lint:eslint-vue & pnpm run lint:eslint-react",
+		"lint:eslint": "eslint --cache",
 		"lint:eslint-vue": "eslint --config templates/vue-template/eslint.config.mjs --cache --fix",
 		"lint:eslint-react": "eslint --config templates/react-template/eslint.config.mjs --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"templates/**/src/**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
@@ -29,10 +29,11 @@
 		"rimraf": "^5.0.5"
 	},
 	"devDependencies": {
-		"@mqy/eslint-config": "workspace:^",
-		"@mqy/stylelint-config": "workspace:^",
 		"@commitlint/cli": "^19.3.0",
 		"@commitlint/config-conventional": "^19.2.2",
+		"@mqy/eslint-config": "workspace:^",
+		"@mqy/stylelint-config": "workspace:^",
+		"@types/inquirer": "^9.0.7",
 		"@types/node": "^20.12.10",
 		"commitlint": "^19.3.0",
 		"eslint": "^9.1.1",
@@ -42,6 +43,7 @@
 		"prettier": "3.2.5",
 		"stylelint": "^16.4.0",
 		"ts-node": "^10.9.2",
+		"tsx": "^4.10.1",
 		"typescript": "^5.4.5"
 	},
 	"lint-staged": {

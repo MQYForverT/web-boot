@@ -5,7 +5,7 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import VueDevTools from 'vite-plugin-vue-devtools'
 
-import { setupVitePlugins, setupViteResolve, setupViteServer, setupViteTest } from '../common'
+import { setupViteResolve, setupViteServer, setupViteTest, setupVitePlugins } from '../common'
 
 export default (viteEnv: ImportMetaEnv): UserConfig => {
 	return {

@@ -4,17 +4,13 @@ import compress from './compress' //压缩工具
 import visualizer from './visualizer' //打包分析
 import progress from 'vite-plugin-progress' //打包进度显示
 
-import unoConfig from './uno.config'
-
 /**
  * vite插件
  * @param viteEnv - 环境变量配置
  */
 export function setupVitePlugins(viteEnv: ImportMetaEnv): (PluginOption | PluginOption[])[] {
 	const plugins = [
-		UnoCSS({
-			...unoConfig,
-		}),
+		UnoCSS(),
 		// https://github.com/antfu/unocss
 		// see unocss.config.ts for config
 		progress(),

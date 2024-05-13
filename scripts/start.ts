@@ -1,9 +1,11 @@
 import inquirer from 'inquirer'
 import fs from 'fs'
 import { execSync } from 'child_process'
+import { execFileSync } from 'child_process'
 
 // 定义包含项目名称的数组
-const projects = []
+const projects: string[] = []
+const projects: string[] = []
 
 // 读取 templates 目录
 fs.readdirSync('./templates').forEach((file) => {
@@ -37,6 +39,7 @@ inquirer
 	.then((answers) => {
 		const { type } = answers
 		execSync(`npm run start:${type}`, { stdio: 'inherit' })
+		execFileSync(`npm run start:${type}`, { stdio: 'inherit' })
 	})
 	.catch((err) => {
 		console.error(err.message)
