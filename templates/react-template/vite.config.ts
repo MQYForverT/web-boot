@@ -1,34 +1,17 @@
 /// <reference types="vitest" />
 import { ConfigEnv, defineConfig, loadEnv } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import AutoImport from 'unplugin-auto-import/vite'
+import path from 'path'
 
-import { reactClickToComponent } from 'vite-plugin-react-click-to-component'
+// import { setupVitePlugins, setupViteResolve, setupViteServer } from '@mqy/vite-config'
+// import defineVitestConfig from '@mqy/vitest-config'
 
-import { setupVitePlugins, setupViteResolve, setupViteServer } from '@mqy/vite-config'
-import defineVitestConfig from '@mqy/vitest-config'
+// 目前不支持动态导入ts问价，将等到开箱即用的解决方案，然后将相对路径替换为包名称
+import viteConfig from '../../internal/vite-config/react'
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv: ConfigEnv) => {
-	const viteEnv = loadEnv(configEnv.mode, process.cwd()) as ImportMetaEnv
-
-	return {
-		// 开发服务器选项
-		server: {
-			...setupViteServer(),
-		},
-		resolve: {
-			...setupViteResolve(),
-		},
-		plugins: [
-			...setupVitePlugins(viteEnv),
-			react(),
-			// 通过 【option/alt】 + 鼠标右键 可以查看组件信息，及打开组件
-			reactClickToComponent(),
-			AutoImport({
-				imports: ['react', 'ahooks', 'vitest'],
-			}),
-		],
-		...defineVitestConfig,
-	}
+	// 这个在拉具体代码的时候需要替换为'./'，并把环境变量复制过来
+	const rootDir = path.resolve(__dirname, '../../')
+	const viteEnv = loadEnv(configEnv.mode, rootDir) as unknown as ImportMetaEnv
+	return viteConfig(viteEnv)
 })

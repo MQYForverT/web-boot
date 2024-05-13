@@ -3,6 +3,7 @@ coverage
 dist
 .eslintcache
 .stylelintcache
+stats.html
 .DS_Store
 auto-imports.d.ts
 components.d.ts

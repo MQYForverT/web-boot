@@ -13,7 +13,7 @@ import unoConfig from './uno.config'
 export function setupVitePlugins(viteEnv: ImportMetaEnv): (PluginOption | PluginOption[])[] {
 	const plugins = [
 		UnoCSS({
-			...unoConfig
+			...unoConfig,
 		}),
 		// https://github.com/antfu/unocss
 		// see unocss.config.ts for config
