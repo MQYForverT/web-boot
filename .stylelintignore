@@ -5,3 +5,4 @@ coverage
 templates/*/node_modules
 templates/*/dist
 templates/*/public
+stats.html

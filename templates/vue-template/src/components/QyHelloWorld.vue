@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" name="qy-hello-world">
 	defineProps<{ msg: string }>()
 
 	const count = ref(0)

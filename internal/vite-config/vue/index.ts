@@ -3,6 +3,7 @@ import type { UserConfig } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 import VueDevTools from 'vite-plugin-vue-devtools'
 
 import { setupViteResolve, setupViteServer, setupViteTest, setupVitePlugins } from '../common'
@@ -30,6 +31,7 @@ export default (viteEnv: ImportMetaEnv): UserConfig => {
 			VueDevTools({
 				// launchEditor: 'code',//默认打开的编辑器，默认vscode，+7.20
 			}),
+			VueSetupExtend(),
 			AutoImport({
 				imports: ['vue', '@vueuse/core', 'vitest'],
 				resolvers: [ElementPlusResolver({ importStyle: 'sass' })],

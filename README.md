@@ -16,7 +16,10 @@ https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line
 npx tsc -p tsconfig.xxx.json --showConfig
 
 - eslint
-npx eslint --print-config .eslint.config.mjs
+npx eslint --print-config eslint.config.mjs
 
 - stylelint
  npx stylelint stylelint.config.mjs --print-config
+
+ # 如果vscode-eslint不生效，你又觉得你的配置没问题，可能需要重启eslint
+ command + shift + p 输入：restart ESlint server

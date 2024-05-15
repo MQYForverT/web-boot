@@ -29,8 +29,13 @@ export default defineFlatConfig([
 			...pluginVue.configs.base.rules,
 			...pluginVue.configs['vue3-essential'].rules,
 			...pluginVue.configs['vue3-recommended'].rules,
-			'vue/no-undef-components': 'error',
 			'vue/require-default-prop': 'error',
+			'vue/no-undef-components': [
+				'error',
+				{
+					ignorePatterns: ['qy(\\-\\w+)+'],
+				},
+			],
 		},
 	},
 ])

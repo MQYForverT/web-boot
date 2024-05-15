@@ -1,6 +1,6 @@
 import inquirer from 'inquirer'
 import fs from 'fs'
-import { execSync, execFileSync } from 'child_process'
+import { execFileSync, execSync } from 'child_process'
 
 // 定义包含项目名称的数组
 const projects: string[] = []
