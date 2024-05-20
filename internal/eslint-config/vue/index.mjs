@@ -29,7 +29,9 @@ export default defineFlatConfig([
 			...pluginVue.configs.base.rules,
 			...pluginVue.configs['vue3-essential'].rules,
 			...pluginVue.configs['vue3-recommended'].rules,
+			// props必须要有默认值
 			'vue/require-default-prop': 'error',
+			// 除了qy开头的组件没定义不报错，其他的都报错
 			'vue/no-undef-components': [
 				'error',
 				{

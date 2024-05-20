@@ -6,7 +6,7 @@ type IResolve = ResolveOptions & {
 export function setupViteResolve(): IResolve {
 	return {
 		alias: {
-			'@': resolve(__dirname, './src'),
+			'@': resolve(import.meta.dirname, './src'),
 		},
 	}
 }

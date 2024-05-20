@@ -6,26 +6,26 @@
 	"type": "module",
 	"scripts": {
 		"start": "tsx ./scripts/start.ts",
-		"start:vue": "vite templates/vue-template",
-		"start:react": "vite templates/react-template",
+		"start:vue": "cd templates/vue-template && pnpm run start",
+		"start:react": "cd templates/react-template && pnpm run start",
 		"test": "vitest --coverage.enabled --globals",
 		"test:ui": "vitest --ui --open --coverage.enabled --globals",
 		"prepare": "husky",
-		"lint:eslint": "eslint --cache --fix",
+		"lint:eslint": "eslint --cache --fix && pnpm run lint:eslint-vue && pnpm run lint:eslint-react",
 		"lint:eslint-vue": "eslint --config templates/vue-template/eslint.config.mjs --cache",
 		"lint:eslint-react": "eslint --config templates/react-template/eslint.config.mjs --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"templates/**/src/**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
 		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix",
 		"lint:stylelint-vue": "stylelint \"**/vue-template/**/*.{css,scss,vue,html}\" --cache --fix --config templates/vue-template/stylelint.config.mjs",
 		"lint:stylelint-react": "stylelint \"**/react-template/**/*.{css,scss,vue,html}\" --cache --fix --config templates/react-template/stylelint.config.mjs",
-		"clean": "rimraf -g \"**/node_modules\" & pnpm store prune"
+		"clean": "rimraf -g \"**/node_modules\" & rimraf pnpm-lock.yaml & pnpm store prune"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879",
 	"dependencies": {
-		"inquirer": "^9.2.21",
+		"inquirer": "^9.2.22",
 		"rimraf": "^5.0.7"
 	},
 	"devDependencies": {
@@ -34,16 +34,16 @@
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@types/inquirer": "^9.0.7",
-		"@types/node": "^20.12.11",
+		"@types/node": "^20.12.12",
 		"commitlint": "^19.3.0",
-		"eslint": "^9.2.0",
+		"eslint": "^9.3.0",
 		"eslint-define-config": "^2.1.0",
 		"husky": "^9.0.11",
 		"lint-staged": "^15.2.2",
 		"prettier": "3.2.5",
 		"stylelint": "^16.5.0",
 		"ts-node": "^10.9.2",
-		"tsx": "^4.10.2",
+		"tsx": "^4.10.5",
 		"typescript": "^5.4.5"
 	},
 	"lint-staged": {
