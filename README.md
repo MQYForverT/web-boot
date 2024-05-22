@@ -23,3 +23,4 @@ npx eslint --print-config eslint.config.mjs
 
  # 如果vscode-eslint不生效，你又觉得你的配置没问题，可能需要重启eslint
  command + shift + p 输入：restart ESlint server
+ 或者卸载插件，重新安装，反正这vscode-eslint挺坑的
