@@ -4,8 +4,8 @@
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
-		"start": "NODE_OPTIONS=\"--import tsx/esm\" pnpm exec vite",
-		"build": "NODE_OPTIONS=\"--import tsx/esm\" pnpm exec vue-tsc && env NODE_OPTIONS=\"--import tsx/esm\" vite build",
+		"start": "vite",
+		"build": "vue-tsc && vite build",
 		"preview": "vite preview"
 	},
 	"author": "",
@@ -14,10 +14,10 @@
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@mqy/vite-config": "workspace:^",
-		"vue": "^3.4.27"
+		"vue": "^3.4.27",
+		"vue-router": "4"
 	},
 	"devDependencies": {
-		"tsx": "^4.10.5",
 		"typescript": "^5.4.5",
 		"vite": "^5.2.11",
 		"vitest": "^1.6.0",

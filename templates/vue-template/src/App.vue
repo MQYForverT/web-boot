@@ -1,7 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+	const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss')
+</script>
 
 <template>
 	<div class="fixed-tr">
+		{{ formatted }}
 		<a href="https://farmfe.org/" target="_blank">
 			<img src="./assets/logo.png" class="logo" alt="Farm logo" />
 		</a>

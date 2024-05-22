@@ -8,14 +8,17 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 
 import { setupViteResolve, setupViteServer, setupViteTest, setupVitePlugins } from '../common'
 
-export default (viteEnv: ImportMetaEnv): UserConfig => {
+export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {
+	const { server, resolve, css, plugins = [], ...config } = customConfig ?? {}
 	return {
 		// 开发服务器选项
 		server: {
 			...setupViteServer(),
+			...server,
 		},
 		resolve: {
 			...setupViteResolve(),
+			...resolve,
 		},
 		css: {
 			preprocessorOptions: {
@@ -23,6 +26,7 @@ export default (viteEnv: ImportMetaEnv): UserConfig => {
 					additionalData: `@use "~/styles/element/index.scss" as *;`,
 				},
 			},
+			...css,
 		},
 		plugins: [
 			...setupVitePlugins(viteEnv),
@@ -33,7 +37,7 @@ export default (viteEnv: ImportMetaEnv): UserConfig => {
 			}),
 			VueSetupExtend(),
 			AutoImport({
-				imports: ['vue', '@vueuse/core', 'vitest'],
+				imports: ['vue', '@vueuse/core', 'vitest', 'vue-router'],
 				resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
 				vueTemplate: true,
 			}),
@@ -44,7 +48,9 @@ export default (viteEnv: ImportMetaEnv): UserConfig => {
 				include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
 				resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
 			}),
+			...plugins,
 		],
 		test: setupViteTest(),
+		...config,
 	}
 }

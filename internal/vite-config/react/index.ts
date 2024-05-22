@@ -6,14 +6,17 @@ import { reactClickToComponent } from 'vite-plugin-react-click-to-component'
 
 import { setupVitePlugins, setupViteResolve, setupViteServer, setupViteTest } from '../common'
 
-export default (viteEnv: ImportMetaEnv): UserConfig => {
+export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {
+	const { server, resolve, plugins = [], ...config } = customConfig ?? {}
 	return {
 		// 开发服务器选项
 		server: {
 			...setupViteServer(),
+			...server,
 		},
 		resolve: {
 			...setupViteResolve(),
+			...resolve,
 		},
 		plugins: [
 			...setupVitePlugins(viteEnv),
@@ -23,7 +26,9 @@ export default (viteEnv: ImportMetaEnv): UserConfig => {
 			AutoImport({
 				imports: ['react', 'ahooks', 'vitest'],
 			}),
+			...plugins,
 		],
 		test: setupViteTest(),
+		...config,
 	}
 }
