@@ -1,35 +1,33 @@
-import vue from '@vitejs/plugin-vue'
 import type { UserConfig } from 'vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import VueSetupExtend from 'vite-plugin-vue-setup-extend'
+import vue from '@vitejs/plugin-vue'
 import VueDevTools from 'vite-plugin-vue-devtools'
 
-import { setupViteResolve, setupViteServer, setupViteTest, setupVitePlugins } from '../common'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import VueSetupExtend from 'vite-plugin-vue-setup-extend'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { setupViteServer, setupViteTest, commonVitePlugins, setupViteBuild } from '../common'
 
+// https://vitejs.dev/config/
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {
-	const { server, resolve, css, plugins = [], ...config } = customConfig ?? {}
+	const { server, css, plugins = [], build, ...config } = customConfig ?? {}
 	return {
 		// 开发服务器选项
 		server: {
 			...setupViteServer(),
 			...server,
 		},
-		resolve: {
-			...setupViteResolve(),
-			...resolve,
-		},
 		css: {
 			preprocessorOptions: {
 				scss: {
-					additionalData: `@use "~/styles/element/index.scss" as *;`,
+					// 主题定制方案
+					additionalData: `@use "@/styles/element/index.scss" as *;`,
 				},
 			},
 			...css,
 		},
 		plugins: [
-			...setupVitePlugins(viteEnv),
+			...commonVitePlugins(viteEnv),
 			vue(),
 			// vue开发者工具，详细操作可以在启动时查看命令
 			VueDevTools({
@@ -50,6 +48,10 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 			}),
 			...plugins,
 		],
+		build: {
+			...setupViteBuild(),
+			...build,
+		},
 		test: setupViteTest(),
 		...config,
 	}

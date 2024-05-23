@@ -1,6 +1,15 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
-import 'virtual:uno.css'
+// vue Router
+import router from '@/routers'
 
-createApp(App).mount('#app')
+import 'virtual:uno.css'
+// 可修改主题的 element 样式 (内置暗黑模式)
+import '@/styles/index.scss'
+// custom element css
+import '@/styles/element.scss'
+// css common style sheet
+import '@/styles/common.scss'
+
+const app = createApp(App)
+app.use(router).mount('#app')

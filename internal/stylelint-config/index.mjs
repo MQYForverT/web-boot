@@ -1,7 +1,12 @@
 // .styleintrc.js
 export default {
 	// 继承推荐规范配置
-	extends: ['stylelint-config-standard', 'stylelint-config-recess-order'],
+	extends: [
+		'stylelint-config-standard',
+		'stylelint-config-recommended-scss',
+		'stylelint-config-recess-order',
+		'stylelint-config-prettier',
+	],
 	// 指定要应用配置的文件子集中不同文件对应的解析器
 	overrides: [
 		{

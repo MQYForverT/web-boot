@@ -14,6 +14,9 @@
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@mqy/vite-config": "workspace:^",
+		"element-plus": "^2.7.3",
+		"nprogress": "^0.2.0",
+		"qs": "^6.12.1",
 		"vue": "^3.4.27",
 		"vue-router": "4"
 	},

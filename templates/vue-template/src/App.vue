@@ -1,22 +1,25 @@
-<script setup lang="ts">
-	const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss')
-</script>
-
 <template>
-	<div class="fixed-tr">
-		{{ formatted }}
-		<a href="https://farmfe.org/" target="_blank">
-			<img src="./assets/logo.png" class="logo" alt="Farm logo" />
-		</a>
-
-		<a href="https://vuejs.org/" target="_blank">
-			<img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-		</a>
-	</div>
-	<QyHelloWorld msg="Farm + Vue" />
+	<el-config-provider :button="config" :size="assemblySize" :locale="zhCn">
+		<router-view />
+	</el-config-provider>
 </template>
 
-<style scoped>
+<script setup lang="ts">
+	import zhCn from 'element-plus/es/locale/lang/zh-cn'
+
+	import { GlobalStore } from '@/stores'
+
+	// 配置全局组件大小 (small/default(medium)/large)
+	const { assemblySize } = storeToRefs(GlobalStore())
+	// // 配置element按钮文字中间是否有空格
+	const config = reactive({
+		autoInsertSpace: false,
+	})
+	// 标题
+	useTitle(import.meta.env.VITE_APP_TITLE)
+</script>
+
+<style scoped lang="scss">
 	.logo {
 		height: 6em;
 		padding: 1.5em;

@@ -9,5 +9,5 @@
 			"@/*": ["src/*"]
 		}
 	},
-	"include": ["../../types/env.d.ts", "**/*.vue", "**/*.ts", "**/*.d.ts"]
+	"include": ["../../types/*.d.ts", "**/*.vue", "**/*.ts", "**/*.d.ts"]
 }
