@@ -6,11 +6,11 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import { setupViteServer, setupViteTest, commonVitePlugins, setupViteBuild } from '../common'
+import { setupViteServer, setupViteTest, commonVitePlugins, setupViteBuild, setupViteEsBuild } from '../common'
 
 // https://vitejs.dev/config/
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {
-	const { server, css, plugins = [], build, ...config } = customConfig ?? {}
+	const { server, css, plugins = [], esbuild, build, ...config } = customConfig ?? {}
 	return {
 		// 开发服务器选项
 		server: {
@@ -48,6 +48,10 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 			}),
 			...plugins,
 		],
+		esbuild: {
+			...setupViteEsBuild(),
+			...esbuild,
+		},
 		build: {
 			...setupViteBuild(),
 			...build,

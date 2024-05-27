@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { RouteLocationNormalized, createRouter, createWebHashHistory } from 'vue-router'
 import NProgress from '@/config/nprogress'
 import { errorRouter, staticRouter } from '@/routers/modules/staticRouter'
 import { LOGIN_URL } from '@/config/config'
@@ -38,11 +38,20 @@ router.beforeEach(async (to, from, next) => {
 	next()
 })
 
+const getPageTitle = (to: RouteLocationNormalized) => {
+	if (to.meta.title) {
+		const pageName = `${to.meta.title} - ${useTitle()}`
+		return pageName
+	}
+	return useTitle()
+}
+
 /**
  * @description 路由跳转结束
  * */
-router.afterEach(() => {
+router.afterEach((to) => {
 	NProgress.done()
+	useTitle(getPageTitle(to))
 })
 
 /**

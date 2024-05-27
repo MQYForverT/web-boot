@@ -27,7 +27,6 @@
 		"vite-plugin-compression2": "^1.1.0",
 		"vite-plugin-progress": "^0.0.7",
 		"vite-plugin-react-click-to-component": "^3.0.0",
-		"vite-plugin-remove-console": "^2.2.0",
 		"vite-plugin-vue-devtools": "^7.1.2",
 		"vite-plugin-vue-setup-extend": "^0.4.0",
 		"vitest": "^1.6.0"
