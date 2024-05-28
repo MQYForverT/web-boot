@@ -1,13 +1,16 @@
 import { createFetch } from '@vueuse/core'
 
 const useMyFetch = createFetch({
-	baseUrl: 'https://my-api.com',
+	baseUrl: `${import.meta.env.VITE_BASE_API}/${import.meta.env.VITE_PROJECT_NAME}`, // url = base url + request url
 	options: {
-		async beforeFetch({ options }) {
+		timeout: 5000,
+		async beforeFetch(ctx) {
 			const myToken = await getMyToken()
-			options.headers.Authorization = `Bearer ${myToken}`
+			if (ctx.options.headers) {
+				;(ctx.options.headers as Record<string, string>)['Authorization'] = `Bearer ${myToken}`
+			}
 
-			return { options }
+			return ctx
 		},
 		async afterFetch({ response, data }) {
 			if (response.status === 401) {

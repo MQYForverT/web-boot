@@ -21,7 +21,7 @@
 	})
 
 	// 标题
-	useTitle(import.meta.env.VITE_APP_TITLE)
+	useTitle(import.meta.env.VITE_PROJECT_NAME_ZH)
 </script>
 
 <style scoped lang="scss">

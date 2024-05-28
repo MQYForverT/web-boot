@@ -14,11 +14,11 @@ export function commonVitePlugins(viteEnv: ImportMetaEnv): (PluginOption | Plugi
 		// see unocss.config.ts for config
 		progress(),
 	]
-	if (viteEnv.VITE_COMPRESS === 'Y') {
+	if (process.env.NODE_ENV === 'development') {
 		plugins.push(compress(viteEnv))
 	}
-	if (viteEnv.VITE_VISUALIZER === 'Y') {
-		plugins.push(visualizer)
+	if (viteEnv.VITE_COMPRESS === 'Y') {
+		plugins.push(compress(viteEnv))
 	}
 	return plugins
 }
