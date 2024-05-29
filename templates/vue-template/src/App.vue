@@ -7,9 +7,9 @@
 <script setup lang="ts">
 	import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
-	import { useStoreSetting } from '@/stores'
+	import { useSettingStore } from '@/stores'
 	// 配置全局组件大小 (small/default(medium)/large)
-	const sizeConfig = useStoreSetting().buttonSize
+	const sizeConfig = useSettingStore().buttonSize
 
 	// 配置element按钮文字中间是否有空格
 	const config = reactive({

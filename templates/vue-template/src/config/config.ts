@@ -14,3 +14,6 @@ export const TABS_WHITE_LIST: string[] = ['/403', '/404', '/500', LOGIN_URL]
 
 // * 高德地图key
 export const MAP_KEY = ''
+
+// * 是否开启后端控制路由
+export const isRequestRoutes = true

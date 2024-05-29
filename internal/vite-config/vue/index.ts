@@ -37,6 +37,7 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 			AutoImport({
 				imports: ['vue', '@vueuse/core', 'vitest', 'vue-router'],
 				resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+				dirs: ['./src/stores'],
 				vueTemplate: true,
 			}),
 			Components({

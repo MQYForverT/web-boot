@@ -1,57 +1,21 @@
-import router from '@/routers/index'
-import { getFlatArr } from '@/utils/util'
-import { LOGIN_URL } from '@/config/config'
-import { AuthStore } from '@/stores/modules/auth'
-import { notFoundRouter } from '@/routers/modules/staticRouter'
+export function dynamicImport(component: string, folder: string) {
+	let dynamicViewsModules = import.meta.glob(`../../${folder}/**/*.{vue,jsx,tsx}`)
 
-// 引入 pages 文件夹下所有 vue 文件 如果不需要懒加载 => { eager: true }
-const modules = import.meta.glob('@/pages/**/*.vue')
+	const keys = Object.keys(dynamicViewsModules)
 
-/**
- * 初始化动态路由
- */
-export const initDynamicRouter = async () => {
-  try {
-    // 1.获取菜单列表 && 按钮权限
-    const authStore = AuthStore()
-    const { authMenuList } = storeToRefs(authStore)
-    const { getAuthMenuList, getAuthButtonList } = authStore
-    await getAuthMenuList()
-    await getAuthButtonList()
+	const matchKeys = keys.filter((key) => {
+		const k = key.replace(`../../${folder}`, '')
+		return k.startsWith(`${component}`) || k.startsWith(`/${component}`)
+	})
 
-    // 2.判断当前用户有没有菜单权限
-    if (!authMenuList.value.length) {
-      ElNotification({
-        title: '无权访问',
-        message: '当前账号无任何菜单权限，请联系系统管理员！',
-        type: 'warning',
-        duration: 3000,
-      })
-      router.replace(LOGIN_URL)
-      // eslint-disable-next-line prefer-promise-reject-errors
-      return Promise.reject('No permission')
-    }
+	if (matchKeys.length === 1) {
+		const matchKey = matchKeys[0]
 
-    // 3.添加动态路由 (getFlatArr 方法把菜单全部处理成一维数组，方便添加动态路由)
-    const dynamicRouter = getFlatArr(JSON.parse(JSON.stringify(authMenuList.value)))
-    dynamicRouter.forEach((item: any) => {
-      if (item.children)
-        delete item.children
-      if (item.component)
-        item.component = modules[`/src/pages${item.component}.vue`]
-
-      if (item.meta.isFull)
-        router.addRoute(item)
-      else
-        router.addRoute('layout', item)
-    })
-
-    // 4.最后添加 notFoundRouter
-    router.addRoute(notFoundRouter)
-  }
-  catch (error) {
-    // 💢 当按钮 || 菜单请求出错时，重定向到登陆页
-    router.replace(LOGIN_URL)
-    return Promise.reject(error)
-  }
+		return dynamicViewsModules[matchKey]
+	}
+	if (matchKeys.length > 1) {
+		console.warn('请不要创建“”。vue’和‘。jSX`views文件夹下同一层次目录中具有相同文件名的文件。这将导致动态引入失败')
+		return
+	}
+	return null
 }

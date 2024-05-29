@@ -3,6 +3,9 @@ import NProgress from '@/config/nprogress'
 import { errorRouter, staticRouter } from '@/routers/modules/staticRouter'
 import { LOGIN_URL } from '@/config/config'
 
+//自己的所有页面
+export const permissionRoute = []
+
 const router = createRouter({
 	history: createWebHashHistory(),
 	routes: [...staticRouter, ...errorRouter],
@@ -21,11 +24,17 @@ router.beforeEach(async (to, from, next) => {
 	axiosCanceler.removeAllPending()
 
 	// 3.如果是访问登陆页，直接放行
-	if (to.path === LOGIN_URL) return next()
+	if (to.path === LOGIN_URL) {
+		NProgress.done()
+		return next()
+	}
 
 	// 4.判断是否有 Token，没有重定向到 login
-	const { token } = storeToRefs(GlobalStore())
-	if (!token) return next({ path: LOGIN_URL, replace: true })
+	const token = useGlobalStore().token
+	if (!token) {
+		NProgress.done()
+		return next(`${LOGIN_URL}?redirect=${to.path}&params=${JSON.stringify(to.query ? to.query : to.params)}`)
+	}
 
 	// 5.如果没有菜单列表，就重新请求菜单列表并添加动态路由
 	const { authMenuList } = storeToRefs(AuthStore())
