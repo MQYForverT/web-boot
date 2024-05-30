@@ -4,7 +4,7 @@ import { errorRouter, staticRouter } from '@/routers/modules/staticRouter'
 import { LOGIN_URL } from '@/config/config'
 
 //自己的所有页面
-export const permissionRoute: Menu.MenuOptions[] = []
+export const localRoutes: Menu.MenuOptions[] = []
 
 const router = createRouter({
 	history: createWebHashHistory(),
@@ -37,14 +37,11 @@ router.beforeEach(async (to, from, next) => {
 	}
 
 	// 5.如果没有菜单列表，就重新请求菜单列表并添加动态路由
-	const { routesList } = useRoutesStore()
-	if (!routesList.value.length) {
+	const { routeList, getPermission } = useRoutesStore()
+	if (!routeList.value.length) {
 		// 获取用户信息
-		// 重置路由
-		// 获取新的路由
-		// 添加动态路由
-		// 设置缓存
-		await initDynamicRouter()
+
+		getPermission()
 		return next({ ...to, replace: true })
 	}
 

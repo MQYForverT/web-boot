@@ -1,72 +1,73 @@
-import { isRequestRoutes } from '@/config/config'
-import { permissionRoute } from '@/routers'
 import { dynamicImport } from '@/routers/modules/dynamicRouter'
 import { getPermissionData } from '@/routers/modules/help'
-import router from '@/routers'
+import router, { localRoutes } from '@/routers'
 
 export const useRoutesStore = createGlobalState(() => {
 	// state
-	const permission = ref<Menu.permissionMenu[]>([]) //转换之后后端返回的数据，存的是平板数据
-	const routesList = ref<Menu.MenuOptions[]>([]) //添加的所有路由
-	const allPermissionRouterData = ref<Menu.MenuOptions[]>([]) //包括根级路由的所有路由
-	const keepAliveNames = ref([]) //路由缓存（name字段）
-	const tagsViewRoutes = ref([]) //
+	const permissionFlat = ref<Menu.permissionMenu[]>([]) //转换之后后端返回的数据，存的是平板数据
+	const routeList = ref<Menu.MenuOptions[]>([]) //添加的所有路由
+	const tagsViewRoutes = ref<Menu.MenuOptions[]>([]) //
+	const keepAliveNames = ref<Menu.MenuOptions[]>([]) //路由缓存（name字段）
 
 	// 删除/重置路由
 	function resetRoute() {
-		setFilterRouteEnd().forEach((route) => {
-			const routeName = route.name
+		router.removeRoute('layout')
+		permissionFlat.value.forEach((route) => {
+			const routeName = route.permission
 			router.hasRoute(routeName) && router.removeRoute(routeName)
 		})
 
-		routesList.value = []
-		allPermissionRouterData.value = []
-		keepAliveNames.value = []
+		routeList.value = []
 		tagsViewRoutes.value = []
+		keepAliveNames.value = []
 	}
 
 	// 获取权限路由
 	async function getPermission() {
+		// 重置路由
+		resetRoute()
+
 		let routerResult: Menu.MenuOptions[] = [] //结果集
 
-		if (isRequestRoutes) {
-			// const { result, error } = await ApiGetPermission()
-			// //结果集格式化
-			// if (!HandleApiError(error)) {
-			// 	// 如果后端返回的是树形结构则需要先化为平板数据
-			// 	routerResult = getPermissionData(permissionRoute, result)
-			// }
+		// const { result, error } = await ApiGetPermission()
+		// //结果集格式化
+		// if (!HandleApiError(error)) {
+		// 	// 如果后端返回的是树形结构则需要先化为平板数据
+		// 	routerResult = getPermissionData(localRoutes, result)
+		// }
+		//模拟接口
+		const result: Menu.permissionMenu[] = [
+			{ permission: 'aaa', children: [{ permission: 'bbb' }, { permission: 'ccc' }] },
+		]
+		const resultData = getPermissionData(localRoutes, result, true)
 
-			//模拟接口
-			const result = [{ permission: 'aaa', children: [{ permission: 'bbb' }, { permission: 'ccc' }] }]
-			routerResult = getPermissionData(permissionRoute, result, true)
+		routerResult = resultData.routeList
+		permissionFlat.value = resultData.result
 
-			if (routerResult.length === 0) {
-				return routerResult
-			}
+		// 设置keepAlive 缓存
+		keepAliveNames.value = resultData.keepAliveList
 
-			permission.value = result
-		} else {
-			routerResult = permissionRoute
+		if (routerResult.length === 0) {
+			return routerResult
 		}
 
-		const app = [
-			{
-				path: '/',
-				name: 'layout',
-				component: dynamicImport('/index.vue', 'layout'),
-				redirect: routerResult[0].path, //可能没有home页面，所以取第一个
-				meta: {
-					isKeepAlive: true,
-				},
-				children: routerResult,
+		const app = {
+			path: '/',
+			name: 'layout',
+			component: dynamicImport('/index.vue', 'layout'),
+			redirect: routerResult[0].path, //可能没有home页面，所以取第一个
+			meta: {
+				isKeepAlive: true,
 			},
-		]
-		allPermissionRouterData.value = app
-		routesList.value = routerResult
+			children: routerResult,
+		}
+		router.addRoute(app)
 
-		return routerResult
+		routeList.value = routerResult
+
+		// 设置TagsViewRoutes
+		tagsViewRoutes.value = [routerResult[0]]
 	}
 
-	return { permission, routesList, allPermissionRouterData, keepAliveNames, tagsViewRoutes, getPermission }
+	return { permissionFlat, routeList, keepAliveNames, tagsViewRoutes, resetRoute, getPermission }
 })
