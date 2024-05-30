@@ -37,6 +37,7 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 			AutoImport({
 				imports: ['vue', '@vueuse/core', 'vitest', 'vue-router'],
 				resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+				// 默认/src/stores下的store自动导入
 				dirs: ['./src/stores'],
 				vueTemplate: true,
 			}),

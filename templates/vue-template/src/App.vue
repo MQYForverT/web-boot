@@ -1,5 +1,5 @@
 <template>
-	<el-config-provider :button="config" :size="sizeConfig" :locale="zhCn" :message="messageConfig">
+	<el-config-provider :button="config" :size="buttonSize" :locale="zhCn" :message="messageConfig">
 		<router-view />
 	</el-config-provider>
 </template>
@@ -9,7 +9,7 @@
 
 	import { useSettingStore } from '@/stores'
 	// 配置全局组件大小 (small/default(medium)/large)
-	const sizeConfig = useSettingStore().buttonSize
+	const { buttonSize } = useSettingStore()
 
 	// 配置element按钮文字中间是否有空格
 	const config = reactive({

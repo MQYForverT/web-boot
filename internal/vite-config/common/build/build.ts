@@ -19,6 +19,11 @@ export function setupViteBuild(): BuildOptions {
 						//使用pnpm打包
 						return id.toString().split('node_modules/')[2].split('/')[0].toString()
 					}
+					// 'group-user': [
+					//   './src/UserDetails',
+					//   './src/UserDashboard',
+					//   './src/UserProfileEdit',
+					// ],
 				},
 			},
 		},
