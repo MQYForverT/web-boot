@@ -1,6 +1,7 @@
 import { dynamicImport } from '@/routers/modules/dynamicRouter'
 import { getPermissionData } from '@/routers/modules/help'
 import router, { localRoutes } from '@/routers'
+import { notFoundRouter } from '@/routers/modules/staticRouter'
 
 export const useRoutesStore = createGlobalState(() => {
 	// state
@@ -12,10 +13,7 @@ export const useRoutesStore = createGlobalState(() => {
 	// 删除/重置路由
 	function resetRoute() {
 		router.removeRoute('layout')
-		permissionFlat.value.forEach((route) => {
-			const routeName = route.permission
-			router.hasRoute(routeName) && router.removeRoute(routeName)
-		})
+		router.removeRoute('notFound')
 
 		routeList.value = []
 		tagsViewRoutes.value = []
@@ -62,6 +60,8 @@ export const useRoutesStore = createGlobalState(() => {
 			children: routerResult,
 		}
 		router.addRoute(app)
+		// 添加 notFoundRouter
+		router.addRoute(notFoundRouter)
 
 		routeList.value = routerResult
 
