@@ -31,6 +31,8 @@ export default defineFlatConfig([
 			...pluginVue.configs['vue3-recommended'].rules,
 			// props必须要有默认值
 			'vue/require-default-prop': 'error',
+			// 组件文件名必须两个单词
+			'vue/multi-word-component-names': 'off',
 			// 除了mqy、el、router开头的组件没定义不报错，其他的都报错
 			'vue/no-undef-components': [
 				'error',

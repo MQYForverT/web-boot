@@ -2,7 +2,7 @@
 	<div>contents</div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="Login">
 	import { ApiGetSendSms } from '@/api/global'
 
 	onMounted(() => {

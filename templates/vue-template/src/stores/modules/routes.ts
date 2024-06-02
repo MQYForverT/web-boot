@@ -52,7 +52,7 @@ export const useRoutesStore = createGlobalState(() => {
 		const app = {
 			path: '/',
 			name: 'layout',
-			component: dynamicImport('/index.vue', 'layout'),
+			component: dynamicImport('/index.vue', 'layouts'),
 			redirect: routerResult[0].path, //可能没有home页面，所以取第一个
 			meta: {
 				isKeepAlive: true,

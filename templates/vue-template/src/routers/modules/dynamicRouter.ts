@@ -2,11 +2,11 @@ export function dynamicImport(component: string, folder: string) {
 	let dynamicViewsModules
 
 	switch (folder) {
-		case 'views':
-			dynamicViewsModules = import.meta.glob('../../views/**/*.{vue,jsx,tsx}')
+		case 'pages':
+			dynamicViewsModules = import.meta.glob('../../pages/**/*.{vue,jsx,tsx}')
 			break
-		case 'layout':
-			dynamicViewsModules = import.meta.glob('../../layout/**/*.{vue,jsx,tsx}')
+		case 'layouts':
+			dynamicViewsModules = import.meta.glob('../../layouts/**/*.{vue,jsx,tsx}')
 			break
 	}
 

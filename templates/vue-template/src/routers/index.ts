@@ -2,6 +2,7 @@ import { RouteLocationNormalized, createRouter, createWebHistory } from 'vue-rou
 import NProgress from '@/config/nprogress'
 import { errorRouter, staticRouter } from '@/routers/modules/staticRouter'
 import { LOGIN_URL } from '@/config/config'
+import $axios from '@/config/request'
 
 //自己的所有页面
 export const localRoutes: Menu.MenuOptions[] = []
@@ -17,6 +18,9 @@ const router = createRouter({
  * @description 路由拦截 beforeEach
  * */
 router.beforeEach(async (to, from, next) => {
+	// 清除所有正在进行的请求
+	$axios.cancelAllRequests()
+
 	// 1.NProgress 开始
 	NProgress.start()
 

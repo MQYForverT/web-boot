@@ -30,7 +30,7 @@ class Axios {
 
 		this.instance = axios.create(this.defaultConfig) as myAxiosInstance
 		// 绑定拦截器
-		this.interceptors(this.instance, config?.url)
+		this.interceptors(this.instance)
 		// 挂载cancelAllRequests方法到instance
 		this.instance.cancelAllRequests = this.cancelAllRequests.bind(this)
 	}
@@ -45,29 +45,32 @@ class Axios {
 			},
 		}
 
-		// 请求二进制文件流
-		if (config?.headers?.isFile) {
-			config.responseType = 'blob'
-		}
-
 		return config
 	}
 
-	private interceptors(instance: myAxiosInstance, url: string | undefined) {
+	private interceptors(instance: myAxiosInstance) {
 		instance.interceptors.request.use(
 			// 传入用户自定义配置
 			(config) => {
+				const url = config.url // 动态获取请求的URL
 				// 创建取消令牌和取消函数
 				if (url) {
 					const cancelTokenSource = axios.CancelToken.source()
 					config.cancelToken = cancelTokenSource.token
 
+					// 使用url+随机数 防止业务出现需要调用相同接口的情况
 					const requestId = `${url}-${performance.now().toString()}`
 					config.headers.requestId = requestId
 
 					// 将取消函数存储到请求 Map 中
 					this.requestMap.set(requestId, cancelTokenSource)
 				}
+
+				// 请求二进制文件流
+				if (config.headers.isFile) {
+					config.responseType = 'blob'
+				}
+
 				return config
 			},
 			(error: unknown) => {
@@ -77,12 +80,13 @@ class Axios {
 
 		instance.interceptors.response.use(
 			(response) => {
-				const requestId = response.config.headers.requestId
+				const { config, headers } = response
+				const requestId = config.headers.requestId
 				this.requestMap.delete(requestId)
 
 				// 判断是否是文件
-				const contentType = response.headers['content-type']
-				if (contentType === 'application/msexcel;charset=UTF-8') {
+				const contentType = headers['content-type']
+				if (config.headers.isFile && contentType === 'application/msexcel;charset=UTF-8') {
 					downBlobFile(response)
 				}
 
@@ -98,7 +102,7 @@ class Axios {
 		)
 	}
 
-	// 可以取消所有请求
+	// 可以取消所有请求，在路由跳转时很有用
 	private cancelAllRequests(): void {
 		this.requestMap.forEach((cancelTokenSource, url) => {
 			cancelTokenSource.cancel(`Cancel ${url}`)
