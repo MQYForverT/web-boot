@@ -37,6 +37,7 @@ export default defineFlatConfig([
 			],
 			// 禁止变量重新声明
 			'no-redeclare': 'error',
+			'prefer-const': 'error',
 		},
 	},
 	{
@@ -65,6 +66,7 @@ export default defineFlatConfig([
 					argsIgnorePattern: '^_',
 				},
 			],
+			'prefer-const': 'error',
 		},
 	},
 ])

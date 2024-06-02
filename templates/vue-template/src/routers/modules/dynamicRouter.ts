@@ -1,5 +1,18 @@
 export function dynamicImport(component: string, folder: string) {
-	let dynamicViewsModules = import.meta.glob(`../../${folder}/**/*.{vue,jsx,tsx}`)
+	let dynamicViewsModules
+
+	switch (folder) {
+		case 'views':
+			dynamicViewsModules = import.meta.glob('../../views/**/*.{vue,jsx,tsx}')
+			break
+		case 'layout':
+			dynamicViewsModules = import.meta.glob('../../layout/**/*.{vue,jsx,tsx}')
+			break
+	}
+
+	if (!dynamicViewsModules) {
+		return null
+	}
 
 	const keys = Object.keys(dynamicViewsModules)
 

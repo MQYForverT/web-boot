@@ -19,9 +19,6 @@
 	const messageConfig = reactive({
 		max: 1,
 	})
-
-	// 标题
-	useTitle(import.meta.env.VITE_PROJECT_NAME_ZH)
 </script>
 
 <style scoped lang="scss">

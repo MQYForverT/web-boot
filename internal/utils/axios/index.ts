@@ -1,0 +1,114 @@
+/*
+ * @Author: ch
+ * @Date: 2022-07-22 10:53:38
+ * @LastEditors: ch
+ * @LastEditTime: 2022-08-20 22:03:25
+ * @Description: 请求拦截器，不允许在这里些业务逻辑，这里只做了请求体和请求结果处理；
+ * 支持form请求，二进制文件请求
+ */
+
+import axios, { CancelTokenSource } from 'axios'
+import type { AxiosInstance, AxiosRequestConfig } from 'axios'
+import qs from 'qs'
+import downBlobFile from './downBlobFile'
+
+type myAxiosInstance = AxiosInstance & {
+	cancelAllRequests: () => void
+}
+
+class Axios {
+	private defaultConfig: AxiosRequestConfig
+	private requestMap: Map<string, CancelTokenSource> = new Map()
+	instance: myAxiosInstance
+
+	// 传入用户默认配置
+	constructor(config?: AxiosRequestConfig) {
+		this.defaultConfig = {
+			...this.getInsideConfig(),
+			...config,
+		}
+
+		this.instance = axios.create(this.defaultConfig) as myAxiosInstance
+		// 绑定拦截器
+		this.interceptors(this.instance, config?.url)
+		// 挂载cancelAllRequests方法到instance
+		this.instance.cancelAllRequests = this.cancelAllRequests.bind(this)
+	}
+
+	// 得到插件默认配置
+	private getInsideConfig(): AxiosRequestConfig {
+		const config: AxiosRequestConfig = {
+			timeout: 5000,
+			// 数组支持
+			paramsSerializer: function (params) {
+				return qs.stringify(params, { arrayFormat: 'repeat' })
+			},
+		}
+
+		// 请求二进制文件流
+		if (config?.headers?.isFile) {
+			config.responseType = 'blob'
+		}
+
+		return config
+	}
+
+	private interceptors(instance: myAxiosInstance, url: string | undefined) {
+		instance.interceptors.request.use(
+			// 传入用户自定义配置
+			(config) => {
+				// 创建取消令牌和取消函数
+				if (url) {
+					const cancelTokenSource = axios.CancelToken.source()
+					config.cancelToken = cancelTokenSource.token
+
+					const requestId = `${url}-${performance.now().toString()}`
+					config.headers.requestId = requestId
+
+					// 将取消函数存储到请求 Map 中
+					this.requestMap.set(requestId, cancelTokenSource)
+				}
+				return config
+			},
+			(error: unknown) => {
+				return Promise.reject(error)
+			},
+		)
+
+		instance.interceptors.response.use(
+			(response) => {
+				const requestId = response.config.headers.requestId
+				this.requestMap.delete(requestId)
+
+				// 判断是否是文件
+				const contentType = response.headers['content-type']
+				if (contentType === 'application/msexcel;charset=UTF-8') {
+					downBlobFile(response)
+				}
+
+				return response
+			},
+			(error) => {
+				// 请求完成后从 Map 中移除
+				const requestId = error.config.headers.requestId
+				this.requestMap.delete(requestId)
+
+				return Promise.reject(error)
+			},
+		)
+	}
+
+	// 可以取消所有请求
+	private cancelAllRequests(): void {
+		this.requestMap.forEach((cancelTokenSource, url) => {
+			cancelTokenSource.cancel(`Cancel ${url}`)
+		})
+		this.requestMap.clear()
+	}
+}
+
+// 导出工厂函数来创建 Axios 实例
+export function createAxiosInstance(config?: AxiosRequestConfig): myAxiosInstance {
+	const axiosInstance = new Axios(config).instance
+	return axiosInstance
+}

@@ -9,10 +9,11 @@ import viteConfig from '../../internal/vite-config/vue'
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv: ConfigEnv) => {
-	// 这个在拉具体代码的时候需要替换为'./'，并把环境变量复制过来
-	const rootDir = path.resolve(__dirname, '../../')
-	const viteEnv = loadEnv(configEnv.mode, rootDir) as unknown as ImportMetaEnv
+	const viteEnv = loadEnv(configEnv.mode, __dirname) as unknown as ImportMetaEnv
+
 	return viteConfig(viteEnv, {
+		// 拉具体代码的时候需要把环境变量复制过来，并把这个属性删除
+		envDir: path.resolve(__dirname, '../../'),
 		resolve: {
 			alias: {
 				'@': path.resolve(__dirname, './src'),

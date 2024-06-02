@@ -1,27 +1,16 @@
-import { createFetch } from '@vueuse/core'
+import { createAxiosInstance } from '@mqy/utils'
 
-const useMyFetch = createFetch({
-	baseUrl: `${import.meta.env.VITE_BASE_API}/${import.meta.env.VITE_PROJECT_NAME}`, // url = base url + request url
-	options: {
-		timeout: 5000,
-		async beforeFetch(ctx) {
-			const myToken = await getMyToken()
-			if (ctx.options.headers) {
-				;(ctx.options.headers as Record<string, string>)['Authorization'] = `Bearer ${myToken}`
-			}
-
-			return ctx
-		},
-		async afterFetch({ response, data }) {
-			if (response.status === 401) {
-				// 处理 401 错误
-				return data
-			}
-		},
-	},
-	fetchOptions: {
-		mode: 'cors',
-	},
+const $axios = createAxiosInstance({
+	baseURL: import.meta.env.VITE_BASE_URL,
 })
 
-const { isFetching, error, data } = useMyFetch('users')
+$axios.interceptors.request.use((config) => {
+	console.log(2222, config)
+	const headers = config.headers || {}
+	headers.Authorization = useGlobalStore().token.value
+	config.headers = headers
+
+	return config
+})
+
+export default $axios

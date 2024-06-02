@@ -1,5 +1,5 @@
 export const useSettingStore = createGlobalState(() => {
-	const prefix = useTitle()
+	const prefix = import.meta.env.VITE_PROJECT_NAME
 	// state
 	const buttonSize = useStorage(`${prefix}-size`, 'default')
 

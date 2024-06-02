@@ -1,4 +1,4 @@
-import { RouteLocationNormalized, createRouter, createWebHashHistory } from 'vue-router'
+import { RouteLocationNormalized, createRouter, createWebHistory } from 'vue-router'
 import NProgress from '@/config/nprogress'
 import { errorRouter, staticRouter } from '@/routers/modules/staticRouter'
 import { LOGIN_URL } from '@/config/config'
@@ -7,7 +7,7 @@ import { LOGIN_URL } from '@/config/config'
 export const localRoutes: Menu.MenuOptions[] = []
 
 const router = createRouter({
-	history: createWebHashHistory(),
+	history: createWebHistory(),
 	routes: [...staticRouter, ...errorRouter],
 	strict: false,
 	scrollBehavior: () => ({ left: 0, top: 0 }),
@@ -51,10 +51,11 @@ router.beforeEach(async (to, from, next) => {
 
 const getPageTitle = (to: RouteLocationNormalized) => {
 	if (to.meta.title) {
-		const pageName = `${to.meta.title} - ${useTitle()}`
+		// 标题
+		const pageName = `${to.meta.title} - ${import.meta.env.VITE_PROJECT_NAME_ZH}`
 		return pageName
 	}
-	return useTitle()
+	return import.meta.env.VITE_PROJECT_NAME_ZH
 }
 
 /**
