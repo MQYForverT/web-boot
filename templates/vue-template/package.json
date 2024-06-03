@@ -9,7 +9,9 @@
 		"preview": "vite preview",
 		"lint:eslint": "eslint --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
-		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix"
+		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix",
+		"test": "vitest --coverage.enabled --globals",
+		"test:ui": "vitest --ui --open --coverage.enabled --globals"
 	},
 	"author": "",
 	"license": "ISC",
@@ -23,6 +25,7 @@
 		"vue-router": "^4.3.2"
 	},
 	"devDependencies": {
+		"@vue/test-utils": "^2.4.6",
 		"typescript": "^5.4.5",
 		"vite": "^5.2.12",
 		"vitest": "^1.6.0",
