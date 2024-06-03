@@ -1,10 +1,5 @@
 <template>
-  <div>contents</div>
+	<div>contents</div>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
-</script>
-
-<style scoped lang="scss">
-</style>
+<script setup lang="ts"></script>

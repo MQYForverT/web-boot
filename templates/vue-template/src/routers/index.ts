@@ -1,5 +1,5 @@
 import { RouteLocationNormalized, createRouter, createWebHistory } from 'vue-router'
-import NProgress from '@/config/nprogress'
+import { NProgress } from '@mqy/utils'
 import { errorRouter, staticRouter } from '@/routers/modules/staticRouter'
 import { LOGIN_URL } from '@/config/config'
 import $axios from '@/config/request'

@@ -9,6 +9,7 @@ import progress from 'vite-plugin-progress' //打包进度显示
  */
 export function commonVitePlugins(viteEnv: ImportMetaEnv): (PluginOption | PluginOption[])[] {
 	const plugins = [
+		// 需要在根目录下自己创建uno.config.ts去配置
 		UnoCSS(),
 		// https://github.com/antfu/unocss
 		// see unocss.config.ts for config

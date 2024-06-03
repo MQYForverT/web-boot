@@ -17,9 +17,8 @@
 	"license": "ISC",
 	"devDependencies": {
 		"postcss-scss": "^4.0.9",
-		"stylelint": "^16.5.0",
+		"stylelint": "^16.6.1",
 		"stylelint-config-html": "^1.1.0",
-		"stylelint-config-prettier": "^9.0.5",
 		"stylelint-config-recess-order": "^5.0.1",
 		"stylelint-config-recommended-scss": "^14.0.0",
 		"stylelint-config-recommended-vue": "^1.5.0",

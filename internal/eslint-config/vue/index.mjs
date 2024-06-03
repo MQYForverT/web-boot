@@ -1,12 +1,18 @@
 import parserVue from 'vue-eslint-parser'
 import pluginVue from 'eslint-plugin-vue'
-import publicConfig from '../index.mjs'
 import * as parserTypeScript from '@typescript-eslint/parser'
+import getJsConfig from '../common/js-config.mjs'
+import getTsConfig from '../common/ts-config.mjs'
+import ignores from '../common/ignores.mjs'
+import unocss from '@unocss/eslint-config/flat'
 import { defineFlatConfig } from 'eslint-define-config'
 
 // 详细配置：https://eslint.nodejs.cn/docs/latest/use/configure/configuration-files
 export default defineFlatConfig([
-	...publicConfig,
+	ignores,
+	unocss,
+	getJsConfig(['**/*.{js,jsx,mjs,cjs}']),
+	getTsConfig(['**/*.{ts,tsx,vue}']),
 	{
 		files: ['**/*.vue'],
 		// 提供了一些语言选项，用于配置 Vue 文件的解析器和解析器选项

@@ -1,8 +1,0 @@
-.husky
-.vscode
-node_modules
-coverage
-templates/*/node_modules
-templates/*/dist
-templates/*/public
-stats.html

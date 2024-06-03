@@ -7,7 +7,7 @@ import { reactClickToComponent } from 'vite-plugin-react-click-to-component'
 import { setupViteServer, setupViteTest, commonVitePlugins, setupViteBuild } from '../common'
 
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {
-	const { server, resolve, css, plugins = [], build, ...config } = customConfig ?? {}
+	const { server, plugins = [], build, ...config } = customConfig ?? {}
 	return {
 		// 开发服务器选项
 		server: {

@@ -54,7 +54,7 @@ class Axios {
 			(config) => {
 				const url = config.url // 动态获取请求的URL
 				// 创建取消令牌和取消函数
-				if (url) {
+				if (url && !config.headers.skipCancel) {
 					const cancelTokenSource = axios.CancelToken.source()
 					config.cancelToken = cancelTokenSource.token
 
