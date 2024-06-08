@@ -1,7 +1,9 @@
 packages:
-  # all templates in direct subdirs of templates/
+  # 所有项目模板
   - 'templates/*'
-  # all internal in subdirs of components/
+  # 所有公共的配置，工具类等
   - 'internal/*'
+  # 对外文档
   - 'docx'
+  # 组件库（公开文档、私有温度）
   - 'components/*'

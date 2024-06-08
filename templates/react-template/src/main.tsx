@@ -4,7 +4,7 @@ import App from './App'
 
 import 'virtual:uno.css'
 
-import { register } from '@mqy/components-internal/dist/mqy-component-internal'
+import { register } from '@mqy/components-private/dist/mqy-component-internal'
 register()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

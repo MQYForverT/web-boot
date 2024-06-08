@@ -3,7 +3,7 @@ import fs from 'fs'
 import { execFileSync, execSync } from 'child_process'
 
 // 定义包含项目名称的数组
-const projects: string[] = []
+const projects: Record<string,string>[] = []
 
 // 读取 templates 目录
 fs.readdirSync('./templates').forEach((file) => {
@@ -15,7 +15,23 @@ fs.readdirSync('./templates').forEach((file) => {
 		return
 	}
 	const prefix = file.substring(0, file.indexOf('-template'))
-	projects.push(prefix)
+	projects.push({name:prefix, value: prefix})
+})
+
+// 读取 components 目录
+projects.push({
+	name: '私有组件',
+	value: 'components-private',
+})
+projects.push({
+	name: '公开组件',
+	value: 'components-public',
+})
+
+//读取 docx 目录
+projects.push({
+	name: '文档',
+	value: 'docx',
 })
 
 const questions = [
@@ -23,12 +39,7 @@ const questions = [
 		type: 'list',
 		name: 'type',
 		message: '官人想启动哪个项目',
-		choices: projects.map((x) => {
-			return {
-				name: x,
-				value: x,
-			}
-		}),
+		choices: projects
 	},
 ]
 

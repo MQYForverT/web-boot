@@ -14,7 +14,7 @@
 		"test:ui": "vitest --ui --open --coverage.enabled --globals"
 	},
 	"dependencies": {
-		"@mqy/components-internal": "workspace:^",
+		"@mqy/components-private": "workspace:^",
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@mqy/vite-config": "workspace:^",
@@ -25,7 +25,7 @@
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"typescript": "^5.4.5",
-		"vite": "^5.2.12",
+		"vite": "^5.2.13",
 		"vitest": "^1.6.0"
 	}
 }

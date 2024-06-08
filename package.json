@@ -8,6 +8,9 @@
 		"start": "tsx ./scripts/start.ts",
 		"start:vue": "cd templates/vue-template && pnpm run start",
 		"start:react": "cd templates/react-template && pnpm run start",
+    "start:components-private": "cd components/private && pnpm run start",
+    "start:components-public": "cd components/public && pnpm run start",
+    "start:docx": "cd docx && pnpm run start",
 		"test:vue": "cd templates/vue-template && pnpm run test",
 		"test:react": "cd templates/react-template && pnpm run test",
 		"test:ui-vue": "cd templates/vue-template && pnpm run test:ui",
@@ -38,7 +41,7 @@
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@types/inquirer": "^9.0.7",
-		"@types/node": "^20.14.0",
+		"@types/node": "^20.14.2",
 		"commitlint": "^19.3.0",
 		"eslint": "^9.4.0",
 		"eslint-define-config": "^2.1.0",
@@ -47,11 +50,15 @@
 		"prettier": "3.2.5",
 		"stylelint": "^16.6.1",
 		"ts-node": "^10.9.2",
-		"tsx": "^4.11.0",
+		"tsx": "^4.13.1",
 		"typescript": "^5.4.5"
 	},
 	"lint-staged": {
-		"**/vue-template/**/*.{js,ts,jsx,tsx,vue}": [
+		"**/vue-template/**/*.{js,ts,jsx,tsx,vue,ce.vue}": [
+			"pnpm run lint:eslint-vue",
+			"pnpm run lint:format"
+		],
+		"components/**/*.{js,ts,jsx,tsx,vue,ce.vue}": [
 			"pnpm run lint:eslint-vue",
 			"pnpm run lint:format"
 		],
@@ -60,6 +67,9 @@
 			"pnpm run lint:format"
 		],
 		"**/vue-template/**/*.{css,scss,sass,less,vue,html}": [
+			"pnpm run lint:stylelint-vue"
+		],
+		"components/**/*.{css,scss,sass,less,vue,html}": [
 			"pnpm run lint:stylelint-vue"
 		],
 		"**/react-template/**/*.{css,scss,sass,less,vue,html}": [
