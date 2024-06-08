@@ -118,6 +118,15 @@ importers:
 
   components/public:
     dependencies:
+      '@mqy/eslint-config':
+        specifier: workspace:^
+        version: link:../../internal/eslint-config
+      '@mqy/stylelint-config':
+        specifier: workspace:^
+        version: link:../../internal/stylelint-config
+      '@mqy/vite-config':
+        specifier: workspace:^
+        version: link:../../internal/vite-config
       element-plus:
         specifier: ^2.7.5
         version: 2.7.5(vue@3.4.27(typescript@5.4.5))
@@ -128,6 +137,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.0.5
         version: 5.0.5(vite@5.2.13(@types/node@20.14.2)(sass@1.77.4))(vue@3.4.27(typescript@5.4.5))
+      '@vue/test-utils':
+        specifier: ^2.4.6
+        version: 2.4.6
       sass:
         specifier: ^1.77.4
         version: 1.77.4
@@ -140,9 +152,18 @@ importers:
       unplugin-auto-import:
         specifier: ^0.17.6
         version: 0.17.6(@vueuse/core@10.10.0(vue@3.4.27(typescript@5.4.5)))(rollup@4.18.0)
+      unplugin-element-plus:
+        specifier: ^0.8.0
+        version: 0.8.0(rollup@4.18.0)
       vite:
         specifier: ^5.2.13
         version: 5.2.13(@types/node@20.14.2)(sass@1.77.4)
+      vite-plugin-css-injected-by-js:
+        specifier: ^3.5.1
+        version: 3.5.1(vite@5.2.13(@types/node@20.14.2)(sass@1.77.4))
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.0(@types/node@20.14.2)(@vitest/ui@1.6.0)(happy-dom@14.12.0)(sass@1.77.4)
       vue-tsc:
         specifier: ^2.0.19
         version: 2.0.19(typescript@5.4.5)
@@ -292,9 +313,9 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0(@types/node@20.14.2)(@vitest/ui@1.6.0)(happy-dom@14.12.0)(sass@1.77.4)
 
-  templates/react-template:
+  templates/react:
     dependencies:
-      '@mqy/components-private':
+      '@mqy/component-private':
         specifier: workspace:^
         version: link:../../components/private
       '@mqy/eslint-config':
@@ -329,9 +350,9 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0(@types/node@20.14.2)(@vitest/ui@1.6.0)(happy-dom@14.12.0)(sass@1.77.4)
 
-  templates/vue-template:
+  templates/vue:
     dependencies:
-      '@mqy/components-private':
+      '@mqy/component-private':
         specifier: workspace:^
         version: link:../../components/private
       '@mqy/eslint-config':

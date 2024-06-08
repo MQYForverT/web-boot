@@ -1,5 +1,5 @@
 {
-	"name": "@mqy/vue-template",
+	"name": "@mqy/template-vue",
 	"private": true,
 	"version": "1.0.0",
 	"type": "module",
@@ -16,7 +16,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@mqy/components-private": "workspace:^",
+		"@mqy/component-private": "workspace:^",
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@mqy/utils": "workspace:^",

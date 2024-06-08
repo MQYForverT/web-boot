@@ -11,7 +11,7 @@ import '@/styles/element.scss'
 // css common style sheet
 import '@/styles/common.scss'
 
-import { register } from '@mqy/components-private/dist/mqy-component-internal'
+import { register } from '@mqy/component-private/dist/mqy-component-internal'
 register()
 
 const app = createApp(App)

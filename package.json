@@ -6,23 +6,23 @@
 	"type": "module",
 	"scripts": {
 		"start": "tsx ./scripts/start.ts",
-		"start:vue": "cd templates/vue-template && pnpm run start",
-		"start:react": "cd templates/react-template && pnpm run start",
-    "start:components-private": "cd components/private && pnpm run start",
-    "start:components-public": "cd components/public && pnpm run start",
+		"start:vue": "cd templates/vue && pnpm run start",
+		"start:react": "cd templates/react && pnpm run start",
+    "start:component-private": "cd components/private && pnpm run start",
+    "start:component-public": "cd components/public && pnpm run start",
     "start:docx": "cd docx && pnpm run start",
-		"test:vue": "cd templates/vue-template && pnpm run test",
-		"test:react": "cd templates/react-template && pnpm run test",
-		"test:ui-vue": "cd templates/vue-template && pnpm run test:ui",
-		"test:ui-react": "cd templates/react-template && pnpm run test:ui",
+		"test:vue": "cd templates/vue && pnpm run test",
+		"test:react": "cd templates/react && pnpm run test",
+		"test:ui-vue": "cd templates/vue && pnpm run test:ui",
+		"test:ui-react": "cd templates/react && pnpm run test:ui",
 		"prepare": "husky",
 		"lint:eslint": "eslint --cache --fix && pnpm run lint:eslint-vue && pnpm run lint:eslint-react",
-		"lint:eslint-vue": "cd templates/vue-template && pnpm run lint:eslint",
-		"lint:eslint-react": "cd templates/react-template && pnpm run lint:eslint",
+		"lint:eslint-vue": "cd templates/vue && pnpm run lint:eslint",
+		"lint:eslint-react": "cd templates/react && pnpm run lint:eslint",
 		"lint:format": "prettier --write --log-level warn \"templates/**/src/**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
 		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix && pnpm run lint:stylelint-vue && pnpm run lint:stylelint-react",
-		"lint:stylelint-vue": "cd templates/vue-template && pnpm run lint:stylelint",
-		"lint:stylelint-react": "cd templates/react-template && pnpm run lint:stylelint",
+		"lint:stylelint-vue": "cd templates/vue && pnpm run lint:stylelint",
+		"lint:stylelint-react": "cd templates/react && pnpm run lint:stylelint",
 		"clean": "rimraf -g \"**/node_modules\" & rimraf pnpm-lock.yaml & pnpm store prune",
 		"update": "pnpm update -r",
 		"reinstall": "pnpm run clean && pnpm install"
@@ -54,7 +54,7 @@
 		"typescript": "^5.4.5"
 	},
 	"lint-staged": {
-		"**/vue-template/**/*.{js,ts,jsx,tsx,vue,ce.vue}": [
+		"templates/vue/**/*.{js,ts,jsx,tsx,vue,ce.vue}": [
 			"pnpm run lint:eslint-vue",
 			"pnpm run lint:format"
 		],
@@ -62,17 +62,17 @@
 			"pnpm run lint:eslint-vue",
 			"pnpm run lint:format"
 		],
-		"**/react-template/**/*.{js,ts,jsx,tsx}": [
+		"templates/react/**/*.{js,ts,jsx,tsx}": [
 			"pnpm run lint:eslint-react",
 			"pnpm run lint:format"
 		],
-		"**/vue-template/**/*.{css,scss,sass,less,vue,html}": [
+		"templates/vue/**/*.{css,scss,sass,less,vue,html}": [
 			"pnpm run lint:stylelint-vue"
 		],
 		"components/**/*.{css,scss,sass,less,vue,html}": [
 			"pnpm run lint:stylelint-vue"
 		],
-		"**/react-template/**/*.{css,scss,sass,less,vue,html}": [
+		"templates/react/**/*.{css,scss,sass,less,vue,html}": [
 			"pnpm run lint:stylelint-react"
 		],
 		"*.test.{js,jsx,ts,tsx}": [

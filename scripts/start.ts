@@ -11,21 +11,17 @@ fs.readdirSync('./templates').forEach((file) => {
 	if (!fs.statSync(`./templates/${file}`).isDirectory()) {
 		return
 	}
-	if (!file.includes('template')) {
-		return
-	}
-	const prefix = file.substring(0, file.indexOf('-template'))
-	projects.push({name:prefix, value: prefix})
+	projects.push({name:file, value: file})
 })
 
 // 读取 components 目录
 projects.push({
 	name: '私有组件',
-	value: 'components-private',
+	value: 'component-private',
 })
 projects.push({
 	name: '公开组件',
-	value: 'components-public',
+	value: 'component-public',
 })
 
 //读取 docx 目录
