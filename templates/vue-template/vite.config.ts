@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 import { ConfigEnv, defineConfig, loadEnv } from 'vite'
-import path from 'path'
+import { resolve } from 'path'
 
 // import viteConfig from '@mqy/vite-config/vue'
 
@@ -13,10 +13,10 @@ export default defineConfig((configEnv: ConfigEnv) => {
 
 	return viteConfig(viteEnv, {
 		// 拉具体代码的时候需要把环境变量复制过来，并把这个属性删除
-		envDir: path.resolve(__dirname, '../../'),
+		envDir: resolve(__dirname, '../../'),
 		resolve: {
 			alias: {
-				'@': path.resolve(__dirname, './src'),
+				'@': resolve(__dirname, './src'),
 			},
 		},
 	})

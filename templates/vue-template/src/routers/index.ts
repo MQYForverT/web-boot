@@ -24,23 +24,20 @@ router.beforeEach(async (to, from, next) => {
 	// 1.NProgress 开始
 	NProgress.start()
 
-	// 2.在跳转路由之前，清除所有的请求
-	// axiosCanceler.removeAllPending()
-
-	// 3.如果是访问登陆页，直接放行
-	if (to.path === LOGIN_URL) {
+	// 2.如果是访问登陆页，直接放行
+	if (to.path === LOGIN_URL || to.path === '/') {
 		NProgress.done()
 		return next()
 	}
 
-	// 4.判断是否有 Token，没有重定向到 login
+	// 3.判断是否有 Token，没有重定向到 login
 	const { token } = useGlobalStore()
 	if (!token.value) {
 		NProgress.done()
 		return next(`${LOGIN_URL}?redirect=${to.path}&params=${JSON.stringify(to.query ? to.query : to.params)}`)
 	}
 
-	// 5.如果没有菜单列表，就重新请求菜单列表并添加动态路由
+	// 4.如果没有菜单列表，就重新请求菜单列表并添加动态路由
 	const { routeList, getPermission } = useRoutesStore()
 	if (!routeList.value.length) {
 		// 获取用户信息
@@ -49,7 +46,7 @@ router.beforeEach(async (to, from, next) => {
 		return next({ ...to, replace: true })
 	}
 
-	// 6.正常访问页面
+	// 5.正常访问页面
 	next()
 })
 

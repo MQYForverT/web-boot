@@ -1,10 +1,3 @@
 /// <reference types="vite/client" />
 
-interface MyProps {}
-
-interface MyEmit {}
-declare module '*.vue' {
-	import { DefineComponent } from 'vue'
-	const component: DefineComponent<MyProps, MyEmit, unknown>
-	export default component
-}
+declare module '@mqy/components-internal/dist/mqy-component-internal'

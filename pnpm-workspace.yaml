@@ -4,3 +4,4 @@ packages:
   # all internal in subdirs of components/
   - 'internal/*'
   - 'docx'
+  - 'components/*'

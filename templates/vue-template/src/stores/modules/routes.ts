@@ -1,4 +1,3 @@
-import { dynamicImport } from '@/routers/modules/dynamicRouter'
 import { getPermissionData } from '@/routers/modules/help'
 import router, { localRoutes } from '@/routers'
 import { notFoundRouter } from '@/routers/modules/staticRouter'
@@ -52,7 +51,7 @@ export const useRoutesStore = createGlobalState(() => {
 		const app = {
 			path: '/',
 			name: 'layout',
-			component: dynamicImport('/index.vue', 'layouts'),
+			component: import('@/layouts/index.vue'),
 			redirect: routerResult[0].path, //可能没有home页面，所以取第一个
 			meta: {
 				isKeepAlive: true,

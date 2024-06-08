@@ -11,5 +11,8 @@ import '@/styles/element.scss'
 // css common style sheet
 import '@/styles/common.scss'
 
+import { register } from '@mqy/components-internal/dist/mqy-component-internal'
+register()
+
 const app = createApp(App)
 app.use(router).mount('#app')

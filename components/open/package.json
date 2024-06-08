@@ -1,0 +1,25 @@
+{
+	"name": "@mqy/components",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"vue": "^3.4.21",
+		"element-plus": "^2.7.4"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^5.0.5",
+		"typescript": "^5.2.2",
+		"sass": "^1.77.4",
+		"unocss": "^0.59.4",
+		"unplugin-auto-import": "^0.17.6",
+		"vite": "^5.2.12",
+		"vue-tsc": "^2.0.6"
+	}
+}

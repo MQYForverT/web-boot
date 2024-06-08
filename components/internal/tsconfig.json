@@ -4,10 +4,13 @@
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		// 要包含的类型声明文件名列表
 		"types": ["vite/client", "vitest/globals"],
+    "declaration": true,
+    "declarationDir": "./dist",
+    "outDir": "./dist",
 		"baseUrl": "./",
 		"paths": {
 			"@/*": ["src/*"]
 		}
 	},
-	"include": ["../../types/*.d.ts", "**/*.ts", "**/*.d.ts", "**/*.tsx"]
+	"include": ["../../types/*.d.ts", "**/*.vue", "**/*.ts", "**/*.d.ts"]
 }
