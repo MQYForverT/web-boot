@@ -1,9 +1,13 @@
 {
-	"name": "front-end-template",
+	"name": "front-boot",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
 	"type": "module",
+	"engines": {
+		"node": "20.11.0",
+		"pnpm": "9.0.6"
+	},
 	"scripts": {
 		"start": "tsx ./scripts/start.ts",
 		"start:vue": "cd templates/vue && pnpm run start",
@@ -50,7 +54,7 @@
 		"prettier": "3.2.5",
 		"stylelint": "^16.6.1",
 		"ts-node": "^10.9.2",
-		"tsx": "^4.15.1",
+		"tsx": "^4.15.2",
 		"typescript": "^5.4.5"
 	},
 	"lint-staged": {
