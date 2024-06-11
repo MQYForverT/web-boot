@@ -1,7 +1,7 @@
 ## 环境
 `最好还是和我一样，大部分错误都来源于环境不一致`
-node 20.11.0
-pnpm 9.0.6
++ node：20.11.0
++ pnpm：9.0.6
 
 ## vscode插件（地基）
 1. [eslint：检查js](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
