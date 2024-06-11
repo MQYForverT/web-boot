@@ -11,8 +11,9 @@ import '@/styles/element.scss'
 // css common style sheet
 import '@/styles/common.scss'
 
-import { register } from '@mqy/component-private/dist/mqy-component-internal'
-register()
+// 全局注册所有
+import { registerAll } from '@mqy/component-private'
+registerAll()
 
 const app = createApp(App)
 app.use(router).mount('#app')

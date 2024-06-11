@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 
 import App from './App.vue'
 
-import { register } from '@/components'
-register()
+import { registerAll } from '@/components'
+registerAll()
 
 createApp(App).mount('#app')

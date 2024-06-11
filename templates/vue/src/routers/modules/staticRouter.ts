@@ -1,14 +1,10 @@
 import type { RouteRecordRaw } from 'vue-router'
-import { HOME_URL, LOGIN_URL } from '@/config/config'
+import { LOGIN_URL } from '@/config/config'
 
 /**
  * staticRouter(静态路由)
  */
 export const staticRouter: RouteRecordRaw[] = [
-	{
-		path: '/',
-		redirect: LOGIN_URL,
-	},
 	{
 		path: LOGIN_URL,
 		name: 'login',
@@ -16,13 +12,6 @@ export const staticRouter: RouteRecordRaw[] = [
 		meta: {
 			title: '登录',
 		},
-	},
-	{
-		path: '/layout',
-		name: 'layout',
-		component: () => import('@/layouts/index.vue'),
-		redirect: HOME_URL,
-		children: [],
 	},
 ]
 

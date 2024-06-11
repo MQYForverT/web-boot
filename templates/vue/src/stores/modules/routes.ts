@@ -1,6 +1,7 @@
 import { getPermissionData } from '@/routers/modules/help'
 import router, { localRoutes } from '@/routers'
 import { notFoundRouter } from '@/routers/modules/staticRouter'
+import { HOME_URL } from '@/config/config'
 
 export const useRoutesStore = createGlobalState(() => {
 	// state
@@ -49,7 +50,7 @@ export const useRoutesStore = createGlobalState(() => {
 		}
 
 		const app = {
-			path: '/',
+			path: HOME_URL,
 			name: 'layout',
 			component: import('@/layouts/index.vue'),
 			redirect: routerResult[0].path, //可能没有home页面，所以取第一个

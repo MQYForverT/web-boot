@@ -1,17 +1,22 @@
-import { defineCustomElement } from 'vue'
-import Example from './Example/Example.ce.vue'
+import { ExampleElement, register as ExampleRegister } from './Example'
+import { ExampleProps } from './Example/Example'
 
-// 转换为自定义元素构造器
-const ExampleElement = defineCustomElement(Example)
-
-// 注册
-export function register() {
-	customElements.define('mqy-example', ExampleElement)
+export function registerAll() {
+	ExampleRegister()
 }
 
-// 注册全局类型
 declare module 'vue' {
 	export interface GlobalComponents {
-		ExampleElement: typeof ExampleElement
+		MqyExample: typeof ExampleElement
 	}
 }
+
+declare global {
+	namespace JSX {
+		interface IntrinsicElements {
+			'mqy-example': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & ExampleProps
+		}
+	}
+}
+
+export {}

@@ -1,6 +1,6 @@
 <template>
 	<div class="vx-example">
-		<div>{{ title }}</div>
+		<div>{{ props.title }}</div>
 		<ElButton type="primary" @click="onClick">{{ num }}</ElButton>
 		<ElTable :data="tableData" border style="width: 100%">
 			<ElTableColumn prop="date" label="Date" width="180" />
@@ -12,11 +12,14 @@
 
 <script setup lang="ts">
 	import { ElButton, ElTable, ElTableColumn } from 'element-plus'
+	import type { ExampleProps } from './Example'
 
-	withDefaults(defineProps<{ title: string }>(), { title: 'title' })
+	const props = withDefaults(defineProps<ExampleProps>(), {
+		title: 'title',
+	})
 
 	const emits = defineEmits<{
-		(eventName: 'testEvent', val: number): void
+		testEvent: [val: number]
 	}>()
 
 	const num = ref(0)

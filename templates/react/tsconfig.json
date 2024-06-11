@@ -3,11 +3,12 @@
 	"compilerOptions": {
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		// 要包含的类型声明文件名列表
-		"types": ["vite/client", "vitest/globals"],
+		"types": ["vite/client", "vitest/globals", "../../types/env.d.ts"],
 		"baseUrl": "./",
+		"jsx": "react-jsx",
 		"paths": {
 			"@/*": ["src/*"]
 		}
 	},
-	"include": ["../../types/*.d.ts", "**/*.ts", "**/*.d.ts", "**/*.tsx"]
+	"include": ["**/*.ts", "**/*.tsx"]
 }

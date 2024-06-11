@@ -10,7 +10,7 @@ function App() {
 
 	return (
 		<>
-			<div>12</div>
+			<div>react</div>
 			<div>123</div>
 			<mqy-example id="example" style={{ marginTop: '20px' }} title="Web Component" />
 		</>

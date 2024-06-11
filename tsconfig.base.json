@@ -42,11 +42,6 @@
 		// 用于检查switch中是否有case没有使用break跳出switch
 		"noFallthroughCasesInSwitch": true,
 		// 解析非相对模块名的基准目录
-		"baseUrl": ".",
-    "exclude": [
-      // 暂时先排除产物目录，packages/xxx/dist/x.config.js 或者 node_modules/pkg/x.config.js 不会被包含进来
-      "**/dist",
-      "**/node_modules"
-    ]
+		"baseUrl": "."
 	}
 }

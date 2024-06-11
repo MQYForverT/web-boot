@@ -5,5 +5,5 @@ packages:
   - 'internal/*'
   # 对外文档
   - 'docx'
-  # 组件库（公开文档、私有温度）
+  # 组件库（公开组件、私有组件）
   - 'components/*'

@@ -25,7 +25,7 @@ router.beforeEach(async (to, from, next) => {
 	NProgress.start()
 
 	// 2.如果是访问登陆页，直接放行
-	if (to.path === LOGIN_URL || to.path === '/') {
+	if (to.path === LOGIN_URL) {
 		NProgress.done()
 		return next()
 	}
@@ -37,7 +37,7 @@ router.beforeEach(async (to, from, next) => {
 		return next(`${LOGIN_URL}?redirect=${to.path}&params=${JSON.stringify(to.query ? to.query : to.params)}`)
 	}
 
-	// 4.如果没有菜单列表，就重新请求菜单列表并添加动态路由
+	// 4.登陆完毕之后，如果没有菜单列表，就重新请求菜单列表并添加动态路由
 	const { routeList, getPermission } = useRoutesStore()
 	if (!routeList.value.length) {
 		// 获取用户信息
