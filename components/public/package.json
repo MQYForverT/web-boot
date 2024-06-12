@@ -4,8 +4,8 @@
 	"description": "",
 	"type": "module",
 	"scripts": {
-    "start": "vite",
-		"build": "vue-tsc && vite build",
+		"start": "vite",
+		"build": "rimraf dist && vue-tsc && vite build",
 		"preview": "vite preview",
 		"lint:eslint": "eslint --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",

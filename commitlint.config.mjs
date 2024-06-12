@@ -6,22 +6,20 @@ const Configuration = {
 		// 不允许作用域为空，即作用域必须存在
 		'scope-empty': [2, 'never'],
 		// 定义了作用域（Scope）的枚举列表，即作用域只能是列表中指定的值。[2, 'always', [...]] 表示作用域必须在列表中指定的值之一
-		'scope-enum': [2, 'always', ['root', 'vue', 'react']],
+		'scope-enum': [
+			2,
+			'always',
+			['root', 'internal', 'vue', 'react', 'docx', 'components-private', 'components-public'],
+		],
 		// 提交类型（Type）的枚举列表，即提交类型只能是列表中指定的值，[2, 'always', [...]] 表示提交类型必须在列表中指定的值之一
 		'type-enum': [
 			2,
 			'always',
 			[
+				//下面这三种即可代表所有的操作，新增、删除、重构；具体细节用msg去说明
 				'feat', // 添加新功能
 				'fix', // 修复bug
-				'docs', // 文档
-				'style', // 不影响代码运行的变动
-				'refactor', // 重构、优化代码，不影响功能
-				'chore', //添加依赖等
-				'test', //单元测试、集成测试等
-				'revert', // 回滚到上一个版本
-				'build', // 编译相关修改，例如发布版本、项目构建或者依赖的改动
-				'perf', // 性能优化
+				'ref', // refactor，重构代码，较大代码的改动
 			],
 		],
 	},

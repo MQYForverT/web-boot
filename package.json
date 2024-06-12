@@ -1,5 +1,5 @@
 {
-	"name": "front-boot",
+	"name": "web-boot",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
@@ -29,7 +29,8 @@
 		"lint:stylelint-react": "cd templates/react && pnpm run lint:stylelint",
 		"clean": "rimraf -g \"**/node_modules\" & rimraf pnpm-lock.yaml & pnpm store prune",
 		"update": "pnpm update -r",
-		"reinstall": "pnpm run clean && pnpm install"
+		"reinstall": "pnpm run clean && pnpm install",
+		"check-deps": "depcheck"
 	},
 	"keywords": [],
 	"author": "",
@@ -47,6 +48,7 @@
 		"@types/inquirer": "^9.0.7",
 		"@types/node": "^20.14.2",
 		"commitlint": "^19.3.0",
+		"depcheck": "^1.4.7",
 		"eslint": "^9.4.0",
 		"eslint-define-config": "^2.1.0",
 		"husky": "^9.0.11",
