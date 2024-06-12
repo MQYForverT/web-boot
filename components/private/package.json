@@ -1,7 +1,7 @@
 {
 	"name": "@mqy/component-private",
 	"version": "1.0.0",
-	"description": "",
+	"description": "项目模板使用的公共私有组件（如果企业搭建了私服，请发布到npm私服）",
 	"type": "module",
 	"scripts": {
 		"start": "vite",

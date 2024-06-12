@@ -54,7 +54,7 @@ const config: UserConfig = {
 			},
 		}),
 		AutoImport({
-			imports: ['vue', 'react'],
+			imports: ['vue', 'react', '@vueuse/core'],
 			vueTemplate: true,
 		}),
 		ElementPlus({}),
