@@ -1,123 +1,114 @@
 export enum LayoutType {
 	defaults = 'defaults',
 }
-export interface BackgroundLayoutProps {
-	/* 界面设置 ------------------------------- */
-	// 是否开启菜单水平折叠效果
-	isCollapse: boolean
-	// 是否默认全部展开
-	isAllOpen: boolean
-	// 是否开启菜单完全隐藏
-	isClassicSplitMenu: boolean
-	// 是否开启菜单手风琴效果
-	isUniqueOpened: boolean
-	// 是否开启固定 Header
-	isFixedHeader: boolean
 
-	/* 界面显示------------------------------- */
-	// 是否开启侧边栏 Logo
-	isShowLogo: boolean
-	// 初始化变量，用于 el-scrollbar 的高度更新，请勿删除
-	isShowLogoChange: boolean
-	// 是否开启 Breadcrumb
-	isBreadcrumb: boolean
-	// 是否开启 TagsView
-	isTagsView: boolean
-	// 是否开启 Breadcrumb 图标
-	isBreadcrumbIcon: boolean
-	// 是否开启 TagsView 图标
-	isTagsViewIcon: boolean
-	// 是否开启 TagsView 缓存
-	isCacheTagsView: boolean
-	// 是否开启 TagsView 拖拽
-	isSortableTagsView: boolean
-	// 是否开启水印
-	isWatermark: boolean
-	// 水印文案
-	watermarkText: string
-
-	/* 其它设置------------------------------- */
-	// 默认 TagsView 风格，可选 1、2、3、4
-	tagsShowNum: 1 | 2 | 3 | 4
-	// 默认分栏高亮风格，可选 1、 圆角 columns-round 2、 卡片 columns-card
-	columnsAsideStyle: string
-
-	/* 布局切换------------------------------- */
-	// 默认布局，当前只有 defaults
-	layout: LayoutType
-	/* 全局网站标题 / 副标题------------------------------- */
-	// 网站主标题（菜单导航、浏览器当前网页标题）
-	globalTitle: string
-	// 网站副标题（登录页顶部文字）
-	globalViceTitle: string
-	// 是否开启 Footer 底部版权信息
-	isFooter: boolean
-	footerCompany: string
-	footerRecord: string
+export const layoutProps = {
+	isCollapse: {
+		type: Boolean,
+		default: false,
+	},
+	isAllOpen: {
+		type: Boolean,
+		default: true,
+	},
+	isClassicSplitMenu: {
+		type: Boolean,
+		default: false,
+	},
+	isUniqueOpened: {
+		type: Boolean,
+		default: false,
+	},
+	isFixedHeader: {
+		type: Boolean,
+		default: true,
+	},
+	isShowLogo: {
+		type: Boolean,
+		default: true,
+	},
+	isShowLogoChange: {
+		type: Boolean,
+		default: false,
+	},
+	isBreadcrumb: {
+		type: Boolean,
+		default: true,
+	},
+	isTagsView: {
+		type: Boolean,
+		default: false,
+	},
+	isBreadcrumbIcon: {
+		type: Boolean,
+		default: false,
+	},
+	isTagsViewIcon: {
+		type: Boolean,
+		default: false,
+	},
+	isCacheTagsView: {
+		type: Boolean,
+		default: false,
+	},
+	isSortableTagsView: {
+		type: Boolean,
+		default: true,
+	},
+	isWatermark: {
+		type: Boolean,
+		default: false,
+	},
+	watermarkText: {
+		type: String,
+		default: '漠轻阴',
+	},
+	tagsShowNum: {
+		type: Number,
+		default: 1,
+	},
+	columnsAsideStyle: {
+		type: String,
+		default: 'columns-round',
+	},
+	layout: {
+		type: String as () => LayoutType,
+		default: LayoutType.defaults,
+	},
+	globalTitle: {
+		type: String,
+		default: 'WebBoot',
+	},
+	globalViceTitle: {
+		type: String,
+		default: '漠轻阴',
+	},
+	isFooter: {
+		type: Boolean,
+		default: true,
+	},
+	footerCompany: {
+		type: String,
+		default: '漠轻阴（郁金香）能力不大且实力有限公司',
+	},
+	footerRecord: {
+		type: String,
+		default: '京ICP备17012835号-1',
+	},
 }
+// --------props----------
+export type layoutProps = ExtractPropTypes<typeof layoutProps>
+// 定义注入键
+export const propsKey = Symbol() as InjectionKey<layoutProps>
 
-export const defaultBackgroundLayout: BackgroundLayoutProps = {
-	/* 界面设置
-            ------------------------------- */
-	// 是否开启菜单水平折叠效果
-	isCollapse: false,
-	// 是否默认全部展开
-	isAllOpen: true,
-	// 是否开启菜单完全隐藏
-	isClassicSplitMenu: false,
-	// 是否开启菜单手风琴效果
-	isUniqueOpened: false,
-	// 是否开启固定 Header
-	isFixedHeader: true,
-
-	/* 界面显示
-            ------------------------------- */
-	// 是否开启侧边栏 Logo
-	isShowLogo: true,
-	// 初始化变量，用于 el-scrollbar 的高度更新，请勿删除
-	isShowLogoChange: false,
-	// 是否开启 Breadcrumb
-	isBreadcrumb: true,
-	// 是否开启 TagsView
-	isTagsView: false,
-	// 是否开启 Breadcrumb 图标
-	isBreadcrumbIcon: false,
-	// 是否开启 TagsView 图标
-	isTagsViewIcon: false,
-	// 是否开启 TagsView 缓存
-	isCacheTagsView: false,
-	// 是否开启 TagsView 拖拽
-	isSortableTagsView: true,
-	// 是否开启水印
-	isWatermark: false,
-	// 水印文案
-	watermarkText: '漠轻阴',
-
-	/* 其它设置
-            ------------------------------- */
-	// 默认 TagsView 风格，可选 1、 2、3、4
-	tagsShowNum: 1,
-	// 默认分栏高亮风格，可选 1、 圆角 columns-round 2、 卡片 columns-card
-	columnsAsideStyle: 'columns-round',
-
-	/* 布局切换
-            ------------------------------- */
-	// 默认布局，当前只有 defaults
-	layout: LayoutType.defaults,
-	/* 全局网站标题 / 副标题
-            ------------------------------- */
-	// 网站主标题（菜单导航、浏览器当前网页标题）
-	globalTitle: 'WebBoot',
-	// 网站副标题（登录页顶部文字）
-	globalViceTitle: '漠轻阴',
-	// 是否开启 Footer 底部版权信息
-	isFooter: true,
-	footerCompany: '漠轻阴（郁金香）能力不大且实力有限公司',
-	footerRecord: '京ICP备17012835号-1',
+// --------emits----------分步判断change类型
+/**
+ * keyof layoutProps为layoutProps 的所有键（属性名）的联合类型，则定义一个范型T继承它，代表传入的必须是其中一项，
+ * 如果是其中一项，则返回正常的，否则返回never，这意味着对于不符合，个类型将会被视为无效。
+ */
+type InferArray<T extends keyof layoutProps> = T extends keyof layoutProps ? [T, layoutProps[T]] : never
+export type LayoutEmits = {
+	change: InferArray<keyof layoutProps>
 }
-
-type GenerateEmits<T> = {
-	[K in keyof T as `update:${K & string}`]: [val: T[K]]
-}
-
-export type BackgroundLayoutEvent = GenerateEmits<BackgroundLayoutProps>
+// 定义注入键
+export const emitsKey = Symbol() as InjectionKey<ReturnType<typeof defineEmits>>

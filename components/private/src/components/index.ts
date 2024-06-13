@@ -1,20 +1,20 @@
-import { ExampleElement, register as ExampleRegister } from './Example'
-import { ExampleProps } from './Example/Example'
+import { BackgroundLayoutElement, register as BackgroundLayoutRegister } from './BackgroundLayout'
+import type { layoutProps } from './BackgroundLayout/BackgroundLayout'
 
 export function registerAll() {
-	ExampleRegister()
+	BackgroundLayoutRegister()
 }
 
 declare module 'vue' {
 	export interface GlobalComponents {
-		MqyExample: typeof ExampleElement
+		MqyBackgroundLayout: typeof BackgroundLayoutElement
 	}
 }
 
 declare global {
 	namespace JSX {
 		interface IntrinsicElements {
-			'mqy-example': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & ExampleProps
+			'mqy-background-layout': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & layoutProps
 		}
 	}
 }

@@ -1,25 +1,25 @@
 <template>
 	<Defaults v-if="layout === 'defaults'" />
+	{{ props.isCollapse }}
 </template>
 <script setup lang="ts">
 	import Defaults from './main/default.vue'
-	import type { BackgroundLayoutProps, BackgroundLayoutEvent } from './BackgroundLayout'
-	import { defaultBackgroundLayout } from './BackgroundLayout'
+	import type { LayoutEmits } from './BackgroundLayout'
+	import { layoutProps, propsKey, emitsKey } from './BackgroundLayout'
 
-	const props = withDefaults(defineProps<BackgroundLayoutProps>(), defaultBackgroundLayout)
+	const props = defineProps(layoutProps)
+	provide(propsKey, props)
 
-	const emits = defineEmits<BackgroundLayoutEvent>()
-
-	const themeConfig = useVModels(props, emits)
-	// 提供 obj 给子组件
-	provide('themeConfig', themeConfig)
+	const emits = defineEmits<LayoutEmits>()
+	provide(emitsKey, emits)
 
 	const { width } = useWindowSize()
 
 	const layout = computed(() => {
 		// 暂时只有一种布局
 		if (width.value < 1000) {
-			themeConfig.isCollapse.value = false
+			emits('change', 'isCollapse', true)
+			// themeConfig.isCollapse.value = true
 			return 'defaults'
 		}
 		return 'defaults'
