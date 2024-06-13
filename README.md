@@ -43,3 +43,23 @@ ___
 `比如eslint：`
  command + shift + p 输入：restart ESlint server
  或者卸载插件，重新安装，反正这vscode插件这块挺坑的
+
+
+ ## 关于组件库
+ 为了实现公用性，选择了用`vue3 + element plus 开发 web component`的，关于这两者之间的可用性，我凭借自己的经验做一点说明（[官网](https://cn.vuejs.org/guide/extras/web-components.html#vue-and-web-components)有的我就不复述了）。
+1. 不支持v-model，所以所有的属性都是单向数据流，不存在update:xxx这种写法了，以后都要定义事件去父组件改
+2. 事件可以通过@xxx接收，比如emit('click', 'xxx')，父组件可以<parent @click="handClick"/>，而不是说只能通过监听事件去处理addEventListener
+3. ref可以起作用，可以通过`_instance`属性拿到所有子组件属性
+```
+<parent ref="mqy" @click="handClick"/>
+
+const mqy = ref(null)
+
+onMounted(() => {
+    mqy.value._instance.devtoolsRawSetupState.say()
+    mqy.value._instance.exposed.say()
+    console.log(mqy.value._instance)
+})
+```
+___
+总结：因为种种不便，太过复杂的组件实现不了，但是简单的还是可以，至于性能方面，目前还没测试

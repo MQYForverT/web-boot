@@ -24,6 +24,14 @@
 		}
 		return 'defaults'
 	})
+
+	const say = () => {
+		console.log('say')
+	}
+
+	defineExpose({
+		say,
+	})
 </script>
 <style>
 	@unocss-placeholder;
