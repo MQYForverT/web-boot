@@ -1,3 +1,5 @@
+import type { ExtractPropTypes } from 'vue'
+
 export enum LayoutType {
 	defaults = 'defaults',
 }

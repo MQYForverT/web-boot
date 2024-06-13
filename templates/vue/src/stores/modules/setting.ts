@@ -6,5 +6,7 @@ export const useSettingStore = createGlobalState(() => {
 	// state
 	const buttonSize = useStorage<buttonSizeType>(`${prefix}-size`, 'default')
 
-	return { buttonSize }
+	const isCollapse = useStorage<boolean>(`${prefix}-isCollapse`, false)
+
+	return { buttonSize, isCollapse }
 })

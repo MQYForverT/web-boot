@@ -9,7 +9,7 @@ import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 import dts from 'vite-plugin-dts'
 import { readdirSync } from 'fs'
 
-const whiteList = ['index.ts']
+const whiteList = ['index.ts', 'Example']
 // 获取所有组件目录
 const componentDirs = readdirSync(resolve(__dirname, 'src/components')).filter((dir) => !whiteList.includes(dir))
 
@@ -63,6 +63,7 @@ const config: UserConfig = {
 		dts({
 			outDir: 'dist', // 输出 .d.ts 文件的目录
 			include: ['src/components/**/*.ts'],
+			exclude: ['src/components/Example'],
 			// 如果有d.ts文件，直接复制过去
 			copyDtsFiles: true,
 		}),
@@ -76,12 +77,16 @@ const config: UserConfig = {
 			formats: ['es'],
 		},
 		rollupOptions: {
-			external: ['element-plus', 'vue'],
+			external: ['element-plus', 'vue', 'react', '@vueuse/core'],
 			output: {
 				// 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
 				globals: {
 					vue: 'Vue',
 				},
+				// 确保所有导出的模块使用严格模式
+				strict: true,
+				// 输出模块类型，如：amd、cjs、esm、iife、umd
+				format: 'iife',
 				// 保持目录结构
 				dir: 'dist',
 				entryFileNames: ({ name }) => (name === 'index' ? '[name].js' : `${name}/index.js`),
