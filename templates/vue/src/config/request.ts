@@ -1,4 +1,4 @@
-import { createAxiosInstance } from '@mqy/utils'
+import { createAxiosInstance } from '@mqy/utils/dist/axios'
 
 /**
  * axios内置

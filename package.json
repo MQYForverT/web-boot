@@ -49,14 +49,15 @@
 		"@types/node": "^20.14.2",
 		"commitlint": "^19.3.0",
 		"depcheck": "^1.4.7",
-		"eslint": "^9.4.0",
+		"eslint": "^9.5.0",
 		"eslint-define-config": "^2.1.0",
 		"husky": "^9.0.11",
-		"lint-staged": "^15.2.5",
+		"lint-staged": "^15.2.7",
 		"prettier": "3.2.5",
 		"stylelint": "^16.6.1",
+		"terser": "^5.31.1",
 		"ts-node": "^10.9.2",
-		"tsx": "^4.15.2",
+		"tsx": "^4.15.5",
 		"typescript": "^5.4.5"
 	},
 	"lint-staged": {

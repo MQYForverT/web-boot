@@ -4,8 +4,13 @@
 	"description": "",
 	"type": "module",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "rimraf dist && vue-tsc && vite build"
 	},
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
@@ -13,5 +18,10 @@
 		"axios": "^1.7.2",
 		"nprogress": "^0.2.0",
 		"qs": "^6.12.1"
+	},
+	"devDependencies": {
+		"vite": "^5.2.13",
+		"vite-plugin-dts": "^3.9.1",
+		"vue-tsc": "^2.0.19"
 	}
 }

@@ -4,7 +4,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import ElementPlus from 'unplugin-element-plus/vite'
 import { resolve } from 'path'
 import UnoCSS from 'unocss/vite'
-import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 // import viteConfig from '@mqy/vite-config/vue'
 
@@ -43,8 +42,6 @@ export default {
 			vueTemplate: true,
 		}),
 		ElementPlus({}),
-		// css-in-js,这样引入的时候就不需要额外引入css文件了
-		cssInjectedByJsPlugin({ topExecutionPriority: false }),
 	],
 	test: setupViteTest(),
 	build: {

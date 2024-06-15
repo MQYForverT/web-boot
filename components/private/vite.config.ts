@@ -5,7 +5,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import ElementPlus from 'unplugin-element-plus/vite'
 import { resolve } from 'path'
 import UnoCSS from 'unocss/vite'
-import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 import dts from 'vite-plugin-dts'
 import { readdirSync } from 'fs'
 
@@ -20,6 +19,10 @@ const entries: Record<string, string> = componentDirs.reduce((acc: Record<string
 }, {})
 
 entries['index'] = resolve(__dirname, 'src/components/index.ts')
+// {
+//   BackgroundLayout: '/Users/bytedance/mqy/web-boot/components/private/src/components/BackgroundLayout/index.ts',
+//   index: '/Users/bytedance/mqy/web-boot/components/private/src/components/index.ts'
+// }
 
 // import viteConfig from '@mqy/vite-config/vue'
 
@@ -58,8 +61,6 @@ const config: UserConfig = {
 			vueTemplate: true,
 		}),
 		ElementPlus({}),
-		// css-in-js,这样引入的时候就不需要额外引入css文件了
-		cssInjectedByJsPlugin({ topExecutionPriority: false }),
 		dts({
 			outDir: 'dist', // 输出 .d.ts 文件的目录
 			include: ['src/components/**/*.ts'],
@@ -73,10 +74,11 @@ const config: UserConfig = {
 		lib: {
 			entry: entries, // 设置入口文件
 			name: 'MqyComponentPrivate',
-			fileName: (entryName) => `index.${entryName}.js`,
+			fileName: (_, entryName) => (entryName === 'index' ? '[name].js' : `${entryName}/index.js`),
 			formats: ['es'],
 		},
 		rollupOptions: {
+			// 这些模块被标记为外部依赖，不会被打包进你的库，这些依赖需要在使用你的库时自行引入
 			external: ['element-plus', 'vue', 'react', '@vueuse/core'],
 			output: {
 				// 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量

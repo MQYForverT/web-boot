@@ -19,7 +19,7 @@ type myAxiosInstance = AxiosInstance & {
 class Axios {
 	private defaultConfig: AxiosRequestConfig
 	private requestMap: Map<string, CancelTokenSource> = new Map()
-	instance: myAxiosInstance
+	public instance: myAxiosInstance
 
 	// 传入用户默认配置
 	constructor(config?: AxiosRequestConfig) {
