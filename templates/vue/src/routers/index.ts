@@ -1,5 +1,6 @@
 import { RouteLocationNormalized, createRouter, createWebHistory } from 'vue-router'
 import NProgress from '@mqy/utils/dist/nprogress'
+import '@mqy/utils/dist/nprogress/nprogress.css'
 import { errorRouter, staticRouter } from '@/routers/modules/staticRouter'
 import { LOGIN_URL } from '@/config/config'
 import $axios from '@/config/request'
@@ -17,7 +18,7 @@ const router = createRouter({
 /**
  * @description 路由拦截 beforeEach
  * */
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, _, next) => {
 	// 清除所有正在进行的请求
 	$axios.cancelAllRequests()
 

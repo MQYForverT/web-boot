@@ -18,8 +18,6 @@ export function commonVitePlugins(viteEnv: ImportMetaEnv): (PluginOption | Plugi
 	if (process.env.NODE_ENV === 'development') {
 		plugins.push(visualizer)
 	}
-	if (viteEnv.VITE_COMPRESS === 'Y') {
-		plugins.push(compress(viteEnv))
-	}
+	plugins.push(compress(viteEnv.VITE_COMPRESS_TYPE))
 	return plugins
 }

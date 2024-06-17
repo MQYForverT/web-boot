@@ -48,7 +48,8 @@ ___
  ## 关于组件库
  为了实现公用性，选择了用`vue3 + element plus 开发 web component`的，关于这两者之间的可用性，我凭借自己的经验做一点说明（[官网](https://cn.vuejs.org/guide/extras/web-components.html#vue-and-web-components)有的我就不复述了）。
 1. 不支持v-model，所以所有的属性都是单向数据流，不存在update:xxx这种写法了，以后都要定义事件去父组件改
-2. 事件可以通过@xxx接收，比如emit('click', 'xxx')，父组件可以<parent @click="handClick"/>，而不是说只能通过监听事件去处理addEventListener
+2. 事件注册在customEvent上，使用addEventListener监听接收，但是在vue中可以通过@xxx接收，比如emit('click', 'xxx')，父组件可以<parent @click="handClick"/>
+   `注意：`因为组件前后挂载顺序问题，如果在wc初始化时就触发事件，父组件监听不到，因为此时父组件监听还没挂载，或许你可以延时来解决
 3. ref可以起作用，可以通过`_instance`属性拿到所有子组件属性
 ```
 <parent ref="mqy" @click="handClick"/>
@@ -63,3 +64,6 @@ onMounted(() => {
 ```
 ___
 总结：因为种种不便，太过复杂的组件实现不了，但是简单的还是可以，至于性能方面，目前还没测试
+
+## todo
+最后会用命令执行，把vue和react当作模板抛出去，但是很多依赖需要从根目录复制过去，比如rimraf、tsx

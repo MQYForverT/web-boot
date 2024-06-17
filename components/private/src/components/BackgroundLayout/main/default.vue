@@ -14,15 +14,14 @@
 </template>
 
 <script setup lang="ts">
-	// import type { layoutProps, LayoutEmits } from '../BackgroundLayout'
-	import { propsKey, emitsKey } from '../BackgroundLayout'
+	import { propsKey, propsEnum, emitsKey } from '../BackgroundLayout'
 	import { ElContainer } from 'element-plus'
 
 	const props = inject(propsKey)!
-	const emits = inject(emitsKey)!
-	// console.log(emits)
+  const emits = inject(emitsKey)!
+
 	onMounted(() => {
-		emits('change', 'footerCompany', 'mqy')
+    emits('changeProp', propsEnum.footerCompany, 'mqy')
 	})
 
 	// import Aside from '../component/aside.vue'

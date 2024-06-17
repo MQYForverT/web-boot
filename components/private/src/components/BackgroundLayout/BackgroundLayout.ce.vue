@@ -1,6 +1,7 @@
 <template>
 	<Defaults v-if="layout === 'defaults'" />
-	{{ props.isCollapse }}
+	<div>{{ props.isCollapse }}</div>
+	<div>{{ props.layout }}</div>
 </template>
 <script setup lang="ts">
 	import Defaults from './main/default.vue'
@@ -12,26 +13,6 @@
 
 	const emits = defineEmits<LayoutEmits>()
 	provide(emitsKey, emits)
-
-	const { width } = useWindowSize()
-
-	const layout = computed(() => {
-		// 暂时只有一种布局
-		if (width.value < 1000) {
-			emits('change', 'isCollapse', true)
-			// themeConfig.isCollapse.value = true
-			return 'defaults'
-		}
-		return 'defaults'
-	})
-
-	const say = () => {
-		console.log('say')
-	}
-
-	defineExpose({
-		say,
-	})
 </script>
 <style>
 	@unocss-placeholder;

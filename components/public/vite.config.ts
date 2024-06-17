@@ -7,8 +7,8 @@ import UnoCSS from 'unocss/vite'
 
 // import viteConfig from '@mqy/vite-config/vue'
 
-// 目前不支持动态导入ts问价，将等到开箱即用的解决方案，然后将相对路径替换为包名称
-import { setupViteTest } from '../../internal/vite-config/common/vitest'
+// 目前这种导入方式需要tsx支持
+import { setupViteTest } from '@mqy/vite-config/common/vitest'
 
 // https://vitejs.dev/config/
 export default {

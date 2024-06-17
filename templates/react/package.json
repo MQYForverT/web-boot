@@ -4,8 +4,8 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"start": "vite",
-		"build": "tsc && vite build",
+		"start": "NODE_OPTIONS=\"--import tsx/esm\" pnpm exec vite",
+		"build": "rimraf dist && NODE_OPTIONS=\"--import tsx/esm\" pnpm exec tsc && NODE_OPTIONS=\"--import tsx/esm\" pnpm exec vite build",
 		"preview": "vite preview",
 		"lint:eslint": "eslint --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,html,md}\"",
@@ -25,7 +25,7 @@
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"typescript": "^5.4.5",
-		"vite": "^5.2.13",
+		"vite": "^5.3.1",
 		"vitest": "^1.6.0"
 	}
 }

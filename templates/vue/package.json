@@ -4,8 +4,8 @@
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
-		"start": "vite",
-		"build": "vue-tsc && vite build",
+		"start": "NODE_OPTIONS=\"--import tsx/esm\" pnpm exec vite",
+		"build": "rimraf dist && NODE_OPTIONS=\"--import tsx/esm\" pnpm exec vue-tsc && NODE_OPTIONS=\"--import tsx/esm\" pnpm exec vite build",
 		"preview": "vite preview",
 		"lint:eslint": "eslint --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
@@ -22,14 +22,14 @@
 		"@mqy/utils": "workspace:^",
 		"@mqy/vite-config": "workspace:^",
 		"element-plus": "^2.7.5",
-		"vue": "^3.4.27",
-		"vue-router": "^4.3.2"
+		"vue": "^3.4.29",
+		"vue-router": "^4.3.3"
 	},
 	"devDependencies": {
 		"@vue/test-utils": "^2.4.6",
 		"typescript": "^5.4.5",
-		"vite": "^5.2.13",
+		"vite": "^5.3.1",
 		"vitest": "^1.6.0",
-		"vue-tsc": "^2.0.19"
+		"vue-tsc": "^2.0.21"
 	}
 }

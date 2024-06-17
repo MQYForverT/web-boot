@@ -3,9 +3,9 @@ import { UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import ElementPlus from 'unplugin-element-plus/vite'
+import copy from 'rollup-plugin-copy'
 import { resolve } from 'path'
 import UnoCSS from 'unocss/vite'
-import dts from 'vite-plugin-dts'
 import { readdirSync } from 'fs'
 
 const whiteList = ['index.ts', 'Example']
@@ -24,10 +24,11 @@ entries['index'] = resolve(__dirname, 'src/components/index.ts')
 //   index: '/Users/bytedance/mqy/web-boot/components/private/src/components/index.ts'
 // }
 
-// import viteConfig from '@mqy/vite-config/vue'
-
-// 目前不支持动态导入ts问价，将等到开箱即用的解决方案，然后将相对路径替换为包名称
-import { setupViteTest } from '../../internal/vite-config/common/vitest'
+// 目前这种导入方式需要tsx支持
+import { setupViteTest } from '@mqy/vite-config/common/vitest'
+import dts from '@mqy/vite-config/common/plugins/dts'
+import compress from '@mqy/vite-config/common/plugins/compress'
+import { setupViteLib } from '@mqy/vite-config/common/build/lib'
 
 // https://vitejs.dev/config/
 const config: UserConfig = {
@@ -62,41 +63,32 @@ const config: UserConfig = {
 		}),
 		ElementPlus({}),
 		dts({
-			outDir: 'dist', // 输出 .d.ts 文件的目录
 			include: ['src/components/**/*.ts'],
-			exclude: ['src/components/Example'],
-			// 如果有d.ts文件，直接复制过去
-			copyDtsFiles: true,
+      exclude: ['src/components/Example'],
 		}),
+    compress(),
+    /**
+     * 为什么要拷贝element的base.css？
+     * 因为element使用了css变量，加载在shadow dom内的样式里无法读取这些变量，需要在页面顶层声明这些变量，
+     * 也就是引入组件时需要在项目中引入base.css
+     */
+    copy({
+      hook:'generateBundle',
+      targets:[
+        {
+          src:'./node_modules/element-plus/theme-chalk/base.css',
+          dest:'./dist/',
+        }
+      ]
+    })
 	],
 	test: setupViteTest(),
-	build: {
-		lib: {
-			entry: entries, // 设置入口文件
-			name: 'MqyComponentPrivate',
-			fileName: (_, entryName) => (entryName === 'index' ? '[name].js' : `${entryName}/index.js`),
-			formats: ['es'],
+	build: setupViteLib({
+		entries: entries,
+		external: [ 'vue', 'react',],
+		outputGlobals: {
+			vue: 'Vue',
 		},
-		rollupOptions: {
-			// 这些模块被标记为外部依赖，不会被打包进你的库，这些依赖需要在使用你的库时自行引入
-			external: ['element-plus', 'vue', 'react', '@vueuse/core'],
-			output: {
-				// 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-				globals: {
-					vue: 'Vue',
-				},
-				// 确保所有导出的模块使用严格模式
-				strict: true,
-				// 输出模块类型，如：amd、cjs、esm、iife、umd
-				format: 'iife',
-				// 保持目录结构
-				dir: 'dist',
-				entryFileNames: ({ name }) => (name === 'index' ? '[name].js' : `${name}/index.js`),
-				chunkFileNames: '[name]/[name].js',
-				assetFileNames: '[name]/[name].[ext]',
-			},
-		},
-		outDir: 'dist',
-	},
+	}),
 }
 export default config
