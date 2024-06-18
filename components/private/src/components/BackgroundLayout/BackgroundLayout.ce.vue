@@ -1,7 +1,5 @@
 <template>
 	<Defaults v-if="layout === 'defaults'" />
-	<div>{{ props.isCollapse }}</div>
-	<div>{{ props.layout }}</div>
 </template>
 <script setup lang="ts">
 	import Defaults from './main/default.vue'

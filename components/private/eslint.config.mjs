@@ -7,6 +7,7 @@ export default defineFlatConfig([
 	{
 		rules: {
 			'@typescript-eslint/no-namespace': 'off',
+			'vue/no-deprecated-slot-attribute': 'off',
 		},
 	},
 ])

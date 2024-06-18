@@ -1,123 +1,60 @@
 <template>
-    <el-aside v-if="state.clientWidth > 1000" class="layout-aside" :class="setCollapseWidth">
-        <Logo v-if="setShowLogo" />
-        <el-scrollbar ref="layoutAsideScrollbarRef" class="flex-auto">
-            <Vertical :class="setCollapseWidth" :menu-list="state.menuList" />
-        </el-scrollbar>
-    </el-aside>
-    <el-drawer
-        v-else
-        v-model="themeConfig.isCollapse"
-        close-on-click-modal
-        direction="ltr"
-        size="220px"
-        :with-header="false"
-    >
-        <el-aside class="layout-aside w100 h100">
-            <Logo v-if="setShowLogo" />
-            <el-scrollbar ref="layoutAsideScrollbarRef" class="flex-auto">
-                <Vertical :menu-list="state.menuList" />
-            </el-scrollbar>
-        </el-aside>
-    </el-drawer>
+	<el-aside v-if="clientWidth > 1000" class="layout-aside" :class="setCollapseWidth">
+		<Logo v-if="setShowLogo" />
+		<el-scrollbar ref="layoutAsideScrollbarRef" class="flex-auto">
+			<Vertical :class="setCollapseWidth" />
+		</el-scrollbar>
+	</el-aside>
+	<el-drawer v-else v-model="props.isCollapse" close-on-click-modal direction="ltr" size="220px" :with-header="false">
+		<el-aside class="layout-aside h100 w100">
+			<Logo v-if="setShowLogo" />
+			<el-scrollbar ref="layoutAsideScrollbarRef" class="flex-auto">
+				<Vertical />
+			</el-scrollbar>
+		</el-aside>
+	</el-drawer>
 </template>
 
-<script setup>
-    import pinia from '@store';
-    import { useGlobal, useThemeConfig } from '@store';
-    import Logo from './logo.vue';
-    import Vertical from '../navMenu/vertical.vue';
+<script setup lang="ts">
+	import { ElAside, ElScrollbar, ElDrawer } from 'element-plus'
+	import { propsKey } from '../BackgroundLayout'
+	import Logo from './logo.vue'
+	import Vertical from '../navMenu/vertical.vue'
 
-    const { proxy } = getCurrentInstance();
-    const state = reactive({
-        menuList: [],
-        clientWidth: '',
-    });
-    // 获取布局配置信息
-    const { themeConfig } = storeToRefs(useThemeConfig());
-    // 设置菜单展开/收起时的宽度
-    const setCollapseWidth = computed(() => {
-        let { isCollapse, menuBar } = themeConfig.value;
-        let asideBrColor =
-            menuBar === '#FFFFFF' || menuBar === '#FFF' || menuBar === '#fff' || menuBar === '#ffffff'
-                ? 'layout-el-aside-br-color'
-                : '';
-        // 其它布局给 64px
-        if (isCollapse) {
-            return ['layout-aside-width64', asideBrColor];
-        } else {
-            return ['layout-aside-width-default', asideBrColor];
-        }
-    });
-    // 设置显示/隐藏 logo
-    const setShowLogo = computed(() => {
-        let { layout, isShowLogo } = themeConfig.value;
-        return isShowLogo && layout === 'defaults';
-    });
-    // 设置/过滤路由（非静态路由/是否显示在菜单中）
-    const setFilterRoutes = () => {
-        state.menuList = filterRoutesFun(useGlobal().routesList);
-    };
-    // 路由过滤递归函数
-    const filterRoutesFun = (arr) => {
-        return arr
-            .filter((item) => !item.meta.isHide)
-            .map((item) => {
-                item = Object.assign({}, item);
-                if (item.children) item.children = filterRoutesFun(item.children);
-                return item;
-            });
-    };
-    // 设置菜单导航是否固定（移动端）
-    const initMenuFixed = (clientWidth) => {
-        state.clientWidth = clientWidth;
-    };
-    // 监听 themeConfig 配置文件的变化，更新菜单 el-scrollbar 的高度
-    watch(themeConfig.value, (val) => {
-        if (val.isShowLogoChange !== val.isShowLogo) {
-            if (!proxy.$refs.layoutAsideScrollbarRef) return false;
-            proxy.$refs.layoutAsideScrollbarRef.update();
-        }
-    });
-    // 监听路由的变化，动态赋值给菜单中
-    watch(pinia.state, (val) => {
-        if (val.global.routesList.length === state.menuList.length) return false;
-        let { layout, isClassicSplitMenu } = val.themeConfig.themeConfig;
-        if (layout === 'classic' && isClassicSplitMenu) return false;
-        setFilterRoutes();
-    });
-    // 页面加载前
-    onBeforeMount(() => {
-        initMenuFixed(document.body.clientWidth);
-        setFilterRoutes();
-        proxy.mittBus.on('setSendColumnsChildren', (res) => {
-            state.menuList = res.children;
-        });
-        proxy.mittBus.on('setSendClassicChildren', (res) => {
-            let { layout, isClassicSplitMenu } = themeConfig.value;
-            if (layout === 'classic' && isClassicSplitMenu) {
-                state.menuList = [];
-                state.menuList = res.children;
-            }
-        });
-        proxy.mittBus.on('getBreadcrumbIndexSetFilterRoutes', () => {
-            setFilterRoutes();
-        });
-        proxy.mittBus.on('layoutMobileResize', (res) => {
-            initMenuFixed(res.clientWidth);
-        });
-    });
-    // 页面卸载时
-    onUnmounted(() => {
-        proxy.mittBus.off('setSendColumnsChildren');
-        proxy.mittBus.off('setSendClassicChildren');
-        proxy.mittBus.off('getBreadcrumbIndexSetFilterRoutes');
-        proxy.mittBus.off('layoutMobileResize');
-    });
+	const props = inject(propsKey)!
+
+	const clientWidth = computed(() => {
+		return document.body.clientWidth
+	})
+
+	// 设置菜单展开/收起时的宽度
+	const setCollapseWidth = computed(() => {
+		const { isCollapse, menuBar } = props
+		const asideBrColor =
+			menuBar === '#FFFFFF' || menuBar === '#FFF' || menuBar === '#fff' || menuBar === '#ffffff'
+				? 'layout-el-aside-br-color'
+				: ''
+		// 其它布局给 64px
+		if (isCollapse) {
+			return ['layout-aside-width64', asideBrColor]
+		} else {
+			return ['layout-aside-width-default', asideBrColor]
+		}
+	})
+
+	// 设置显示/隐藏 logo
+	const setShowLogo = computed(() => {
+		const { layout, isShowLogo } = props
+		return isShowLogo && layout === 'defaults'
+	})
 </script>
 
-<style>
-    .el-drawer__body {
-        padding: 0;
-    }
+<style lang="scss">
+	@use 'element-plus/theme-chalk/src/aside.scss';
+	@use 'element-plus/theme-chalk/src/drawer.scss';
+	@use 'element-plus/theme-chalk/src/scrollbar.scss';
+
+	.el-drawer__body {
+		padding: 0;
+	}
 </style>

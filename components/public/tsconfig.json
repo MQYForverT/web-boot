@@ -11,5 +11,6 @@
 		}
 	},
 	// 会被编译
-	"include": ["**/*.vue", "**/*.ts"]
+	"include": ["**/*.vue", "**/*.ts"],
+	"exclude": ["dist", "node_modules"]
 }

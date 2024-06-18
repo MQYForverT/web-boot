@@ -4,5 +4,6 @@
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		"types": ["../types/env.d.ts"]
 	},
-	"include": ["**/*.ts"]
+	"include": ["**/*.ts"],
+	"exclude": ["**/dist", "**/node_modules"]
 }

@@ -1,4 +1,4 @@
-import type { ExtractPropTypes, ExtractPublicPropTypes } from 'vue'
+import type { ExtractPropTypes, ExtractPublicPropTypes, PropType } from 'vue'
 
 export enum LayoutType {
 	defaults = 'defaults',
@@ -6,6 +6,10 @@ export enum LayoutType {
 }
 
 export enum propsEnum {
+	// 默认激活的path
+	defaultActivePath = 'defaultActivePath',
+	// 菜单数组
+	menuList = 'menuList',
 	// 是否开启菜单水平折叠效果
 	isCollapse = 'isCollapse',
 	// 是否默认全部展开
@@ -51,6 +55,14 @@ export enum propsEnum {
 }
 
 export const layoutProps = {
+	[propsEnum.defaultActivePath]: {
+		type: String,
+		default: '',
+	},
+	[propsEnum.menuList]: {
+		type: Array as PropType<Menu.MenuOptions[]>,
+		default: false,
+	},
 	[propsEnum.isCollapse]: {
 		type: Boolean,
 		default: false,

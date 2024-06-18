@@ -1,14 +1,15 @@
+import type { RouteComponent, RouteMeta } from 'vue-router'
 declare global {
 	namespace Menu {
 		interface MenuOptions {
 			path: string
 			name: string
-			component?: (() => Promise) | undefined | null
+			component?: RouteComponent | (() => Promise<RouteComponent>) | undefined | null
 			redirect?: string
 			meta?: MetaProps
 			children: MenuOptions[]
 		}
-		interface MetaProps extends Record<string | number | symbol, unknown> {
+		interface MetaProps extends RouteMeta {
 			//菜单栏及 tagsView 栏、
 			title?: string
 			//菜单图标，图标来源[element-plus图标、FontAwesome、iconfont]，详细去@utils/overall.js文件查看
@@ -29,6 +30,12 @@ declare global {
 			isIframe?: boolean
 			// 该菜单是否需要显示fotter
 			isShowFooter?: boolean
+		}
+
+		interface permissionMenu {
+			permission: string
+			sort?: number
+			children?: permissionMenu[]
 		}
 	}
 }

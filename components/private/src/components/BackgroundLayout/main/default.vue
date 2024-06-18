@@ -1,7 +1,7 @@
 <template>
 	<el-container class="layout-container">
-		<!-- <Aside />
-		<el-container class="flex-center" :class="{ 'layout-backtop': !isFixedHeader }">
+		<Aside />
+		<!-- <el-container class="flex-center" :class="{ 'layout-backtop': !isFixedHeader }">
 			<Header v-if="isFixedHeader" />
 			<el-scrollbar ref="layoutDefaultsScrollbarRef" :class="{ 'layout-backtop': isFixedHeader }">
 				<Header v-if="!isFixedHeader" />
@@ -10,24 +10,23 @@
 		</el-container>
 		<el-backtop target=".layout-backtop .el-scrollbar__wrap" /> -->
 	</el-container>
-	{{ props.footerCompany }}
 </template>
 
 <script setup lang="ts">
-	import { propsKey, propsEnum, emitsKey } from '../BackgroundLayout'
+	// import { propsKey, propsEnum, emitsKey } from '../BackgroundLayout'
 	import { ElContainer } from 'element-plus'
 
-	const props = inject(propsKey)!
-  const emits = inject(emitsKey)!
-
-	onMounted(() => {
-    emits('changeProp', propsEnum.footerCompany, 'mqy')
-	})
-
-	// import Aside from '../component/aside.vue'
+	import Aside from '../component/aside.vue'
 	// import Header from '../component/header.vue'
 	// import Main from '../component/main.vue'
 	// import { useThemeConfig } from '@store'
+
+	// const props = inject(propsKey)!
+	// const emits = inject(emitsKey)!
+
+	// onMounted(() => {
+	// 	emits('changeProp', propsEnum.footerCompany, 'mqy')
+	// })
 
 	// const { proxy } = getCurrentInstance()
 
