@@ -29,16 +29,12 @@
 
 	// 设置菜单展开/收起时的宽度
 	const setCollapseWidth = computed(() => {
-		const { isCollapse, menuBar } = props
-		const asideBrColor =
-			menuBar === '#FFFFFF' || menuBar === '#FFF' || menuBar === '#fff' || menuBar === '#ffffff'
-				? 'layout-el-aside-br-color'
-				: ''
+		const { isCollapse } = props
 		// 其它布局给 64px
 		if (isCollapse) {
-			return ['layout-aside-width64', asideBrColor]
+			return ['layout-aside-width64']
 		} else {
-			return ['layout-aside-width-default', asideBrColor]
+			return ['layout-aside-width-default']
 		}
 	})
 
