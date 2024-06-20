@@ -9,6 +9,8 @@
 	const props = defineProps(layoutProps)
 	provide(propsKey, props)
 
+	console.log('props:', props)
+
 	const emits = defineEmits<LayoutEmits>()
 	provide(emitsKey, emits)
 </script>

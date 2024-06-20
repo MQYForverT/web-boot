@@ -46,7 +46,7 @@
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@types/inquirer": "^9.0.7",
-		"@types/node": "^20.14.2",
+		"@types/node": "^20.14.6",
 		"commitlint": "^19.3.0",
 		"depcheck": "^1.4.7",
 		"eslint": "^9.5.0",
@@ -56,7 +56,7 @@
 		"prettier": "3.2.5",
 		"stylelint": "^16.6.1",
 		"ts-node": "^10.9.2",
-		"tsx": "^4.15.5",
+		"tsx": "^4.15.6",
 		"typescript": "^5.4.5"
 	},
 	"lint-staged": {

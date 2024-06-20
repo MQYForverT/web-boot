@@ -1,7 +1,7 @@
 <template>
 	<el-menu
 		background-color="transparent"
-		:collapse="setIsCollapse"
+		:collapse="props.isCollapse"
 		:collapse-transition="false"
 		:default-active="props.defaultActivePath"
 		:default-openeds="getAllOpenList"
@@ -34,11 +34,6 @@
 	import { propsKey } from '../BackgroundLayout'
 
 	const props = inject(propsKey)!
-
-	// 设置菜单的收起/展开
-	const setIsCollapse = computed(() => {
-		return document.body.clientWidth < 1000 ? false : props.isCollapse
-	})
 
 	// 设置默认全部展开的菜单
 	const getAllOpenList = computed(() => {

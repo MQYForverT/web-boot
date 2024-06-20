@@ -1,4 +1,4 @@
-import type { ExtractPropTypes, ExtractPublicPropTypes, PropType } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 
 export enum LayoutType {
 	defaults = 'defaults',
@@ -61,7 +61,7 @@ export const layoutProps = {
 	},
 	[propsEnum.menuList]: {
 		type: Array as PropType<Menu.MenuOptions[]>,
-		default: false,
+		default: [],
 	},
 	[propsEnum.isCollapse]: {
 		type: Boolean,
@@ -149,7 +149,6 @@ export const layoutProps = {
 	},
 }
 // --------props----------
-export type LayoutPublicProps = ExtractPublicPropTypes<typeof layoutProps>
 export type layoutProps = ExtractPropTypes<typeof layoutProps>
 // 定义注入键
 export const propsKey = Symbol() as InjectionKey<layoutProps>
@@ -165,3 +164,30 @@ export type LayoutEmits = {
 }
 // 定义注入键
 export const emitsKey = Symbol() as InjectionKey<ReturnType<typeof defineEmits>>
+
+// ---------因为是web component，所以对外的类型都是基本类型
+export interface LayoutPublicProps {
+	[propsEnum.defaultActivePath]?: string
+	[propsEnum.menuList]?: Menu.MenuOptions[] | string
+	[propsEnum.isCollapse]?: boolean | string
+	[propsEnum.isAllOpen]?: boolean | string
+	[propsEnum.isUniqueOpened]?: boolean | string
+	[propsEnum.isFixedHeader]?: boolean | string
+	[propsEnum.isShowLogo]?: boolean | string
+	[propsEnum.isBreadcrumb]?: boolean | string
+	[propsEnum.isTagsView]?: boolean | string
+	[propsEnum.isBreadcrumbIcon]?: boolean | string
+	[propsEnum.isTagsViewIcon]?: boolean | string
+	[propsEnum.isCacheTagsView]?: boolean | string
+	[propsEnum.isSortableTagsView]?: boolean | string
+	[propsEnum.isWatermark]?: boolean | string
+	[propsEnum.watermarkText]?: string
+	[propsEnum.tagsShowNum]?: number | string
+	[propsEnum.columnsAsideStyle]?: string
+	[propsEnum.layout]?: LayoutType | string
+	[propsEnum.globalTitle]?: string
+	[propsEnum.globalViceTitle]?: string
+	[propsEnum.isFooter]?: boolean | string
+	[propsEnum.footerCompany]?: string
+	[propsEnum.footerRecord]?: string
+}

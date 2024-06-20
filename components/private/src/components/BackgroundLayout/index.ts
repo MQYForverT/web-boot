@@ -1,19 +1,28 @@
-import { defineCustomElement } from 'vue'
 import BackgroundLayout from './BackgroundLayout.ce.vue'
 import type { LayoutPublicProps } from './BackgroundLayout'
 import { LayoutType, propsEnum } from './BackgroundLayout'
 
-// 将组件转换为 web components
-export const BackgroundLayoutElement = defineCustomElement(BackgroundLayout)
-
 // 注册
 export function register() {
-	customElements.define('mqy-background-layout', BackgroundLayoutElement)
+	customElements.define(
+		'mqy-background-layout',
+		class extends HTMLElement {
+			constructor() {
+				super()
+				nextTick(() => {
+					console.log(this.getAttribute('isCollapse'))
+					createApp(BackgroundLayout, {
+						isAllOpen: false,
+					}).mount(this)
+				})
+			}
+		},
+	)
 }
 
 declare module 'vue' {
 	export interface GlobalComponents {
-		MqyBackgroundLayout: typeof BackgroundLayoutElement
+		MqyBackgroundLayout: LayoutPublicProps
 	}
 }
 

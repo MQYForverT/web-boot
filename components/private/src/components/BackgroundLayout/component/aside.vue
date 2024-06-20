@@ -1,5 +1,5 @@
 <template>
-	<el-aside v-if="clientWidth > 1000" class="layout-aside" :class="setCollapseWidth">
+	<el-aside v-if="props.isCollapse" class="layout-aside" :class="setCollapseWidth">
 		<Logo v-if="setShowLogo" />
 		<el-scrollbar ref="layoutAsideScrollbarRef" class="flex-auto">
 			<Vertical :class="setCollapseWidth" />
@@ -22,10 +22,6 @@
 	import Vertical from '../navMenu/vertical.vue'
 
 	const props = inject(propsKey)!
-
-	const clientWidth = computed(() => {
-		return document.body.clientWidth
-	})
 
 	// 设置菜单展开/收起时的宽度
 	const setCollapseWidth = computed(() => {
