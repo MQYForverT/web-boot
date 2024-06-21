@@ -1,7 +1,7 @@
 import type { ExtractPropTypes, PropType } from 'vue'
 
 export enum LayoutType {
-	defaults = 'defaults',
+	defaults = 'default',
 	space = 'space', // 空间布局，尽可能多多显示主页面
 }
 
@@ -124,7 +124,7 @@ export const layoutProps = {
 		default: 'columns-round',
 	},
 	[propsEnum.layout]: {
-		type: String as () => LayoutType,
+		type: String as PropType<LayoutType>,
 		default: LayoutType.defaults,
 	},
 	[propsEnum.globalTitle]: {

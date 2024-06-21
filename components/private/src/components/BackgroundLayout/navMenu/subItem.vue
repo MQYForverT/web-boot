@@ -1,7 +1,7 @@
 <template>
 	<template v-for="val in props.children">
 		<el-sub-menu v-if="val.children && val.children.length > 0" :key="val.path" :index="val.path">
-			<template slot="title">
+			<template #title>
 				<slot name="menuIcon" />
 				<span>{{ val.meta?.title }}</span>
 			</template>

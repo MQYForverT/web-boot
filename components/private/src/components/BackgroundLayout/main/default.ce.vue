@@ -1,6 +1,7 @@
 <template>
 	<el-container class="layout-container">
-		<Aside />
+		<el-button type="primary">132</el-button>
+		<!-- <Aside /> -->
 		<!-- <el-container class="flex-center" :class="{ 'layout-backtop': !isFixedHeader }">
 			<Header v-if="isFixedHeader" />
 			<el-scrollbar ref="layoutDefaultsScrollbarRef" :class="{ 'layout-backtop': isFixedHeader }">
@@ -14,9 +15,9 @@
 
 <script setup lang="ts">
 	// import { propsKey, propsEnum, emitsKey } from '../BackgroundLayout'
-	import { ElContainer } from 'element-plus'
+	import { ElButton, ElContainer } from 'element-plus'
 
-	import Aside from '../component/aside.vue'
+	// import Aside from '../component/aside.vue'
 	// import Header from '../component/header.vue'
 	// import Main from '../component/main.vue'
 	// import { useThemeConfig } from '@store'
@@ -48,4 +49,5 @@
 
 <style lang="scss">
 	@use 'element-plus/theme-chalk/src/container.scss';
+	@use 'element-plus/theme-chalk/src/button.scss';
 </style>

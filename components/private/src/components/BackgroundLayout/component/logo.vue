@@ -25,7 +25,7 @@
 	}
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 	.layout-logo {
 		display: flex;
 		align-items: center;
