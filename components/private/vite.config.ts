@@ -5,7 +5,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import ElementPlus from 'unplugin-element-plus/vite'
 import copy from 'rollup-plugin-copy'
 import { resolve } from 'path'
-import UnoCSS from 'unocss/vite'
 import { readdirSync } from 'fs'
 
 const whiteList = ['index.ts', 'Example']
@@ -28,7 +27,10 @@ entries['index'] = resolve(__dirname, 'src/components/index.ts')
 import { setupViteTest } from '@mqy/vite-config/common/vitest'
 import dts from '@mqy/vite-config/common/plugins/dts'
 import compress from '@mqy/vite-config/common/plugins/compress'
+import unocss from '@mqy/vite-config/common/plugins/unocss'
 import { setupViteLib } from '@mqy/vite-config/common/build/lib'
+
+import { menuIcon } from './public/menuList'
 
 // https://vitejs.dev/config/
 const config: UserConfig = {
@@ -46,8 +48,10 @@ const config: UserConfig = {
 		],
 	},
 	plugins: [
-		UnoCSS({
+		unocss({
 			mode: 'shadow-dom',
+			// 因为图标不能动态加载，所以你在你的项目中把会动态加载的图标都写在这个配置里面，一般和你的路由是对应的
+			safelist: [...menuIcon],
 		}),
 		vue({
 			template: {
@@ -64,28 +68,28 @@ const config: UserConfig = {
 		ElementPlus({}),
 		dts({
 			include: ['src/components/**/*.ts'],
-      exclude: ['src/components/Example'],
+			exclude: ['src/components/Example'],
 		}),
-    compress(),
-    /**
-     * 为什么要拷贝element的base.css？
-     * 因为element使用了css变量，加载在shadow dom内的样式里无法读取这些变量，需要在页面顶层声明这些变量，
-     * 也就是引入组件时需要在项目中引入base.css
-     */
-    copy({
-      hook:'generateBundle',
-      targets:[
-        {
-          src:'./node_modules/element-plus/theme-chalk/base.css',
-          dest:'./dist/',
-        }
-      ]
-    })
+		compress(),
+		/**
+		 * 为什么要拷贝element的base.css？
+		 * 因为element使用了css变量，加载在shadow dom内的样式里无法读取这些变量，需要在页面顶层声明这些变量，
+		 * 也就是引入组件时需要在项目中引入base.css
+		 */
+		copy({
+			hook: 'generateBundle',
+			targets: [
+				{
+					src: './node_modules/element-plus/theme-chalk/base.css',
+					dest: './dist/',
+				},
+			],
+		}),
 	],
 	test: setupViteTest(),
 	build: setupViteLib({
 		entries: entries,
-		external: [ 'vue', 'react',],
+		external: ['vue', 'react'],
 		outputGlobals: {
 			vue: 'Vue',
 		},

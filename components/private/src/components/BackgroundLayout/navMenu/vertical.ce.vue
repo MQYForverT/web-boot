@@ -4,19 +4,20 @@
 		:collapse="props.isCollapse"
 		:collapse-transition="false"
 		:default-active="props.defaultActivePath"
+		router
 		:default-openeds="getAllOpenList"
 		:unique-opened="props.isUniqueOpened"
 	>
 		<template v-for="val in props.menuList">
 			<el-sub-menu v-if="val.children && val.children.length > 0" :key="val.path" :index="val.path">
 				<template #title>
-					<slot name="menuIcon" />
+					<div :class="val.meta?.icon" />
 					<div>{{ val.meta?.title }}</div>
 				</template>
 				<SubItem :children="val.children" />
 			</el-sub-menu>
 			<el-menu-item v-else-if="val.meta?.isMenu && !val.meta?.isViewRouter" :key="val.path + 1" :index="val.path">
-				<slot name="menuIcon" />
+				<div :class="val.meta?.icon" />
 				<template v-if="!val.meta?.isLink || (val.meta?.isLink && val.meta?.isIframe)" #title>
 					<span>{{ val.meta?.title }}</span>
 				</template>
@@ -42,8 +43,16 @@
 	})
 </script>
 
+<style>
+	@unocss-placeholder;
+</style>
+
 <style lang="scss">
 	@use 'element-plus/theme-chalk/src/menu.scss';
 	@use 'element-plus/theme-chalk/src/menu-item.scss';
 	@use 'element-plus/theme-chalk/src/sub-menu.scss';
+
+	.el-menu {
+		border-right: none;
+	}
 </style>

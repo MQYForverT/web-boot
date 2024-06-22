@@ -10,8 +10,10 @@ export enum propsEnum {
 	defaultActivePath = 'defaultActivePath',
 	// 菜单数组
 	menuList = 'menuList',
-	// 是否开启菜单水平折叠效果
+	// 是否折叠菜单
 	isCollapse = 'isCollapse',
+	// 侧边栏背景色
+	asideBackground = 'asideBackground',
 	// 是否默认全部展开
 	isAllOpen = 'isAllOpen',
 	// 是否开启菜单手风琴效果
@@ -66,6 +68,10 @@ export const layoutProps = {
 	[propsEnum.isCollapse]: {
 		type: Boolean,
 		default: false,
+	},
+	[propsEnum.asideBackground]: {
+		type: String,
+		default: '#545c64',
 	},
 	[propsEnum.isAllOpen]: {
 		type: Boolean,

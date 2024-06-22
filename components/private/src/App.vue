@@ -6,49 +6,19 @@
 		:layout="themeConfig.layout"
 		:menuList="themeConfig.menuList"
 		@changeProp="handleChange"
-	>
-		<div slot="mqy">12我</div>
-	</mqy-background-layout>
-	{{ themeConfig.isCollapse }}
+	/>
 </template>
 
 <script setup lang="ts">
+	import { menuList } from '../public/menuList'
 	// import { register } from '@/components/Example'
 	// register()
+
+	// @unocss-include
 	const themeConfig = ref({
-		isCollapse: true,
+		isCollapse: false,
 		layout: 'default',
-		menuList: [
-			{
-				icon: 'icon-home',
-				path: '/',
-				meta: {
-					title: '首页',
-					isMenu: true,
-					isViewRouter: false,
-				},
-				children: [
-					{
-						icon: 'icon-home',
-						path: '/home1',
-						meta: {
-							title: '首页1',
-							isMenu: true,
-							isViewRouter: false,
-						},
-					},
-					{
-						icon: 'icon-home',
-						path: '/home2',
-						meta: {
-							title: '首页2',
-							isMenu: true,
-							isViewRouter: false,
-						},
-					},
-				],
-			},
-		],
+		menuList,
 	})
 
 	const handleChange = ({ detail = [] }) => {

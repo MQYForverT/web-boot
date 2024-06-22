@@ -10,6 +10,7 @@ import {
 	transformerVariantGroup,
 } from 'unocss'
 import type { UserConfig } from 'unocss'
+import presetRemToPx from '@unocss/preset-rem-to-px'
 
 const config: UserConfig = defineConfig({
 	content: {
@@ -62,6 +63,10 @@ const config: UserConfig = defineConfig({
 	},
 	// 预设
 	presets: [
+		// rem转px，这里报错应该是插件本身原因，如果想不报错，暂时可以忽略：@ts-ignore
+		presetRemToPx({
+			baseFontSize: 4,
+		}),
 		/**
 		 * https://unocss.dev/presets/uno#installation
 		 * UnoCSS 的默认预设，此预设尝试提供流行的实用程序优先框架的通用超集，例如，ml-3(Tailwind CSS)、ms-2(Bootstrap)、ma4(Tachyons) 和mt-10px(Windi CSS) 均有效。
@@ -75,8 +80,16 @@ const config: UserConfig = defineConfig({
 		/**
 		 * 对 UnoCSS 使用纯 CSS 的任何图标。
 		 * 此预设提供了一个图标预设，用于将图标类名转换为图标。
+		 *
+		 * 本项目中：假设都是用@iconify-json/mdi预设
 		 */
-		presetIcons({ scale: 1.2, warn: true }),
+		presetIcons({
+			scale: 1.2,
+			warn: true,
+			collections: {
+				mdi: () => import('@iconify-json/mdi/icons.json').then((i) => i.default),
+			},
+		}),
 		/**
 		 * https://unocss.nodejs.cn/presets/typography
 		 * 提供一组散文类，可用于将排版默认值添加到普通 HTML

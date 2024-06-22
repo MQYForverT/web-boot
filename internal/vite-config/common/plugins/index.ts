@@ -1,5 +1,5 @@
 import type { PluginOption } from 'vite'
-import UnoCSS from 'unocss/vite'
+import UnoCSS from './unocss'
 import compress from './compress' //压缩工具
 import visualizer from './visualizer' //打包分析
 import progress from 'vite-plugin-progress' //打包进度显示

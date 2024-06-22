@@ -12,7 +12,7 @@ declare global {
 		interface MetaProps extends RouteMeta {
 			//菜单栏及 tagsView 栏、
 			title?: string
-			//菜单图标，图标来源[element-plus图标、FontAwesome、iconfont]，详细去@utils/overall.js文件查看
+			//菜单图标，图标来源unocss预设，你项目中用的是哪一种预设，就请在配置文件中添加该预设
 			icon?: string
 			//是否超链接菜单，开启外链条件，`1、isLink: 链接地址不为空`
 			isLink?: string
