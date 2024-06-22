@@ -6,6 +6,7 @@ import ElementPlus from 'unplugin-element-plus/vite'
 import copy from 'rollup-plugin-copy'
 import { resolve } from 'path'
 import { readdirSync } from 'fs'
+import { presetIcons } from 'unocss'
 
 const whiteList = ['index.ts', 'Example']
 // 获取所有组件目录
@@ -52,6 +53,16 @@ const config: UserConfig = {
 			mode: 'shadow-dom',
 			// 因为图标不能动态加载，所以你在你的项目中把会动态加载的图标都写在这个配置里面，一般和你的路由是对应的
 			safelist: [...menuIcon],
+			presets: [
+				// 本项目中：假设都是用@iconify-json/mdi预设
+				presetIcons({
+					scale: 1.2,
+					warn: true,
+					collections: {
+						mdi: () => import('@iconify-json/mdi/icons.json').then((i) => i.default),
+					},
+				}),
+			],
 		}),
 		vue({
 			template: {

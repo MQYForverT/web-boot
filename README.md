@@ -49,8 +49,10 @@ ___
  为了实现公用性，选择了用`vue3 + element plus 开发 web component`的，关于这两者之间的可用性，我凭借自己的经验做一点说明（[官网](https://cn.vuejs.org/guide/extras/web-components.html#vue-and-web-components)有的我就不复述了）。
 1. 不支持v-model，所以所有的属性都是单向数据流，不存在update:xxx这种写法了，以后都要定义事件去父组件改
 2. 事件注册在customEvent上，使用addEventListener监听接收，但是在vue中可以通过@xxx接收，比如emit('click', 'xxx')，父组件可以<parent @click="handClick"/>
+   <br/>
    `注意：`因为组件前后挂载顺序问题，如果在wc初始化时就触发事件，父组件监听不到，因为此时父组件监听还没挂载，或许你可以延时来解决
 3. ref可以起作用，可以通过`_instance`属性拿到所有子组件属性
+4. 组件图标都是用unocss图标作为预设，所以layout组件传入的菜单动态图标都请配置在vite.config.ts中的unocss配置中，详细参考components/private/vite.config.ts文件
 ```
 <parent ref="mqy" @click="handClick"/>
 

@@ -80,16 +80,8 @@ const config: UserConfig = defineConfig({
 		/**
 		 * 对 UnoCSS 使用纯 CSS 的任何图标。
 		 * 此预设提供了一个图标预设，用于将图标类名转换为图标。
-		 *
-		 * 本项目中：假设都是用@iconify-json/mdi预设
 		 */
-		presetIcons({
-			scale: 1.2,
-			warn: true,
-			collections: {
-				mdi: () => import('@iconify-json/mdi/icons.json').then((i) => i.default),
-			},
-		}),
+		presetIcons(),
 		/**
 		 * https://unocss.nodejs.cn/presets/typography
 		 * 提供一组散文类，可用于将排版默认值添加到普通 HTML
