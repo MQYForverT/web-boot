@@ -1,0 +1,195 @@
+@import url('mixins/index.scss');
+
+/* NavMenu 导航菜单
+------------------------------- */
+// 鼠标 hover 时颜色
+%el-menu-hover-bg-color {
+	background-color: var(--next-color-menu-hover) !important;
+}
+// 默认样式修改
+.el-menu {
+	width: 220px;
+	border-right: none !important;
+}
+
+.el-menu-item {
+	height: 56px !important;
+	line-height: 56px !important;
+}
+
+.el-menu-item,
+.el-sub-menu__title {
+	color: var(--next-bg-menu-bar-color);
+}
+// 修复点击左侧菜单折叠再展开时，宽度不跟随问题
+.el-menu--collapse {
+	width: 64px !important;
+}
+// 外部链接时
+.el-menu-item a,
+.el-menu-item a:hover,
+.el-menu-item i,
+.el-sub-menu__title i {
+	color: inherit;
+	text-decoration: none;
+}
+// 水平菜单、横向菜单高亮 背景色，鼠标 hover 时，有子级菜单的背景色
+.el-menu-item.is-active,
+.el-sub-menu.is-active .el-sub-menu__title,
+.el-sub-menu:not(.is-opened):hover .el-sub-menu__title {
+	@extend %el-menu-hover-bg-color;
+}
+
+.el-sub-menu.is-active.is-opened .el-sub-menu__title {
+	background-color: unset !important;
+}
+// 子级菜单背景颜色
+// .el-menu--inline {
+// 	background: var(--next-bg-menu-bar-light-1);backgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackgroundbackground
+// }
+// 水平菜单、横向菜单折叠 a 标签
+.el-popper.is-dark a {
+	color: var(--el-color-white) !important;
+	text-decoration: none;
+}
+// 水平菜单、横向菜单折叠背景色
+.el-popper.is-pure.is-light {
+	// 水平菜单
+	.el-menu--vertical {
+		background: var(--next-bg-menu-bar);
+
+		.el-sub-menu.is-active .el-sub-menu__title {
+			color: var(--el-menu-active-color);
+		}
+
+		.el-popper.is-pure.is-light {
+			.el-menu--vertical {
+				.el-sub-menu .el-sub-menu__title {
+					color: var(--next-bg-menu-bar-color);
+					background-color: unset !important;
+				}
+
+				.el-sub-menu.is-active .el-sub-menu__title {
+					color: var(--el-menu-active-color);
+				}
+			}
+		}
+	}
+	// 横向菜单
+	.el-menu--horizontal {
+		background: var(--next-bg-top-bar);
+
+		.el-menu-item,
+		.el-sub-menu {
+			height: 50px !important;
+			line-height: 50px !important;
+			color: var(--next-bg-top-bar-color);
+
+			.el-sub-menu__title {
+				height: 50px !important;
+				line-height: 50px !important;
+				color: var(--next-bg-top-bar-color);
+			}
+
+			.el-popper.is-pure.is-light {
+				.el-menu--horizontal {
+					.el-sub-menu .el-sub-menu__title {
+						color: var(--next-bg-top-bar-color);
+						background-color: unset !important;
+					}
+
+					.el-sub-menu.is-active .el-sub-menu__title {
+						color: var(--el-menu-active-color);
+					}
+				}
+			}
+		}
+
+		.el-menu-item.is-active,
+		.el-sub-menu.is-active .el-sub-menu__title {
+			color: var(--el-menu-active-color);
+		}
+	}
+}
+// 横向菜单（经典、横向）布局
+.el-menu.el-menu--horizontal {
+	width: 100% !important;
+	border-bottom: none !important;
+
+	.el-menu-item,
+	.el-sub-menu__title {
+		height: 50px !important;
+		color: var(--next-bg-top-bar-color);
+	}
+
+	.el-menu-item:not(.is-active):hover,
+	.el-sub-menu:not(.is-active):hover .el-sub-menu__title {
+		color: var(--next-bg-top-bar-color);
+	}
+}
+
+/* Tabs 标签页
+------------------------------- */
+.el-tabs__nav-wrap::after {
+	height: 1px !important;
+}
+
+/* Dropdown 下拉菜单
+------------------------------- */
+.el-dropdown-menu {
+	list-style: none !important; /* 修复 Dropdown 下拉菜单样式问题 2022.03.04 */
+}
+
+.el-dropdown-menu .el-dropdown-menu__item {
+	white-space: nowrap;
+
+	&:not(.is-disabled):hover {
+		color: var(--el-dropdown-menu-item-hover-color);
+		background-color: var(--el-dropdown-menu-item-hover-fill);
+	}
+}
+
+/* scrollbar
+------------------------------- */
+.el-scrollbar__bar {
+	z-index: 4;
+}
+
+.el-scrollbar__wrap {
+	max-height: 100%; /* 防止页面切换时，滚动条高度不变的问题（滚动条高度非滚动条滚动高度） */
+}
+
+.el-select-dropdown .el-scrollbar__wrap {
+	overflow-x: scroll !important;
+}
+
+.el-select-dropdown__wrap {
+	max-height: 274px !important; /* 修复Select 选择器高度问题 */
+}
+
+.el-cascader-menu__wrap.el-scrollbar__wrap {
+	height: 204px !important; /* 修复Cascader 级联选择器高度问题 */
+}
+
+/* Drawer 抽屉
+------------------------------- */
+.el-drawer {
+	--el-drawer-padding-primary: unset !important;
+
+	.el-drawer__header {
+		display: flex;
+		align-items: center;
+		height: 50px;
+		padding: 0 15px !important;
+		margin-bottom: 0 !important;
+		color: var(--el-text-color-primary);
+		border-bottom: 1px solid var(--el-border-color);
+	}
+
+	.el-drawer__body {
+		width: 100%;
+		height: 100%;
+    padding: 0;
+		overflow: auto;
+	}
+}

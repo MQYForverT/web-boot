@@ -41,7 +41,7 @@
 			margin: auto;
 			color: #9e9e9e;
 			text-align: center;
-			animation: logoAnimation 0.3s ease-in-out;
+			animation: logo-animation 0.3s ease-in-out;
 		}
 	}
 </style>

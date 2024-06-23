@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-	import { propsKey, propsEnum, emitsKey } from '../../BackgroundLayout'
+	import { propsKey, propsEnum, emitsKey } from '../BackgroundLayout'
 
 	const props = inject(propsKey)!
 	const emits = inject(emitsKey)!
@@ -16,7 +16,3 @@
 		emits('changeProp', propsEnum.isCollapse, !props.isCollapse)
 	}
 </script>
-
-<style lang="scss">
-	@use './logo.scss';
-</style>

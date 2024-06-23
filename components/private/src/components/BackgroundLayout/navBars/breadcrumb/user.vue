@@ -127,7 +127,7 @@
 
 				i {
 					display: inline-block;
-					animation: logoAnimation 0.3s ease-in-out;
+					animation: logo-animation 0.3s ease-in-out;
 				}
 			}
 		}

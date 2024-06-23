@@ -1,0 +1,59 @@
+/* 页面宽度小于768px
+------------------------------- */
+@media screen and (max-width: $sm) {
+	// 滚动条的宽度
+	::-webkit-scrollbar {
+		width: 3px !important;
+		height: 3px !important;
+	}
+
+	::-webkit-scrollbar-track-piece {
+		background-color: var(--next-bg-main-color);
+	}
+	// 滚动条的设置
+	::-webkit-scrollbar-thumb {
+		min-height: 28px;
+		background-color: rgb(144 147 153 / 30%);
+		background-clip: padding-box;
+		border-radius: 5px;
+		transition: 0.3s background-color;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background-color: rgb(144 147 153 / 50%);
+	}
+	// element plus scrollbar
+	.el-scrollbar__bar.is-vertical {
+		width: 2px !important;
+	}
+
+	.el-scrollbar__bar.is-horizontal {
+		height: 2px !important;
+	}
+}
+
+/* 页面宽度大于768px
+------------------------------- */
+@media screen and (width >= 769px) {
+	// 滚动条的宽度
+	::-webkit-scrollbar {
+		width: 7px;
+		height: 7px;
+	}
+
+	::-webkit-scrollbar-track-piece {
+		background-color: var(--next-bg-main-color);
+	}
+	// 滚动条的设置
+	::-webkit-scrollbar-thumb {
+		min-height: 28px;
+		background-color: rgb(144 147 153 / 30%);
+		background-clip: padding-box;
+		border-radius: 5px;
+		transition: 0.3s background-color;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background-color: rgb(144 147 153 / 50%);
+	}
+}

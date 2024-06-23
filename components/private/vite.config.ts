@@ -97,6 +97,14 @@ const config: UserConfig = {
 			],
 		}),
 	],
+	css: {
+		preprocessorOptions: {
+			scss: {
+				// 定义变量在此
+				additionalData: `@use "@/components/BackgroundLayout/theme/media/index.scss" as *;`,
+			},
+		},
+	},
 	test: setupViteTest(),
 	build: setupViteLib({
 		entries: entries,

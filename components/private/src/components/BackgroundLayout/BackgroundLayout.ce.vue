@@ -1,14 +1,21 @@
 <template>
-	<mqy-defaults v-if="props.layout === LayoutType.defaults" />
+	<component :is="layoutComponent" />
 </template>
 <script setup lang="ts">
-	import { defineCustomElement } from 'vue'
-	import Defaults from './main/default.ce.vue'
 	import type { LayoutEmits } from './BackgroundLayout'
 	import { layoutProps, propsKey, emitsKey, LayoutType } from './BackgroundLayout'
 
-	const defaultsElement = defineCustomElement(Defaults)
-	customElements.define('mqy-defaults', defaultsElement)
+	// 定义异步组件
+	const components = {
+		defaults: defineAsyncComponent(() => import('./main/default.vue')),
+	}
+
+	const layoutComponent = computed(() => {
+		switch (props.layout) {
+			case LayoutType.defaults:
+				return components.defaults
+		}
+	})
 
 	const props = defineProps(layoutProps)
 	provide(propsKey, props)
@@ -17,6 +24,18 @@
 	provide(emitsKey, emits)
 </script>
 
+<style>
+	@unocss-placeholder;
+</style>
+
 <style lang="scss">
-	@import url('BackgroundLayout.scss');
+	@use 'element-plus/theme-chalk/src/container.scss';
+	@use 'element-plus/theme-chalk/src/aside.scss';
+	@use 'element-plus/theme-chalk/src/drawer.scss';
+	@use 'element-plus/theme-chalk/src/scrollbar.scss';
+	@use 'element-plus/theme-chalk/src/menu.scss';
+	@use 'element-plus/theme-chalk/src/menu-item.scss';
+	@use 'element-plus/theme-chalk/src/sub-menu.scss';
+
+	@import url('./theme/index.scss');
 </style>

@@ -55,6 +55,51 @@ export const menuList = [
 					isViewRouter: false,
 				},
 			},
+			{
+				path: '/menu3',
+				meta: {
+					icon: 'mdi mdi-account',
+					title: '菜单3',
+					isMenu: true,
+					isViewRouter: false,
+				},
+			},
+			{
+				path: '/menu4',
+				meta: {
+					icon: 'mdi mdi-account',
+					title: '菜单4',
+					isMenu: true,
+					isViewRouter: false,
+				},
+			},
+			{
+				path: '/menu5',
+				meta: {
+					icon: 'mdi mdi-account',
+					title: '菜单5',
+					isMenu: true,
+					isViewRouter: false,
+				},
+			},
+			{
+				path: '/menu6',
+				meta: {
+					icon: 'mdi mdi-account',
+					title: '菜单6',
+					isMenu: true,
+					isViewRouter: false,
+				},
+			},
+			{
+				path: '/menu7',
+				meta: {
+					icon: 'mdi mdi-account',
+					title: '菜单7',
+					isMenu: true,
+					isViewRouter: false,
+				},
+			},
 		],
 	},
 ]

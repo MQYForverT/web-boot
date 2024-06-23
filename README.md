@@ -52,7 +52,6 @@ ___
    <br/>
    `注意：`因为组件前后挂载顺序问题，如果在wc初始化时就触发事件，父组件监听不到，因为此时父组件监听还没挂载，或许你可以延时来解决
 3. ref可以起作用，可以通过`_instance`属性拿到所有子组件属性
-4. 组件图标都是用unocss图标作为预设，所以layout组件传入的菜单动态图标都请配置在vite.config.ts中的unocss配置中，详细参考components/private/vite.config.ts文件
 ```
 <parent ref="mqy" @click="handClick"/>
 
@@ -64,8 +63,17 @@ onMounted(() => {
     console.log(mqy.value._instance)
 })
 ```
+4. 组件图标都是用unocss图标作为预设，所以layout组件传入的菜单动态图标都请配置在vite.config.ts中的unocss配置中，详细参考components/private/vite.config.ts文件
+5. 对于组件嵌套，比如组件A内部是一些列组件组成的业务组件，比如A（B、C、D），儿A是我们对外的提供的是自定义组件，所以A是.ce.vue后缀，而
+B、C、D都是.vue后缀，这是你会发现在B中的写的样式不生效，如果想要下层组件样式生效，有两种办法：
+   - 把下层所有用到的样式都在A中引入或声明【本项目使用这种】
+   - 把下层组件也改为.ce.vue后缀，然后样式就可以自己组件内部声明了，当然，A中引用下层组件的时候不能import导入使用了，需要注册为web component了
+   - 如果你选择全部样式在最上层组件声明，如果你使用scss这些且定义了变量，记得在vite.config.ts中引入这些变量，不然vite识别不到
+
 ___
 总结：因为种种不便，太过复杂的组件实现不了，但是简单的还是可以，至于性能方面，目前还没测试
 
 ## todo
-最后会用命令执行，把vue和react当作模板抛出去，但是很多依赖需要从根目录复制过去，比如rimraf、tsx
+最后会用命令执行，把vue和react当作模板抛出去，但是很多依赖需要从根目录复制过去，比如rimraf、tsx。
+___
+记得要复制.npmrc文件，里面用到了shell-emulator开关，这样tsx中的NODE_OPTIONS等环境变量就可以跨平台，否则windows环境会报错

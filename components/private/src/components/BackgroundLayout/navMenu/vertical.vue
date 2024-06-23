@@ -42,17 +42,3 @@
 		return props.isAllOpen ? props.menuList.map((x) => x.path) : []
 	})
 </script>
-
-<style>
-	@unocss-placeholder;
-</style>
-
-<style lang="scss">
-	@use 'element-plus/theme-chalk/src/menu.scss';
-	@use 'element-plus/theme-chalk/src/menu-item.scss';
-	@use 'element-plus/theme-chalk/src/sub-menu.scss';
-
-	.el-menu {
-		border-right: none;
-	}
-</style>

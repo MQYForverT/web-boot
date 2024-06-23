@@ -3,7 +3,6 @@
 	<!-- <mqy-example id="example" ref="mqy" title="title1" style="margin-top: 20px" /> -->
 	<mqy-background-layout
 		:isCollapse="themeConfig.isCollapse"
-		:layout="themeConfig.layout"
 		:menuList="themeConfig.menuList"
 		@changeProp="handleChange"
 	/>
@@ -17,7 +16,6 @@
 	// @unocss-include
 	const themeConfig = ref({
 		isCollapse: false,
-		layout: 'default',
 		menuList,
 	})
 

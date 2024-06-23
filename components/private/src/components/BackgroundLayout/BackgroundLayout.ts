@@ -1,19 +1,28 @@
 import type { ExtractPropTypes, PropType } from 'vue'
 
 export enum LayoutType {
-	defaults = 'default',
-	space = 'space', // 空间布局，尽可能多多显示主页面
+	defaults = 'defaults',
+}
+
+export enum animationType {
+	slideRight = 'slide-right',
+	slideLeft = 'slide-left',
+	opacitys = 'opacitys',
 }
 
 export enum propsEnum {
+	// 是否开启布局配置抽屉
+	isDrawer = 'isDrawer',
+
+	/**
+	 * 界面设置
+	 */
 	// 默认激活的path
 	defaultActivePath = 'defaultActivePath',
 	// 菜单数组
 	menuList = 'menuList',
 	// 是否折叠菜单
 	isCollapse = 'isCollapse',
-	// 侧边栏背景色
-	asideBackground = 'asideBackground',
 	// 是否默认全部展开
 	isAllOpen = 'isAllOpen',
 	// 是否开启菜单手风琴效果
@@ -24,24 +33,31 @@ export enum propsEnum {
 	isShowLogo = 'isShowLogo',
 	// 是否开启 Breadcrumb
 	isBreadcrumb = 'isBreadcrumb',
+	// 是否开启 Breadcrumb图标
+	isBreadcrumbIcon = 'isBreadcrumbIcon',
 	// 是否开启 Tagsview
 	isTagsView = 'isTagsView',
 	// 是否开启 Tagsview图标
 	isTagsViewIcon = 'isTagsViewIcon',
 	// tag数量
 	tagsShowNum = 'tagsShowNum',
-	// 是否开启 Breadcrumb图标
-	isBreadcrumbIcon = 'isBreadcrumbIcon',
 	// 是否开启 TagsView 缓存
 	isCacheTagsView = 'isCacheTagsView',
 	// 是否开启 TagsView 托拽
 	isSortableTagsView = 'isSortableTagsView',
+	// 是否开启 TagsView 共用
+	isShareTagsView = 'isShareTagsView',
 	// 是否开启 水印
 	isWatermark = 'isWatermark',
 	// 水印文字
 	watermarkText = 'watermarkText',
+	/**
+	 * 其它设置
+	 */
 	// 默认分栏高亮风格，可选 1、 圆角 columns-round 2、 卡片 columns-card
 	columnsAsideStyle = 'columnsAsideStyle',
+	// 主页面切换动画：可选值"<slide-right|slide-left|opacitys>"，默认 slide-right
+	animation = 'animation',
 	// 布局
 	layout = 'layout',
 	// 主标题
@@ -57,6 +73,10 @@ export enum propsEnum {
 }
 
 export const layoutProps = {
+	[propsEnum.isDrawer]: {
+		type: Boolean,
+		default: true,
+	},
 	[propsEnum.defaultActivePath]: {
 		type: String,
 		default: '',
@@ -68,10 +88,6 @@ export const layoutProps = {
 	[propsEnum.isCollapse]: {
 		type: Boolean,
 		default: false,
-	},
-	[propsEnum.asideBackground]: {
-		type: String,
-		default: '#545c64',
 	},
 	[propsEnum.isAllOpen]: {
 		type: Boolean,
@@ -93,17 +109,21 @@ export const layoutProps = {
 		type: Boolean,
 		default: true,
 	},
-	[propsEnum.isTagsView]: {
+	[propsEnum.isBreadcrumbIcon]: {
 		type: Boolean,
 		default: false,
 	},
-	[propsEnum.isBreadcrumbIcon]: {
+	[propsEnum.isTagsView]: {
 		type: Boolean,
 		default: false,
 	},
 	[propsEnum.isTagsViewIcon]: {
 		type: Boolean,
 		default: false,
+	},
+	[propsEnum.tagsShowNum]: {
+		type: Number,
+		default: 1,
 	},
 	[propsEnum.isCacheTagsView]: {
 		type: Boolean,
@@ -113,6 +133,10 @@ export const layoutProps = {
 		type: Boolean,
 		default: true,
 	},
+	[propsEnum.isShareTagsView]: {
+		type: Boolean,
+		default: false,
+	},
 	[propsEnum.isWatermark]: {
 		type: Boolean,
 		default: false,
@@ -121,13 +145,13 @@ export const layoutProps = {
 		type: String,
 		default: '漠轻阴',
 	},
-	[propsEnum.tagsShowNum]: {
-		type: Number,
-		default: 1,
-	},
 	[propsEnum.columnsAsideStyle]: {
 		type: String,
 		default: 'columns-round',
+	},
+	[propsEnum.animation]: {
+		type: String as PropType<animationType>,
+		default: animationType.slideRight,
 	},
 	[propsEnum.layout]: {
 		type: String as PropType<LayoutType>,
@@ -173,6 +197,7 @@ export const emitsKey = Symbol() as InjectionKey<ReturnType<typeof defineEmits>>
 
 // ---------因为是web component，所以对外的类型都是基本类型
 export interface LayoutPublicProps {
+	[propsEnum.isDrawer]?: boolean | string
 	[propsEnum.defaultActivePath]?: string
 	[propsEnum.menuList]?: Menu.MenuOptions[] | string
 	[propsEnum.isCollapse]?: boolean | string
@@ -181,15 +206,17 @@ export interface LayoutPublicProps {
 	[propsEnum.isFixedHeader]?: boolean | string
 	[propsEnum.isShowLogo]?: boolean | string
 	[propsEnum.isBreadcrumb]?: boolean | string
-	[propsEnum.isTagsView]?: boolean | string
 	[propsEnum.isBreadcrumbIcon]?: boolean | string
+	[propsEnum.isTagsView]?: boolean | string
 	[propsEnum.isTagsViewIcon]?: boolean | string
+	[propsEnum.tagsShowNum]?: number | string
 	[propsEnum.isCacheTagsView]?: boolean | string
 	[propsEnum.isSortableTagsView]?: boolean | string
+	[propsEnum.isShareTagsView]?: boolean | string
 	[propsEnum.isWatermark]?: boolean | string
 	[propsEnum.watermarkText]?: string
-	[propsEnum.tagsShowNum]?: number | string
 	[propsEnum.columnsAsideStyle]?: string
+	[propsEnum.animation]?: string
 	[propsEnum.layout]?: LayoutType | string
 	[propsEnum.globalTitle]?: string
 	[propsEnum.globalViceTitle]?: string
