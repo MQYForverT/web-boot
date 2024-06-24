@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-	import { menuList } from '../public/menuList'
+	import { menuList } from '@/assets/menuList'
 	// import { register } from '@/components/Example'
 	// register()
 

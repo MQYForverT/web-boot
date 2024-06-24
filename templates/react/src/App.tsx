@@ -1,4 +1,4 @@
-import { LayoutType, propsEnum } from '@mqy/component-private/dist/BackgroundLayout'
+import { propsEnum } from '@mqy/component-private/dist/BackgroundLayout'
 
 function App() {
 	const ref = useRef(null)
@@ -24,16 +24,8 @@ function App() {
 
 	const { width } = useSize(document.body)!
 
-	const layout = useMemo(() => {
-		const obj = {
-			layout: LayoutType.defaults,
-			isCollapse: isCollapse,
-		}
-		if (width < 1000) {
-			obj.layout = LayoutType.space
-			obj.isCollapse = true
-		}
-		return obj
+	const getCollapse = useMemo(() => {
+		return width < 1000 ? true : isCollapse
 	}, [width])
 
 	return (
@@ -41,7 +33,9 @@ function App() {
 			<div>react</div>
 			<div>{isCollapse + ''}</div>
 			<div>
-				<mqy-background-layout ref={ref} is-collapse={layout.isCollapse} layout={layout.layout} />
+				<mqy-background-layout is-collapse={getCollapse}>
+					<div slot="body">666</div>
+				</mqy-background-layout>
 			</div>
 		</>
 	)

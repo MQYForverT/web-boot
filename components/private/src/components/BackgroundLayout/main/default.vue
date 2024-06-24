@@ -1,6 +1,7 @@
 <template>
 	<el-container class="layout-container">
 		<div class="wh-full"></div>
+		<el-button type="primary">23</el-button>
 		<!-- <Aside /> -->
 		<slot name="body" />
 		<!-- <el-container class="flex-center" :class="{ 'layout-backtop': !isFixedHeader }">
@@ -16,7 +17,7 @@
 
 <script setup lang="ts">
 	// import { propsEnum, emitsKey } from '../BackgroundLayout'
-	import { ElContainer } from 'element-plus'
+	import { ElContainer, ElButton } from 'element-plus'
 
 	// import Aside from '../component/Aside/aside.ce.vue'
 	// import Aside from '../component/aside.vue'
@@ -47,4 +48,10 @@
 
 <style>
 	@unocss-placeholder;
+</style>
+
+<style lang="scss">
+	@use 'element-plus/theme-chalk/src/button.scss';
+
+	// @import url('./theme/index.scss');
 </style>

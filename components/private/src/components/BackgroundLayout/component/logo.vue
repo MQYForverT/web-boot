@@ -1,6 +1,6 @@
 <template>
 	<div v-if="props.isShowLogo" class="layout-logo" @click="onThemeConfigChange">
-		<img :class="`layout-logo${!props.isCollapse ? '-medium' : ''}-img`" src="/favicon.ico" />
+		<img :class="`layout-logo${!props.isCollapse ? '-medium' : ''}-img`" src="../../../assets/favicon.ico" />
 		<span v-if="!props.isCollapse" class="fontFFF">{{ props.globalTitle }}</span>
 	</div>
 </template>

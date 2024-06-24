@@ -31,7 +31,7 @@ import compress from '@mqy/vite-config/common/plugins/compress'
 import unocss from '@mqy/vite-config/common/plugins/unocss'
 import { setupViteLib } from '@mqy/vite-config/common/build/lib'
 
-import { menuIcon } from './public/menuList'
+import { menuIcon } from '@/assets/menuList'
 
 // https://vitejs.dev/config/
 const config: UserConfig = {
