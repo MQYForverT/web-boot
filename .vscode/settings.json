@@ -52,8 +52,6 @@
 	"[scss]": {
 		"editor.defaultFormatter": "stylelint.vscode-stylelint"
 	},
-  "cSpell.words": [
-    "vueuse"
-  ],
-  "vitest.disableWorkspaceWarning": true
+	"cSpell.words": ["vueuse"],
+	"vitest.disableWorkspaceWarning": true
 }

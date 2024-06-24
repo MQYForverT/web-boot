@@ -58,7 +58,17 @@ const config: UserConfig = defineConfig({
 	},
 	theme: {
 		colors: {
-			// ...
+			primary: 'var(--el-color-primary)',
+			primary_dark: 'var(--el-color-primary-light-5)',
+			info: 'var(--el-color-info)',
+			success: 'var(--el-color-success)',
+			warning: 'var(--el-color-warning)',
+			error: 'var(--el-color-error)',
+			fill: 'var(--el-fill-color-light)',
+			text: 'var(--el-text-color-primary)',
+			card: 'var(--el-bg-color-overlay)',
+			background: 'var(--el-bg-color)',
+			borderColor: 'var(--el-border-color-lighter)',
 		},
 	},
 	// 预设

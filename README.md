@@ -45,7 +45,7 @@ ___
  或者卸载插件，重新安装，反正这vscode插件这块挺坑的
 
 
- ## 关于组件库
+ ## 关于web component（wc）的坑
  为了实现公用性，选择了用`vue3 + element plus 开发 web component`的，关于这两者之间的可用性，我凭借自己的经验做一点说明（[官网](https://cn.vuejs.org/guide/extras/web-components.html#vue-and-web-components)有的我就不复述了）。
 1. 不支持v-model，所以所有的属性都是单向数据流，不存在update:xxx这种写法了，以后都要定义事件去父组件改
 2. 事件注册在customEvent上，使用addEventListener监听接收，但是在vue中可以通过@xxx接收，比如emit('click', 'xxx')，父组件可以<parent @click="handClick"/>
@@ -63,12 +63,13 @@ onMounted(() => {
     console.log(mqy.value._instance)
 })
 ```
-4. 组件图标都是用unocss图标作为预设，所以layout组件传入的菜单动态图标都请配置在vite.config.ts中的unocss配置中，详细参考components/private/vite.config.ts文件
-5. 对于组件嵌套，比如组件A内部是一些列组件组成的业务组件，比如A（B、C、D），儿A是我们对外的提供的是自定义组件，所以A是.ce.vue后缀，而
+4. 对于组件嵌套，比如组件A内部是一些列组件组成的业务组件，比如A（B、C、D），儿A是我们对外的提供的是自定义组件，所以A是.ce.vue后缀，而
 B、C、D都是.vue后缀，这是你会发现在B中的写的样式不生效，如果想要下层组件样式生效，有两种办法：
-   - 把下层所有用到的样式都在A中引入或声明【本项目使用这种】
-   - 把下层组件也改为.ce.vue后缀，然后样式就可以自己组件内部声明了，当然，A中引用下层组件的时候不能import导入使用了，需要注册为web component了
+   - 把下层所有用到的样式都在A中引入或声明
+   - `【本项目使用这种】`把下层组件也改为wc，然后样式就可以自己组件内部声明了，当然，A中引用下层组件的时候不能import导入使用了，需要注册为wc了
    - 如果你选择全部样式在最上层组件声明，如果你使用scss这些且定义了变量，记得在vite.config.ts中引入这些变量，不然vite识别不到
+5. 组件图标都是用unocss图标作为预设，所以layout组件传入的菜单动态图标都请配置在vite.config.ts中的unocss配置中，详细参考components/private/vite.config.ts文件
+6. 且unocss不能在.vue文件和wc文件混用，所以，如果你是组件嵌套的话，所有组件最好都改成wc，因为unocss样式只会在根组件生效
 
 ___
 总结：因为种种不便，太过复杂的组件实现不了，但是简单的还是可以，至于性能方面，目前还没测试

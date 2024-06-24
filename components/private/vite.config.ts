@@ -65,6 +65,8 @@ const config: UserConfig = {
 			],
 		}),
 		vue({
+			// 以前需要.ce.vue结尾，这样就不用.ce.vue结尾了
+			customElement: true,
 			template: {
 				compilerOptions: {
 					// 将所有带短横线的标签名都视为自定义元素
@@ -108,7 +110,7 @@ const config: UserConfig = {
 	test: setupViteTest(),
 	build: setupViteLib({
 		entries: entries,
-		external: ['vue', 'react'],
+		external: ['vue'],
 		outputGlobals: {
 			vue: 'Vue',
 		},

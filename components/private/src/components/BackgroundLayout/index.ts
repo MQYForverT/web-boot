@@ -1,5 +1,5 @@
 import { defineCustomElement } from 'vue'
-import BackgroundLayout from './BackgroundLayout.ce.vue'
+import BackgroundLayout from './BackgroundLayout.vue'
 import type { LayoutPublicProps } from './BackgroundLayout'
 import { LayoutType, propsEnum } from './BackgroundLayout'
 

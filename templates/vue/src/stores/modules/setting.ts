@@ -8,5 +8,7 @@ export const useSettingStore = createGlobalState(() => {
 
 	const isCollapse = useStorage<boolean>(`${prefix}-isCollapse`, false)
 
-	return { buttonSize, isCollapse }
+	const animateMode = useStorage<string>(`${prefix}-animateMode`, 'zoom-fade')
+
+	return { buttonSize, isCollapse, animateMode }
 })

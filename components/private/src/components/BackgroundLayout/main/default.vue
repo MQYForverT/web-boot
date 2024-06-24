@@ -1,6 +1,8 @@
 <template>
 	<el-container class="layout-container">
-		<Aside />
+		<div class="wh-full"></div>
+		<!-- <Aside /> -->
+		<slot name="body" />
 		<!-- <el-container class="flex-center" :class="{ 'layout-backtop': !isFixedHeader }">
 			<Header v-if="isFixedHeader" />
 			<el-scrollbar ref="layoutDefaultsScrollbarRef" :class="{ 'layout-backtop': isFixedHeader }">
@@ -17,7 +19,7 @@
 	import { ElContainer } from 'element-plus'
 
 	// import Aside from '../component/Aside/aside.ce.vue'
-	import Aside from '../component/aside.vue'
+	// import Aside from '../component/aside.vue'
 	// import Header from '../component/header.vue'
 	// import Main from '../component/main.vue'
 	// import { useThemeConfig } from '@store'
@@ -42,3 +44,7 @@
 
 	// provide('scrollbarRef', layoutDefaultsScrollbarRef)
 </script>
+
+<style>
+	@unocss-placeholder;
+</style>

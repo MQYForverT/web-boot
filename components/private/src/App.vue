@@ -5,7 +5,9 @@
 		:isCollapse="themeConfig.isCollapse"
 		:menuList="themeConfig.menuList"
 		@changeProp="handleChange"
-	/>
+	>
+		<div slot="body">12</div>
+	</mqy-background-layout>
 </template>
 
 <script setup lang="ts">
