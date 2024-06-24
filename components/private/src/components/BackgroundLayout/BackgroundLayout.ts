@@ -13,6 +13,8 @@ export enum animationType {
 export enum propsEnum {
 	// 是否开启布局配置抽屉
 	isDrawer = 'isDrawer',
+	// 当前是否是移动端，移动端的定义交给外部
+	isMobile = 'isMobile',
 
 	/**
 	 * 界面设置
@@ -76,6 +78,10 @@ export const layoutProps = {
 	[propsEnum.isDrawer]: {
 		type: Boolean,
 		default: true,
+	},
+	[propsEnum.isMobile]: {
+		type: Boolean,
+		default: false,
 	},
 	[propsEnum.defaultActivePath]: {
 		type: String,
@@ -198,6 +204,7 @@ export const emitsKey = Symbol() as InjectionKey<ReturnType<typeof defineEmits>>
 // ---------因为是web component，所以对外的类型都是基本类型
 export interface LayoutPublicProps {
 	[propsEnum.isDrawer]?: boolean | string
+	[propsEnum.isMobile]?: boolean | string
 	[propsEnum.defaultActivePath]?: string
 	[propsEnum.menuList]?: Menu.MenuOptions[] | string
 	[propsEnum.isCollapse]?: boolean | string
