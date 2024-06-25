@@ -12,8 +12,7 @@ const entries = {
 	nprogress: getPath('nprogress/index.ts'),
 }
 
-import dts from '@mqy/vite-config/common/plugins/dts'
-import { setupViteLib } from '@mqy/vite-config/common/build/lib'
+import { setupViteLib, dts } from '@mqy/vite-config/common'
 
 // https://vitejs.dev/config/
 const config: UserConfig = {

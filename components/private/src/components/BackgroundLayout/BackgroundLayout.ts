@@ -15,7 +15,6 @@ export enum propsEnum {
 	isDrawer = 'isDrawer',
 	// 当前是否是移动端，移动端的定义交给外部
 	isMobile = 'isMobile',
-
 	/**
 	 * 界面设置
 	 */
@@ -31,8 +30,13 @@ export enum propsEnum {
 	isUniqueOpened = 'isUniqueOpened',
 	// 是否开启固定 Header
 	isFixedHeader = 'isFixedHeader',
-	// 是否开启侧边栏 Logo
-	isShowLogo = 'isShowLogo',
+	// 是否开启侧边栏折叠按钮
+	isShowSidebarCollapse = 'isShowSidebarCollapse',
+	// 是否开启顶部导航
+	isShowHeader = 'isShowHeader',
+	// 是否开启侧边栏
+	isShowSidebar = 'isShowSidebar',
+	// 是否开启面包屑
 	// 是否开启 Breadcrumb
 	isBreadcrumb = 'isBreadcrumb',
 	// 是否开启 Breadcrumb图标
@@ -104,10 +108,6 @@ export const layoutProps = {
 		default: false,
 	},
 	[propsEnum.isFixedHeader]: {
-		type: Boolean,
-		default: true,
-	},
-	[propsEnum.isShowLogo]: {
 		type: Boolean,
 		default: true,
 	},
@@ -211,7 +211,6 @@ export interface LayoutPublicProps {
 	[propsEnum.isAllOpen]?: boolean | string
 	[propsEnum.isUniqueOpened]?: boolean | string
 	[propsEnum.isFixedHeader]?: boolean | string
-	[propsEnum.isShowLogo]?: boolean | string
 	[propsEnum.isBreadcrumb]?: boolean | string
 	[propsEnum.isBreadcrumbIcon]?: boolean | string
 	[propsEnum.isTagsView]?: boolean | string

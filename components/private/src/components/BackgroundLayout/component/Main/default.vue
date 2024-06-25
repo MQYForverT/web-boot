@@ -1,7 +1,12 @@
 <template>
 	<el-container class="h-full">
-		<mqy-appMask v-show="props.isMobile" @click="closeAppMask" />
-		<mqy-asider />
+		<mqy-app-mask v-show="props.isMobile && !props.isCollapse" @click="closeAppMask" />
+		<mqy-aside>
+			<div slot="logo">
+				<slot name="logo" />
+			</div>
+		</mqy-aside>
+		<el-button type="primary">btn</el-button>
 		<slot name="body" />
 		<!-- <el-container class="flex-center" :class="{ 'layout-backtop': !isFixedHeader }">
 			<Header v-if="isFixedHeader" />
@@ -17,21 +22,21 @@
 <script setup lang="ts">
 	import { defineCustomElement } from 'vue'
 	import { propsEnum, propsKey, emitsKey } from '../../BackgroundLayout'
-	import { ElContainer } from 'element-plus'
 
-	import Asider from '../Asider/index.vue'
+	import Aside from '../Aside/index.vue'
 	import AppMask from '../AppMask/index.vue'
 
-	const asiderElement = defineCustomElement(Asider)
-	customElements.define('mqy-asider', asiderElement)
+	const asideElement = defineCustomElement(Aside)
+	customElements.define('mqy-aside', asideElement)
 
 	const appMaskElement = defineCustomElement(AppMask)
-	customElements.define('mqy-appMask', appMaskElement)
+	customElements.define('mqy-app-mask', appMaskElement)
 
 	const props = inject(propsKey)!
 	const emits = inject(emitsKey)!
 
 	const closeAppMask = () => {
+		console.log('点击没问题')
 		emits('changeProp', propsEnum.isCollapse, true)
 	}
 </script>
@@ -42,4 +47,5 @@
 
 <style lang="scss">
 	@use 'element-plus/theme-chalk/src/container.scss';
+	@use 'element-plus/theme-chalk/src/button.scss';
 </style>

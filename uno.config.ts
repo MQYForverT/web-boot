@@ -10,7 +10,6 @@ import {
 	transformerVariantGroup,
 } from 'unocss'
 import type { UserConfig } from 'unocss'
-import presetRemToPx from '@unocss/preset-rem-to-px'
 
 const config: UserConfig = defineConfig({
 	content: {
@@ -73,15 +72,11 @@ const config: UserConfig = defineConfig({
 	},
 	// 预设
 	presets: [
-		// rem转px，这里报错应该是插件本身原因，如果想不报错，暂时可以忽略：@ts-ignore
-		presetRemToPx({
-			baseFontSize: 4,
-		}),
 		/**
 		 * https://unocss.dev/presets/uno#installation
 		 * UnoCSS 的默认预设，此预设尝试提供流行的实用程序优先框架的通用超集，例如，ml-3(Tailwind CSS)、ms-2(Bootstrap)、ma4(Tachyons) 和mt-10px(Windi CSS) 均有效。
 		 */
-		presetUno(),
+		presetUno({ dark: 'class' }),
 		/**
 		 * https://unocss.dev/presets/attributify
 		 * 属性模式；text-sm text-white可以写为text="sm white"，而无需重复相同的前缀

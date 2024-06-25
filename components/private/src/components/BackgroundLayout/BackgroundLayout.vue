@@ -1,5 +1,8 @@
 <template>
 	<mqy-defaults>
+		<div slot="logo">
+			<slot name="logo" />
+		</div>
 		<div slot="body">
 			<slot name="body" />
 		</div>

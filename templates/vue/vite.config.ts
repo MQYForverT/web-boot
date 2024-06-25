@@ -4,6 +4,10 @@ import { resolve } from 'path'
 
 // 目前这种导入方式需要tsx支持
 import viteConfig from '@mqy/vite-config/vue'
+import {
+	// svg
+	createSvgIconsPlugin,
+} from '@mqy/vite-config/common'
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv: ConfigEnv) => {
@@ -16,5 +20,12 @@ export default defineConfig((configEnv: ConfigEnv) => {
 				'@': resolve(__dirname, './src'),
 			},
 		},
+		plugins: [
+			// 本地生成svg
+			createSvgIconsPlugin({
+				iconDirs: [resolve(process.cwd(), 'src/assets/svg')],
+				symbolId: 'local-icon-[dir]-[name]',
+			}),
+		],
 	})
 })

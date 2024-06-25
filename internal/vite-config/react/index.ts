@@ -1,10 +1,9 @@
 import react from '@vitejs/plugin-react-swc'
 import type { UserConfig } from 'vite'
 
-import AutoImport from 'unplugin-auto-import/vite'
 import { reactClickToComponent } from 'vite-plugin-react-click-to-component'
 
-import { setupViteServer, setupViteTest, commonVitePlugins, setupViteBuild } from '../common'
+import { setupViteServer, setupViteTest, commonVitePlugins, setupViteBuild, AutoImport } from '../common'
 
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {
 	const { server, plugins = [], build, ...config } = customConfig ?? {}

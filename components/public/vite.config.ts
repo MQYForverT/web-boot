@@ -8,7 +8,7 @@ import UnoCSS from 'unocss/vite'
 // import viteConfig from '@mqy/vite-config/vue'
 
 // 目前这种导入方式需要tsx支持
-import { setupViteTest } from '@mqy/vite-config/common/vitest'
+import { setupViteTest } from '@mqy/vite-config/common'
 
 // https://vitejs.dev/config/
 export default {

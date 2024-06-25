@@ -12,7 +12,6 @@
 		"ahooks": "^3.8.0"
 	},
 	"devDependencies": {
-		"@unocss/preset-rem-to-px": "^0.61.0",
 		"@vitejs/plugin-react-swc": "^3.7.0",
 		"@vitejs/plugin-vue": "^5.0.5",
 		"@vitest/coverage-v8": "^1.6.0",
@@ -29,8 +28,9 @@
 		"vite-plugin-dts": "^3.9.1",
 		"vite-plugin-progress": "^0.0.7",
 		"vite-plugin-react-click-to-component": "^3.0.0",
+		"vite-plugin-style-import": "^2.0.0",
+		"vite-plugin-svg-icons": "^2.0.1",
 		"vite-plugin-vue-devtools": "^7.3.4",
-		"vite-plugin-vue-setup-extend": "^0.4.0",
 		"vitest": "^1.6.0",
 		"vue-tsc": "^2.0.22"
 	}

@@ -2,7 +2,7 @@
 	<div>
 		contents12
 		<ElButton type="primary">{{ isCollapse }}</ElButton>
-		<mqy-background-layout :isCollapse="getCollapse" @changeProp="handleChange">
+		<mqy-background-layout :isCollapse="getCollapse" :menuList="menuList" @changeProp="handleChange">
 			<!--eslint-disable-next-line vue/no-deprecated-slot-attribute-->
 			<div slot="body">
 				<router-view>
@@ -30,6 +30,38 @@
 	const getCollapse = computed(() => {
 		return width.value < 1000 ? true : isCollapse.value
 	})
+
+	const menuList = [
+		{
+			path: '/',
+			meta: {
+				icon: 'i-mdi-alarm',
+				title: '首页',
+				isMenu: true,
+				isViewRouter: false,
+			},
+			children: [
+				{
+					path: '/home1',
+					meta: {
+						icon: 'mdi mdi-account',
+						title: '首页1',
+						isMenu: true,
+						isViewRouter: false,
+					},
+				},
+				{
+					path: '/home2',
+					meta: {
+						icon: 'mdi mdi-account',
+						title: '首页2',
+						isMenu: true,
+						isViewRouter: false,
+					},
+				},
+			],
+		},
+	]
 
 	onMounted(() => {
 		// ApiGetSendSms({

@@ -4,8 +4,10 @@
 	<mqy-background-layout
 		:isCollapse="themeConfig.isCollapse"
 		:menuList="themeConfig.menuList"
+		:isMobile="themeConfig.isMobile"
 		@changeProp="handleChange"
 	>
+		<div slot="logo">122</div>
 		<div slot="body">12</div>
 	</mqy-background-layout>
 </template>
@@ -18,6 +20,7 @@
 	// @unocss-include
 	const themeConfig = ref({
 		isCollapse: false,
+		isMobile: false,
 		menuList,
 	})
 

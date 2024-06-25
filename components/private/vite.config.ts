@@ -1,12 +1,9 @@
 /// <reference types="vitest" />
 import { UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import AutoImport from 'unplugin-auto-import/vite'
-import ElementPlus from 'unplugin-element-plus/vite'
 import copy from 'rollup-plugin-copy'
 import { resolve } from 'path'
 import { readdirSync } from 'fs'
-import { presetIcons } from 'unocss'
 
 const whiteList = ['index.ts', 'Example']
 // 获取所有组件目录
@@ -25,11 +22,9 @@ entries['index'] = resolve(__dirname, 'src/components/index.ts')
 // }
 
 // 目前这种导入方式需要tsx支持
-import { setupViteTest } from '@mqy/vite-config/common/vitest'
-import dts from '@mqy/vite-config/common/plugins/dts'
-import compress from '@mqy/vite-config/common/plugins/compress'
-import unocss from '@mqy/vite-config/common/plugins/unocss'
-import { setupViteLib } from '@mqy/vite-config/common/build/lib'
+import { setupViteTest, dts, compress, unocss, setupViteLib, AutoImport, Components } from '@mqy/vite-config/common'
+import { ElementPlusResolver } from '@mqy/vite-config/common/autoImport/components'
+import { presetIcons } from '@mqy/vite-config/common/plugins/unocss'
 
 import { menuIcon } from '@/assets/menuList'
 
@@ -75,10 +70,17 @@ const config: UserConfig = {
 			},
 		}),
 		AutoImport({
-			imports: ['vue', 'react', '@vueuse/core'],
+			imports: ['vue', '@vueuse/core'],
+			resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
 			vueTemplate: true,
 		}),
-		ElementPlus({}),
+		Components({
+			// allow auto load markdown components under `./src/components/`
+			extensions: ['vue', 'md'],
+			// allow auto import and register components used in markdown
+			include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+			resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+		}),
 		dts({
 			include: ['src/components/**/*.ts'],
 			exclude: ['src/components/Example'],
