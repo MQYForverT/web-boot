@@ -1,7 +1,7 @@
 import { defineCustomElement } from 'vue'
 import BackgroundLayout from './BackgroundLayout.vue'
 import type { LayoutPublicProps } from './BackgroundLayout'
-import { LayoutType, propsEnum } from './BackgroundLayout'
+import { layoutEnum, animationEnum, propsEnum } from './BackgroundLayout'
 
 // 将组件转换为 web components
 export const BackgroundLayoutElement = defineCustomElement(BackgroundLayout)
@@ -25,4 +25,4 @@ declare global {
 	}
 }
 
-export { LayoutType, propsEnum }
+export { layoutEnum, animationEnum, propsEnum }

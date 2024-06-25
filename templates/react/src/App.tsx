@@ -4,7 +4,7 @@ function App() {
 	const ref = useRef(null)
 	const [isCollapse, setCollapse] = useState(false)
 
-	const handleCustomEvent = ({ detail = [] }) => {
+	const handleCustomEvent = (detail) => {
 		console.log('web1', detail)
 		switch (detail[0]) {
 			case propsEnum.isCollapse:
@@ -17,6 +17,7 @@ function App() {
 	useEventListener(
 		'changeProp',
 		({ detail = [] }) => {
+			console.log('web1', detail)
 			handleCustomEvent(detail)
 		},
 		{ target: ref },
@@ -65,7 +66,7 @@ function App() {
 			<div>react</div>
 			<div>{isCollapse + ''}</div>
 			<div>
-				<mqy-background-layout is-collapse={true} menu-list={JSON.stringify(menuList)} is-mobile={true}>
+				<mqy-background-layout ref={ref} is-collapse={isCollapse} menu-list={JSON.stringify(menuList)} is-mobile={true}>
 					<div slot="body">666</div>
 				</mqy-background-layout>
 			</div>

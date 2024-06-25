@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 	import { defineCustomElement } from 'vue'
-	import { propsEnum, propsKey, changePropKey } from '../../BackgroundLayout'
+	import { propsEnum, propsKey, emitsKey } from '../../BackgroundLayout'
 
 	import Aside from '../Aside/index.vue'
 	import AppMask from '../AppMask/index.vue'
@@ -33,11 +33,11 @@
 	customElements.define('mqy-app-mask', appMaskElement)
 
 	const props = inject(propsKey)!
-	const changeProp = inject(changePropKey)!
+	const emits = inject(emitsKey)!
 
 	const closeAppMask = () => {
 		console.log('点击没问题')
-		changeProp(propsEnum.isCollapse, false)
+		emits('changeProp', propsEnum.isCollapse, true)
 	}
 </script>
 

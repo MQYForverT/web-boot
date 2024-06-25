@@ -1,10 +1,10 @@
 import type { ExtractPropTypes, ExtractPublicPropTypes, PropType, InjectionKey } from 'vue'
 
-export enum LayoutType {
+export enum layoutEnum {
 	defaults = 'defaults',
 }
 
-export enum animationType {
+export enum animationEnum {
 	slideRight = 'slide-right',
 	slideLeft = 'slide-left',
 	opacitys = 'opacitys',
@@ -153,12 +153,12 @@ export const layoutProps = {
 		default: 'columns-round',
 	},
 	[propsEnum.animation]: {
-		type: String as PropType<animationType>,
-		default: animationType.slideRight,
+		type: String as PropType<animationEnum>,
+		default: animationEnum.slideRight,
 	},
 	[propsEnum.layout]: {
-		type: String as PropType<LayoutType>,
-		default: LayoutType.defaults,
+		type: String as PropType<layoutEnum>,
+		default: layoutEnum.defaults,
 	},
 	[propsEnum.globalTitle]: {
 		type: String,
@@ -193,15 +193,44 @@ export const propsKey = Symbol() as InjectionKey<LayoutPrivateProps>
  * keyof layoutProps为layoutProps 的所有键（属性名）的联合类型，则定义一个范型T继承它，代表传入的必须是其中一项，
  * 如果是其中一项，则返回正常的，否则返回never，这意味着对于不符合，个类型将会被视为无效。
  */
+type InferArray<T extends keyof LayoutPrivateProps> = T extends keyof LayoutPrivateProps
+	? [T, LayoutPrivateProps[T]]
+	: never
 export type LayoutEmits = {
-	changeProp: [prop: keyof LayoutPrivateProps, value: LayoutPrivateProps[keyof LayoutPrivateProps]]
+	(evt: 'changeProp', ...args: InferArray<keyof LayoutPrivateProps>): void
 }
-// 创建泛型类型来约束 changeProp 函数的参数类型
-export type changeProp = <K extends keyof LayoutPrivateProps>(prop: K, value: LayoutPrivateProps[K]) => void
-// 定义注入键
-export const changePropKey = Symbol() as InjectionKey<changeProp>
+
+export const emitsKey = Symbol() as InjectionKey<LayoutEmits>
 
 // ---------因为是web component，所以对外的类型都是基本类型
 export type LayoutPublicProps = ExtractPublicPropTypes<typeof layoutProps>
 
-// 转换为实际的类型
+// 转换类型映射
+export const processPropType = (props: LayoutPrivateProps) => {
+	return new Proxy(props, {
+		get(target, propKey, receiver) {
+			const value = Reflect.get(target, propKey, receiver)
+			switch (propKey) {
+				case propsEnum.isDrawer:
+				case propsEnum.isMobile:
+				case propsEnum.isCollapse:
+				case propsEnum.isAllOpen:
+				case propsEnum.isUniqueOpened:
+				case propsEnum.isFixedHeader:
+				case propsEnum.isBreadcrumb:
+				case propsEnum.isBreadcrumbIcon:
+				case propsEnum.isTagsView:
+				case propsEnum.isTagsViewIcon:
+				case propsEnum.isCacheTagsView:
+				case propsEnum.isSortableTagsView:
+				case propsEnum.isShareTagsView:
+				case propsEnum.isWatermark:
+				case propsEnum.isFooter:
+				case propsEnum.menuList:
+				case propsEnum.tagsShowNum:
+					return JSON.parse(value)
+			}
+			return value
+		},
+	})
+}
