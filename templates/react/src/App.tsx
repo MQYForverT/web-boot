@@ -65,7 +65,7 @@ function App() {
 			<div>react</div>
 			<div>{isCollapse + ''}</div>
 			<div>
-				<mqy-background-layout isCollapse={false} menu-list={JSON.stringify(menuList)}>
+				<mqy-background-layout is-collapse={true} menu-list={JSON.stringify(menuList)} is-mobile={true}>
 					<div slot="body">666</div>
 				</mqy-background-layout>
 			</div>

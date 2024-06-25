@@ -20,7 +20,7 @@
 	// @unocss-include
 	const themeConfig = ref({
 		isCollapse: false,
-		isMobile: false,
+		isMobile: true,
 		menuList,
 	})
 

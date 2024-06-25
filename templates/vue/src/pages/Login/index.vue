@@ -2,7 +2,7 @@
 	<div>
 		contents12
 		<ElButton type="primary">{{ isCollapse }}</ElButton>
-		<mqy-background-layout :isCollapse="getCollapse" :menuList="menuList" @changeProp="handleChange">
+		<mqy-background-layout :isCollapse="false" :menuList="menuList" @changeProp="handleChange">
 			<!--eslint-disable-next-line vue/no-deprecated-slot-attribute-->
 			<div slot="body">
 				<router-view>

@@ -1,4 +1,4 @@
-import type { ExtractPropTypes, PropType, InjectionKey } from 'vue'
+import type { ExtractPropTypes, ExtractPublicPropTypes, PropType, InjectionKey } from 'vue'
 
 export enum LayoutType {
 	defaults = 'defaults',
@@ -30,10 +30,6 @@ export enum propsEnum {
 	isUniqueOpened = 'isUniqueOpened',
 	// 是否开启固定 Header
 	isFixedHeader = 'isFixedHeader',
-	// 是否开启侧边栏折叠按钮
-	isShowSidebarCollapse = 'isShowSidebarCollapse',
-	// 是否开启顶部导航
-	isShowHeader = 'isShowHeader',
 	// 是否开启侧边栏
 	isShowSidebar = 'isShowSidebar',
 	// 是否开启面包屑
@@ -78,13 +74,14 @@ export enum propsEnum {
 	footerRecord = 'footerRecord',
 }
 
+// 为了兼容wc，设置可以传入字符串，然后去做转换
 export const layoutProps = {
 	[propsEnum.isDrawer]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: true,
 	},
 	[propsEnum.isMobile]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: false,
 	},
 	[propsEnum.defaultActivePath]: {
@@ -92,59 +89,59 @@ export const layoutProps = {
 		default: '',
 	},
 	[propsEnum.menuList]: {
-		type: Array as PropType<Menu.MenuOptions[]>,
-		default: [],
+		type: [Array, String] as PropType<Menu.MenuOptions[] | string>,
+		default: () => [],
 	},
 	[propsEnum.isCollapse]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: false,
 	},
 	[propsEnum.isAllOpen]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: true,
 	},
 	[propsEnum.isUniqueOpened]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: false,
 	},
 	[propsEnum.isFixedHeader]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: true,
 	},
 	[propsEnum.isBreadcrumb]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: true,
 	},
 	[propsEnum.isBreadcrumbIcon]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: false,
 	},
 	[propsEnum.isTagsView]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: false,
 	},
 	[propsEnum.isTagsViewIcon]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: false,
 	},
 	[propsEnum.tagsShowNum]: {
-		type: Number,
+		type: [Number, String],
 		default: 1,
 	},
 	[propsEnum.isCacheTagsView]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: false,
 	},
 	[propsEnum.isSortableTagsView]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: true,
 	},
 	[propsEnum.isShareTagsView]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: false,
 	},
 	[propsEnum.isWatermark]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: false,
 	},
 	[propsEnum.watermarkText]: {
@@ -172,7 +169,7 @@ export const layoutProps = {
 		default: '漠轻阴',
 	},
 	[propsEnum.isFooter]: {
-		type: Boolean,
+		type: [Boolean, String],
 		default: true,
 	},
 	[propsEnum.footerCompany]: {
@@ -185,48 +182,26 @@ export const layoutProps = {
 	},
 }
 // --------props----------
-export type layoutProps = ExtractPropTypes<typeof layoutProps>
+// 得到私有类型
+export type LayoutPrivateProps = ExtractPropTypes<typeof layoutProps>
+
 // 定义注入键
-export const propsKey = Symbol() as InjectionKey<layoutProps>
+export const propsKey = Symbol() as InjectionKey<LayoutPrivateProps>
 
 // --------emits----------分步判断change类型
 /**
  * keyof layoutProps为layoutProps 的所有键（属性名）的联合类型，则定义一个范型T继承它，代表传入的必须是其中一项，
  * 如果是其中一项，则返回正常的，否则返回never，这意味着对于不符合，个类型将会被视为无效。
  */
-type InferArray<T extends keyof layoutProps> = T extends keyof layoutProps ? [T, layoutProps[T]] : never
 export type LayoutEmits = {
-	changeProp: InferArray<keyof layoutProps>
+	changeProp: [prop: keyof LayoutPrivateProps, value: LayoutPrivateProps[keyof LayoutPrivateProps]]
 }
+// 创建泛型类型来约束 changeProp 函数的参数类型
+export type changeProp = <K extends keyof LayoutPrivateProps>(prop: K, value: LayoutPrivateProps[K]) => void
 // 定义注入键
-export const emitsKey = Symbol() as InjectionKey<ReturnType<typeof defineEmits>>
+export const changePropKey = Symbol() as InjectionKey<changeProp>
 
 // ---------因为是web component，所以对外的类型都是基本类型
-export interface LayoutPublicProps {
-	[propsEnum.isDrawer]?: boolean | string
-	[propsEnum.isMobile]?: boolean | string
-	[propsEnum.defaultActivePath]?: string
-	[propsEnum.menuList]?: Menu.MenuOptions[] | string
-	[propsEnum.isCollapse]?: boolean | string
-	[propsEnum.isAllOpen]?: boolean | string
-	[propsEnum.isUniqueOpened]?: boolean | string
-	[propsEnum.isFixedHeader]?: boolean | string
-	[propsEnum.isBreadcrumb]?: boolean | string
-	[propsEnum.isBreadcrumbIcon]?: boolean | string
-	[propsEnum.isTagsView]?: boolean | string
-	[propsEnum.isTagsViewIcon]?: boolean | string
-	[propsEnum.tagsShowNum]?: number | string
-	[propsEnum.isCacheTagsView]?: boolean | string
-	[propsEnum.isSortableTagsView]?: boolean | string
-	[propsEnum.isShareTagsView]?: boolean | string
-	[propsEnum.isWatermark]?: boolean | string
-	[propsEnum.watermarkText]?: string
-	[propsEnum.columnsAsideStyle]?: string
-	[propsEnum.animation]?: string
-	[propsEnum.layout]?: LayoutType | string
-	[propsEnum.globalTitle]?: string
-	[propsEnum.globalViceTitle]?: string
-	[propsEnum.isFooter]?: boolean | string
-	[propsEnum.footerCompany]?: string
-	[propsEnum.footerRecord]?: string
-}
+export type LayoutPublicProps = ExtractPublicPropTypes<typeof layoutProps>
+
+// 转换为实际的类型

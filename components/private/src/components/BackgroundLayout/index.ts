@@ -12,7 +12,7 @@ export function register() {
 
 declare module 'vue' {
 	export interface GlobalComponents {
-		MqyBackgroundLayout: LayoutPublicProps
+		MqyBackgroundLayout: typeof BackgroundLayoutElement
 	}
 }
 
