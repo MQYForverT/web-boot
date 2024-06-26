@@ -6,7 +6,6 @@
 				<slot name="logo" />
 			</div>
 		</mqy-aside>
-		<el-button type="primary">btn</el-button>
 		<slot name="body" />
 		<!-- <el-container class="flex-center" :class="{ 'layout-backtop': !isFixedHeader }">
 			<Header v-if="isFixedHeader" />
@@ -47,5 +46,4 @@
 
 <style lang="scss">
 	@use 'element-plus/theme-chalk/src/container.scss';
-	@use 'element-plus/theme-chalk/src/button.scss';
 </style>

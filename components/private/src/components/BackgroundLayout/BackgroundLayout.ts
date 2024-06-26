@@ -89,7 +89,7 @@ export const layoutProps = {
 		default: '',
 	},
 	[propsEnum.menuList]: {
-		type: [Array, String] as PropType<Menu.MenuOptions[] | string>,
+		type: [Array, String] as PropType<Layout.Menu[] | string>,
 		default: () => [],
 	},
 	[propsEnum.isCollapse]: {
@@ -185,9 +185,6 @@ export const layoutProps = {
 // 得到私有类型
 export type LayoutPrivateProps = ExtractPropTypes<typeof layoutProps>
 
-// 定义注入键
-export const propsKey = Symbol() as InjectionKey<LayoutPrivateProps>
-
 // --------emits----------分步判断change类型
 /**
  * keyof layoutProps为layoutProps 的所有键（属性名）的联合类型，则定义一个范型T继承它，代表传入的必须是其中一项，
@@ -198,12 +195,22 @@ type InferArray<T extends keyof LayoutPrivateProps> = T extends keyof LayoutPriv
 	: never
 export type LayoutEmits = {
 	(evt: 'changeProp', ...args: InferArray<keyof LayoutPrivateProps>): void
+	(evt: 'selectMenu', ...args: [string]): void
 }
 
 export const emitsKey = Symbol() as InjectionKey<LayoutEmits>
 
 // ---------因为是web component，所以对外的类型都是基本类型
 export type LayoutPublicProps = ExtractPublicPropTypes<typeof layoutProps>
+
+// 排除掉string类型
+type propPrecessType = {
+	[K in keyof LayoutPrivateProps]: LayoutPrivateProps[K] extends string
+		? string
+		: Exclude<LayoutPrivateProps[K], string>
+}
+// 定义注入键
+export const propsKey = Symbol() as InjectionKey<propPrecessType>
 
 // 转换类型映射
 export const processPropType = (props: LayoutPrivateProps) => {
@@ -232,5 +239,5 @@ export const processPropType = (props: LayoutPrivateProps) => {
 			}
 			return value
 		},
-	})
+	}) as propPrecessType
 }

@@ -1,104 +1,60 @@
 export const menuList = [
 	{
 		path: '/',
-		meta: {
-			icon: 'i-mdi-alarm',
-			title: '首页',
-			isMenu: true,
-			isViewRouter: false,
-		},
+		title: '首页',
+		icon: 'i-mdi-alarm',
 		children: [
 			{
 				path: '/home1',
-				meta: {
-					icon: 'mdi mdi-account',
-					title: '首页1',
-					isMenu: true,
-					isViewRouter: false,
-				},
+				icon: 'mdi mdi-account',
+				title: '首页1',
 			},
 			{
 				path: '/home2',
-				meta: {
-					icon: 'mdi mdi-account',
-					title: '首页2',
-					isMenu: true,
-					isViewRouter: false,
-				},
+				icon: 'mdi mdi-account',
+				title: '首页2',
 			},
 		],
 	},
 	{
 		path: '/menu',
-		meta: {
-			icon: 'mdi mdi-account',
-			title: '菜单',
-			isMenu: true,
-			isViewRouter: false,
-		},
+		icon: 'mdi mdi-account',
+		title: '菜单',
 		children: [
 			{
 				path: '/menu1',
-				meta: {
-					icon: 'mdi mdi-account',
-					title: '菜单1',
-					isMenu: true,
-					isViewRouter: false,
-				},
+				icon: 'mdi mdi-account',
+				title: '菜单1',
 			},
 			{
 				path: '/menu2',
-				meta: {
-					icon: 'mdi mdi-account',
-					title: '菜单2',
-					isMenu: true,
-					isViewRouter: false,
-				},
+				icon: 'mdi mdi-account',
+				title: '菜单2',
 			},
 			{
 				path: '/menu3',
-				meta: {
-					icon: 'mdi mdi-account',
-					title: '菜单3',
-					isMenu: true,
-					isViewRouter: false,
-				},
+				icon: 'mdi mdi-account',
+				title: '菜单3',
 			},
 			{
 				path: '/menu4',
-				meta: {
-					icon: 'mdi mdi-account',
-					title: '菜单4',
-					isMenu: true,
-					isViewRouter: false,
-				},
+				icon: 'mdi mdi-account',
+				title: '菜单4',
 			},
 			{
 				path: '/menu5',
-				meta: {
-					icon: 'mdi mdi-account',
-					title: '菜单5',
-					isMenu: true,
-					isViewRouter: false,
-				},
+				icon: 'mdi mdi-account',
+				title: '菜单5',
 			},
 			{
 				path: '/menu6',
-				meta: {
-					icon: 'mdi mdi-account',
-					title: '菜单6',
-					isMenu: true,
-					isViewRouter: false,
-				},
+				icon: 'mdi mdi-account',
+				title: '菜单6',
 			},
 			{
 				path: '/menu7',
-				meta: {
-					icon: 'mdi mdi-account',
-					title: '菜单7',
-					isMenu: true,
-					isViewRouter: false,
-				},
+				icon: 'mdi mdi-account',
+				title: '菜单7',
 			},
 		],
 	},

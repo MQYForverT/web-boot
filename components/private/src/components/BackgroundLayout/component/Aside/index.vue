@@ -1,11 +1,11 @@
 <template>
-	<el-aside :class="['sider', props.isMobile && 'fixed top-0 bottom-0 left-0']" :width="collapseWidth">
+	<el-aside :class="['sider', props.isMobile && 'fixed top-0 bottom-0 left-0 bg-red']" :width="collapseWidth">
 		<mqy-logo>
 			<div slot="logo">
 				<slot name="logo" />
 			</div>
 		</mqy-logo>
-		<!-- <Menu />  -->
+		<mqy-menu />
 	</el-aside>
 </template>
 
@@ -14,10 +14,13 @@
 	import { propsKey } from '../../BackgroundLayout'
 	import { ElAside } from 'element-plus'
 	import Logo from './Logo.vue'
-	// import Menu from './Menu.vue'
+	import Menu from './Menu.vue'
 
 	const logoElement = defineCustomElement(Logo)
 	customElements.define('mqy-logo', logoElement)
+
+	const menuElement = defineCustomElement(Menu)
+	customElements.define('mqy-menu', menuElement)
 
 	const props = inject(propsKey)!
 

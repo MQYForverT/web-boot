@@ -1,0 +1,8 @@
+@import url('./element-plus');
+@import url('./transition');
+@import url('./reset');
+
+/* 灰色模式 */
+.html-grey {
+  filter: grayscale(100%);
+}

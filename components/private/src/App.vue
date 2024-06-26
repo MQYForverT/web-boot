@@ -3,12 +3,12 @@
 	<!-- <mqy-example id="example" ref="mqy" title="title1" style="margin-top: 20px" /> -->
 	<mqy-background-layout
 		:isCollapse="themeConfig.isCollapse"
-		:menuList="themeConfig.menuList"
+		:menuList="JSON.stringify(themeConfig.menuList)"
+		:defaultActivePath="themeConfig.defaultActivePath"
 		:isMobile="themeConfig.isMobile"
 		@changeProp="handleChange"
 	>
 		<div slot="logo">122</div>
-		<div slot="body">12</div>
 	</mqy-background-layout>
 </template>
 
@@ -20,8 +20,9 @@
 	// @unocss-include
 	const themeConfig = ref({
 		isCollapse: false,
-		isMobile: true,
+		isMobile: false,
 		menuList,
+		defaultActivePath: menuList[0].path,
 	})
 
 	const handleChange = ({ detail = [] }) => {

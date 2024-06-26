@@ -24,3 +24,8 @@
 	const emits = defineEmits<LayoutEmits>()
 	provide(emitsKey, emits)
 </script>
+
+<style lang="scss">
+	@use 'element-plus/theme-chalk/dark/css-vars.css';
+	@use './styles/index.scss';
+</style>
