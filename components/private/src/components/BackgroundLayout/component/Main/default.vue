@@ -35,7 +35,6 @@
 	const emits = inject(emitsKey)!
 
 	const closeAppMask = () => {
-		console.log('点击没问题')
 		emits('changeProp', propsEnum.isCollapse, true)
 	}
 </script>
