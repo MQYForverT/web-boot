@@ -3,6 +3,30 @@ import BackgroundLayout from './BackgroundLayout.vue'
 import type { LayoutPublicProps } from './BackgroundLayout'
 import { layoutEnum, animationEnum, propsEnum } from './BackgroundLayout'
 
+// 临时办法，需要把所有用到unocss到地方都在这里导入
+import defaults from './component/Main/default.vue'
+import AppMask from './component/AppMask/index.vue'
+//Aside
+import Aside from './component/Aside/index.vue'
+import Logo from './component/Aside/Logo.vue'
+import Menu from './component/Aside/Menu.vue'
+import MenuItem from './component/Aside/MenuItem.vue'
+// Header
+import Header from './component/Header/index.vue'
+import MenuCollapse from './component/Header/MenuCollapse.vue'
+import Breadcrumb from './component/Header/Breadcrumb.vue'
+BackgroundLayout.styles.push(
+	...defaults.styles,
+	...AppMask.styles,
+	...Aside.styles,
+	...Logo.styles,
+	...Menu.styles,
+	...MenuItem.styles,
+	...Header.styles,
+	...MenuCollapse.styles,
+	...Breadcrumb.styles,
+)
+
 // 将组件转换为 web components
 export const BackgroundLayoutElement = defineCustomElement(BackgroundLayout)
 // 注册
@@ -25,4 +49,4 @@ declare global {
 	}
 }
 
-export { layoutEnum, animationEnum, propsEnum }
+export { BackgroundLayout, layoutEnum, animationEnum, propsEnum }

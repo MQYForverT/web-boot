@@ -59,5 +59,3 @@ export const menuList = [
 		],
 	},
 ]
-
-export const menuIcon = ['i-mdi-alarm']

@@ -1,21 +1,20 @@
 <template>
-	<mqy-defaults>
-		<div slot="logo">
-			<slot name="logo" />
-		</div>
-		<div slot="body">
+	<defaults :class="['layout-menu-light', proxyProps.isDark && 'dark']">
+		<template #logo>
+			<slot name="logo">
+				<Logo width="30" height="30" fill="var(--el-color-primary)" />
+			</slot>
+		</template>
+		<template #body>
 			<slot name="body" />
-		</div>
-	</mqy-defaults>
+		</template>
+	</defaults>
 </template>
 <script setup lang="ts">
-	import { defineCustomElement } from 'vue'
 	import { layoutProps, propsKey, processPropType, emitsKey } from './BackgroundLayout'
 	import type { LayoutEmits } from './BackgroundLayout'
 	import defaults from './component/Main/default.vue'
-
-	const defaultsElement = defineCustomElement(defaults)
-	customElements.define('mqy-defaults', defaultsElement)
+	import Logo from '@/assets/svg/logo.svg?component'
 
 	const props = defineProps(layoutProps)
 	const proxyProps = processPropType(props)
@@ -26,6 +25,14 @@
 </script>
 
 <style lang="scss">
+	// 把所有用到的element样式都在这里申明
 	@use 'element-plus/theme-chalk/dark/css-vars.css';
-	@use './styles/index.scss';
+	@use 'element-plus/theme-chalk/src/container.scss';
+	@use 'element-plus/theme-chalk/src/header.scss';
+	@use 'element-plus/theme-chalk/src/scrollbar.scss';
+	@use 'element-plus/theme-chalk/src/aside.scss';
+	@use 'element-plus/theme-chalk/src/menu.scss';
+	@use 'element-plus/theme-chalk/src/backtop.scss';
+
+	@import url('./styles/index.scss');
 </style>

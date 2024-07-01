@@ -4,11 +4,10 @@
 	<mqy-background-layout
 		:isCollapse="themeConfig.isCollapse"
 		:menuList="JSON.stringify(themeConfig.menuList)"
-		:defaultActivePath="themeConfig.defaultActivePath"
 		:isMobile="themeConfig.isMobile"
+		:isDark="true"
 		@changeProp="handleChange"
 	>
-		<div slot="logo">122</div>
 	</mqy-background-layout>
 </template>
 
@@ -22,7 +21,6 @@
 		isCollapse: false,
 		isMobile: false,
 		menuList,
-		defaultActivePath: menuList[0].path,
 	})
 
 	const handleChange = ({ detail = [] }) => {
@@ -33,3 +31,7 @@
 		// 你的逻辑
 	}
 </script>
+
+<style>
+	@unocss-placeholder;
+</style>

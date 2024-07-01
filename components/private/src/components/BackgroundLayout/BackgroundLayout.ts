@@ -15,10 +15,12 @@ export enum propsEnum {
 	isDrawer = 'isDrawer',
 	// 当前是否是移动端，移动端的定义交给外部
 	isMobile = 'isMobile',
+	// 当前是否暗黑模式
+	isDark = 'isDark',
 	/**
 	 * 界面设置
 	 */
-	// 默认激活的path
+	// 激活的path
 	defaultActivePath = 'defaultActivePath',
 	// 菜单数组
 	menuList = 'menuList',
@@ -81,6 +83,10 @@ export const layoutProps = {
 		default: true,
 	},
 	[propsEnum.isMobile]: {
+		type: [Boolean, String],
+		default: false,
+	},
+	[propsEnum.isDark]: {
 		type: [Boolean, String],
 		default: false,
 	},
@@ -220,6 +226,7 @@ export const processPropType = (props: LayoutPrivateProps) => {
 			switch (propKey) {
 				case propsEnum.isDrawer:
 				case propsEnum.isMobile:
+				case propsEnum.isDark:
 				case propsEnum.isCollapse:
 				case propsEnum.isAllOpen:
 				case propsEnum.isUniqueOpened:

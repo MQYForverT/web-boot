@@ -18,3 +18,7 @@
 	}
 	defineProps<Props>()
 </script>
+
+<style>
+	@unocss-placeholder;
+</style>

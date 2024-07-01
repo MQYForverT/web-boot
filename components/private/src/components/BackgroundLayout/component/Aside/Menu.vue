@@ -1,7 +1,7 @@
 <template>
 	<el-scrollbar>
 		<el-menu
-			:default-active="props.defaultActivePath"
+			:default-active="activePath"
 			:default-openeds="getAllOpenList"
 			class="!w-full !border-0"
 			:unique-opened="props.isUniqueOpened"
@@ -17,11 +17,12 @@
 </template>
 
 <script lang="ts" setup>
-	import { propsKey, emitsKey } from '../../BackgroundLayout'
+	import useInject from '../../hooks/useInject'
+	import useState from '../../hooks/useState'
 	import MenuItem from './MenuItem.vue'
 
-	const props = inject(propsKey)!
-	const emits = inject(emitsKey)!
+	const { props, emits } = useInject()
+	const { activePath } = useState()
 
 	const getAllOpenList = computed(() => {
 		return props.isAllOpen ? props.menuList.map((x) => x.path) : []
@@ -29,20 +30,10 @@
 
 	const handleSelect = (key: string) => {
 		emits('selectMenu', key)
+		activePath.value = key
 	}
 </script>
 
 <style>
 	@unocss-placeholder;
-</style>
-
-<style lang="scss">
-	@use 'element-plus/theme-chalk/src/scrollbar.scss';
-	@use 'element-plus/theme-chalk/src/menu.scss';
-
-	.truncate {
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
 </style>
