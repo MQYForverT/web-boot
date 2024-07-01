@@ -4,10 +4,17 @@ export enum layoutEnum {
 	defaults = 'defaults',
 }
 
+export enum menuModeEnum {
+	light = 'light',
+	dark = 'dark',
+}
+
 export enum animationEnum {
-	slideRight = 'slide-right',
-	slideLeft = 'slide-left',
-	opacitys = 'opacitys',
+	zoomFade = 'zoom-fade',
+	fadeSlide = 'fade-slide',
+	fade = 'fade',
+	fadeBottom = 'fade-bottom',
+	fadeScale = 'fade-scale',
 }
 
 export enum propsEnum {
@@ -15,8 +22,12 @@ export enum propsEnum {
 	settingVisible = 'settingVisible',
 	// 当前是否是移动端，移动端的判断交给外部，如果不传，则判断逻辑交给内部
 	isMobile = 'isMobile',
-	// 当前是否暗黑模式
+	// 当前是否暗黑模式【内部逻辑属性】
 	isDark = 'isDark',
+	// 当前主题颜色【内部逻辑属性】
+	themeColor = 'themeColor',
+	// 菜单栏模式【内部逻辑属性】
+	menuMode = 'menuMode',
 	/**
 	 * 界面设置
 	 */
@@ -24,17 +35,15 @@ export enum propsEnum {
 	defaultActivePath = 'defaultActivePath',
 	// 菜单数组
 	menuList = 'menuList',
-	// 是否折叠菜单，判断交给外部，如果不传，则判断逻辑交给内部
+	// 是否折叠菜单，判断交给外部，如果不传，则判断逻辑交给内部【内部逻辑属性】
 	isCollapse = 'isCollapse',
-	// 是否默认全部展开
+	// 是否默认全部展开【内部逻辑属性】
 	isAllOpen = 'isAllOpen',
-	// 是否开启菜单手风琴效果
+	// 是否开启菜单手风琴效果【内部逻辑属性】
 	isUniqueOpened = 'isUniqueOpened',
-	// 是否开启固定 Header
+	// 是否开启固定 Header【内部逻辑属性】
 	isFixedHeader = 'isFixedHeader',
-	// 是否开启侧边栏
-	isShowSidebar = 'isShowSidebar',
-	// 是否开启面包屑
+	// 是否开启面包屑【内部逻辑属性】
 	isBreadcrumb = 'isBreadcrumb',
 	/**
 	 * header设置
@@ -47,18 +56,14 @@ export enum propsEnum {
 	activeLanguage = 'activeLanguage',
 	// 用户配置
 	userAvatar = 'userAvatar',
-	// 是否开启 Tagsview
+	// 是否开启 Tagsview【内部逻辑属性】
 	isTagsView = 'isTagsView',
-	// 是否开启 Tagsview图标
+	// 是否开启 Tagsview图标【内部逻辑属性】
 	isTagsViewIcon = 'isTagsViewIcon',
 	// tag数量
 	tagsShowNum = 'tagsShowNum',
 	// 是否开启 TagsView 缓存
 	isCacheTagsView = 'isCacheTagsView',
-	// 是否开启 TagsView 托拽
-	isSortableTagsView = 'isSortableTagsView',
-	// 是否开启 TagsView 共用
-	isShareTagsView = 'isShareTagsView',
 	// 是否开启 水印
 	isWatermark = 'isWatermark',
 	// 水印文字
@@ -66,11 +71,9 @@ export enum propsEnum {
 	/**
 	 * 其它设置
 	 */
-	// 默认分栏高亮风格，可选 1、 圆角 columns-round 2、 卡片 columns-card
-	columnsAsideStyle = 'columnsAsideStyle',
-	// 主页面切换动画：可选值"<slide-right|slide-left|opacitys>"，默认 slide-right
-	animation = 'animation',
-	// 布局
+	// 主页面切换动画：可选值"<zoom-fade|fade-slide|fade|fade-bottom|fade-scale>"，默认 zoom-fade【内部逻辑属性】
+	animation = 'zoom-fade',
+	// 布局【内部逻辑属性】
 	layout = 'layout',
 	// 主标题
 	globalTitle = 'globalTitle',
@@ -97,6 +100,14 @@ export const layoutProps = {
 	[propsEnum.isDark]: {
 		type: [Boolean, String],
 		default: false,
+	},
+	[propsEnum.themeColor]: {
+		type: String,
+		default: '',
+	},
+	[propsEnum.menuMode]: {
+		type: String as PropType<menuModeEnum>,
+		default: menuModeEnum.light,
 	},
 	[propsEnum.defaultActivePath]: {
 		type: String,
@@ -158,14 +169,6 @@ export const layoutProps = {
 		type: [Boolean, String],
 		default: false,
 	},
-	[propsEnum.isSortableTagsView]: {
-		type: [Boolean, String],
-		default: true,
-	},
-	[propsEnum.isShareTagsView]: {
-		type: [Boolean, String],
-		default: false,
-	},
 	[propsEnum.isWatermark]: {
 		type: [Boolean, String],
 		default: false,
@@ -174,13 +177,9 @@ export const layoutProps = {
 		type: String,
 		default: '漠轻阴',
 	},
-	[propsEnum.columnsAsideStyle]: {
-		type: String,
-		default: 'columns-round',
-	},
 	[propsEnum.animation]: {
 		type: String as PropType<animationEnum>,
-		default: animationEnum.slideRight,
+		default: animationEnum.zoomFade,
 	},
 	[propsEnum.layout]: {
 		type: String as PropType<layoutEnum>,
@@ -256,8 +255,6 @@ export const processPropType = (props: LayoutPrivateProps) => {
 				case propsEnum.isTagsView:
 				case propsEnum.isTagsViewIcon:
 				case propsEnum.isCacheTagsView:
-				case propsEnum.isSortableTagsView:
-				case propsEnum.isShareTagsView:
 				case propsEnum.isWatermark:
 				case propsEnum.isFooter:
 				case propsEnum.menuList:
