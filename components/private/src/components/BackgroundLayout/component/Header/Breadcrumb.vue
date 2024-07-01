@@ -1,5 +1,5 @@
 <template>
-	<el-breadcrumb v-if="props.isBreadcrumb && !props.isMobile" separator="/" class="p-x-2">
+	<el-breadcrumb v-if="props.isBreadcrumb && !isMobile" separator="/" class="p-x-2">
 		<el-breadcrumb-item v-for="(item, index) in breadcrumbList" :key="index">
 			<a class="!font-normal" @click.prevent="handleLink(item)"> {{ item.title }}</a>
 		</el-breadcrumb-item>
@@ -10,7 +10,7 @@
 	import useInject from '../../hooks/useInject'
 	import useState from '../../hooks/useState'
 	const { props, emits } = useInject()
-	const { activePath } = useState()
+	const { activePath, isMobile } = useState()
 
 	const cache = new Map()
 

@@ -6,7 +6,7 @@
 			class="!w-full !border-0"
 			:unique-opened="props.isUniqueOpened"
 			:collapse-transition="false"
-			:collapse="props.isCollapse"
+			:collapse="isCollapse"
 			popper-effect="dark"
 			router
 			@select="handleSelect"
@@ -22,7 +22,7 @@
 	import MenuItem from './MenuItem.vue'
 
 	const { props, emits } = useInject()
-	const { activePath } = useState()
+	const { activePath, isCollapse } = useState()
 
 	const getAllOpenList = computed(() => {
 		return props.isAllOpen ? props.menuList.map((x) => x.path) : []

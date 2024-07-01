@@ -1,5 +1,5 @@
 <template>
-	<el-aside :class="['sider', props.isMobile && 'fixed top-0 bottom-0 left-0 bg-red']" :width="collapseWidth">
+	<el-aside :class="['sider', isMobile && 'fixed top-0 bottom-0 left-0 bg-red']" :width="collapseWidth">
 		<Logo>
 			<template #logo>
 				<slot name="logo" />
@@ -10,19 +10,17 @@
 </template>
 
 <script lang="ts" setup>
-	import useInject from '../../hooks/useInject'
-
-	import { ElAside } from 'element-plus'
+	import useState from '../../hooks/useState'
 	import Logo from './Logo.vue'
 	import Menu from './Menu.vue'
 
-	const { props } = useInject()
+	const { isCollapse, isMobile } = useState()
 
 	const collapseWidth = computed(() => {
-		if (props.isMobile) {
-			return props.isCollapse ? '0' : '210px'
+		if (isMobile.value) {
+			return isCollapse.value ? '0' : '210px'
 		} else {
-			return props.isCollapse ? '65px' : '210px'
+			return isCollapse.value ? '65px' : '210px'
 		}
 	})
 </script>

@@ -14,5 +14,17 @@ export default createGlobalState(() => {
 		props.defaultActivePath ? props.defaultActivePath : props.menuList.length ? getActivePath(props.menuList[0]) : '',
 	)
 
-	return { activePath }
+	const defaultCollapse = computed(() => {
+		return props.isCollapse
+	})
+
+	const defaultMobile = computed(() => {
+		return props.isMobile
+	})
+
+	const isCollapse = ref(props.isCollapse !== undefined ? defaultCollapse : false)
+
+	const isMobile = ref(props.isMobile !== undefined ? defaultMobile : false)
+
+	return { activePath, isCollapse, isMobile }
 })

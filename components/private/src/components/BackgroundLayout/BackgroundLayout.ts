@@ -11,9 +11,9 @@ export enum animationEnum {
 }
 
 export enum propsEnum {
-	// 是否开启布局配置抽屉
-	isDrawer = 'isDrawer',
-	// 当前是否是移动端，移动端的定义交给外部
+	// 设置按钮是否可见
+	settingVisible = 'settingVisible',
+	// 当前是否是移动端，移动端的判断交给外部，如果不传，则判断逻辑交给内部
 	isMobile = 'isMobile',
 	// 当前是否暗黑模式
 	isDark = 'isDark',
@@ -24,7 +24,7 @@ export enum propsEnum {
 	defaultActivePath = 'defaultActivePath',
 	// 菜单数组
 	menuList = 'menuList',
-	// 是否折叠菜单
+	// 是否折叠菜单，判断交给外部，如果不传，则判断逻辑交给内部
 	isCollapse = 'isCollapse',
 	// 是否默认全部展开
 	isAllOpen = 'isAllOpen',
@@ -35,10 +35,18 @@ export enum propsEnum {
 	// 是否开启侧边栏
 	isShowSidebar = 'isShowSidebar',
 	// 是否开启面包屑
-	// 是否开启 Breadcrumb
 	isBreadcrumb = 'isBreadcrumb',
-	// 是否开启 Breadcrumb图标
-	isBreadcrumbIcon = 'isBreadcrumbIcon',
+	/**
+	 * header设置
+	 */
+	// 是否开启全屏功能
+	isFullScreen = 'isFullScreen',
+	// 多语言配置
+	language = 'language',
+	// 当前激活的语言
+	activeLanguage = 'activeLanguage',
+	// 用户配置
+	userAvatar = 'userAvatar',
 	// 是否开启 Tagsview
 	isTagsView = 'isTagsView',
 	// 是否开启 Tagsview图标
@@ -78,13 +86,13 @@ export enum propsEnum {
 
 // 为了兼容wc，设置可以传入字符串，然后去做转换
 export const layoutProps = {
-	[propsEnum.isDrawer]: {
+	[propsEnum.settingVisible]: {
 		type: [Boolean, String],
 		default: true,
 	},
 	[propsEnum.isMobile]: {
 		type: [Boolean, String],
-		default: false,
+		default: undefined,
 	},
 	[propsEnum.isDark]: {
 		type: [Boolean, String],
@@ -96,11 +104,11 @@ export const layoutProps = {
 	},
 	[propsEnum.menuList]: {
 		type: [Array, String] as PropType<Layout.Menu[] | string>,
-		default: () => [],
+		default: '[]',
 	},
 	[propsEnum.isCollapse]: {
 		type: [Boolean, String],
-		default: false,
+		default: undefined,
 	},
 	[propsEnum.isAllOpen]: {
 		type: [Boolean, String],
@@ -118,9 +126,21 @@ export const layoutProps = {
 		type: [Boolean, String],
 		default: true,
 	},
-	[propsEnum.isBreadcrumbIcon]: {
+	[propsEnum.isFullScreen]: {
 		type: [Boolean, String],
-		default: false,
+		default: true,
+	},
+	[propsEnum.language]: {
+		type: [Object, String] as PropType<Layout.Language | string>,
+		default: '{}',
+	},
+	[propsEnum.activeLanguage]: {
+		type: String,
+		default: '',
+	},
+	[propsEnum.userAvatar]: {
+		type: [Object, String] as PropType<Layout.UserAvatar | string>,
+		default: '{}',
 	},
 	[propsEnum.isTagsView]: {
 		type: [Boolean, String],
@@ -201,7 +221,7 @@ type InferArray<T extends keyof LayoutPrivateProps> = T extends keyof LayoutPriv
 	: never
 export type LayoutEmits = {
 	(evt: 'changeProp', ...args: InferArray<keyof LayoutPrivateProps>): void
-	(evt: 'selectMenu', ...args: [string]): void
+	(evt: 'selectMenu' | 'commandUser', ...args: [string]): void
 }
 
 export const emitsKey = Symbol() as InjectionKey<LayoutEmits>
@@ -224,15 +244,15 @@ export const processPropType = (props: LayoutPrivateProps) => {
 		get(target, propKey, receiver) {
 			const value = Reflect.get(target, propKey, receiver)
 			switch (propKey) {
-				case propsEnum.isDrawer:
-				case propsEnum.isMobile:
+				case propsEnum.settingVisible:
 				case propsEnum.isDark:
-				case propsEnum.isCollapse:
 				case propsEnum.isAllOpen:
 				case propsEnum.isUniqueOpened:
 				case propsEnum.isFixedHeader:
 				case propsEnum.isBreadcrumb:
-				case propsEnum.isBreadcrumbIcon:
+				case propsEnum.isFullScreen:
+				case propsEnum.language:
+				case propsEnum.userAvatar:
 				case propsEnum.isTagsView:
 				case propsEnum.isTagsViewIcon:
 				case propsEnum.isCacheTagsView:
@@ -243,6 +263,13 @@ export const processPropType = (props: LayoutPrivateProps) => {
 				case propsEnum.menuList:
 				case propsEnum.tagsShowNum:
 					return JSON.parse(value)
+				case propsEnum.isCollapse:
+				case propsEnum.isMobile:
+					if (value !== undefined) {
+						return JSON.parse(value)
+					} else {
+						return value
+					}
 			}
 			return value
 		},

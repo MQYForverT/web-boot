@@ -5,11 +5,9 @@
 			<Breadcrumb />
 		</div>
 		<div class="h-full flex-y-center">
-			<!-- <Search />
-			<FullScreen />
-			<Language />
-			<SystemMessage />
-			<UserAvatar /> -->
+			<FullScreen v-if="props.isFullScreen" />
+			<Language v-if="props.language.show" />
+			<UserAvatar v-if="props.userAvatar.show" />
 		</div>
 	</el-header>
 </template>
@@ -17,11 +15,13 @@
 <script lang="ts" setup>
 	import MenuCollapse from './MenuCollapse.vue'
 	import Breadcrumb from './Breadcrumb.vue'
-	// import Search from './Search.vue'
-	// import Language from './Language.vue'
-	// import UserAvatar from './UserAvatar.vue'
-	// import SystemMessage from './SystemMessage.vue'
-	// import FullScreen from './FullScreen.vue'
+	import FullScreen from './FullScreen.vue'
+	import Language from './Language.vue'
+	import UserAvatar from './UserAvatar.vue'
+
+	import useInject from '../../hooks/useInject'
+
+	const { props } = useInject()
 </script>
 
 <style>
