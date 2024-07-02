@@ -4,7 +4,7 @@
 			:default-active="state.activePath"
 			:default-openeds="getAllOpenList"
 			class="!w-full !border-0"
-			:unique-opened="props.isUniqueOpened"
+			:unique-opened="state.isUniqueOpened"
 			:collapse-transition="false"
 			:collapse="state.isCollapse"
 			popper-effect="dark"
@@ -25,7 +25,7 @@
 	const { state } = useState()
 
 	const getAllOpenList = computed(() => {
-		return props.isAllOpen ? props.menuList.map((x) => x.path) : []
+		return state.isAllOpen ? props.menuList.map((x) => x.path) : []
 	})
 
 	const handleSelect = (key: string) => {

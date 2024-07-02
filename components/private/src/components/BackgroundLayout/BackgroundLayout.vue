@@ -1,5 +1,5 @@
 <template>
-	<defaults ref="appWrapperRef" :class="['layout-menu-light', proxyProps.isDark && 'dark']">
+	<defaults ref="appWrapperRef">
 		<template #logo>
 			<slot name="logo">
 				<Logo width="30" height="30" fill="var(--el-color-primary)" />
@@ -28,7 +28,6 @@
 
 	onMounted(() => {
 		const { state } = useState()
-
 		useResizeObserver(appWrapperRef, (entries) => {
 			const { width } = entries[0].contentRect
 			if (width <= 640) {

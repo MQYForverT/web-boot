@@ -71,9 +71,10 @@ export enum propsEnum {
 	/**
 	 * 其它设置
 	 */
-	// 主页面切换动画：可选值"<zoom-fade|fade-slide|fade|fade-bottom|fade-scale>"，默认 zoom-fade【内部逻辑属性】
-	animation = 'zoom-fade',
-	// 布局【内部逻辑属性】
+	// 主页面切换动画：【内部逻辑属性】
+	// 可选值"<zoom-fade|fade-slide|fade|fade-bottom|fade-scale>"，默认 zoom-fade
+	animation = 'animation',
+	// 布局
 	layout = 'layout',
 	// 主标题
 	globalTitle = 'globalTitle',
@@ -99,15 +100,15 @@ export const layoutProps = {
 	},
 	[propsEnum.isDark]: {
 		type: [Boolean, String],
-		default: false,
+		default: undefined,
 	},
 	[propsEnum.themeColor]: {
 		type: String,
-		default: '',
+		default: undefined,
 	},
 	[propsEnum.menuMode]: {
 		type: String as PropType<menuModeEnum>,
-		default: menuModeEnum.light,
+		default: undefined,
 	},
 	[propsEnum.defaultActivePath]: {
 		type: String,
@@ -123,11 +124,11 @@ export const layoutProps = {
 	},
 	[propsEnum.isAllOpen]: {
 		type: [Boolean, String],
-		default: true,
+		default: undefined,
 	},
 	[propsEnum.isUniqueOpened]: {
 		type: [Boolean, String],
-		default: false,
+		default: undefined,
 	},
 	[propsEnum.isFixedHeader]: {
 		type: [Boolean, String],
@@ -135,7 +136,7 @@ export const layoutProps = {
 	},
 	[propsEnum.isBreadcrumb]: {
 		type: [Boolean, String],
-		default: true,
+		default: undefined,
 	},
 	[propsEnum.isFullScreen]: {
 		type: [Boolean, String],
@@ -155,11 +156,11 @@ export const layoutProps = {
 	},
 	[propsEnum.isTagsView]: {
 		type: [Boolean, String],
-		default: false,
+		default: undefined,
 	},
 	[propsEnum.isTagsViewIcon]: {
 		type: [Boolean, String],
-		default: false,
+		default: undefined,
 	},
 	[propsEnum.tagsShowNum]: {
 		type: [Number, String],
@@ -179,7 +180,7 @@ export const layoutProps = {
 	},
 	[propsEnum.animation]: {
 		type: String as PropType<animationEnum>,
-		default: animationEnum.zoomFade,
+		default: undefined,
 	},
 	[propsEnum.layout]: {
 		type: String as PropType<layoutEnum>,
@@ -218,8 +219,12 @@ export type LayoutEmits = {
 
 export const emitsKey = Symbol() as InjectionKey<LayoutEmits>
 
-// ---------因为是web component，所以对外的类型都是基本类型
-export type LayoutPublicProps = ExtractPublicPropTypes<typeof layoutProps>
+// ---------因为是web component，所以对外只提供string类型
+type LayoutPublicAtomProps = ExtractPublicPropTypes<typeof layoutProps>
+// 只保留string
+export type LayoutPublicProps = {
+	[K in keyof LayoutPublicAtomProps]: string
+}
 
 // 排除掉string类型
 export type propPrecessType = {
@@ -237,24 +242,27 @@ export const processPropType = (props: LayoutPrivateProps) => {
 			const value = Reflect.get(target, propKey, receiver)
 			switch (propKey) {
 				case propsEnum.settingVisible:
-				case propsEnum.isDark:
-				case propsEnum.isAllOpen:
-				case propsEnum.isUniqueOpened:
 				case propsEnum.isFixedHeader:
-				case propsEnum.isBreadcrumb:
 				case propsEnum.isFullScreen:
 				case propsEnum.language:
 				case propsEnum.userAvatar:
-				case propsEnum.isTagsView:
-				case propsEnum.isTagsViewIcon:
 				case propsEnum.isCacheTagsView:
 				case propsEnum.isWatermark:
 				case propsEnum.isFooter:
 				case propsEnum.menuList:
 				case propsEnum.tagsShowNum:
 					return JSON.parse(value)
+				// 以下是外部可控属性，如果外部传入值，则交给外部控制
 				case propsEnum.isCollapse:
 				case propsEnum.isMobile:
+				case propsEnum.isDark:
+				case propsEnum.themeColor:
+				case propsEnum.menuMode:
+				case propsEnum.isAllOpen:
+				case propsEnum.isUniqueOpened:
+				case propsEnum.isBreadcrumb:
+				case propsEnum.isTagsView:
+				case propsEnum.isTagsViewIcon:
 					if (value !== undefined) {
 						return JSON.parse(value)
 					} else {

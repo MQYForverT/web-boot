@@ -1,5 +1,5 @@
 <template>
-	<el-breadcrumb v-if="props.isBreadcrumb && !state.isMobile" separator="/" class="p-x-2">
+	<el-breadcrumb v-if="state.isBreadcrumb && !state.isMobile" separator="/" class="p-x-2">
 		<el-breadcrumb-item v-for="(item, index) in breadcrumbList" :key="index">
 			<a class="!font-normal" @click.prevent="handleLink(item)"> {{ item.title }}</a>
 		</el-breadcrumb-item>
