@@ -27,21 +27,21 @@
 	provide(emitsKey, emits)
 
 	onMounted(() => {
-		const { isCollapse, isMobile } = useState()
+		const { state } = useState()
 
 		useResizeObserver(appWrapperRef, (entries) => {
 			const { width } = entries[0].contentRect
 			if (width <= 640) {
-				if (proxyProps.isMobile === undefined) {
-					isMobile.value = true
+				if (!state.isMobile) {
+					state.isMobile = true
 				}
 
-				if (proxyProps.isCollapse === undefined && !isCollapse.value) {
-					isCollapse.value = true
+				if (!state.isCollapse) {
+					state.isCollapse = true
 				}
 			} else {
-				if (proxyProps.isMobile === undefined) {
-					isMobile.value = false
+				if (state.isMobile) {
+					state.isMobile = false
 				}
 			}
 		})

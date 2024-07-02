@@ -41,7 +41,7 @@ export enum propsEnum {
 	isAllOpen = 'isAllOpen',
 	// 是否开启菜单手风琴效果【内部逻辑属性】
 	isUniqueOpened = 'isUniqueOpened',
-	// 是否开启固定 Header【内部逻辑属性】
+	// 是否开启固定 Header
 	isFixedHeader = 'isFixedHeader',
 	// 是否开启面包屑【内部逻辑属性】
 	isBreadcrumb = 'isBreadcrumb',
@@ -211,15 +211,8 @@ export const layoutProps = {
 export type LayoutPrivateProps = ExtractPropTypes<typeof layoutProps>
 
 // --------emits----------分步判断change类型
-/**
- * keyof layoutProps为layoutProps 的所有键（属性名）的联合类型，则定义一个范型T继承它，代表传入的必须是其中一项，
- * 如果是其中一项，则返回正常的，否则返回never，这意味着对于不符合，个类型将会被视为无效。
- */
-type InferArray<T extends keyof LayoutPrivateProps> = T extends keyof LayoutPrivateProps
-	? [T, LayoutPrivateProps[T]]
-	: never
 export type LayoutEmits = {
-	(evt: 'changeProp', ...args: InferArray<keyof LayoutPrivateProps>): void
+	<T extends keyof LayoutPrivateProps>(evt: 'changeProp', ...args: [T, LayoutPrivateProps[T]]): void
 	(evt: 'selectMenu' | 'commandUser', ...args: [string]): void
 }
 
@@ -229,7 +222,7 @@ export const emitsKey = Symbol() as InjectionKey<LayoutEmits>
 export type LayoutPublicProps = ExtractPublicPropTypes<typeof layoutProps>
 
 // 排除掉string类型
-type propPrecessType = {
+export type propPrecessType = {
 	[K in keyof LayoutPrivateProps]: LayoutPrivateProps[K] extends string
 		? string
 		: Exclude<LayoutPrivateProps[K], string>

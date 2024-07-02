@@ -1,5 +1,5 @@
 <template>
-	<el-aside :class="['sider', isMobile && 'fixed top-0 bottom-0 left-0 bg-red']" :width="collapseWidth">
+	<el-aside :class="['sider', state.isMobile && 'fixed top-0 bottom-0 left-0 bg-red']" :width="collapseWidth">
 		<Logo>
 			<template #logo>
 				<slot name="logo" />
@@ -14,13 +14,13 @@
 	import Logo from './Logo.vue'
 	import Menu from './Menu.vue'
 
-	const { isCollapse, isMobile } = useState()
+	const { state } = useState()
 
 	const collapseWidth = computed(() => {
-		if (isMobile.value) {
-			return isCollapse.value ? '0' : '210px'
+		if (state.isMobile) {
+			return state.isCollapse ? '0' : '210px'
 		} else {
-			return isCollapse.value ? '65px' : '210px'
+			return state.isCollapse ? '65px' : '210px'
 		}
 	})
 </script>

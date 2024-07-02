@@ -6,7 +6,7 @@
 		:language="JSON.stringify(themeConfig.language)"
 		:userAvatar="JSON.stringify(themeConfig.userAvatar)"
 		activeLanguage="zh-CN"
-		:isDark="true"
+		:isDark="JSON.stringify(true)"
 		@changeProp="handleChange"
 	>
 	</mqy-background-layout>
@@ -55,7 +55,7 @@
 	})
 
 	const handleChange = ({ detail = [] }) => {
-		console.log('web1', detail)
+		console.log('web1', Boolean(detail[1]))
 		// const { isCollapse } = themeConfig.value
 		themeConfig.value.isCollapse = Boolean(detail[1])
 		// console.log(themeConfig.value)

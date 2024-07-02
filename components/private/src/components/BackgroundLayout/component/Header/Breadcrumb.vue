@@ -1,5 +1,5 @@
 <template>
-	<el-breadcrumb v-if="props.isBreadcrumb && !isMobile" separator="/" class="p-x-2">
+	<el-breadcrumb v-if="props.isBreadcrumb && !state.isMobile" separator="/" class="p-x-2">
 		<el-breadcrumb-item v-for="(item, index) in breadcrumbList" :key="index">
 			<a class="!font-normal" @click.prevent="handleLink(item)"> {{ item.title }}</a>
 		</el-breadcrumb-item>
@@ -10,7 +10,7 @@
 	import useInject from '../../hooks/useInject'
 	import useState from '../../hooks/useState'
 	const { props, emits } = useInject()
-	const { activePath, isMobile } = useState()
+	const { state } = useState()
 
 	const cache = new Map()
 
@@ -35,17 +35,17 @@
 	}
 
 	const breadcrumbList = computed(() => {
-		if (cache.has(activePath.value)) {
-			return cache.get(activePath.value)
+		if (cache.has(state.activePath)) {
+			return cache.get(state.activePath)
 		}
-		const data = findPath(props.menuList, activePath.value)
-		cache.set(activePath.value, data)
+		const data = findPath(props.menuList, state.activePath)
+		cache.set(state.activePath, data)
 		return data
 	})
 
 	const handleLink = (item: IFandPath) => {
 		emits('selectMenu', item.path)
-		activePath.value = item.path
+		state.activePath = item.path
 	}
 
 	onBeforeUnmount(() => {

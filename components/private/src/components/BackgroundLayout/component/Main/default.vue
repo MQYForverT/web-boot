@@ -1,6 +1,6 @@
 <template>
 	<el-container class="h-full">
-		<AppMask v-show="isMobile && !isCollapse" @click="closeAppMask" />
+		<AppMask v-show="state.isMobile && !state.isCollapse" @click="closeAppMask" />
 		<Aside>
 			<template #logo>
 				<slot name="logo" />
@@ -27,15 +27,11 @@
 	import Header from '../Header/index.vue'
 	// import AppSetting from '../AppSetting/index.vue'
 
-	const { props, emits, propsEnum } = useInject()
-	const { isCollapse, isMobile } = useState()
+	const { props } = useInject()
+	const { state } = useState()
 
 	const closeAppMask = () => {
-		if (props.isCollapse === undefined) {
-			isCollapse.value = true
-		} else {
-			emits('changeProp', propsEnum.isCollapse, true)
-		}
+		state.isCollapse = true
 	}
 </script>
 

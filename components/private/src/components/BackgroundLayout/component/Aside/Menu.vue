@@ -1,12 +1,12 @@
 <template>
 	<el-scrollbar>
 		<el-menu
-			:default-active="activePath"
+			:default-active="state.activePath"
 			:default-openeds="getAllOpenList"
 			class="!w-full !border-0"
 			:unique-opened="props.isUniqueOpened"
 			:collapse-transition="false"
-			:collapse="isCollapse"
+			:collapse="state.isCollapse"
 			popper-effect="dark"
 			router
 			@select="handleSelect"
@@ -22,7 +22,7 @@
 	import MenuItem from './MenuItem.vue'
 
 	const { props, emits } = useInject()
-	const { activePath, isCollapse } = useState()
+	const { state } = useState()
 
 	const getAllOpenList = computed(() => {
 		return props.isAllOpen ? props.menuList.map((x) => x.path) : []
@@ -30,7 +30,7 @@
 
 	const handleSelect = (key: string) => {
 		emits('selectMenu', key)
-		activePath.value = key
+		state.activePath = key
 	}
 </script>
 
