@@ -15,6 +15,11 @@ import MenuItem from './component/Aside/MenuItem.vue'
 import Header from './component/Header/index.vue'
 import MenuCollapse from './component/Header/MenuCollapse.vue'
 import Breadcrumb from './component/Header/Breadcrumb.vue'
+import FullScreen from './component/Header/FullScreen.vue'
+import Language from './component/Header/Language.vue'
+import UserAvatar from './component/Header/UserAvatar.vue'
+// Setting
+import ShowSetting from './component/AppSetting/ShowSetting.vue'
 BackgroundLayout.styles.push(
 	...defaults.styles,
 	...AppMask.styles,
@@ -25,6 +30,10 @@ BackgroundLayout.styles.push(
 	...Header.styles,
 	...MenuCollapse.styles,
 	...Breadcrumb.styles,
+	...FullScreen.styles,
+	...Language.styles,
+	...UserAvatar.styles,
+	...ShowSetting.styles,
 )
 
 // 将组件转换为 web components
@@ -36,7 +45,7 @@ export function register() {
 
 declare module 'vue' {
 	export interface GlobalComponents {
-		MqyBackgroundLayout: LayoutPublicProps
+		MqyBackgroundLayout: typeof BackgroundLayoutElement
 	}
 }
 

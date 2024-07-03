@@ -1,14 +1,22 @@
 <template>
-	<defaults ref="appWrapperRef">
-		<template #logo>
-			<slot name="logo">
-				<Logo width="30" height="30" fill="var(--el-color-primary)" />
-			</slot>
-		</template>
-		<template #body>
-			<slot name="body" />
-		</template>
-	</defaults>
+	<div
+		:style="{ height: proxyProps.containerSize.height || '100vh', width: proxyProps.containerSize.width || '100vw' }"
+	>
+		<!--默认布局-->
+		<defaults ref="appWrapperRef" class="backgroundLayout">
+			<template #logo>
+				<slot name="logo">
+					<Logo width="30" height="30" fill="var(--el-color-primary)" />
+				</slot>
+			</template>
+			<template #header>
+				<slot name="header" />
+			</template>
+			<template #body>
+				<slot name="body" />
+			</template>
+		</defaults>
+	</div>
 </template>
 <script setup lang="ts">
 	import useState from './hooks/useState'
@@ -58,6 +66,14 @@
 	@use 'element-plus/theme-chalk/src/breadcrumb.scss';
 	@use 'element-plus/theme-chalk/src/dropdown.scss';
 	@use 'element-plus/theme-chalk/src/avatar.scss';
+	@use 'element-plus/theme-chalk/src/overlay.scss';
+	@use 'element-plus/theme-chalk/src/drawer.scss';
+	@use 'element-plus/theme-chalk/src/divider.scss';
+	@use 'element-plus/theme-chalk/src/switch.scss';
+	@use 'element-plus/theme-chalk/src/select.scss';
+	@use 'element-plus/theme-chalk/src/option.scss';
+	@use 'element-plus/theme-chalk/src/icon.scss';
+	@use 'element-plus/theme-chalk/src/tabs.scss';
 
 	@import url('./styles/index.scss');
 </style>

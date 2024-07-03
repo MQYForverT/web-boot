@@ -18,14 +18,16 @@ export enum animationEnum {
 }
 
 export enum propsEnum {
-	// 设置按钮是否可见
+	// 容器大小
+	containerSize = 'containerSize',
+	// 设置菜单显示与否，需要把setting.enable设置为true
 	settingVisible = 'settingVisible',
+	// 是否启用设置菜单，形式是抽屉，怎么触发的自己定义
+	setting = 'setting',
 	// 当前是否是移动端，移动端的判断交给外部，如果不传，则判断逻辑交给内部
 	isMobile = 'isMobile',
 	// 当前是否暗黑模式【内部逻辑属性】
 	isDark = 'isDark',
-	// 当前主题颜色【内部逻辑属性】
-	themeColor = 'themeColor',
 	// 菜单栏模式【内部逻辑属性】
 	menuMode = 'menuMode',
 	/**
@@ -41,15 +43,13 @@ export enum propsEnum {
 	isAllOpen = 'isAllOpen',
 	// 是否开启菜单手风琴效果【内部逻辑属性】
 	isUniqueOpened = 'isUniqueOpened',
-	// 是否开启固定 Header
-	isFixedHeader = 'isFixedHeader',
 	// 是否开启面包屑【内部逻辑属性】
 	isBreadcrumb = 'isBreadcrumb',
 	/**
 	 * header设置
 	 */
-	// 是否开启全屏功能
-	isFullScreen = 'isFullScreen',
+	// 全屏功能配置
+	fullScreen = 'fullScreen',
 	// 多语言配置
 	language = 'language',
 	// 当前激活的语言
@@ -90,9 +90,17 @@ export enum propsEnum {
 
 // 为了兼容wc，设置可以传入字符串，然后去做转换
 export const layoutProps = {
+	[propsEnum.containerSize]: {
+		type: [Object, String] as PropType<Layout.containerSize | string>,
+		default: '{}',
+	},
 	[propsEnum.settingVisible]: {
 		type: [Boolean, String],
-		default: true,
+		default: false,
+	},
+	[propsEnum.setting]: {
+		type: [Object, String] as PropType<Layout.Setting | string>,
+		default: '{}',
 	},
 	[propsEnum.isMobile]: {
 		type: [Boolean, String],
@@ -100,10 +108,6 @@ export const layoutProps = {
 	},
 	[propsEnum.isDark]: {
 		type: [Boolean, String],
-		default: undefined,
-	},
-	[propsEnum.themeColor]: {
-		type: String,
 		default: undefined,
 	},
 	[propsEnum.menuMode]: {
@@ -130,17 +134,13 @@ export const layoutProps = {
 		type: [Boolean, String],
 		default: undefined,
 	},
-	[propsEnum.isFixedHeader]: {
-		type: [Boolean, String],
-		default: true,
-	},
 	[propsEnum.isBreadcrumb]: {
 		type: [Boolean, String],
 		default: undefined,
 	},
-	[propsEnum.isFullScreen]: {
-		type: [Boolean, String],
-		default: true,
+	[propsEnum.fullScreen]: {
+		type: [Object, String] as PropType<Layout.FullScreen | string>,
+		default: '{}',
 	},
 	[propsEnum.language]: {
 		type: [Object, String] as PropType<Layout.Language | string>,
@@ -219,12 +219,7 @@ export type LayoutEmits = {
 
 export const emitsKey = Symbol() as InjectionKey<LayoutEmits>
 
-// ---------因为是web component，所以对外只提供string类型
-type LayoutPublicAtomProps = ExtractPublicPropTypes<typeof layoutProps>
-// 只保留string
-export type LayoutPublicProps = {
-	[K in keyof LayoutPublicAtomProps]: string
-}
+export type LayoutPublicProps = ExtractPublicPropTypes<typeof layoutProps>
 
 // 排除掉string类型
 export type propPrecessType = {
@@ -241,9 +236,10 @@ export const processPropType = (props: LayoutPrivateProps) => {
 		get(target, propKey, receiver) {
 			const value = Reflect.get(target, propKey, receiver)
 			switch (propKey) {
+				case propsEnum.containerSize:
 				case propsEnum.settingVisible:
-				case propsEnum.isFixedHeader:
-				case propsEnum.isFullScreen:
+				case propsEnum.setting:
+				case propsEnum.fullScreen:
 				case propsEnum.language:
 				case propsEnum.userAvatar:
 				case propsEnum.isCacheTagsView:
@@ -256,7 +252,6 @@ export const processPropType = (props: LayoutPrivateProps) => {
 				case propsEnum.isCollapse:
 				case propsEnum.isMobile:
 				case propsEnum.isDark:
-				case propsEnum.themeColor:
 				case propsEnum.menuMode:
 				case propsEnum.isAllOpen:
 				case propsEnum.isUniqueOpened:

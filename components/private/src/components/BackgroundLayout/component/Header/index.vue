@@ -5,9 +5,16 @@
 			<Breadcrumb />
 		</div>
 		<div class="h-full flex-y-center">
-			<FullScreen v-if="props.isFullScreen" />
-			<Language v-if="props.language.show" />
-			<UserAvatar v-if="props.userAvatar.show" />
+			<slot name="header" />
+			<Teleport :to="props.fullScreen.to" :disabled="!props.fullScreen.to">
+				<FullScreen v-if="props.fullScreen.show" />
+			</Teleport>
+			<Teleport :to="props.language.to" :disabled="!props.language.to">
+				<Language v-if="props.language.show" />
+			</Teleport>
+			<Teleport :to="props.userAvatar.to" :disabled="!props.userAvatar.to">
+				<UserAvatar v-if="props.userAvatar.show" />
+			</Teleport>
 		</div>
 	</el-header>
 </template>

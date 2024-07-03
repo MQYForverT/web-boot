@@ -1,5 +1,5 @@
 <template>
-	<el-dropdown trigger="click" @command="handleCommand">
+	<el-dropdown :trigger="props.userAvatar.trigger" @command="handleCommand">
 		<div class="h-14 flex-center cursor-pointer p-3 hover:bg-fill">
 			<el-avatar :src="props.userAvatar.avatar || avatar" size="small" class="mr-2 shrink-0" />
 			<span>{{ props.userAvatar.name || 'mqy' }}</span>
@@ -7,7 +7,7 @@
 		<template #dropdown>
 			<el-dropdown-menu>
 				<el-dropdown-item
-					v-for="item in props.userAvatar.dropdowMenu"
+					v-for="item in props.userAvatar.dropdownMenu"
 					:key="item.key"
 					:command="item.key"
 					:divided="item.divided"

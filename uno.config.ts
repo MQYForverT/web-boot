@@ -17,6 +17,8 @@ const config: UserConfig = defineConfig({
 			exclude: ['node_modules', 'dist', '.git', '.husky', '.vscode', 'public', 'build', 'stats.html'],
 		},
 	},
+	// 因为图标不能动态加载，所以你在你的项目中把会动态加载的图标都写在这个配置里面，一般和你的路由是对应的
+	// safelist: [],
 	// 快捷方式，可让你将多个规则组合成一个简写，比如：red': 'text-red-100',
 	shortcuts: {
 		'wh-full': 'w-full h-full',
@@ -86,7 +88,17 @@ const config: UserConfig = defineConfig({
 		 * 对 UnoCSS 使用纯 CSS 的任何图标。
 		 * 此预设提供了一个图标预设，用于将图标类名转换为图标。
 		 */
-		presetIcons(),
+		presetIcons({
+			// 用 dynamic imports 提供集合，以便它们将作为异步块打包器并按需加载。
+			collections: {
+				// 引入下载的第三方图标
+				// mdi: () => import('@iconify-json/mdi/icons.json').then((i) => i.default),
+				/**
+				 * 把自己的svg文件转换为class，这里的my-icon名称随便取，使用的时候通过i-my-icon-[filename]。
+				 */
+				// 'my-icon': FileSystemIconLoader('./src/assets/svg', (svg) => svg.replace(/#fff/, 'currentColor')),
+			},
+		}),
 		/**
 		 * https://unocss.nodejs.cn/presets/typography
 		 * 提供一组散文类，可用于将排版默认值添加到普通 HTML
@@ -96,28 +108,7 @@ const config: UserConfig = defineConfig({
 		 * https://unocss.nodejs.cn/presets/web-fonts
 		 * 网页字体预设，只需提供字体名称即可使用 谷歌字体、FontShare 中的网络字体
 		 */
-		presetWebFonts({
-			//网络字体的提供商服务，默认：google
-			provider: 'google',
-			fonts: {
-				// these will extend the default theme
-				sans: 'Roboto',
-				mono: ['Fira Code', 'Fira Mono:400,700'],
-				// custom ones
-				lobster: 'Lobster',
-				lato: [
-					{
-						name: 'Lato',
-						weights: ['400', '700'],
-						italic: true,
-					},
-					{
-						name: 'sans-serif',
-						provider: 'none',
-					},
-				],
-			},
-		}),
+		presetWebFonts(),
 	],
 	// 转换器
 	transformers: [

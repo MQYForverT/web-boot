@@ -14,16 +14,26 @@ declare global {
 			icon?: string
 			affix?: boolean
 		}
+		interface containerSize {
+			height: string
+			width: string
+		}
 		// 下拉菜单
-		interface DropdowMenu {
+		interface DropdownMenu {
 			key: string
 			value: string
 			divided?: boolean
 		}
+		interface FullScreen {
+			show?: boolean
+			// 传送到哪个节点下
+			to?: string
+		}
 		interface Language {
 			show?: boolean
 			trigger?: 'click' | 'hover'
-			dropdowMenu?: DropdowMenu[]
+			to?: string
+			dropdownMenu?: DropdownMenu[]
 		}
 		// 用户配置
 		interface UserAvatar {
@@ -31,7 +41,13 @@ declare global {
 			trigger?: 'click' | 'hover'
 			name?: string
 			avatar?: string
-			dropdowMenu?: DropdowMenu[]
+			to?: string
+			dropdownMenu?: DropdownMenu[]
+		}
+		interface Setting {
+			// 是否启用，false，则不渲染，true则启用，启用之后用show控制是否打开
+			enable?: boolean
+			title?: string
 		}
 	}
 }

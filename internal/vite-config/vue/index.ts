@@ -14,7 +14,7 @@ import {
 	createStyleImportPlugin,
 	ElementPlusResolve,
 } from '../common'
-import { ElementPlusResolver } from '@mqy/vite-config/common/autoImport/components'
+import { ElementPlusResolver } from '../common/autoImport/components'
 
 // https://vitejs.dev/config/
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {

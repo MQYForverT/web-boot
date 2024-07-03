@@ -24,10 +24,6 @@ export default createGlobalState(() => {
 		return props.isDark
 	})
 
-	const defaultThemeColore = computed(() => {
-		return props.themeColor
-	})
-
 	const defaultMenuMode = computed(() => {
 		return props.menuMode
 	})
@@ -65,7 +61,6 @@ export default createGlobalState(() => {
 		isCollapse: props.isCollapse !== undefined ? defaultCollapse : false,
 		isMobile: props.isMobile !== undefined ? defaultMobile : false,
 		isDark: props.isDark !== undefined ? defaultDark : useStorage(`${prefix}-isAllOpen`, false),
-		themeColor: props.themeColor !== undefined ? defaultThemeColore : useStorage(`${prefix}-themeColor`, ''),
 		menuMode:
 			props.menuMode !== undefined
 				? defaultMenuMode
@@ -103,8 +98,6 @@ export default createGlobalState(() => {
 					case propsEnum.menuMode:
 						const dark = state.isDark ? 'dark' : ''
 						document.documentElement.className = `layout-menu-${newVal} ${dark}`
-						break
-					case propsEnum.themeColor:
 						break
 				}
 			} else {

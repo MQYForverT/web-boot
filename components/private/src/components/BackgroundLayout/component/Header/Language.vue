@@ -6,7 +6,7 @@
 		<template #dropdown>
 			<el-dropdown-menu>
 				<el-dropdown-item
-					v-for="item in props.language.dropdowMenu"
+					v-for="item in props.language.dropdownMenu"
 					:key="item.key"
 					:disabled="item.key === props.activeLanguage"
 					:command="item.key"

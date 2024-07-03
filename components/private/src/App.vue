@@ -3,12 +3,21 @@
 	<!-- <mqy-example id="example" ref="mqy" title="title1" style="margin-top: 20px" /> -->
 	<mqy-background-layout
 		:menuList="JSON.stringify(themeConfig.menuList)"
+		:fullScreen="JSON.stringify(themeConfig.fullScreen)"
 		:language="JSON.stringify(themeConfig.language)"
 		:userAvatar="JSON.stringify(themeConfig.userAvatar)"
+		:setting="JSON.stringify(themeConfig.setting)"
+		:settingVisible="JSON.stringify(themeConfig.settingVisible)"
 		activeLanguage="zh-CN"
-		:isDark="JSON.stringify(true)"
 		@changeProp="handleChange"
+		@commandUser="commandUser"
 	>
+		<div slot="header">
+			<div class="headerSlot">
+				<span>button1</span>
+				<span>button2</span>
+			</div>
+		</div>
 	</mqy-background-layout>
 </template>
 
@@ -27,11 +36,15 @@
 	const themeConfig = ref({
 		isCollapse: false,
 		isMobile: false,
+		isDark: false,
 		menuList,
+		fullScreen: {
+			show: true,
+		},
 		language: {
 			show: true,
 			trigger: 'hover',
-			dropdowMenu: [
+			dropdownMenu: [
 				{
 					key: 'zh-CN',
 					value: '简体中文',
@@ -45,21 +58,34 @@
 		userAvatar: {
 			show: true,
 			name: '12',
-			dropdowMenu: [
+			dropdownMenu: [
 				{
 					key: 'loginOut',
 					value: '退出登录',
 				},
+				{
+					key: 'setting',
+					value: '个性设置',
+				},
 			],
 		},
+		setting: {
+			enable: true,
+		},
+		settingVisible: false,
 	})
 
-	const handleChange = ({ detail = [] }) => {
-		console.log('web1', Boolean(detail[1]))
+	const commandUser = ({ detail = [] }) => {
+		console.log('web1', detail)
 		// const { isCollapse } = themeConfig.value
-		themeConfig.value.isCollapse = Boolean(detail[1])
+		themeConfig.value.settingVisible = true
 		// console.log(themeConfig.value)
 		// 你的逻辑
+	}
+
+	const handleChange = ({ detail = [] }) => {
+		console.log('web1', detail)
+		themeConfig.value[detail[0]] = detail[1]
 	}
 </script>
 
