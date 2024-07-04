@@ -6,8 +6,8 @@
 </template>
 
 <script lang="ts" setup>
-	import fullscreen from '@/assets/svg/fullscreen.svg?component'
-	import fullscreenExit from '@/assets/svg/fullscreen-exit.svg?component'
+	import fullscreen from '~icons/mqy-icon/fullscreen'
+	import fullscreenExit from '~icons/mqy-icon/fullscreen-exit'
 	import { useFullscreen } from '@vueuse/core'
 
 	const { isFullscreen, toggle } = useFullscreen()

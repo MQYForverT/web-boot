@@ -1,16 +1,18 @@
 import { animationEnum, menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
 import useInject from './useInject'
+import { findPath, getActivePath } from '../utils/menu'
 
 export default createGlobalState(() => {
 	const prefix = '@mqy/component-private-background-layout'
 	const { props, emits } = useInject()
 
-	const getActivePath = (menu: Layout.Menu): string => {
-		if (menu.children?.length) {
-			return getActivePath(menu.children[0])
-		}
-		return menu.path
-	}
+	const defaultActivePath = computed(() => {
+		return props.activePath!
+	})
+
+	const defaultActiveTags = computed(() => {
+		return props.activeTags!
+	})
 
 	const defaultCollapse = computed(() => {
 		return props.isCollapse
@@ -53,11 +55,18 @@ export default createGlobalState(() => {
 	})
 
 	const state = reactive({
-		activePath: props.defaultActivePath
-			? props.defaultActivePath
-			: props.menuList.length
-				? getActivePath(props.menuList[0])
-				: '',
+		// 当前激活的path，保证一定是非重定向值
+		activePath:
+			props.activePath !== undefined
+				? defaultActivePath
+				: useStorage(`${prefix}-activePath`, getActivePath(props.menuList[0])),
+		// 当前激活的tags，默认就会有一个
+		activeTags:
+			props.activeTags !== undefined
+				? defaultActiveTags
+				: useStorage<Layout.TabsView[]>(`${prefix}-activeTags`, [
+						findPath(props.menuList, getActivePath(props.menuList[0]))!,
+					]),
 		isCollapse: props.isCollapse !== undefined ? defaultCollapse : false,
 		isMobile: props.isMobile !== undefined ? defaultMobile : false,
 		isDark: props.isDark !== undefined ? defaultDark : useStorage(`${prefix}-isAllOpen`, false),

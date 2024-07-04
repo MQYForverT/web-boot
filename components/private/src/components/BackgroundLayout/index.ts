@@ -20,6 +20,9 @@ import Language from './component/Header/Language.vue'
 import UserAvatar from './component/Header/UserAvatar.vue'
 // Setting
 import ShowSetting from './component/AppSetting/ShowSetting.vue'
+// NavTab
+import NavTab from './component/NavTab/index.vue'
+import TabDropdown from './component/NavTab/TabDropdown.vue'
 BackgroundLayout.styles.push(
 	...defaults.styles,
 	...AppMask.styles,
@@ -34,6 +37,8 @@ BackgroundLayout.styles.push(
 	...Language.styles,
 	...UserAvatar.styles,
 	...ShowSetting.styles,
+	...NavTab.styles,
+	...TabDropdown.styles,
 )
 
 // 将组件转换为 web components

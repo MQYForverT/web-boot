@@ -4,13 +4,18 @@ declare global {
 			path: string
 			title: string
 			icon?: string
+			// 当前菜单是否固定
 			affix?: boolean
+			// 重定向
+			redirect?: string
+			// 该菜单是否需要显示footer
+			isShowFooter?: boolean
 			children?: Menu[]
 		}
 		/** 多页签属性 */
 		interface TabsView {
+			path: string
 			title: string
-			fullPath: string
 			icon?: string
 			affix?: boolean
 		}

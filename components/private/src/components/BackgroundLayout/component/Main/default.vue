@@ -25,7 +25,7 @@
 	import Aside from '../Aside/index.vue'
 	import AppMask from '../AppMask/index.vue'
 	import Header from '../Header/index.vue'
-	// import NavTab from '../NavTab/index.vue'
+	import NavTab from '../NavTab/index.vue'
 	import AppSetting from '../AppSetting/index.vue'
 
 	const { state } = useState()

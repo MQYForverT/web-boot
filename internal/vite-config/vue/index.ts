@@ -13,6 +13,9 @@ import {
 	// style
 	createStyleImportPlugin,
 	ElementPlusResolve,
+	// Icon
+	Icons,
+	IconsResolver,
 } from '../common'
 import { ElementPlusResolver } from '../common/autoImport/components'
 
@@ -50,7 +53,13 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 			}),
 			AutoImport({
 				imports: ['vue', '@vueuse/core', 'vitest', 'vue-router'],
-				resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+				resolvers: [
+					ElementPlusResolver({ importStyle: 'sass' }),
+					// 自动导入图标组件
+					IconsResolver({
+						prefix: 'Icon',
+					}),
+				],
 				// 默认/src/stores下的store自动导入
 				dirs: ['./src/stores'],
 				vueTemplate: true,
@@ -60,9 +69,19 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 				extensions: ['vue', 'md'],
 				// allow auto import and register components used in markdown
 				include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-				resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+				resolvers: [
+					ElementPlusResolver({ importStyle: 'sass' }),
+					// 自动注册图标组件，ep：element-plus
+					IconsResolver({
+						enabledCollections: ['ep'],
+					}),
+				],
 			}),
-			// 自动导入样式
+			Icons({
+				compiler: 'vue3',
+				autoInstall: true,
+			}),
+			// 自动导入message等样式
 			createStyleImportPlugin({
 				resolves: [ElementPlusResolve()],
 			}),

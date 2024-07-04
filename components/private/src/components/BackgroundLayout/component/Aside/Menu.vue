@@ -32,6 +32,13 @@
 		emits('selectMenu', key)
 		state.activePath = key
 	}
+
+	onBeforeMount(() => {
+		// 刷新的时候，如果有activePath，告诉外部容器，让外部容器跳转到对应的页面
+		if (state.activePath) {
+			emits('selectMenu', state.activePath)
+		}
+	})
 </script>
 
 <style>

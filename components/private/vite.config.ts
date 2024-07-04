@@ -22,9 +22,22 @@ entries['index'] = resolve(__dirname, 'src/components/index.ts')
 // }
 
 // 目前这种导入方式需要tsx支持
-import { setupViteTest, dts, compress, unocss, setupViteLib, AutoImport, Components } from '@mqy/vite-config/common'
+import {
+	setupViteTest,
+	dts,
+	compress,
+	unocss,
+	setupViteLib,
+	AutoImport,
+	Components,
+	// Icon
+	Icons,
+	IconsResolver,
+} from '@mqy/vite-config/common'
 import { ElementPlusResolver } from '@mqy/vite-config/common/autoImport/components'
-import svgLoader from 'vite-svg-loader'
+
+// loader helpers
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 
 // https://vitejs.dev/config/
 const config: UserConfig = {
@@ -42,7 +55,6 @@ const config: UserConfig = {
 		],
 	},
 	plugins: [
-		svgLoader(),
 		unocss({
 			mode: 'shadow-dom',
 		}),
@@ -58,7 +70,13 @@ const config: UserConfig = {
 		}),
 		AutoImport({
 			imports: ['vue', '@vueuse/core'],
-			resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+			resolvers: [
+				ElementPlusResolver({ importStyle: 'sass' }),
+				// 自动导入图标组件，需要配置前缀，默认是i
+				// IconsResolver({
+				// 	prefix: 'Icon',
+				// }),
+			],
 			vueTemplate: true,
 		}),
 		Components({
@@ -68,8 +86,10 @@ const config: UserConfig = {
 			include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
 			resolvers: [
 				ElementPlusResolver({ importStyle: 'sass' }),
+				// 自动注册图标组件，ep：element-plus
 				IconsResolver({
-					prefix: 'Icon',
+					enabledCollections: ['ep'],
+					customCollections: ['mqy-icon'],
 				}),
 			],
 		}),
@@ -91,6 +111,16 @@ const config: UserConfig = {
 					dest: './dist/',
 				},
 			],
+		}),
+		Icons({
+			compiler: 'vue3',
+			// 上面使用了element-plus的图标，这里设置autoInstall，会自动下载
+			autoInstall: true,
+			customCollections: {
+				'mqy-icon': FileSystemIconLoader('./src/assets/svg', (svg) =>
+					svg.replace(/^<svg /, '<svg fill="currentColor" '),
+				),
+			},
 		}),
 	],
 	test: setupViteTest(),

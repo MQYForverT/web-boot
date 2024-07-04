@@ -6,8 +6,8 @@
 </template>
 
 <script lang="ts" setup>
-	import alignLeft from '@/assets/svg/align-left.svg?component'
-	import alignRight from '@/assets/svg/align-right.svg?component'
+	import alignLeft from '~icons/mqy-icon/align-left'
+	import alignRight from '~icons/mqy-icon/align-right'
 	import useState from '../../hooks/useState'
 
 	const { state } = useState()

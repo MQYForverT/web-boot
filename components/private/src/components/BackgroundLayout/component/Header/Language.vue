@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-	import Language from '@/assets/svg/language.svg?component'
+	import Language from '~icons/mqy-icon/language'
 	import useInject from '../../hooks/useInject'
 
 	const { props, emits, propsEnum } = useInject()

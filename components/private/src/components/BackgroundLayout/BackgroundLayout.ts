@@ -34,7 +34,9 @@ export enum propsEnum {
 	 * 界面设置
 	 */
 	// 激活的path
-	defaultActivePath = 'defaultActivePath',
+	activePath = 'activePath',
+	// 激活的tags
+	activeTags = 'activeTags',
 	// 菜单数组
 	menuList = 'menuList',
 	// 是否折叠菜单，判断交给外部，如果不传，则判断逻辑交给内部【内部逻辑属性】
@@ -56,12 +58,10 @@ export enum propsEnum {
 	activeLanguage = 'activeLanguage',
 	// 用户配置
 	userAvatar = 'userAvatar',
-	// 是否开启 Tagsview【内部逻辑属性】
+	// 是否开启 TagsView【内部逻辑属性】
 	isTagsView = 'isTagsView',
-	// 是否开启 Tagsview图标【内部逻辑属性】
+	// 是否开启 TagsView图标【内部逻辑属性】
 	isTagsViewIcon = 'isTagsViewIcon',
-	// tag数量
-	tagsShowNum = 'tagsShowNum',
 	// 是否开启 TagsView 缓存
 	isCacheTagsView = 'isCacheTagsView',
 	// 是否开启 水印
@@ -114,13 +114,18 @@ export const layoutProps = {
 		type: String as PropType<menuModeEnum>,
 		default: undefined,
 	},
-	[propsEnum.defaultActivePath]: {
+	[propsEnum.activePath]: {
 		type: String,
-		default: '',
+		default: undefined,
+	},
+	[propsEnum.activeTags]: {
+		type: [Array, String] as PropType<Layout.TabsView[] | string>,
+		default: undefined,
 	},
 	[propsEnum.menuList]: {
 		type: [Array, String] as PropType<Layout.Menu[] | string>,
 		default: '[]',
+		required: true,
 	},
 	[propsEnum.isCollapse]: {
 		type: [Boolean, String],
@@ -161,10 +166,6 @@ export const layoutProps = {
 	[propsEnum.isTagsViewIcon]: {
 		type: [Boolean, String],
 		default: undefined,
-	},
-	[propsEnum.tagsShowNum]: {
-		type: [Number, String],
-		default: 1,
 	},
 	[propsEnum.isCacheTagsView]: {
 		type: [Boolean, String],
@@ -214,7 +215,7 @@ export type LayoutPrivateProps = ExtractPropTypes<typeof layoutProps>
 // --------emits----------分步判断change类型
 export type LayoutEmits = {
 	<T extends keyof LayoutPrivateProps>(evt: 'changeProp', ...args: [T, LayoutPrivateProps[T]]): void
-	(evt: 'selectMenu' | 'commandUser', ...args: [string]): void
+	(evt: 'selectMenu' | 'commandUser' | 'tagRefresh', ...args: [string]): void
 }
 
 export const emitsKey = Symbol() as InjectionKey<LayoutEmits>
@@ -246,7 +247,6 @@ export const processPropType = (props: LayoutPrivateProps) => {
 				case propsEnum.isWatermark:
 				case propsEnum.isFooter:
 				case propsEnum.menuList:
-				case propsEnum.tagsShowNum:
 					return JSON.parse(value)
 				// 以下是外部可控属性，如果外部传入值，则交给外部控制
 				case propsEnum.isCollapse:
@@ -256,6 +256,7 @@ export const processPropType = (props: LayoutPrivateProps) => {
 				case propsEnum.isAllOpen:
 				case propsEnum.isUniqueOpened:
 				case propsEnum.isBreadcrumb:
+				case propsEnum.activeTags:
 				case propsEnum.isTagsView:
 				case propsEnum.isTagsViewIcon:
 					if (value !== undefined) {

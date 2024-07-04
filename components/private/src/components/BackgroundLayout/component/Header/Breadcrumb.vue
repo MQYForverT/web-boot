@@ -9,43 +9,31 @@
 <script lang="ts" setup>
 	import useInject from '../../hooks/useInject'
 	import useState from '../../hooks/useState'
+	import { findFullPath } from '../../utils/menu'
+	import type { IFandPath } from '../../utils/menu'
 	const { props, emits } = useInject()
 	const { state } = useState()
 
 	const cache = new Map()
 
-	interface IFandPath {
-		path: string
-		title: string
-	}
-
-	function findPath(menuList: Layout.Menu[], targetPath: string): IFandPath[] {
-		for (const item of menuList) {
-			if (item.path === targetPath) {
-				return [item]
-			}
-			if (item.children) {
-				const childPath = findPath(item.children, targetPath)
-				if (childPath.length) {
-					return [item, ...childPath]
-				}
-			}
-		}
-		return []
-	}
-
-	const breadcrumbList = computed(() => {
+	const breadcrumbList = computed<IFandPath[]>(() => {
 		if (cache.has(state.activePath)) {
 			return cache.get(state.activePath)
 		}
-		const data = findPath(props.menuList, state.activePath)
+		const data = findFullPath(props.menuList, state.activePath!)
+
 		cache.set(state.activePath, data)
 		return data
 	})
 
 	const handleLink = (item: IFandPath) => {
-		emits('selectMenu', item.path)
-		state.activePath = item.path
+		// 一直找到非重定向为止
+		let pathItem = item
+		while (pathItem.redirect) {
+			pathItem = breadcrumbList.value.find((item) => item.path === pathItem.redirect)!
+		}
+		emits('selectMenu', pathItem.path)
+		state.activePath = pathItem.path
 	}
 
 	onBeforeUnmount(() => {

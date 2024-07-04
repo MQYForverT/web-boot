@@ -10,7 +10,9 @@
 		:settingVisible="JSON.stringify(themeConfig.settingVisible)"
 		activeLanguage="zh-CN"
 		@changeProp="handleChange"
+		@selectMenu="selectMenu"
 		@commandUser="commandUser"
+		@tagRefresh="tagRefresh"
 	>
 		<div slot="header">
 			<div class="headerSlot">
@@ -76,15 +78,25 @@
 	})
 
 	const commandUser = ({ detail = [] }) => {
-		console.log('web1', detail)
+		console.log('commandUser', detail)
 		// const { isCollapse } = themeConfig.value
 		themeConfig.value.settingVisible = true
 		// console.log(themeConfig.value)
 		// 你的逻辑
 	}
 
+	const selectMenu = ({ detail = [] }) => {
+		console.log('selectMenu', detail)
+		// const { isCollapse } = themeConfig.value
+	}
+
+	const tagRefresh = ({ detail = [] }) => {
+		console.log('tagRefresh', detail)
+		// const { isCollapse } = themeConfig.value
+	}
+
 	const handleChange = ({ detail = [] }) => {
-		console.log('web1', detail)
+		console.log('handleChange', detail)
 		themeConfig.value[detail[0]] = detail[1]
 	}
 </script>

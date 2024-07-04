@@ -23,7 +23,7 @@
 	import { layoutProps, propsKey, processPropType, emitsKey } from './BackgroundLayout'
 	import type { LayoutEmits } from './BackgroundLayout'
 	import defaults from './component/Main/default.vue'
-	import Logo from '@/assets/svg/logo.svg?component'
+	import Logo from '~icons/mqy-icon/logo'
 
 	const appWrapperRef = ref()
 
