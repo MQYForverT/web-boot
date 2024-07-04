@@ -119,7 +119,7 @@ export const layoutProps = {
 		default: undefined,
 	},
 	[propsEnum.activeTags]: {
-		type: [Array, String] as PropType<Layout.TabsView[] | string>,
+		type: [Array, String] as PropType<Layout.Menu[] | string>,
 		default: undefined,
 	},
 	[propsEnum.menuList]: {

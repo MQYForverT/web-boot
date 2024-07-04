@@ -58,8 +58,8 @@
 	.contextmenu {
 		position: absolute;
 		z-index: 99;
-		margin: 0;
 		padding: 5px;
+		margin: 0;
 		font-size: 13px;
 		font-weight: normal;
 		color: var(--el-text-color-primary);

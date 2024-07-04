@@ -4,27 +4,41 @@
 		ref="navTabRef"
 		class="navTab h-10 flex-y-center bg-[var(--el-bg-color)] shadow-[0_0_1px_#888]"
 	>
-		<el-tabs :model-value="activeName" @tab-change="handleChange">
+		<!-- <el-tabs :model-value="activeName" @tab-change="handleChange">
 			<el-tab-pane v-for="item in state.activeTags" :key="item.path" :name="item.path" :label="item.title">
 				<template #label>
-					<div
-						class="h-full flex-center pl-12px pr-9px"
-						@contextmenu.prevent="handleContextMenu($event, item.path, item.affix)"
-					>
-						<div v-if="item.icon && state.isTagsViewIcon" :class="item.icon" />
-						<span>{{ item.title }}</span>
-						<el-icon
-							v-if="!item.affix && state.activeTags.length > 1"
-							class="mt-1px rounded-full hover:bg-primary hover:color-white"
-							size="14"
-							@click.prevent.stop="handleRemove(item.path)"
-						>
-							<Close />
-						</el-icon>
-					</div>
+					
 				</template>
 			</el-tab-pane>
-		</el-tabs>
+		</el-tabs> -->
+		<div ref="tagElement" class="flex-center">
+			<div
+				v-for="item in state.activeTags"
+				:key="item.path"
+				class="relative h-full flex-center pl-12px pr-9px"
+				@contextmenu.prevent="handleContextMenu($event, item.path, item.affix)"
+			>
+				<div v-if="item.icon && state.isTagsViewIcon" :class="item.icon" />
+				<span>{{ item.title }}</span>
+				<el-icon
+					v-if="!item.affix && state.activeTags.length > 1"
+					class="mt-1px rounded-full hover:bg-primary hover:color-white"
+					size="14"
+					@click.prevent.stop="handleRemove(item.path)"
+				>
+					<Close />
+				</el-icon>
+				<el-icon
+					v-if="item.affix"
+					class="absolute rounded-full -left-1 -top-1"
+					size="12"
+					@click.prevent.stop="handleRemove(item.path)"
+				>
+					<Paperclip />
+				</el-icon>
+			</div>
+		</div>
+
 		<TabDropdown
 			:currentPath="currentPath"
 			:options="tabMenuOptions"
@@ -35,13 +49,15 @@
 </template>
 
 <script lang="ts" setup>
-	import { Close } from '@element-plus/icons-vue'
+	import { Close, Paperclip } from '@element-plus/icons-vue'
 	import useState from '../../hooks/useState'
 	import type { TabPaneName } from 'element-plus'
 	import { useTag } from '../../hooks/useTag'
 	import TabDropdown from './TabDropdown.vue'
+	import Sortable from 'sortablejs'
 
 	const { state } = useState()
+	const tagElement = ref()
 
 	const navTabRef = ref()
 	const currentPath = ref('')
@@ -119,6 +135,20 @@
 
 	onMounted(() => {
 		addTag()
+		console.log(12, tagElement.value)
+
+		Sortable.create(tagElement.value, {
+			animation: 300,
+			dataIdAttr: 'data-name',
+			onEnd: () => {
+				const sortEndList = []
+				state.sortable.toArray().map((val) => {
+					state.tagsViewList.map((v) => {
+						if (v.name === val) sortEndList.push({ ...v })
+					})
+				})
+			},
+		})
 	})
 
 	watch(
@@ -136,41 +166,60 @@
 <style lang="scss" scoped>
 	:deep(.el-tabs) {
 		width: calc(100% - 80px);
+
 		.is-scrollable .el-tabs__item:nth-child(2) {
 			margin-left: 0 !important;
 		}
+
 		.el-tabs__header {
 			margin-bottom: 0;
+
 			.el-tabs__nav-wrap::after {
 				height: 0;
 			}
+
+			.el-tabs__nav-wrap {
+				overflow: visible;
+
+				.el-tabs__nav-scroll {
+					overflow: visible;
+				}
+			}
+
 			.el-tabs__nav-prev,
 			.el-tabs__nav-next {
 				line-height: 30px;
 			}
+
 			.el-tabs__active-bar {
 				display: none;
 			}
+
 			.el-tabs__item:nth-child(2) {
 				margin-left: 12px;
 			}
+
 			.el-tabs__item {
-				border: 1px solid var(--el-border-color-light);
 				height: 31px;
 				padding: 0;
 				margin-left: 8px;
+				border: 1px solid var(--el-border-color-light);
 				border-radius: 2px;
+
 				&:hover {
 					border-color: var(--el-color-primary-light-3);
 				}
 			}
+
 			.is-icon-close:hover {
 				background-color: var(--el-color-primary);
 			}
+
 			.is-active {
 				background: var(--el-color-primary-light-8);
 				border-color: var(--el-color-primary-light-3);
 			}
+
 			.is-icon-close {
 				margin-left: 8px;
 			}

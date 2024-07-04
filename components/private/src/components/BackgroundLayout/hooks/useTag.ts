@@ -2,11 +2,10 @@ import { useEventListener } from '@vueuse/core'
 import { computed, reactive, ref, watch } from 'vue'
 import useState from '../hooks/useState'
 import useInject from '../hooks/useInject'
-import { findPath } from '../utils/menu'
 
 export function useTag() {
 	const { state } = useState()
-	const { props, emits } = useInject()
+	const { emits } = useInject()
 	const contextmenuLeft = ref(0)
 	const contextmenuTop = ref(0)
 
@@ -60,10 +59,10 @@ export function useTag() {
 	})
 
 	const addTag = () => {
-		if (state.activeTags?.some((v: Layout.TabsView) => v.path === state.activePath)) {
+		if (state.activeTags?.some((v: Layout.Menu) => v.path === state.activePath)) {
 			return
 		}
-		const tag = findPath(props.menuList, state.activePath!)
+		const tag = state.flatMenuList.find((x) => x.path === state.activePath)
 		if (tag) {
 			state.activeTags?.push(tag)
 		}

@@ -73,7 +73,6 @@
 	@use 'element-plus/theme-chalk/src/select.scss';
 	@use 'element-plus/theme-chalk/src/option.scss';
 	@use 'element-plus/theme-chalk/src/icon.scss';
-	@use 'element-plus/theme-chalk/src/tabs.scss';
 
 	@import url('./styles/index.scss');
 </style>

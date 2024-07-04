@@ -9,12 +9,12 @@ export const menuList = [
 				path: '/home1',
 				icon: 'mdi mdi-account',
 				title: '首页1',
-				affix: true,
 			},
 			{
 				path: '/home2',
 				icon: 'mdi mdi-account',
 				title: '首页2',
+				affix: true,
 			},
 		],
 	},

@@ -11,14 +11,15 @@ declare global {
 			// 该菜单是否需要显示footer
 			isShowFooter?: boolean
 			children?: Menu[]
+			fullLink?: IFandPath[]
 		}
-		/** 多页签属性 */
-		interface TabsView {
+
+		interface IFandPath {
 			path: string
 			title: string
-			icon?: string
-			affix?: boolean
+			redirect?: string
 		}
+
 		interface containerSize {
 			height: string
 			width: string

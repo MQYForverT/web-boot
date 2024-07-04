@@ -9,9 +9,8 @@
 <script lang="ts" setup>
 	import useInject from '../../hooks/useInject'
 	import useState from '../../hooks/useState'
-	import { findFullPath } from '../../utils/menu'
 	import type { IFandPath } from '../../utils/menu'
-	const { props, emits } = useInject()
+	const { emits } = useInject()
 	const { state } = useState()
 
 	const cache = new Map()
@@ -20,8 +19,7 @@
 		if (cache.has(state.activePath)) {
 			return cache.get(state.activePath)
 		}
-		const data = findFullPath(props.menuList, state.activePath!)
-
+		const data = state.flatMenuList.find((x) => x.path === state.activePath!)?.fullLink
 		cache.set(state.activePath, data)
 		return data
 	})

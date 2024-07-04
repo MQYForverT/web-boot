@@ -20,5 +20,3 @@
 		emits('changeProp', propsEnum.settingVisible, false)
 	}
 </script>
-
-<style lang="scss" scoped></style>

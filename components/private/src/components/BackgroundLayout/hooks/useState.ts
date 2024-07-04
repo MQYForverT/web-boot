@@ -1,10 +1,45 @@
 import { animationEnum, menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
 import useInject from './useInject'
-import { findPath, getActivePath } from '../utils/menu'
 
 export default createGlobalState(() => {
 	const prefix = '@mqy/component-private-background-layout'
 	const { props, emits } = useInject()
+
+	const initChildDataToFlat = (
+		result: Layout.Menu[] = [],
+		data: Layout.Menu[] = [],
+		parentObj?: Layout.Menu,
+	): Layout.Menu[] => {
+		data.forEach((item) => {
+			const fullLink = [
+				{
+					path: item.path,
+					title: item.title,
+					redirect: item.redirect,
+				},
+			]
+			const obj = {
+				path: item.path,
+				title: item.title,
+				icon: item.icon,
+				affix: item.affix,
+				redirect: item.redirect,
+				isShowFooter: item.isShowFooter,
+				fullLink: parentObj?.fullLink ? [...parentObj.fullLink, ...fullLink] : fullLink,
+			}
+
+			result.push(obj)
+
+			if (item.children && item.children.length > 0) {
+				initChildDataToFlat(result, item.children, obj)
+			}
+		})
+		return result
+	}
+
+	const getMenuListFlat = computed(() => {
+		return initChildDataToFlat([], props.menuList)
+	})
 
 	const defaultActivePath = computed(() => {
 		return props.activePath!
@@ -55,18 +90,22 @@ export default createGlobalState(() => {
 	})
 
 	const state = reactive({
-		// 当前激活的path，保证一定是非重定向值
+		flatMenuList: getMenuListFlat,
+		// 当前激活的path，默认找到第一个非重定向的path
 		activePath:
 			props.activePath !== undefined
 				? defaultActivePath
-				: useStorage(`${prefix}-activePath`, getActivePath(props.menuList[0])),
-		// 当前激活的tags，默认就会有一个
+				: useStorage(`${prefix}-activePath`, getMenuListFlat.value.find((x) => !x.redirect)?.path || ''),
+		// 当前激活的tags，默认找出所有affix的path，如果没有，则和activePath保持一致
 		activeTags:
 			props.activeTags !== undefined
 				? defaultActiveTags
-				: useStorage<Layout.TabsView[]>(`${prefix}-activeTags`, [
-						findPath(props.menuList, getActivePath(props.menuList[0]))!,
-					]),
+				: useStorage<Layout.Menu[]>(
+						`${prefix}-activeTags`,
+						getMenuListFlat.value.filter((x) => x.affix).length
+							? getMenuListFlat.value.filter((x) => x.affix)
+							: [getMenuListFlat.value.find((x) => !x.redirect)!],
+					),
 		isCollapse: props.isCollapse !== undefined ? defaultCollapse : false,
 		isMobile: props.isMobile !== undefined ? defaultMobile : false,
 		isDark: props.isDark !== undefined ? defaultDark : useStorage(`${prefix}-isAllOpen`, false),

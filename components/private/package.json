@@ -26,6 +26,7 @@
 		"@mqy/stylelint-config": "workspace:^",
 		"@mqy/vite-config": "workspace:^",
 		"element-plus": "^2.7.6",
+		"sortablejs": "^1.15.2",
 		"vue": "^3.4.31"
 	},
 	"devDependencies": {
