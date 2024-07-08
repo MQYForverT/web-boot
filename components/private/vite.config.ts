@@ -35,6 +35,7 @@ import {
 	IconsResolver,
 } from '@mqy/vite-config/common'
 import { ElementPlusResolver } from '@mqy/vite-config/common/autoImport/components'
+import { presetIcons } from '@mqy/vite-config/common/plugins/unocss'
 
 // loader helpers
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
@@ -57,6 +58,17 @@ const config: UserConfig = {
 	plugins: [
 		unocss({
 			mode: 'shadow-dom',
+			// 默认菜单图标是element-plus中的tickets图标
+			safelist: ['i-ep-tickets'],
+			presets: [
+				presetIcons({
+					// 用 dynamic imports 提供集合，以便它们将作为异步块打包器并按需加载。
+					collections: {
+						// 引入下载的第三方图标
+						ep: () => import('@iconify-json/ep/icons.json').then((i) => i.default),
+					},
+				}),
+			],
 		}),
 		vue({
 			// 以前需要.ce.vue结尾，这样就不用.ce.vue结尾了
@@ -86,7 +98,7 @@ const config: UserConfig = {
 			include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
 			resolvers: [
 				ElementPlusResolver({ importStyle: 'sass' }),
-				// 自动注册图标组件，ep：element-plus
+				// 自动注册图标组件，以及自定义本地图标。ep：element-plus的图标，下面设置autoInstall，会自动下载，就不用单独去引入element-plus-icons依赖了
 				IconsResolver({
 					enabledCollections: ['ep'],
 					customCollections: ['mqy-icon'],
@@ -114,7 +126,7 @@ const config: UserConfig = {
 		}),
 		Icons({
 			compiler: 'vue3',
-			// 上面使用了element-plus的图标，这里设置autoInstall，会自动下载
+			// 上面使用了element-plus的图标，这里设置autoInstall，会自动下载上面enabledCollections中配置的图标
 			autoInstall: true,
 			customCollections: {
 				'mqy-icon': FileSystemIconLoader('./src/assets/svg', (svg) =>

@@ -9,13 +9,12 @@
 <script lang="ts" setup>
 	import useInject from '../../hooks/useInject'
 	import useState from '../../hooks/useState'
-	import type { IFandPath } from '../../utils/menu'
 	const { emits } = useInject()
 	const { state } = useState()
 
 	const cache = new Map()
 
-	const breadcrumbList = computed<IFandPath[]>(() => {
+	const breadcrumbList = computed<Layout.IFandPath[]>(() => {
 		if (cache.has(state.activePath)) {
 			return cache.get(state.activePath)
 		}
@@ -24,11 +23,11 @@
 		return data
 	})
 
-	const handleLink = (item: IFandPath) => {
+	const handleLink = (item: Layout.IFandPath) => {
 		// 一直找到非重定向为止
 		let pathItem = item
-		while (pathItem.redirect) {
-			pathItem = breadcrumbList.value.find((item) => item.path === pathItem.redirect)!
+		while (pathItem?.redirect) {
+			pathItem = state.flatMenuList.find((item) => item.path === pathItem.redirect)!
 		}
 		emits('selectMenu', pathItem.path)
 		state.activePath = pathItem.path

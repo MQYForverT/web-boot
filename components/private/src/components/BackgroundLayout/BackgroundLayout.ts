@@ -62,8 +62,10 @@ export enum propsEnum {
 	isTagsView = 'isTagsView',
 	// 是否开启 TagsView图标【内部逻辑属性】
 	isTagsViewIcon = 'isTagsViewIcon',
-	// 是否开启 TagsView 缓存
+	// 是否开启 TagsView 缓存到本地
 	isCacheTagsView = 'isCacheTagsView',
+	// 是否开启 TagsView 拖拽
+	isSortableTagsView = 'isSortableTagsView',
 	// 是否开启 水印
 	isWatermark = 'isWatermark',
 	// 水印文字
@@ -169,7 +171,11 @@ export const layoutProps = {
 	},
 	[propsEnum.isCacheTagsView]: {
 		type: [Boolean, String],
-		default: false,
+		default: true,
+	},
+	[propsEnum.isSortableTagsView]: {
+		type: [Boolean, String],
+		default: true,
 	},
 	[propsEnum.isWatermark]: {
 		type: [Boolean, String],
@@ -244,6 +250,7 @@ export const processPropType = (props: LayoutPrivateProps) => {
 				case propsEnum.language:
 				case propsEnum.userAvatar:
 				case propsEnum.isCacheTagsView:
+				case propsEnum.isSortableTagsView:
 				case propsEnum.isWatermark:
 				case propsEnum.isFooter:
 				case propsEnum.menuList:

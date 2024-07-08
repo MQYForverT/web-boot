@@ -1,5 +1,3 @@
-import { useEventListener } from '@vueuse/core'
-import { computed, reactive, ref, watch } from 'vue'
 import useState from '../hooks/useState'
 import useInject from '../hooks/useInject'
 

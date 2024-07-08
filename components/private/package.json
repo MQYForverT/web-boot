@@ -30,7 +30,8 @@
 		"vue": "^3.4.31"
 	},
 	"devDependencies": {
-		"@iconify/utils": "^2.1.25",
+		"@iconify-json/ep": "^1.1.15",
+		"@types/sortablejs": "^1.15.8",
 		"@vitejs/plugin-vue": "^5.0.5",
 		"@vue/test-utils": "^2.4.6",
 		"rollup-plugin-copy": "^3.5.0",

@@ -57,7 +57,7 @@
 <style lang="scss" scoped>
 	.contextmenu {
 		position: absolute;
-		z-index: 99;
+		z-index: 9999;
 		padding: 5px;
 		margin: 0;
 		font-size: 13px;

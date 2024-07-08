@@ -73,6 +73,8 @@
 	@use 'element-plus/theme-chalk/src/select.scss';
 	@use 'element-plus/theme-chalk/src/option.scss';
 	@use 'element-plus/theme-chalk/src/icon.scss';
+	@use 'element-plus/theme-chalk/src/input.scss';
+	@use 'element-plus/theme-chalk/src/popover.scss';
 
 	@import url('./styles/index.scss');
 </style>

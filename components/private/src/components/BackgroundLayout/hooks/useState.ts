@@ -100,12 +100,14 @@ export default createGlobalState(() => {
 		activeTags:
 			props.activeTags !== undefined
 				? defaultActiveTags
-				: useStorage<Layout.Menu[]>(
-						`${prefix}-activeTags`,
-						getMenuListFlat.value.filter((x) => x.affix).length
-							? getMenuListFlat.value.filter((x) => x.affix)
-							: [getMenuListFlat.value.find((x) => !x.redirect)!],
-					),
+				: props.isCacheTagsView
+					? useStorage<Layout.Menu[]>(
+							`${prefix}-activeTags`,
+							getMenuListFlat.value.filter((x) => x.affix).length
+								? getMenuListFlat.value.filter((x) => x.affix)
+								: [getMenuListFlat.value.find((x) => !x.redirect)!],
+						)
+					: ([] as Layout.Menu[]),
 		isCollapse: props.isCollapse !== undefined ? defaultCollapse : false,
 		isMobile: props.isMobile !== undefined ? defaultMobile : false,
 		isDark: props.isDark !== undefined ? defaultDark : useStorage(`${prefix}-isAllOpen`, false),
