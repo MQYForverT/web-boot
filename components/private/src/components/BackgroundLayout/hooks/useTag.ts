@@ -131,6 +131,7 @@ export function useTag() {
 			arr = [state.activeTags[index]]
 		}
 		state.activeTags = arr
+
 		// 如果把当前激活的关了，则需要重新激活一个
 		if (!state.activeTags.find((x) => x.path === state.activePath)) {
 			emits('selectMenu', arr[0].path)

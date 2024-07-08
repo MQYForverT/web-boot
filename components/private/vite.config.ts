@@ -33,6 +33,7 @@ import {
 	// Icon
 	Icons,
 	IconsResolver,
+	visualizer,
 } from '@mqy/vite-config/common'
 import { ElementPlusResolver } from '@mqy/vite-config/common/autoImport/components'
 import { presetIcons } from '@mqy/vite-config/common/plugins/unocss'
@@ -56,6 +57,7 @@ const config: UserConfig = {
 		],
 	},
 	plugins: [
+		visualizer,
 		unocss({
 			mode: 'shadow-dom',
 			// 默认菜单图标是element-plus中的tickets图标

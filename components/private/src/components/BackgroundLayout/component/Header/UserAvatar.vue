@@ -1,7 +1,7 @@
 <template>
 	<el-dropdown :trigger="props.userAvatar.trigger" @command="handleCommand">
 		<div class="h-14 flex-center cursor-pointer p-3 hover:bg-fill">
-			<el-avatar :src="props.userAvatar.avatar || avatar" size="small" class="mr-2 shrink-0" />
+			<el-avatar :src="props.userAvatar.avatar || state.circleUrl" size="small" class="mr-2 shrink-0" />
 			<span>{{ props.userAvatar.name || 'mqy' }}</span>
 		</div>
 		<template #dropdown>
@@ -21,7 +21,10 @@
 
 <script lang="ts" setup>
 	import useInject from '../../hooks/useInject'
-	import avatar from '@/assets/image/avatar.jpg'
+
+	const state = reactive({
+		circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+	})
 
 	const { props, emits } = useInject()
 
