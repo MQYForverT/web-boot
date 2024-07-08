@@ -20,6 +20,16 @@
 				<span>button2</span>
 			</div>
 		</div>
+		<div slot="main">
+			<div style="height: 120px">hello</div>
+			<div style="height: 120px">hello</div>
+			<div style="height: 120px">hello</div>
+			<div style="height: 120px">hello</div>
+			<div style="height: 120px">hello</div>
+			<div style="height: 120px">hello</div>
+			<div style="height: 120px">hello</div>
+			<div style="height: 120px">hello</div>
+		</div>
 	</mqy-background-layout>
 </template>
 

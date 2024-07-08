@@ -1,4 +1,4 @@
-import { animationEnum, menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
+import { menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
 import useInject from './useInject'
 
 export default createGlobalState(() => {
@@ -85,10 +85,6 @@ export default createGlobalState(() => {
 		return props.isTagsViewIcon
 	})
 
-	const defaultAnimation = computed(() => {
-		return props.animation
-	})
-
 	const state = reactive({
 		flatMenuList: getMenuListFlat,
 		// 当前激活的path，默认找到第一个非重定向的path
@@ -122,10 +118,6 @@ export default createGlobalState(() => {
 		isTagsView: props.isTagsView !== undefined ? defaultTagsView : useStorage(`${prefix}-isTagsView`, true),
 		isTagsViewIcon:
 			props.isTagsViewIcon !== undefined ? defaultTagsViewIcon : useStorage(`${prefix}-isTagsViewIcon`, true),
-		animation:
-			props.animation !== undefined
-				? defaultAnimation
-				: useStorage<animationEnum>(`${prefix}-animation`, animationEnum.zoomFade),
 	})
 
 	// 对外可控属性做代理，当设值当时候，自动识别是内部控制，还是外部控制

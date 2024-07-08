@@ -37,6 +37,6 @@
 
 <style lang="scss">
 	.header {
-		@apply flex-y-center justify-between h-14 p-x-0 bg-[var(--el-bg-color)];
+		@apply flex-y-center justify-between h-14 p-x-0 bg-[var(--el-bg-color)] shadow-[0_0_1px_#888];
 	}
 </style>

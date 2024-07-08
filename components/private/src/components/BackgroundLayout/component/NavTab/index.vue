@@ -12,11 +12,11 @@
 		</div>
 
 		<transition-group
-			v-if="state.isTagsView && state.activeTags.length"
+			v-if="state.activeTags.length"
 			ref="tagGroupRef"
 			name="list"
 			tag="div"
-			class="scroll-container h-10 flex-y-center overflow-x-auto overflow-y-hidden whitespace-nowrap bg-[var(--el-bg-color)] pb-4px pl-12px pr-12px pt-4px"
+			class="scroll-container h-10 w-full flex-y-center overflow-x-auto overflow-y-hidden whitespace-nowrap bg-[var(--el-bg-color)] pb-4px pl-12px pr-12px pt-4px"
 		>
 			<div
 				v-for="item in state.activeTags"
@@ -76,12 +76,7 @@
 				</div>
 			</template>
 			<el-input v-model="tagSearch" style="width: 100%" placeholder="搜索" :prefix-icon="Search" />
-			<transition-group
-				v-if="state.isTagsView && state.activeTags.length"
-				name="list"
-				tag="div"
-				class="scroll-container"
-			>
+			<transition-group v-if="state.activeTags.length" name="list" tag="div" class="scroll-container">
 				<div
 					v-for="item in state.activeTags"
 					:key="item.path"
@@ -261,7 +256,7 @@
 
 	// 监听元素数量的变化，数量变化时判断是否超出
 	watchEffect(() => {
-		if (state.isTagsView && state.activeTags.length) {
+		if (state.activeTags.length) {
 			nextTick(() => {
 				const tagScroll = tagGroupRef.value?.$el
 				const tagBody = tagBodyRef.value

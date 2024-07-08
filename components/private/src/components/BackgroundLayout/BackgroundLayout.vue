@@ -12,8 +12,8 @@
 			<template #header>
 				<slot name="header" />
 			</template>
-			<template #body>
-				<slot name="body" />
+			<template #main>
+				<slot name="main" />
 			</template>
 		</defaults>
 	</div>
@@ -22,7 +22,7 @@
 	import useState from './hooks/useState'
 	import { layoutProps, propsKey, processPropType, emitsKey } from './BackgroundLayout'
 	import type { LayoutEmits } from './BackgroundLayout'
-	import defaults from './component/Main/default.vue'
+	import defaults from './component/Layout/default.vue'
 	import Logo from '~icons/mqy-icon/logo'
 
 	const appWrapperRef = ref()
@@ -59,6 +59,7 @@
 	// 把所有用到的element样式都在这里申明
 	@use 'element-plus/theme-chalk/dark/css-vars.css';
 	@use 'element-plus/theme-chalk/src/container.scss';
+	@use 'element-plus/theme-chalk/src/main.scss';
 	@use 'element-plus/theme-chalk/src/header.scss';
 	@use 'element-plus/theme-chalk/src/scrollbar.scss';
 	@use 'element-plus/theme-chalk/src/aside.scss';

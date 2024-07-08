@@ -6,14 +6,18 @@
 				<slot name="logo" />
 			</template>
 		</Aside>
-		<!-- <slot name="body" /> -->
 		<el-container direction="vertical" class="relative">
 			<Header>
 				<template #header>
 					<slot name="header" />
 				</template>
 			</Header>
-			<NavTab />
+			<NavTab v-if="state.isTagsView" />
+			<Main>
+				<template #main>
+					<slot name="main" />
+				</template>
+			</Main>
 			<AppSetting v-if="props.setting.enable" />
 		</el-container>
 	</el-container>
@@ -26,6 +30,7 @@
 	import AppMask from '../AppMask/index.vue'
 	import Header from '../Header/index.vue'
 	import NavTab from '../NavTab/index.vue'
+	import Main from '../Main/index.vue'
 	import AppSetting from '../AppSetting/index.vue'
 
 	const { state } = useState()

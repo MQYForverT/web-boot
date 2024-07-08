@@ -9,14 +9,6 @@ export enum menuModeEnum {
 	dark = 'dark',
 }
 
-export enum animationEnum {
-	zoomFade = 'zoom-fade',
-	fadeSlide = 'fade-slide',
-	fade = 'fade',
-	fadeBottom = 'fade-bottom',
-	fadeScale = 'fade-scale',
-}
-
 export enum propsEnum {
 	// 容器大小
 	containerSize = 'containerSize',
@@ -73,15 +65,10 @@ export enum propsEnum {
 	/**
 	 * 其它设置
 	 */
-	// 主页面切换动画：【内部逻辑属性】
-	// 可选值"<zoom-fade|fade-slide|fade|fade-bottom|fade-scale>"，默认 zoom-fade
-	animation = 'animation',
 	// 布局
 	layout = 'layout',
 	// 主标题
 	globalTitle = 'globalTitle',
-	// 副标题
-	globalViceTitle = 'globalViceTitle',
 	// 是否显示底部注册、公司信息
 	isFooter = 'isFooter',
 	// 公司名字
@@ -185,10 +172,6 @@ export const layoutProps = {
 		type: String,
 		default: '漠轻阴',
 	},
-	[propsEnum.animation]: {
-		type: String as PropType<animationEnum>,
-		default: undefined,
-	},
 	[propsEnum.layout]: {
 		type: String as PropType<layoutEnum>,
 		default: layoutEnum.defaults,
@@ -196,10 +179,6 @@ export const layoutProps = {
 	[propsEnum.globalTitle]: {
 		type: String,
 		default: 'WebBoot',
-	},
-	[propsEnum.globalViceTitle]: {
-		type: String,
-		default: '漠轻阴',
 	},
 	[propsEnum.isFooter]: {
 		type: [Boolean, String],
