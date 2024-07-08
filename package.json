@@ -37,8 +37,8 @@
 	"license": "ISC",
 	"packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879",
 	"dependencies": {
-		"inquirer": "^9.2.23",
-		"rimraf": "^5.0.7"
+		"inquirer": "^9.3.5",
+		"rimraf": "^5.0.8"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.3.0",
@@ -46,18 +46,18 @@
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@types/inquirer": "^9.0.7",
-		"@types/node": "^20.14.8",
+		"@types/node": "^20.14.10",
 		"commitlint": "^19.3.0",
 		"depcheck": "^1.4.7",
-		"eslint": "^9.5.0",
+		"eslint": "^9.6.0",
 		"eslint-define-config": "^2.1.0",
 		"husky": "^9.0.11",
 		"lint-staged": "^15.2.7",
 		"prettier": "3.2.5",
 		"stylelint": "^16.6.1",
 		"ts-node": "^10.9.2",
-		"tsx": "^4.15.7",
-		"typescript": "^5.5.2"
+		"tsx": "^4.16.2",
+		"typescript": "^5.5.3"
 	},
 	"lint-staged": {
 		"templates/vue/**/*.{js,ts,jsx,tsx,vue,ce.vue}": [
