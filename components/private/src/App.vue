@@ -9,6 +9,7 @@
 		:setting="JSON.stringify(themeConfig.setting)"
 		:settingVisible="JSON.stringify(themeConfig.settingVisible)"
 		activeLanguage="zh-CN"
+		:watermark="JSON.stringify(themeConfig.watermark)"
 		@changeProp="handleChange"
 		@selectMenu="selectMenu"
 		@commandUser="commandUser"
@@ -74,6 +75,9 @@
 					value: '个性设置',
 				},
 			],
+		},
+		watermark: {
+			text: '漠轻阴666',
 		},
 		setting: {
 			enable: true,

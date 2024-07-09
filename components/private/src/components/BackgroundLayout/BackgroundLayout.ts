@@ -60,10 +60,8 @@ export enum propsEnum {
 	isCacheTagsView = 'isCacheTagsView',
 	// 是否开启 TagsView 拖拽
 	isSortableTagsView = 'isSortableTagsView',
-	// 是否开启 水印
-	isWatermark = 'isWatermark',
-	// 水印文字
-	watermarkText = 'watermarkText',
+	// 水印设置
+	watermark = 'watermark',
 	/**
 	 * 其它设置
 	 */
@@ -170,13 +168,9 @@ export const layoutProps = {
 		type: [Boolean, String],
 		default: true,
 	},
-	[propsEnum.isWatermark]: {
-		type: [Boolean, String],
-		default: false,
-	},
-	[propsEnum.watermarkText]: {
-		type: String,
-		default: '漠轻阴',
+	[propsEnum.watermark]: {
+		type: [Object, String] as PropType<Layout.Watermark | string>,
+		default: '{}',
 	},
 	[propsEnum.layout]: {
 		type: String as PropType<layoutEnum>,
@@ -237,7 +231,7 @@ export const processPropType = (props: LayoutPrivateProps) => {
 				case propsEnum.tagsShowNum:
 				case propsEnum.isCacheTagsView:
 				case propsEnum.isSortableTagsView:
-				case propsEnum.isWatermark:
+				case propsEnum.watermark:
 				case propsEnum.isFooter:
 				case propsEnum.menuList:
 					return JSON.parse(value)

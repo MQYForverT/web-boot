@@ -20,10 +20,13 @@
 </template>
 <script setup lang="ts">
 	import useState from './hooks/useState'
+	import { useWatermark } from './hooks/useWatermark'
 	import { layoutProps, propsKey, processPropType, emitsKey } from './BackgroundLayout'
 	import type { LayoutEmits } from './BackgroundLayout'
 	import defaults from './component/Layout/default.vue'
 	import Logo from '~icons/mqy-icon/logo'
+
+	const { getObserver, setWatermark, updateWatermark } = useWatermark()
 
 	const appWrapperRef = ref()
 
@@ -35,9 +38,13 @@
 	provide(emitsKey, emits)
 
 	onMounted(() => {
+		if (proxyProps.watermark.text) {
+			setWatermark(proxyProps.watermark)
+		}
+
 		const { state } = useState()
 		useResizeObserver(appWrapperRef, (entries) => {
-			const { width } = entries[0].contentRect
+			const { width, height } = entries[0].contentRect
 			if (width <= 640) {
 				if (!state.isMobile) {
 					state.isMobile = true
@@ -51,7 +58,17 @@
 					state.isMobile = false
 				}
 			}
+
+			// 更新水印
+			updateWatermark({ height, width })
 		})
+	})
+
+	onBeforeUnmount(() => {
+		const observer = getObserver()
+		if (observer) {
+			observer.disconnect()
+		}
 	})
 </script>
 

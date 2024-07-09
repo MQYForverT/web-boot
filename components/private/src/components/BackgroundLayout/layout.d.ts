@@ -55,6 +55,18 @@ declare global {
 			enable?: boolean
 			title?: string
 		}
+		interface Watermark {
+			/** 水印文字 */
+			text?: string
+			/** 字体，默认 `Arial` */
+			fontFamily?: string
+			/** 字体大小，默认 `12px` */
+			size?: string
+			/** 填充绘制图形的颜色 */
+			color?: string
+			/** 水印旋转，默认 `-10` */
+			rotate?: number
+		}
 	}
 }
 // 使得这个文件变成一个模块
