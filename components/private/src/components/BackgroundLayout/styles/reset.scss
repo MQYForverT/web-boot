@@ -2,17 +2,21 @@
 ::before,
 ::after {
   box-sizing: border-box;
+  box-sizing: inherit;
   border-color: currentcolor;
   border-style: solid;
   border-width: 0;
-  box-sizing: inherit;
 }
 
 .backgroundLayout {
+  /* 设置盒模型为边框模型 */
+  box-sizing: border-box;
+
   /* 设置元素的宽度和高度为 100%，并去除默认的外边距 */
   width: 100%;
   height: 100%;
   margin: 0;
+
   /* 设置字体系列，优先使用 Inter 字体，然后是系统默认的一系列字体 */
   font-family:
     Inter,
@@ -26,23 +30,29 @@
     Helvetica,
     Arial,
     sans-serif;
+
   /* 设置基础字体大小为 14 像素 */
   font-size: 14px;
+
   /* 继承父元素的行高 */
   line-height: inherit;
+
+  /* 设置行高为 1.5 倍 */
+  line-height: 1.5;
+
+  /* 设置制表符大小为 4 个空格 */
+  tab-size: 4;
+
   /* 在 macOS 上使用灰度平滑字体渲染 */
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+
   /* 设置点击高亮颜色为透明 */
   -webkit-tap-highlight-color: transparent;
+
   /* 文本渲染优化，提高可读性 */
   text-rendering: optimizelegibility;
-  /* 设置盒模型为边框模型 */
-  box-sizing: border-box;
-  /* 设置行高为 1.5 倍 */
-  line-height: 1.5;
-  /* 设置制表符大小为 4 个空格 */
-  tab-size: 4;
+
   /* 禁止浏览器自动调整文本大小 */
   text-size-adjust: 100%;
 }

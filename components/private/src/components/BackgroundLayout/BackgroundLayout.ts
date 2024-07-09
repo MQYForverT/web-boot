@@ -54,6 +54,8 @@ export enum propsEnum {
 	isTagsView = 'isTagsView',
 	// 是否开启 TagsView图标【内部逻辑属性】
 	isTagsViewIcon = 'isTagsViewIcon',
+	// tag最大存在数量，当超出时，先进先出，优先干掉不是固定的，再干掉固定的
+	tagsShowNum = 'tagsShowNum',
 	// 是否开启 TagsView 缓存到本地
 	isCacheTagsView = 'isCacheTagsView',
 	// 是否开启 TagsView 拖拽
@@ -156,6 +158,10 @@ export const layoutProps = {
 		type: [Boolean, String],
 		default: undefined,
 	},
+	[propsEnum.tagsShowNum]: {
+		type: [Number, String],
+		default: 10,
+	},
 	[propsEnum.isCacheTagsView]: {
 		type: [Boolean, String],
 		default: true,
@@ -228,6 +234,7 @@ export const processPropType = (props: LayoutPrivateProps) => {
 				case propsEnum.fullScreen:
 				case propsEnum.language:
 				case propsEnum.userAvatar:
+				case propsEnum.tagsShowNum:
 				case propsEnum.isCacheTagsView:
 				case propsEnum.isSortableTagsView:
 				case propsEnum.isWatermark:

@@ -1,8 +1,8 @@
 <template>
-	<div ref="tagBodyRef" class="m-t-[0.5px] flex-y-center shadow-[0_0_1px_#888]">
+	<div ref="tagBodyRef" class="h-10 flex-y-center pl-3 pr-3 shadow-[0_0_1px_#888]">
 		<div
-			v-show="overBodyWidth && !arrivedState.left"
-			class="relative ml-1 mr-1 flex-center cursor-pointer rounded-2px hover:bg-[rgb(228,229,230)]"
+			v-show="overBody && !arrivedState.left"
+			class="relative mr-1 flex-center cursor-pointer rounded-2px -ml-1 hover:bg-[rgb(228,229,230)]"
 			@click.prevent.stop="toPage('pre')"
 		>
 			<div class="over-width-left"></div>
@@ -16,7 +16,7 @@
 			ref="tagGroupRef"
 			name="list"
 			tag="div"
-			class="scroll-container h-10 w-full flex-y-center overflow-x-auto overflow-y-hidden whitespace-nowrap bg-[var(--el-bg-color)] pb-4px pl-12px pr-12px pt-4px"
+			class="scroll-container h-8 w-full flex-y-center overflow-x-auto overflow-y-hidden whitespace-nowrap bg-[var(--el-bg-color)]"
 			@after-enter="handleTransitionEnd"
 			@after-leave="handleTransitionEnd"
 		>
@@ -27,39 +27,15 @@
 				:class="[item.path === state.activePath ? 'tagItem-selected' : '']"
 				class="tagItem relative mr-2 h-full flex-center border border-gray-200 rounded-2px bg-white pl-3 pr-2"
 				@click="handleChange(item.path)"
-				@contextmenu.prevent="handleContextMenu($event, item.path, item.affix, 'out')"
+				@contextmenu.prevent="handleContextMenuHand($event, item.path, item.affix, 'out')"
 			>
-				<div
-					v-if="state.isTagsViewIcon"
-					:class="[state.isTagsViewIcon ? item.icon || 'i-ep-tickets' : '']"
-					class="mr-1 text-4"
-				/>
-				<span>{{ item.title }}</span>
-				<el-icon
-					v-if="state.activePath === item.path"
-					class="ml-1.5 mt-1px rounded-full hover:bg-primary hover:color-white"
-					size="14"
-					@click.prevent.stop="refreshTag(item.path)"
-				>
-					<RefreshRight />
-				</el-icon>
-				<el-icon
-					v-if="!item.affix && state.activeTags.length > 1"
-					class="ml-1 mt-1px rounded-full hover:bg-primary hover:color-white"
-					size="14"
-					@click.prevent.stop="handleRemove(item.path)"
-				>
-					<Close />
-				</el-icon>
-				<el-icon v-if="item.affix" class="absolute rounded-full -left-1 -top-1" size="12">
-					<Paperclip />
-				</el-icon>
+				<TagItem :item="item" />
 			</div>
 		</transition-group>
 
 		<div
-			v-show="overBodyWidth && !arrivedState.right"
-			class="relative ml-1 mr-1 flex-center cursor-pointer rounded-2px hover:bg-[rgb(228,229,230)]"
+			v-show="overBody && !arrivedState.right"
+			class="relative ml-1 flex-center cursor-pointer rounded-2px hover:bg-[rgb(228,229,230)]"
 			@click.prevent.stop="toPage('next')"
 		>
 			<div class="over-width-right"></div>
@@ -68,18 +44,19 @@
 			</el-icon>
 		</div>
 
-		<div v-show="overBodyWidth" class="divider" />
+		<div v-show="overBody" class="divider" />
 
 		<el-popover placement="bottom" :width="200" trigger="click" :teleported="false" :hide-after="0" :show-arrow="false">
 			<template #reference>
-				<div v-show="overBodyWidth" class="mr-2 flex-center cursor-pointer">
+				<div v-show="overBody" class="mr-2 flex-center cursor-pointer">
 					<div class="whitespace-nowrap">全部</div>
 					<el-icon class="el-icon--right"><arrow-down /></el-icon>
 				</div>
 			</template>
-			<el-input v-model="tagSearch" class="mb-2 w-full" placeholder="搜索" :prefix-icon="Search" />
+			<el-input v-model="tagSearch" class="mb-1.5 w-full" placeholder="搜索" :prefix-icon="Search" />
 			<transition-group
 				v-if="state.activeTags.filter((v) => v.title.includes(tagSearch)).length"
+				ref="tagGroupRefIn"
 				name="list"
 				tag="div"
 				class="scroll-container max-h-100 overflow-x-hidden overflow-y-auto bg-[var(--el-bg-color)]"
@@ -87,48 +64,19 @@
 				<div
 					v-for="item in state.activeTags.filter((v) => v.title.includes(tagSearch))"
 					:key="item.path"
-					:ref="(el) => setItemRef(el, item.path)"
 					:class="[item.path === state.activePath ? 'tagItem-selected' : '']"
-					class="tagItem relative mb-0.75 h-7 flex-y-center justify-between border border-gray-200 rounded-2px bg-white pl-3 pr-2"
+					class="tagItem relative mb-0.5 h-7 flex-y-center justify-between border border-gray-200 rounded-2px bg-white pl-3 pr-2"
 					@click="handleChange(item.path)"
-					@contextmenu.prevent="handleContextMenu($event, item.path, item.affix, 'in')"
+					@contextmenu.prevent="handleContextMenuHand($event, item.path, item.affix, 'in')"
 				>
-					<div class="flex-center">
-						<div
-							v-if="state.isTagsViewIcon"
-							:class="[state.isTagsViewIcon ? item.icon || 'i-ep-tickets' : '']"
-							class="mr-1 text-4"
-						/>
-						<span>{{ item.title }}</span>
-					</div>
-					<div class="flex-center">
-						<el-icon
-							v-if="state.activePath === item.path"
-							class="ml-1.5 mt-1px rounded-full hover:bg-primary hover:color-white"
-							size="14"
-							@click.prevent.stop="refreshTag(item.path)"
-						>
-							<RefreshRight />
-						</el-icon>
-						<el-icon
-							v-if="!item.affix && state.activeTags.length > 1"
-							class="ml-1 mt-1px rounded-full hover:bg-primary hover:color-white"
-							size="14"
-							@click.prevent.stop="handleRemove(item.path)"
-						>
-							<Close />
-						</el-icon>
-					</div>
-					<el-icon v-if="item.affix" class="absolute rounded-full -left-1 -top-1" size="12">
-						<Paperclip />
-					</el-icon>
+					<TagItem :item="item" />
 				</div>
 			</transition-group>
 			<div v-else class="flex-center text-3">空空如也～</div>
 		</el-popover>
 	</div>
 
-	<TabDropdown
+	<TagDropdown
 		:currentPath="currentPath"
 		:options="tabMenuOptions"
 		:visible="contextmenuVisible"
@@ -137,18 +85,24 @@
 </template>
 
 <script lang="ts" setup>
-	import { Close, RefreshRight, Paperclip, CaretLeft, CaretRight, ArrowDown, Search } from '@element-plus/icons-vue'
+	import { CaretLeft, CaretRight, ArrowDown, Search } from '@element-plus/icons-vue'
 	import useState from '../../hooks/useState'
 	import useInject from '../../hooks/useInject'
 	import { useTag } from '../../hooks/useTag'
-	import TabDropdown from './TabDropdown.vue'
+	import TagDropdown from './TagDropdown.vue'
+	import TagItem from './TagItem.vue'
+	import type { SortableEvent } from 'sortablejs'
 
 	const { state } = useState()
 	const { props } = useInject()
 
+	// 主容器
 	const tagBodyRef = ref()
+	// 滚动容器
 	const tagGroupRef = ref()
-	const overBodyWidth = ref(false)
+	// 超出主容器，即出现滚动条
+	const tagGroupRefIn = ref()
+	const overBody = ref(false)
 	const itemRefs = ref(new Map<string, HTMLElement | null>())
 	const setItemRef = (el: Element | globalThis.ComponentPublicInstance | null, id: string) => {
 		const htmlElement = el as HTMLElement | null
@@ -158,6 +112,7 @@
 
 	const currentPath = ref('')
 	const sortableRef = ref()
+	const sortableRefIn = ref()
 
 	const tagSearch = ref('')
 
@@ -168,23 +123,18 @@
 		// 窗口变化时重新计算
 		measure()
 		if (width < tagScroll.scrollWidth) {
-			overBodyWidth.value = true
+			overBody.value = true
 		} else {
-			overBodyWidth.value = false
+			overBody.value = false
 		}
 	})
 
-	const {
-		contextmenuLeft,
-		contextmenuTop,
-		contextmenuVisible,
-		tabMenuOptions,
-		contextMenuStyle,
-		addTag,
-		closeTag,
-		switchTag,
-		refreshTag,
-	} = useTag()
+	const { handleContextMenu, contextmenuVisible, tabMenuOptions, contextMenuStyle, addTag, switchTag } = useTag()
+
+	const handleContextMenuHand = (e: MouseEvent, path: string, affix?: boolean, type?: 'out' | 'in') => {
+		handleContextMenu(e, path, tagGroupRef.value?.$el, affix, type)
+		currentPath.value = path
+	}
 
 	const toPage = (type: string) => {
 		const container = tagGroupRef.value?.$el
@@ -203,75 +153,16 @@
 	const handleChange = (path: string) => {
 		switchTag(path)
 		// 滚动到对应item
-		if (overBodyWidth.value) {
+		scrollToItem(path)
+	}
+
+	const scrollToItem = (path: string) => {
+		if (overBody.value) {
 			const item = itemRefs.value.get(path)
 			if (item) {
 				item.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' })
 			}
 		}
-	}
-
-	// 删除tab
-	const handleRemove = (path: string) => {
-		// 找到当前索引
-		const index = state.activeTags.findIndex((v) => v.path === path)
-		closeTag(index, path)
-	}
-
-	// 筛选显示的右键菜单
-	const showFilterMenu = (path: string, affix?: boolean, type?: 'out' | 'in') => {
-		Array.of(0, 1, 2, 3, 4, 5).forEach((v) => {
-			tabMenuOptions[v].show = true
-			tabMenuOptions[v].disabled = false
-		})
-
-		if (type === 'in') {
-			tabMenuOptions[2].label = '关闭上侧'
-			tabMenuOptions[3].label = '关闭下侧'
-		}
-
-		if (state.activePath !== path) {
-			tabMenuOptions[0].show = false
-		}
-		if (affix || state.activeTags.length === 1) {
-			tabMenuOptions[1].show = false
-			tabMenuOptions[1].disabled = true
-		}
-		const index = state.activeTags.findIndex((v) => v.path === path)
-		// 左侧菜单
-		if (index === 0) {
-			tabMenuOptions[2].show = false
-
-			tabMenuOptions[2].disabled = true
-		}
-		// 右侧菜单
-		if (index === state.activeTags.length - 1) {
-			tabMenuOptions[3].show = false
-
-			tabMenuOptions[3].disabled = true
-		}
-		if (state.activeTags.length < 2) {
-			tabMenuOptions[4].show = false
-			tabMenuOptions[5].show = false
-			tabMenuOptions[4].disabled = true
-			tabMenuOptions[5].disabled = true
-		}
-		currentPath.value = path
-	}
-
-	const handleContextMenu = (e: MouseEvent, path: string, affix?: boolean, type?: 'out' | 'in') => {
-		showFilterMenu(path, affix, type)
-		const menuMinWidth = type === 'out' ? 105 : 0
-		const el = tagGroupRef.value?.$el
-		// // 容器距离左侧的长度
-		const offsetLeft = el.getBoundingClientRect().left // container margin left
-		// // 容器的宽度
-		const offsetWidth = el.offsetWidth // container width
-		const maxLeft = offsetWidth - menuMinWidth // left boundary
-		const left = e.clientX - offsetLeft + 15 // 15: margin right
-		contextmenuLeft.value = left > maxLeft ? maxLeft : left
-		contextmenuTop.value = e.clientY
-		contextmenuVisible.value = true
 	}
 
 	const updateTagScroll = () => {
@@ -280,9 +171,10 @@
 			const tagBody = tagBodyRef.value
 			if (tagScroll && tagBody) {
 				if (tagScroll.scrollWidth > tagBody.clientWidth) {
-					overBodyWidth.value = true
+					overBody.value = true
+					scrollToItem(state.activePath)
 				} else {
-					overBodyWidth.value = false
+					overBody.value = false
 				}
 			}
 		})
@@ -309,23 +201,21 @@
 		() => state.activePath,
 		() => {
 			addTag()
+			scrollToItem(state.activePath)
 
 			nextTick(() => {
-				if (tagGroupRef.value?.$el && props.isSortableTagsView && !sortableRef.value) {
+				if (tagGroupRef.value?.$el && props.isSortableTagsView && !sortableRef.value && !sortableRefIn.value) {
 					import('sortablejs').then((Sortable) => {
 						sortableRef.value = new Sortable.default(tagGroupRef.value.$el, {
 							animation: 300,
 							dataIdAttr: 'data-name',
-							onEnd: (evt) => {
-								const oldIndex = evt.oldIndex!
-								const newIndex = evt.newIndex!
-								if (oldIndex !== newIndex) {
-									// 先删除老的
-									const movedItem = state.activeTags.splice(oldIndex, 1)[0]
-									// 把老的加入到新的位置
-									state.activeTags.splice(newIndex, 0, movedItem)
-								}
-							},
+							onEnd: handleSortEnd,
+						})
+
+						sortableRefIn.value = new Sortable.default(tagGroupRefIn.value.$el, {
+							animation: 300,
+							dataIdAttr: 'data-name',
+							onEnd: handleSortEnd,
 						})
 					})
 				}
@@ -336,10 +226,25 @@
 		},
 	)
 
+	// 处理排序结束后的逻辑
+	const handleSortEnd = (evt: SortableEvent) => {
+		const oldIndex = evt.oldIndex!
+		const newIndex = evt.newIndex!
+		if (oldIndex !== newIndex) {
+			const movedItem = state.activeTags.splice(oldIndex, 1)[0]
+			state.activeTags.splice(newIndex, 0, movedItem)
+		}
+	}
+
 	onBeforeUnmount(() => {
 		if (sortableRef.value) {
 			sortableRef.value.destroy()
 			sortableRef.value = null
+		}
+
+		if (sortableRefIn.value) {
+			sortableRefIn.value.destroy()
+			sortableRefIn.value = null
 		}
 	})
 </script>
@@ -352,50 +257,54 @@
 	.scroll-container::-webkit-scrollbar {
 		display: none;
 	}
+
 	.scroll-container {
 		-ms-overflow-style: none; /* IE and Edge */
 		scrollbar-width: none; /* Firefox */
 
 		.tagItem {
 			cursor: pointer;
+
 			&:hover {
-				border-color: var(--el-color-primary-light-3);
 				color: var(--el-color-primary);
+				border-color: var(--el-color-primary-light-3);
 			}
 		}
 
 		.tagItem-selected {
+			color: var(--el-color-primary);
 			background: var(--el-color-primary-light-8);
 			border-color: var(--el-color-primary-light-3);
-			color: var(--el-color-primary);
 		}
 	}
 
 	.over-width-left::after,
 	.over-width-right::before {
-		content: '';
 		position: absolute;
-		z-index: 2;
 		top: -8px;
 		bottom: 0;
-		height: 32px;
+		z-index: 2;
 		width: 40px; /* Width of the gradient */
+		height: 32px;
 		pointer-events: none;
+		content: '';
 	}
 
 	.over-width-left::after {
 		left: 16px;
-		background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+		background: linear-gradient(to right, rgb(255 255 255 / 100%), rgb(255 255 255 / 0%));
 	}
+
 	.over-width-right::before {
 		right: 16px;
-		background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+		background: linear-gradient(to left, rgb(255 255 255 / 100%), rgb(255 255 255 / 0%));
 	}
 
 	.list-enter-active,
 	.list-leave-active {
 		transition: all 0.3s ease;
 	}
+
 	.list-enter-from,
 	.list-leave-to {
 		opacity: 0;
@@ -404,7 +313,7 @@
 
 	.divider {
 		height: 24px;
-		border-left: 1px solid #e4e7ed;
 		margin: 0 10px;
+		border-left: 1px solid #e4e7ed;
 	}
 </style>

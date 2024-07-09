@@ -3,7 +3,7 @@ import useInject from '../hooks/useInject'
 
 export function useTag() {
 	const { state } = useState()
-	const { emits } = useInject()
+	const { props, emits } = useInject()
 	const contextmenuLeft = ref(0)
 	const contextmenuTop = ref(0)
 
@@ -56,9 +56,80 @@ export function useTag() {
 		return { left: contextmenuLeft.value + 'px', top: contextmenuTop.value + 'px' }
 	})
 
+	// 筛选显示的右键菜单
+	const showFilterMenu = (path: string, affix?: boolean, type?: 'out' | 'in') => {
+		Array.of(0, 1, 2, 3, 4, 5).forEach((v) => {
+			tabMenuOptions[v].show = true
+			tabMenuOptions[v].disabled = false
+		})
+
+		if (type === 'in') {
+			tabMenuOptions[2].label = '关闭上侧'
+			tabMenuOptions[3].label = '关闭下侧'
+		}
+
+		if (state.activePath !== path) {
+			tabMenuOptions[0].show = false
+		}
+		if (affix || state.activeTags.length === 1) {
+			tabMenuOptions[1].show = false
+			tabMenuOptions[1].disabled = true
+		}
+		const index = state.activeTags.findIndex((v) => v.path === path)
+		// 左侧菜单
+		if (index === 0) {
+			tabMenuOptions[2].show = false
+
+			tabMenuOptions[2].disabled = true
+		}
+		// 右侧菜单
+		if (index === state.activeTags.length - 1) {
+			tabMenuOptions[3].show = false
+
+			tabMenuOptions[3].disabled = true
+		}
+		if (state.activeTags.length < 2) {
+			tabMenuOptions[4].show = false
+			tabMenuOptions[5].show = false
+			tabMenuOptions[4].disabled = true
+			tabMenuOptions[5].disabled = true
+		}
+	}
+
+	const handleContextMenu = (
+		e: MouseEvent,
+		path: string,
+		container: HTMLElement,
+		affix?: boolean,
+		type?: 'out' | 'in',
+	) => {
+		showFilterMenu(path, affix, type)
+		const menuMinWidth = type === 'out' ? 105 : 0
+		// // 容器距离左侧的长度
+		const offsetLeft = container.getBoundingClientRect().left // container margin left
+		// // 容器的宽度
+		const offsetWidth = container.offsetWidth // container width
+		const maxLeft = offsetWidth - menuMinWidth // left boundary
+		const left = e.clientX - offsetLeft + 15 // 15: margin right
+		contextmenuLeft.value = left > maxLeft ? maxLeft : left
+		contextmenuTop.value = e.clientY
+		contextmenuVisible.value = true
+	}
+
 	const addTag = () => {
-		if (state.activeTags?.some((v: Layout.Menu) => v.path === state.activePath)) {
+		// 如果新增的已经存在了，则不新增
+		if (state.activeTags?.find((v: Layout.Menu) => v.path === state.activePath)) {
 			return
+		}
+		// 如果tag数量达到设置的阈值，则触发删除
+		if (state.activeTags.length === props.tagsShowNum) {
+			// 找到第一个没有固定的
+			let indexNoAffix = state.activeTags.findIndex((x) => !x.affix)
+			// 如果没找到，则删除第一个
+			if (indexNoAffix === -1) {
+				indexNoAffix = 0
+			}
+			state.activeTags.splice(indexNoAffix, 1)
 		}
 		const tag = state.flatMenuList.find((x) => x.path === state.activePath)
 		if (tag) {
@@ -146,6 +217,7 @@ export function useTag() {
 		},
 	)
 	return {
+		handleContextMenu,
 		contextmenuLeft,
 		contextmenuTop,
 		contextmenuVisible,

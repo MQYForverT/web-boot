@@ -3,7 +3,7 @@ import BackgroundLayout from './BackgroundLayout.vue'
 import type { LayoutPublicProps } from './BackgroundLayout'
 import { layoutEnum, propsEnum } from './BackgroundLayout'
 
-// 临时办法，需要把所有用到unocss到地方都在这里导入
+// 临时办法，需要把所有用到unocss到地方都在这里导入，但是这样的话下面这些组件就不能实现异步了
 import defaults from './component/Layout/default.vue'
 import AppMask from './component/AppMask/index.vue'
 //Aside
@@ -22,7 +22,8 @@ import UserAvatar from './component/Header/UserAvatar.vue'
 import ShowSetting from './component/AppSetting/ShowSetting.vue'
 // NavTab
 import NavTab from './component/NavTab/index.vue'
-import TabDropdown from './component/NavTab/TabDropdown.vue'
+import TabDropdown from './component/NavTab/TagDropdown.vue'
+import TagItem from './component/NavTab/TagItem.vue'
 // Main
 import Main from './component/Main/index.vue'
 // Footer
@@ -43,6 +44,7 @@ BackgroundLayout.styles.push(
 	...ShowSetting.styles,
 	...NavTab.styles,
 	...TabDropdown.styles,
+	...TagItem.styles,
 	...Main.styles,
 	...Footer.styles,
 )
