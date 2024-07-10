@@ -7,7 +7,11 @@ export function setupViteBuild(): BuildOptions {
 		chunkSizeWarningLimit: 500,
 		// https://rollupjs.org/configuration-options/
 		rollupOptions: {
+			external: ['vue'],
 			output: {
+				globals: {
+					vue: 'Vue',
+				},
 				// Static resource classification and packaging
 				chunkFileNames: 'assets/js/[name]-[hash].js', //代码块文件名
 				entryFileNames: 'assets/js/[name]-[hash].js', //入口文件名

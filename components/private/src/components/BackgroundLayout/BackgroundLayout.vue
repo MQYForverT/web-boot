@@ -75,24 +75,24 @@
 <style lang="scss">
 	// 把所有用到的element样式都在这里申明
 	@use 'element-plus/theme-chalk/dark/css-vars.css';
-	@use 'element-plus/theme-chalk/src/container.scss';
-	@use 'element-plus/theme-chalk/src/main.scss';
-	@use 'element-plus/theme-chalk/src/header.scss';
-	@use 'element-plus/theme-chalk/src/scrollbar.scss';
-	@use 'element-plus/theme-chalk/src/aside.scss';
-	@use 'element-plus/theme-chalk/src/menu.scss';
-	@use 'element-plus/theme-chalk/src/breadcrumb.scss';
-	@use 'element-plus/theme-chalk/src/dropdown.scss';
-	@use 'element-plus/theme-chalk/src/avatar.scss';
-	@use 'element-plus/theme-chalk/src/overlay.scss';
-	@use 'element-plus/theme-chalk/src/drawer.scss';
-	@use 'element-plus/theme-chalk/src/divider.scss';
-	@use 'element-plus/theme-chalk/src/switch.scss';
-	@use 'element-plus/theme-chalk/src/select.scss';
-	@use 'element-plus/theme-chalk/src/option.scss';
-	@use 'element-plus/theme-chalk/src/icon.scss';
-	@use 'element-plus/theme-chalk/src/input.scss';
-	@use 'element-plus/theme-chalk/src/popover.scss';
+	@use 'element-plus/theme-chalk/src/container';
+	@use 'element-plus/theme-chalk/src/main';
+	@use 'element-plus/theme-chalk/src/header';
+	@use 'element-plus/theme-chalk/src/scrollbar';
+	@use 'element-plus/theme-chalk/src/aside';
+	@use 'element-plus/theme-chalk/src/menu';
+	@use 'element-plus/theme-chalk/src/breadcrumb';
+	@use 'element-plus/theme-chalk/src/dropdown';
+	@use 'element-plus/theme-chalk/src/avatar';
+	@use 'element-plus/theme-chalk/src/overlay';
+	@use 'element-plus/theme-chalk/src/drawer';
+	@use 'element-plus/theme-chalk/src/divider';
+	@use 'element-plus/theme-chalk/src/switch';
+	@use 'element-plus/theme-chalk/src/select';
+	@use 'element-plus/theme-chalk/src/option';
+	@use 'element-plus/theme-chalk/src/icon';
+	@use 'element-plus/theme-chalk/src/input';
+	@use 'element-plus/theme-chalk/src/popover';
 
 	@import url('./styles/index.scss');
 </style>

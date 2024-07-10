@@ -62,7 +62,7 @@
 	@unocss-placeholder;
 </style>
 <style lang="scss">
-	@use 'element-plus/theme-chalk/src/button.scss';
-	@use 'element-plus/theme-chalk/src/table.scss';
-	@use './Example.scss';
+	@use 'element-plus/theme-chalk/src/button';
+	@use 'element-plus/theme-chalk/src/table';
+	@use './Example';
 </style>

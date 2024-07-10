@@ -39,7 +39,6 @@
 		}, 2000)
 	})
 
-	// @unocss-include
 	const themeConfig = ref({
 		isCollapse: false,
 		isMobile: false,

@@ -8,7 +8,12 @@ interface Option {
 	outputManualChunks?: ManualChunksOption
 }
 
-// 该lib只支持多入口
+/**
+ * 该lib只支持多入口打包方式
+ * external和outputGlobals基本上是对应的
+ * @param option
+ * @returns
+ */
 export function setupViteLib(option: Option): BuildOptions {
 	return {
 		outDir: 'dist',

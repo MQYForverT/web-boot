@@ -17,15 +17,15 @@
 	"license": "ISC",
 	"dependencies": {
 		"@mqy/component-private": "workspace:^",
-		"@mqy/eslint-config": "workspace:^",
-		"@mqy/stylelint-config": "workspace:^",
 		"@mqy/utils": "workspace:^",
-		"@mqy/vite-config": "workspace:^",
 		"element-plus": "^2.7.6",
 		"vue": "^3.4.31",
 		"vue-router": "^4.4.0"
 	},
 	"devDependencies": {
+		"@mqy/eslint-config": "workspace:^",
+		"@mqy/stylelint-config": "workspace:^",
+		"@mqy/vite-config": "workspace:^",
 		"@vue/test-utils": "^2.4.6",
 		"typescript": "^5.5.3",
 		"vite": "^5.3.3",

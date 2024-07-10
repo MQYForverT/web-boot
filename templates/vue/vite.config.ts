@@ -4,14 +4,11 @@ import { resolve } from 'path'
 
 // 目前这种导入方式需要tsx支持
 import viteConfig from '@mqy/vite-config/vue'
-import {
-	// svg
-	createSvgIconsPlugin,
-} from '@mqy/vite-config/common'
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv: ConfigEnv) => {
 	const viteEnv = loadEnv(configEnv.mode, __dirname) as unknown as ImportMetaEnv
+	// viteConfig内部默认打包排除了vue，所以请在html中使用cdn引入vue
 	return viteConfig(viteEnv, {
 		// 拉具体代码的时候需要把环境变量复制过来，并把这个属性删除
 		envDir: resolve(__dirname, '../../'),
@@ -20,12 +17,5 @@ export default defineConfig((configEnv: ConfigEnv) => {
 				'@': resolve(__dirname, './src'),
 			},
 		},
-		plugins: [
-			// 本地生成svg
-			createSvgIconsPlugin({
-				iconDirs: [resolve(process.cwd(), 'src/assets/svg')],
-				symbolId: 'local-icon-[dir]-[name]',
-			}),
-		],
 	})
 })

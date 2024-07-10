@@ -1,4 +1,4 @@
-// .styleintrc.js
+// .stylelint.mjs
 export default {
 	ignoreFiles: [
 		'**/.husky',

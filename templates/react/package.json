@@ -15,13 +15,13 @@
 	},
 	"dependencies": {
 		"@mqy/component-private": "workspace:^",
-		"@mqy/eslint-config": "workspace:^",
-		"@mqy/stylelint-config": "workspace:^",
-		"@mqy/vite-config": "workspace:^",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	},
 	"devDependencies": {
+		"@mqy/eslint-config": "workspace:^",
+		"@mqy/stylelint-config": "workspace:^",
+		"@mqy/vite-config": "workspace:^",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"typescript": "^5.5.3",
