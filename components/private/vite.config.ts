@@ -140,10 +140,11 @@ const config: UserConfig = {
 	test: setupViteTest(),
 	build: setupViteLib({
 		entries: entries,
-		external: ['vue'],
-		outputGlobals: {
-			vue: 'Vue',
-		},
+		// 这里还是不能排除vue，毕竟wc的vue版本没必要和宿主环境的vue版本一致，所以这里还是要用自己的，只是会增加打包体积
+		// external: ['vue'],
+		// outputGlobals: {
+		// 	vue: 'Vue',
+		// },
 	}),
 }
 export default config
