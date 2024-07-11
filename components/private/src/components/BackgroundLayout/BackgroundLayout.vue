@@ -26,7 +26,7 @@
 	import defaults from './component/Layout/default.vue'
 	import Logo from '~icons/mqy-icon/logo'
 
-	const { getObserver, setWatermark, updateWatermark } = useWatermark()
+	const { watermarkEl, getObserver, setWatermark, updateWatermark } = useWatermark()
 
 	const appWrapperRef = ref()
 
@@ -38,10 +38,6 @@
 	provide(emitsKey, emits)
 
 	onMounted(() => {
-		if (proxyProps.watermark.text) {
-			setWatermark(proxyProps.watermark)
-		}
-
 		const { state } = useState()
 		useResizeObserver(appWrapperRef, (entries) => {
 			const { width, height } = entries[0].contentRect
@@ -60,7 +56,15 @@
 			}
 
 			// 更新水印
-			updateWatermark({ height, width })
+			if (proxyProps.watermark.text) {
+				if (watermarkEl.value) {
+					// useDebounceFn(() => {
+					updateWatermark({ height, width })
+					// }, 100)
+				} else {
+					setWatermark(proxyProps.watermark)
+				}
+			}
 		})
 	})
 

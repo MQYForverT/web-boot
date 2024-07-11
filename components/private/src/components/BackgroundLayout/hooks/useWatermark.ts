@@ -5,34 +5,49 @@ export function useWatermark(appendEl: HTMLElement = document.body) {
 	let attr: Layout.Watermark | undefined = undefined
 	let observer: MutationObserver | null = null
 	const watermarkEl = shallowRef<HTMLElement | null>(null)
-	let image = ''
 
 	// 绘制文字背景图
-	function createBase64(text: string, attr?: Layout.Watermark) {
+	const createBase64 = (options: { width: number; height: number }) => {
 		const can = document.createElement('canvas')
-		can.width = 190
-		can.height = 130
+		can.width = options.width
+		can.height = options.height
 
 		const cans = can.getContext('2d')
 		if (cans) {
-			cans.rotate(((attr?.rotate ?? -10) * Math.PI) / 120)
-			cans.font = `${attr?.size ?? '12px'} ${attr?.fontFamily ?? 'Arial'}`
-			cans.fillStyle = attr?.color ?? 'rgba(0, 0, 0, 0.1)'
+			// 清理
+			cans.clearRect(0, 0, can.width, can.height)
+			// 设置属性
+			cans.font = `${attr?.size ?? '14px'} ${attr?.fontFamily ?? 'Arial'}`
+			cans.fillStyle = attr?.color ?? 'rgba(0, 0, 0, 0.06)'
 			cans.textAlign = 'left'
 			cans.textBaseline = 'middle'
-			cans.fillText(text, can.width / 20, can.height)
+			const watermarkHeight = 80 // 水印行高
+			const watermarkWidth = 300 // 水印列宽，期望是6列
+
+			const cols = Math.ceil(can.width / watermarkWidth)
+			const rows = Math.ceil(can.height / watermarkHeight)
+
+			for (let row = 0; row < rows; row++) {
+				for (let col = 0; col < cols; col++) {
+					const x = col * watermarkWidth + (row % 2 === 1 ? watermarkWidth / 2 : 0)
+					const y = row * watermarkHeight
+
+					cans.save()
+					cans.translate(x, y)
+					cans.rotate(((attr?.rotate ?? -12) * Math.PI) / 180)
+					cans.fillText(attr?.text!, 0, 0)
+					cans.restore()
+				}
+			}
 		}
 		return can.toDataURL('image/png')
 	}
 
 	// 绘制水印层
-	const createWatermark = (attr: Layout.Watermark) => {
-		// 得到水印图
-		image = `url(${createBase64(attr.text!, attr)}) left top repeat`
+	const createWatermark = () => {
 		// 开始创建水印容器
 		const div = document.createElement('div')
 		watermarkEl.value = div
-		div.style.background = image
 		div.style.pointerEvents = 'none'
 		div.style.top = '0px'
 		div.style.left = '0px'
@@ -47,19 +62,13 @@ export function useWatermark(appendEl: HTMLElement = document.body) {
 	}
 
 	// 页面随窗口调整更新水印
-	function updateWatermark(
-		options: {
-			width?: number
-			height?: number
-		} = {},
-	) {
+	async function updateWatermark(options: { width: number; height: number }) {
 		const el = unref(watermarkEl)
 		if (!el) return
-		if (options.width) {
-			el.style.width = `${options.width}px`
-		}
-		if (options.height) {
-			el.style.height = `${options.height}px`
+		el.style.width = `${options.width}px`
+		el.style.height = `${options.height}px`
+		if (attr?.text) {
+			el.style.background = `url(${createBase64(options)}) left top repeat`
 		}
 		style = el.style.cssText
 	}
@@ -73,7 +82,7 @@ export function useWatermark(appendEl: HTMLElement = document.body) {
 		if (!attr?.text) {
 			return
 		}
-		createWatermark(attr)
+		createWatermark()
 		createObserver(attr)
 	}
 
@@ -105,5 +114,5 @@ export function useWatermark(appendEl: HTMLElement = document.body) {
 		return observer
 	}
 
-	return { getObserver, setWatermark, updateWatermark }
+	return { watermarkEl, getObserver, setWatermark, updateWatermark }
 }

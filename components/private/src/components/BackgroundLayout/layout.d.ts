@@ -60,11 +60,11 @@ declare global {
 			text?: string
 			/** 字体，默认 `Arial` */
 			fontFamily?: string
-			/** 字体大小，默认 `12px` */
+			/** 字体大小，默认 `14px` */
 			size?: string
 			/** 填充绘制图形的颜色 */
 			color?: string
-			/** 水印旋转，默认 `-10` */
+			/** 单个水印旋转，默认 `-12` */
 			rotate?: number
 		}
 	}
