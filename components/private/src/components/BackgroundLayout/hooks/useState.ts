@@ -1,9 +1,19 @@
-import { menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
+import { LayoutEmits, menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
 import useInject from './useInject'
 
-export default createGlobalState(() => {
+export default createGlobalState((initProps?) => {
+	const rootElement = shallowRef<HTMLElement | null>(null)
 	const prefix = '@mqy/component-private-background-layout'
-	const { props, emits } = useInject()
+	let props, emits
+
+	if (initProps) {
+		props = initProps
+		emits = {} as LayoutEmits
+	} else {
+		const inject = useInject()
+		props = inject.props
+		emits = inject.emits
+	}
 
 	const initChildDataToFlat = (
 		result: Layout.Menu[] = [],
@@ -106,7 +116,7 @@ export default createGlobalState(() => {
 					: ([] as Layout.Menu[]),
 		isCollapse: props.isCollapse !== undefined ? defaultCollapse : false,
 		isMobile: props.isMobile !== undefined ? defaultMobile : false,
-		isDark: props.isDark !== undefined ? defaultDark : useStorage(`${prefix}-isAllOpen`, false),
+		isDark: props.isDark !== undefined ? defaultDark : useStorage(`${prefix}-isDark`, false),
 		menuMode:
 			props.menuMode !== undefined
 				? defaultMenuMode
@@ -128,19 +138,30 @@ export default createGlobalState(() => {
 		set(target, key: keyof propPrecessType, newVal, receiver) {
 			if (props[key] === undefined) {
 				Reflect.set(target, key, newVal, receiver)
+				// 除了赋值之外额外的逻辑
 				switch (key) {
-					case propsEnum.isDark:
-						if (newVal) {
-							state.menuMode = menuModeEnum.light
-							document.documentElement.className = 'layout-menu-light dark'
-						} else {
-							document.documentElement.classList.remove('dark')
+					case propsEnum.isDark: {
+						const el = unref(rootElement)
+						if (el) {
+							if (newVal) {
+								state.menuMode = menuModeEnum.light
+								el.className = 'layout-menu-light'
+								document.documentElement.className = 'dark'
+							} else {
+								document.documentElement.classList.remove('dark')
+							}
+						}
+
+						break
+					}
+					case propsEnum.menuMode: {
+						const el = unref(rootElement)
+						if (el) {
+							const dark = stateProxy.isDark ? 'dark' : ''
+							el.className = `layout-menu-${newVal + ''} ${dark}`
 						}
 						break
-					case propsEnum.menuMode:
-						const dark = state.isDark ? 'dark' : ''
-						document.documentElement.className = `layout-menu-${newVal} ${dark}`
-						break
+					}
 				}
 			} else {
 				emits('changeProp', key, newVal)
@@ -149,5 +170,5 @@ export default createGlobalState(() => {
 		},
 	})
 
-	return { state: stateProxy }
+	return { rootElement, state: stateProxy }
 })

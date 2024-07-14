@@ -2,10 +2,15 @@
 	<div ref="tagBodyRef" class="h-10 flex-y-center pl-3 pr-3 shadow-[0_0_1px_#888]">
 		<div
 			v-show="overBody && !arrivedState.left"
-			class="relative mr-1 flex-center cursor-pointer rounded-2px -ml-1 hover:bg-[rgb(228,229,230)]"
+			class="relative flex-center cursor-pointer rounded-2px -ml-1 hover:bg-[rgb(228,229,230)]"
 			@click.prevent.stop="toPage('pre')"
 		>
-			<div class="over-width-left"></div>
+			<div
+				class="over-width-left"
+				:style="{
+					background: `linear-gradient(to right, rgb(255 255 255 / ${state.isDark ? '40%' : '100%'}), rgb(255 255 255 / 0%))`,
+				}"
+			></div>
 			<el-icon color="rgb(100, 106, 115)" size="16">
 				<CaretLeft />
 			</el-icon>
@@ -16,7 +21,7 @@
 			ref="tagGroupRef"
 			name="list"
 			tag="div"
-			class="scroll-container h-8 w-full flex-y-center overflow-x-auto overflow-y-hidden whitespace-nowrap bg-[var(--el-bg-color)]"
+			class="scroll-container ml-0.5 mr-0.5 h-8 w-full flex-y-center overflow-x-auto overflow-y-hidden whitespace-nowrap bg-[var(--el-bg-color)]"
 			@after-enter="handleTransitionEnd"
 			@after-leave="handleTransitionEnd"
 		>
@@ -35,10 +40,15 @@
 
 		<div
 			v-show="overBody && !arrivedState.right"
-			class="relative ml-1 flex-center cursor-pointer rounded-2px hover:bg-[rgb(228,229,230)]"
+			class="relative flex-center cursor-pointer rounded-2px hover:bg-[rgb(228,229,230)]"
 			@click.prevent.stop="toPage('next')"
 		>
-			<div class="over-width-right"></div>
+			<div
+				class="over-width-right"
+				:style="{
+					background: `linear-gradient(to left, rgb(255 255 255 / ${state.isDark ? '40%' : '100%'}), rgb(255 255 255 / 0%))`,
+				}"
+			></div>
 			<el-icon color="rgb(100, 106, 115)" size="16">
 				<CaretRight />
 			</el-icon>
@@ -264,6 +274,8 @@
 
 		.tagItem {
 			cursor: pointer;
+			background-color: var(--el-bg-color);
+			border: 1px solid var(--el-border-color-light);
 
 			&:hover {
 				color: var(--el-color-primary);
@@ -278,26 +290,23 @@
 		}
 	}
 
-	.over-width-left::after,
-	.over-width-right::before {
+	.over-width-left,
+	.over-width-right {
 		position: absolute;
 		top: -8px;
 		bottom: 0;
 		z-index: 2;
-		width: 40px; /* Width of the gradient */
+		width: 32px; /* Width of the gradient */
 		height: 32px;
 		pointer-events: none;
-		content: '';
 	}
 
-	.over-width-left::after {
-		left: 16px;
-		background: linear-gradient(to right, rgb(255 255 255 / 100%), rgb(255 255 255 / 0%));
+	.over-width-left {
+		left: 18px;
 	}
 
-	.over-width-right::before {
-		right: 16px;
-		background: linear-gradient(to left, rgb(255 255 255 / 100%), rgb(255 255 255 / 0%));
+	.over-width-right {
+		right: 18px;
 	}
 
 	.list-enter-active,

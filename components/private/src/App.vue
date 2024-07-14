@@ -42,7 +42,6 @@
 	const themeConfig = ref({
 		isCollapse: false,
 		isMobile: false,
-		isDark: false,
 		menuList,
 		fullScreen: {
 			show: true,

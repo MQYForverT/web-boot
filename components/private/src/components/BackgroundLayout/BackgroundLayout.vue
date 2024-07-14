@@ -1,9 +1,10 @@
 <template>
 	<div
+		ref="appWrapperRef"
 		:style="{ height: proxyProps.containerSize.height || '100vh', width: proxyProps.containerSize.width || '100vw' }"
 	>
 		<!--默认布局-->
-		<defaults ref="appWrapperRef" class="backgroundLayout">
+		<defaults class="backgroundLayout">
 			<template #logo>
 				<slot name="logo">
 					<Logo width="30" height="30" fill="var(--el-color-primary)" />
@@ -37,8 +38,24 @@
 	const emits = defineEmits<LayoutEmits>()
 	provide(emitsKey, emits)
 
+	const { rootElement, state } = useState(proxyProps)
+
+	const setDefaultTheme = () => {
+		const isDark = state.isDark
+		const menuMode = state.menuMode
+		state.menuMode = menuMode
+
+		if (isDark) {
+			state.isDark = true
+		}
+	}
+
 	onMounted(() => {
-		const { state } = useState()
+		if (appWrapperRef.value) {
+			rootElement.value = appWrapperRef.value
+		}
+		setDefaultTheme()
+
 		useResizeObserver(appWrapperRef, (entries) => {
 			const { width, height } = entries[0].contentRect
 			if (width <= 640) {
@@ -78,7 +95,6 @@
 
 <style lang="scss">
 	// 把所有用到的element样式都在这里申明
-	@use 'element-plus/theme-chalk/dark/css-vars.css';
 	@use 'element-plus/theme-chalk/src/container';
 	@use 'element-plus/theme-chalk/src/main';
 	@use 'element-plus/theme-chalk/src/header';

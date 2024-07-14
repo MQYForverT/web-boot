@@ -26,6 +26,8 @@ import TabDropdown from './component/NavTab/TagDropdown.vue'
 import TagItem from './component/NavTab/TagItem.vue'
 // Main
 import Main from './component/Main/index.vue'
+// element的暗黑模式一定要在组件之前引入
+import 'element-plus/theme-chalk/dark/css-vars.css'
 // Footer
 import Footer from './component/Footer/index.vue'
 BackgroundLayout.styles.push(
