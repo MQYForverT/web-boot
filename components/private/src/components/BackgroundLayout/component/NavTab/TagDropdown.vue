@@ -54,7 +54,7 @@
 	}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 	.contextmenu {
 		position: absolute;
 		z-index: 9999;

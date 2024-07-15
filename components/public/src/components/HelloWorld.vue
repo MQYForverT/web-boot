@@ -30,7 +30,7 @@
 	const count = ref(0)
 </script>
 
-<style scoped>
+<style>
 	.read-the-docs {
 		color: #888;
 	}

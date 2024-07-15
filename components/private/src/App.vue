@@ -62,6 +62,7 @@
 		},
 		userAvatar: {
 			show: true,
+			trigger: 'click',
 			name: '12',
 			dropdownMenu: [
 				{

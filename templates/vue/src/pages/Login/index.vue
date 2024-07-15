@@ -1,7 +1,5 @@
 <template>
 	<div>
-		contents12
-		<ElButton type="primary">{{ isCollapse }}</ElButton>
 		<mqy-background-layout
 			:menuList="JSON.stringify(themeConfig.menuList)"
 			:fullScreen="JSON.stringify(themeConfig.fullScreen)"
@@ -94,6 +92,7 @@
 		userAvatar: {
 			show: true,
 			name: '12',
+			trigger: 'click',
 			dropdownMenu: [
 				{
 					key: 'loginOut',

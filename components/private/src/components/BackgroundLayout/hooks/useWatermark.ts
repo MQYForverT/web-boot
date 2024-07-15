@@ -14,32 +14,38 @@ export function useWatermark(appendEl: HTMLElement = document.body) {
 
 		const cans = can.getContext('2d')
 		if (cans) {
-			// 清理
+			// 清理，确保之前绘制的内容被移除
 			cans.clearRect(0, 0, can.width, can.height)
 			// 设置属性
 			cans.font = `${attr?.size ?? '14px'} ${attr?.fontFamily ?? 'Arial'}`
 			cans.fillStyle = attr?.color ?? 'rgba(0, 0, 0, 0.06)'
 			cans.textAlign = 'left'
 			cans.textBaseline = 'middle'
+			// 计算行数和列数
 			const watermarkHeight = 80 // 水印行高
-			const watermarkWidth = 300 // 水印列宽，期望是6列
-
+			const watermarkWidth = 300 // 水印列宽
+			// 向上取整，以确保所有空间都被水印填充
 			const cols = Math.ceil(can.width / watermarkWidth)
 			const rows = Math.ceil(can.height / watermarkHeight)
-
+			// 绘制水印
 			for (let row = 0; row < rows; row++) {
 				for (let col = 0; col < cols; col++) {
 					const x = col * watermarkWidth + (row % 2 === 1 ? watermarkWidth / 2 : 0)
 					const y = row * watermarkHeight
-
+					// 保存当前的绘图状态
 					cans.save()
+					// 移动画布的原点到当前水印的位置
 					cans.translate(x, y)
+					// 旋转画布
 					cans.rotate(((attr?.rotate ?? -12) * Math.PI) / 180)
+					// 绘制水印文本
 					cans.fillText(attr?.text!, 0, 0)
+					// 恢复到保存的绘图状态，以便进行下一个水印的绘制
 					cans.restore()
 				}
 			}
 		}
+		// 返回 Base64 图像数据
 		return can.toDataURL('image/png')
 	}
 

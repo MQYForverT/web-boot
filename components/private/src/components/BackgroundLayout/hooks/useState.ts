@@ -1,5 +1,6 @@
 import { LayoutEmits, menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
 import useInject from './useInject'
+import packageJson from '../../../../package.json'
 
 export default createGlobalState((initProps?: propPrecessType) => {
 	const rootElement = shallowRef<HTMLElement | null>(null)
@@ -94,6 +95,25 @@ export default createGlobalState((initProps?: propPrecessType) => {
 	const defaultTagsViewIcon = computed(() => {
 		return props.isTagsViewIcon
 	})
+
+	const checkVersionAndClearCache = () => {
+		const storedVersion = localStorage.getItem(`${prefix}-version`)
+		const currentVersion = packageJson.version
+		// 如果本地没有，则直接存储并结束
+		if (!storedVersion) {
+			localStorage.setItem(`${prefix}-version`, currentVersion)
+			return
+		}
+
+		// 如果版本号不一致，则更新本地的，并删除activeTags属性
+		if (storedVersion !== currentVersion) {
+			localStorage.setItem(`${prefix}-version`, currentVersion)
+			localStorage.removeItem(`${prefix}-activeTags`)
+		} else {
+			console.info('backgroundLayout版本相同，无需更新')
+		}
+	}
+	checkVersionAndClearCache()
 
 	const state = reactive({
 		flatMenuList: getMenuListFlat,

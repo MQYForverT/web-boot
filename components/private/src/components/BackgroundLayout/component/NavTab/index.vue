@@ -65,7 +65,7 @@
 			</template>
 			<el-input v-model="tagSearch" class="mb-1.5 w-full" placeholder="搜索" :prefix-icon="Search" />
 			<transition-group
-				v-if="state.activeTags.filter((v) => v.title.includes(tagSearch)).length"
+				v-if="state.activeTags.filter((v) => (v.title ?? '').includes(tagSearch)).length"
 				ref="tagGroupRefIn"
 				name="list"
 				tag="div"

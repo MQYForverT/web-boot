@@ -3,6 +3,9 @@ import BackgroundLayout from './BackgroundLayout.vue'
 import type { LayoutPublicProps } from './BackgroundLayout'
 import { layoutEnum, propsEnum } from './BackgroundLayout'
 
+// element的暗黑模式一定要在组件之前引入
+import 'element-plus/theme-chalk/dark/css-vars.css'
+
 // 临时办法，需要把所有用到unocss到地方都在这里导入，但是这样的话下面这些组件就不能实现异步了
 import defaults from './component/Layout/default.vue'
 import AppMask from './component/AppMask/index.vue'
@@ -26,8 +29,6 @@ import TabDropdown from './component/NavTab/TagDropdown.vue'
 import TagItem from './component/NavTab/TagItem.vue'
 // Main
 import Main from './component/Main/index.vue'
-// element的暗黑模式一定要在组件之前引入
-import 'element-plus/theme-chalk/dark/css-vars.css'
 // Footer
 import Footer from './component/Footer/index.vue'
 BackgroundLayout.styles.push(
