@@ -15,9 +15,9 @@
 			<div>深色菜单栏</div>
 			<el-switch
 				:model-value="state.menuMode"
-				active-value="dark"
-				inactive-value="light"
-				@change="(e) => (state.menuMode = e)"
+				:active-value="menuModeEnum.dark"
+				:inactive-value="menuModeEnum.light"
+				@change="(e) => (state.menuMode = e as menuModeEnum)"
 			/>
 		</li>
 		<li class="flex-y-center justify-between py-1">
@@ -40,6 +40,7 @@
 </template>
 
 <script lang="ts" setup>
+	import { menuModeEnum } from '../../BackgroundLayout'
 	import useState from '../../hooks/useState'
 	import { Sunny, Moon } from '@element-plus/icons-vue'
 

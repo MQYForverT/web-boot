@@ -1,7 +1,7 @@
 import { LayoutEmits, menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
 import useInject from './useInject'
 
-export default createGlobalState((initProps?) => {
+export default createGlobalState((initProps?: propPrecessType) => {
 	const rootElement = shallowRef<HTMLElement | null>(null)
 	const prefix = '@mqy/component-private-background-layout'
 	let props, emits
