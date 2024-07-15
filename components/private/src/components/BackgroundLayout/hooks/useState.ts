@@ -1,20 +1,11 @@
-import { LayoutEmits, menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
+import { menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
 import useInject from './useInject'
 import packageJson from '../../../../package.json'
 
-export default createGlobalState((initProps?: propPrecessType) => {
+export default createGlobalState(() => {
 	const rootElement = shallowRef<HTMLElement | null>(null)
 	const prefix = '@mqy/component-private-background-layout'
-	let props, emits
-
-	if (initProps) {
-		props = initProps
-		emits = {} as LayoutEmits
-	} else {
-		const inject = useInject()
-		props = inject.props
-		emits = inject.emits
-	}
+	const { props, emits } = useInject()
 
 	const initChildDataToFlat = (
 		result: Layout.Menu[] = [],

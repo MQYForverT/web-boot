@@ -108,7 +108,7 @@ const config: UserConfig = {
 			],
 		}),
 		dts({
-			include: ['src/components/**/*.ts'],
+			include: ['src/components/**/index.ts'],
 			exclude: ['src/components/Example'],
 		}),
 		compress(),

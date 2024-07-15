@@ -38,9 +38,8 @@
 	const emits = defineEmits<LayoutEmits>()
 	provide(emitsKey, emits)
 
-	const { rootElement, state } = useState(proxyProps)
-
-	const setDefaultTheme = () => {
+	onMounted(() => {
+		const { rootElement, state } = useState()
 		const isDark = state.isDark
 		const menuMode = state.menuMode
 		state.menuMode = menuMode
@@ -48,13 +47,10 @@
 		if (isDark) {
 			state.isDark = true
 		}
-	}
 
-	onMounted(() => {
 		if (appWrapperRef.value) {
 			rootElement.value = appWrapperRef.value
 		}
-		setDefaultTheme()
 
 		useResizeObserver(appWrapperRef, (entries) => {
 			const { width, height } = entries[0].contentRect

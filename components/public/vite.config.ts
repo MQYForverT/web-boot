@@ -1,7 +1,6 @@
 /// <reference types="vitest" />
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
-import ElementPlus from 'unplugin-element-plus/vite'
 import { resolve } from 'path'
 import UnoCSS from 'unocss/vite'
 
@@ -41,7 +40,6 @@ export default {
 			imports: ['vue'],
 			vueTemplate: true,
 		}),
-		ElementPlus({}),
 	],
 	test: setupViteTest(),
 	build: {
