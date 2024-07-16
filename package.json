@@ -28,6 +28,7 @@
 		"lint:stylelint-vue": "cd templates/vue && pnpm run lint:stylelint",
 		"lint:stylelint-react": "cd templates/react && pnpm run lint:stylelint",
 		"clean": "npm cache clean -f && rimraf pnpm-lock.yaml && rimraf -g \"**/node_modules\" && pnpm store prune",
+		"check-update": "pnpm outdated -r",
 		"update": "pnpm update -r",
 		"reinstall": "pnpm run clean && pnpm install",
 		"check-deps": "depcheck"

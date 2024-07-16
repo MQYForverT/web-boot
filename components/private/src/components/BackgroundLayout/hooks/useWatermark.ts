@@ -64,7 +64,14 @@ export function useWatermark(appendEl: HTMLElement = document.body) {
 		const { clientHeight: height, clientWidth: width } = appendEl
 		// 根据指定dom的宽高更新水印的宽高
 		updateWatermark({ width, height })
-		appendEl.appendChild(div)
+		// 如果主容器是body，则继续创建一个容器，把水印隐藏起来
+		if (appendEl === document.body) {
+			const divContain = document.createElement('div')
+			divContain.appendChild(div)
+			appendEl.appendChild(divContain)
+		} else {
+			appendEl.appendChild(div)
+		}
 	}
 
 	// 页面随窗口调整更新水印

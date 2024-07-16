@@ -40,13 +40,11 @@
 
 	onMounted(() => {
 		const { rootElement, state } = useState()
-		const isDark = state.isDark
-		const menuMode = state.menuMode
-		state.menuMode = menuMode
-
-		if (isDark) {
-			state.isDark = true
-		}
+		// 这里直接进行赋值是为了触发set拦截从而初始化主题
+		nextTick(() => {
+			state.menuMode = state.menuMode
+			state.isDark = state.isDark
+		})
 
 		if (appWrapperRef.value) {
 			rootElement.value = appWrapperRef.value
@@ -71,9 +69,7 @@
 			// 更新水印
 			if (proxyProps.watermark.text) {
 				if (watermarkEl.value) {
-					// useDebounceFn(() => {
 					updateWatermark({ height, width })
-					// }, 100)
 				} else {
 					setWatermark(proxyProps.watermark)
 				}
