@@ -34,6 +34,8 @@ import {
 	Icons,
 	IconsResolver,
 	visualizer,
+	// cssInJs
+	CssInJs,
 } from '@mqy/vite-config/common'
 import { ElementPlusResolver } from '@mqy/vite-config/common/autoImport/components'
 import { presetIcons } from '@mqy/vite-config/common/plugins/unocss'
@@ -57,6 +59,7 @@ const config: UserConfig = {
 		],
 	},
 	plugins: [
+		CssInJs(),
 		visualizer,
 		unocss({
 			mode: 'shadow-dom',

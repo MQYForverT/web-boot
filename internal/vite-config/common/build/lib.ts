@@ -22,7 +22,7 @@ export function setupViteLib(option: Option): BuildOptions {
 			entry: option.entries, // 设置入口文件
 			formats: ['es'],
 		},
-		// esbuild打包混淆有问题，先关闭
+		// esbuild某些场景打包混淆有问题，所以让外部控制
 		minify: option.minify,
 		rollupOptions: {
 			// 这些模块被标记为外部依赖，不会被打包进你的库，这些依赖需要在使用你的库时自行引入

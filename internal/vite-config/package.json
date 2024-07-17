@@ -32,6 +32,7 @@
 		"vite-plugin-progress": "^0.0.7",
 		"vite-plugin-react-click-to-component": "^3.0.0",
 		"vite-plugin-style-import": "^2.0.0",
+		"vite-plugin-style-inject": "^0.0.1",
 		"vite-plugin-vue-devtools": "^7.3.6",
 		"vitest": "^1.6.0",
 		"vue-tsc": "^2.0.26"
