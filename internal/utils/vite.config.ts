@@ -12,11 +12,13 @@ const entries = {
 	nprogress: getPath('nprogress/index.ts'),
 }
 
-import { setupViteLib, dts } from '@mqy/vite-config/common'
+import { setupViteLib, dts, compress, visualizer } from '@mqy/vite-config/common'
 
 // https://vitejs.dev/config/
 const config: UserConfig = {
 	plugins: [
+		visualizer,
+		compress(),
 		dts({
 			include: ['**/*.ts'],
 			exclude: ['vite.config.ts'],
@@ -24,6 +26,7 @@ const config: UserConfig = {
 	],
 	build: setupViteLib({
 		entries: entries,
+		minify: false,
 		outputManualChunks: {
 			axios: ['axios'],
 		},

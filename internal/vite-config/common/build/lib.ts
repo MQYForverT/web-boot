@@ -1,11 +1,11 @@
 import type { BuildOptions } from 'vite'
 import type { InputOption, ExternalOption, GlobalsOption, ManualChunksOption } from 'rollup'
-
 interface Option {
 	entries: InputOption
 	external?: ExternalOption
 	outputGlobals?: GlobalsOption
 	outputManualChunks?: ManualChunksOption
+	minify?: boolean | 'terser' | 'esbuild'
 }
 
 /**
@@ -16,13 +16,14 @@ interface Option {
  */
 export function setupViteLib(option: Option): BuildOptions {
 	return {
-		outDir: 'dist',
 		// 多入口时，请将此选项设置为true
 		cssCodeSplit: true,
 		lib: {
 			entry: option.entries, // 设置入口文件
 			formats: ['es'],
 		},
+		// esbuild打包混淆有问题，先关闭
+		minify: option.minify,
 		rollupOptions: {
 			// 这些模块被标记为外部依赖，不会被打包进你的库，这些依赖需要在使用你的库时自行引入
 			external: option.external,

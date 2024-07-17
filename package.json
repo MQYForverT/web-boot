@@ -47,7 +47,7 @@
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@types/inquirer": "^9.0.7",
-		"@types/node": "^20.14.10",
+		"@types/node": "^20.14.11",
 		"commitlint": "^19.3.0",
 		"depcheck": "^1.4.7",
 		"eslint": "^9.7.0",
