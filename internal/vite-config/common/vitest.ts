@@ -1,12 +1,14 @@
 import type { InlineConfig } from 'vitest'
 const webRegex = /\.[jt]sx$/
 
+interface Option {
+	coverageInclude?: string[]
+	coverageExclude?: string[]
+}
+
 // https://cn.vitest.dev/config
-export function setupViteTest(): InlineConfig {
+export function setupViteTest(option?: Option): InlineConfig {
 	return {
-		// setupFiles: ['./src/setupTests.ts'],
-		// 提供全局 API,同时在unplugin-auto-import中配置可自动导入，同时需要在命令上加入--globals
-		globals: true,
 		// 测试环境，模拟浏览器环境的库happy-dom。默认值: 'node'
 		environment: 'happy-dom',
 		testTransformMode: {
@@ -20,8 +22,8 @@ export function setupViteTest(): InlineConfig {
 			},
 		},
 		coverage: {
-			include: ['src'],
-			exclude: ['node_modules', 'dist'],
+			include: option?.coverageInclude ?? ['src'],
+			exclude: option?.coverageExclude ?? ['node_modules', 'dist'],
 			//覆盖范围阈值选项
 			thresholds: {
 				branches: 80, //branches 分支覆盖率

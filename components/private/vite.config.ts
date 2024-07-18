@@ -141,7 +141,7 @@ const config: UserConfig = {
 			},
 		}),
 	],
-	test: setupViteTest(),
+	test: setupViteTest({ coverageInclude: ['src/components'] }),
 	build: setupViteLib({
 		entries: entries,
 		// 这里还是不能排除vue，毕竟wc的vue版本没必要和宿主环境的vue版本一致，所以这里还是要用自己的，只是会增加打包体积
