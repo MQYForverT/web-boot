@@ -9,7 +9,9 @@
 		"preview": "vite preview",
 		"lint:eslint": "eslint --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
-		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix"
+		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix",
+		"test": "NODE_OPTIONS=\"--import tsx/esm\" pnpm exec vitest --coverage.enabled",
+		"test:ui": "NODE_OPTIONS=\"--import tsx/esm\" pnpm exec vitest --ui --open --coverage.enabled"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",

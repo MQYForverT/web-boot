@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import type { UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import copy from 'rollup-plugin-copy'
@@ -22,6 +23,7 @@ entries['index'] = resolve(__dirname, 'src/components/index.ts')
 
 // 目前这种导入方式需要tsx支持
 import {
+	setupViteTest,
 	dts,
 	compress,
 	unocss,
@@ -110,7 +112,7 @@ const config: UserConfig = {
 		}),
 		dts({
 			include: ['src/components/**/*.ts'],
-			exclude: ['src/components/Example'],
+			exclude: ['src/components/Example', '**/__tests__'],
 			entryRoot: 'src/components',
 		}),
 		compress(),
@@ -139,6 +141,7 @@ const config: UserConfig = {
 			},
 		}),
 	],
+	test: setupViteTest(),
 	build: setupViteLib({
 		entries: entries,
 		// 这里还是不能排除vue，毕竟wc的vue版本没必要和宿主环境的vue版本一致，所以这里还是要用自己的，只是会增加打包体积
