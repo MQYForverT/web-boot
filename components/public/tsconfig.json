@@ -4,7 +4,7 @@
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		// 编译项目时要包含的类型声明文件名列表，里面的并不会被编译
 		// 主要用于引入第三方库或工具的全局类型声明。这些类型声明通常位于 node_modules/@types 目录中，但你也可以指定自定义的类型定义文件
-		"types": ["vite/client", "vitest/globals", "./auto-imports.d.ts"],
+		"types": ["vite/client", "./auto-imports.d.ts"],
 		"baseUrl": "./",
 		"paths": {
 			"@/*": ["src/*"]

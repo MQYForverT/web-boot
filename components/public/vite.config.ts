@@ -1,13 +1,9 @@
-/// <reference types="vitest" />
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import { resolve } from 'path'
 import UnoCSS from 'unocss/vite'
 
 // import viteConfig from '@mqy/vite-config/vue'
-
-// 目前这种导入方式需要tsx支持
-import { setupViteTest } from '@mqy/vite-config/common'
 
 // https://vitejs.dev/config/
 export default {
@@ -41,7 +37,6 @@ export default {
 			vueTemplate: true,
 		}),
 	],
-	test: setupViteTest(),
 	build: {
 		lib: {
 			entry: resolve(__dirname, 'src/components/index.ts'), // 设置入口文件

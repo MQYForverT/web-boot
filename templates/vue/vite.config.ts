@@ -1,4 +1,3 @@
-/// <reference types="vitest" />
 import { ConfigEnv, defineConfig, loadEnv } from 'vite'
 import { resolve } from 'path'
 

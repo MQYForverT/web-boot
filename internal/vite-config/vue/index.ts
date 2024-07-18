@@ -4,7 +4,6 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 
 import {
 	setupViteServer,
-	setupViteTest,
 	commonVitePlugins,
 	setupViteBuild,
 	setupViteEsBuild,
@@ -52,7 +51,7 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 				// launchEditor: 'code',//默认打开的编辑器，默认vscode，+7.20
 			}),
 			AutoImport({
-				imports: ['vue', '@vueuse/core', 'vitest', 'vue-router'],
+				imports: ['vue', '@vueuse/core', 'vue-router'],
 				resolvers: [
 					ElementPlusResolver({ importStyle: 'sass' }),
 					// 自动导入图标组件
@@ -95,7 +94,6 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 			...setupViteBuild(),
 			...build,
 		},
-		test: setupViteTest(),
 		...config,
 	}
 }

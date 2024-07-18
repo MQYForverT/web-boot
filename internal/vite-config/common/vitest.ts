@@ -4,6 +4,7 @@ const webRegex = /\.[jt]sx$/
 // https://cn.vitest.dev/config
 export function setupViteTest(): InlineConfig {
 	return {
+		// setupFiles: ['./src/setupTests.ts'],
 		// 提供全局 API,同时在unplugin-auto-import中配置可自动导入，同时需要在命令上加入--globals
 		globals: true,
 		// 测试环境，模拟浏览器环境的库happy-dom。默认值: 'node'
@@ -11,9 +12,16 @@ export function setupViteTest(): InlineConfig {
 		testTransformMode: {
 			web: [webRegex.source],
 		},
+		deps: {
+			optimizer: {
+				web: {
+					enabled: true,
+				},
+			},
+		},
 		coverage: {
 			include: ['src'],
-			exclude: ['node_modules'],
+			exclude: ['node_modules', 'dist'],
 			//覆盖范围阈值选项
 			thresholds: {
 				branches: 80, //branches 分支覆盖率

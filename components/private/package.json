@@ -9,9 +9,7 @@
 		"preview": "vite preview",
 		"lint:eslint": "eslint --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
-		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix",
-		"test": "vitest --coverage.enabled --globals",
-		"test:ui": "vitest --ui --open --coverage.enabled --globals"
+		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -38,7 +36,6 @@
 		"sass": "^1.77.8",
 		"typescript": "^5.5.3",
 		"vite": "^5.3.4",
-		"vitest": "^1.6.0",
 		"vue-tsc": "^2.0.26"
 	}
 }

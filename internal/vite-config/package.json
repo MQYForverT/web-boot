@@ -28,7 +28,7 @@
 		"vite": "^5.3.4",
 		"vite-plugin-compression2": "^1.1.2",
 		"vite-plugin-dts": "^3.9.1",
-		"vite-plugin-inspect": "^0.8.4",
+		"vite-plugin-inspect": "^0.8.5",
 		"vite-plugin-progress": "^0.0.7",
 		"vite-plugin-react-click-to-component": "^3.0.0",
 		"vite-plugin-style-import": "^2.0.0",

@@ -9,9 +9,7 @@
 		"preview": "vite preview",
 		"lint:eslint": "eslint --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
-		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix",
-		"test": "vitest --coverage.enabled --globals",
-		"test:ui": "vitest --ui --open --coverage.enabled --globals"
+		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix"
 	},
 	"keywords": [],
 	"author": "",
@@ -30,7 +28,6 @@
 		"typescript": "^5.5.3",
 		"unplugin-auto-import": "^0.17.8",
 		"vite": "^5.3.4",
-		"vitest": "^1.6.0",
 		"vue-tsc": "^2.0.26"
 	}
 }

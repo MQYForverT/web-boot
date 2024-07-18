@@ -3,7 +3,7 @@ import type { UserConfig } from 'vite'
 
 import { reactClickToComponent } from 'vite-plugin-react-click-to-component'
 
-import { setupViteServer, setupViteTest, commonVitePlugins, setupViteBuild, AutoImport } from '../common'
+import { setupViteServer, commonVitePlugins, setupViteBuild, AutoImport } from '../common'
 
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {
 	const { server, plugins = [], build, ...config } = customConfig ?? {}
@@ -19,7 +19,7 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 			// 通过 【option/alt】 + 鼠标右键 可以查看组件信息，及打开组件
 			reactClickToComponent(),
 			AutoImport({
-				imports: ['react', 'ahooks', 'vitest'],
+				imports: ['react', 'ahooks'],
 			}),
 			...plugins,
 		],
@@ -27,7 +27,6 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 			...setupViteBuild(),
 			...build,
 		},
-		test: setupViteTest(),
 		...config,
 	}
 }
