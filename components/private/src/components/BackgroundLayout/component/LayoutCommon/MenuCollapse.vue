@@ -1,5 +1,5 @@
 <template>
-	<div class="h-14 w-10 flex-center cursor-pointer hover:bg-fill" @click="toggleCollapse">
+	<div class="h-12 w-10 flex-center cursor-pointer hover:bg-fill" @click="toggleCollapse">
 		<alignLeft v-if="!state.isCollapse" width="20" height="20" />
 		<alignRight v-else width="20" height="20" />
 	</div>

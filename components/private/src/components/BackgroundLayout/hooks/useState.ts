@@ -1,11 +1,27 @@
-import { menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
+import { LayoutEmits, layoutEnum, menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
+import useContainer from './useContainer'
 import useInject from './useInject'
 import packageJson from '../../../../package.json'
 
-export default createGlobalState(() => {
-	const rootElement = shallowRef<HTMLElement | null>(null)
+export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLElement | null) => {
 	const prefix = '@mqy/component-private-background-layout'
-	const { props, emits } = useInject()
+
+	let props, emits, rootElement
+	if (proxyProps) {
+		props = proxyProps
+		emits = {} as LayoutEmits
+	} else {
+		const inject = useInject()
+		props = inject.props
+		emits = inject.emits
+	}
+
+	if (!root) {
+		const Container = useContainer()
+		rootElement = Container.rootElement
+	} else {
+		rootElement = root
+	}
 
 	const initChildDataToFlat = (
 		result: Layout.Menu[] = [],
@@ -41,6 +57,10 @@ export default createGlobalState(() => {
 
 	const getMenuListFlat = computed(() => {
 		return initChildDataToFlat([], props.menuList)
+	})
+
+	const defaultLayout = computed(() => {
+		return props.layout!
 	})
 
 	const defaultActivePath = computed(() => {
@@ -108,6 +128,8 @@ export default createGlobalState(() => {
 
 	const state = reactive({
 		flatMenuList: getMenuListFlat,
+		layout:
+			props.layout !== undefined ? defaultLayout : useStorage<layoutEnum>(`${prefix}-layout`, layoutEnum.vertical),
 		// 当前激活的path，默认找到第一个非重定向的path
 		activePath:
 			props.activePath !== undefined
@@ -181,5 +203,5 @@ export default createGlobalState(() => {
 		},
 	})
 
-	return { rootElement, state: stateProxy }
+	return { state: stateProxy }
 })

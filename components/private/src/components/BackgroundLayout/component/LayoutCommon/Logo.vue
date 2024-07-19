@@ -1,5 +1,5 @@
 <template>
-	<div class="h-14 w-full flex-center shrink-0 cursor-pointer nowrap-hidden" @click="toggleCollapse">
+	<div class="h-12 w-full flex-center shrink-0 cursor-pointer nowrap-hidden" @click="toggleCollapse">
 		<slot name="logo" />
 		<h3 v-show="!state.isCollapse" class="ml-2 text-4 text-primary font-bold">{{ props.globalTitle }}</h3>
 	</div>

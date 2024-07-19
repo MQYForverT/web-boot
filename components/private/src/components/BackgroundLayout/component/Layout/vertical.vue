@@ -1,20 +1,22 @@
 <template>
-	<el-container class="h-full backgroundLayout">
+	<el-container class="h-full backgroundLayout flex-col">
 		<AppMask v-show="showAppMask" @click="closeAppMask" />
-		<Aside />
-		<el-container direction="vertical" class="relative">
-			<Header>
-				<template #header>
-					<slot name="header" />
-				</template>
-			</Header>
-			<NavTab v-if="state.isTagsView" />
-			<Main>
-				<template #main>
-					<slot name="main" />
-				</template>
-			</Main>
-			<AppSetting v-if="props.setting.enable" />
+		<Header>
+			<template #header>
+				<slot name="header" />
+			</template>
+		</Header>
+		<el-container>
+			<Aside />
+			<el-container direction="vertical" class="relative">
+				<NavTab v-if="state.isTagsView" />
+				<Main>
+					<template #main>
+						<slot name="main" />
+					</template>
+				</Main>
+				<AppSetting v-if="props.setting.enable" />
+			</el-container>
 		</el-container>
 	</el-container>
 </template>

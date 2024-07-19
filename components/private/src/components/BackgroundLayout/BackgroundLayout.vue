@@ -1,31 +1,50 @@
 <template>
+	<!--根元素会动态操作class，所以不要再这个上面加样式-->
 	<div
 		ref="appWrapperRef"
 		:style="{ height: proxyProps.containerSize.height || '100vh', width: proxyProps.containerSize.width || '100vw' }"
 	>
-		<!--默认布局-->
-		<defaults class="backgroundLayout">
-			<template #logo>
-				<slot name="logo">
-					<Logo width="30" height="30" fill="var(--el-color-primary)" />
-				</slot>
-			</template>
+		<component :is="curCom">
 			<template #header>
 				<slot name="header" />
 			</template>
 			<template #main>
 				<slot name="main" />
 			</template>
-		</defaults>
+		</component>
+
+		<!--布局需要，对于动态位置的，直接传送门伺候-->
+		<Teleport v-if="logoElement" :to="logoElement">
+			<Logo>
+				<template #logo>
+					<slot name="logo">
+						<LogoIcon width="30" height="30" fill="var(--el-color-primary)" />
+					</slot>
+				</template>
+			</Logo>
+		</Teleport>
+		<Teleport v-if="collapseElement" :to="collapseElement">
+			<div class="h-full flex-y-center">
+				<MenuCollapse />
+				<Breadcrumb />
+			</div>
+		</Teleport>
 	</div>
 </template>
 <script setup lang="ts">
 	import useState from './hooks/useState'
+	import useContainer from './hooks/useContainer'
 	import { useWatermark } from './hooks/useWatermark'
-	import { layoutProps, propsKey, processPropType, emitsKey } from './BackgroundLayout'
+	import { layoutEnum, layoutProps, propsKey, processPropType, emitsKey } from './BackgroundLayout'
 	import type { LayoutEmits } from './BackgroundLayout'
+
 	import defaults from './component/Layout/default.vue'
-	import Logo from '~icons/mqy-icon/logo'
+	import vertical from './component/Layout/vertical.vue'
+	import Logo from './component/LayoutCommon/Logo.vue'
+	import MenuCollapse from './component/LayoutCommon/MenuCollapse.vue'
+	import Breadcrumb from './component/LayoutCommon/Breadcrumb.vue'
+
+	import LogoIcon from '~icons/mqy-icon/logo'
 
 	const { watermarkEl, getObserver, setWatermark, updateWatermark } = useWatermark()
 
@@ -38,17 +57,29 @@
 	const emits = defineEmits<LayoutEmits>()
 	provide(emitsKey, emits)
 
+	const { rootElement, logoElement, collapseElement } = useContainer()
+
+	const { state } = useState(proxyProps, rootElement.value)
+
+	const curCom = computed(() => {
+		switch (state.layout) {
+			case layoutEnum.vertical:
+				return vertical
+			default:
+				return defaults
+		}
+	})
+
 	onMounted(() => {
-		const { rootElement, state } = useState()
+		if (appWrapperRef.value) {
+			rootElement.value = appWrapperRef.value
+		}
+
 		// 这里直接进行赋值是为了触发set拦截从而初始化主题
 		nextTick(() => {
 			state.menuMode = state.menuMode
 			state.isDark = state.isDark
 		})
-
-		if (appWrapperRef.value) {
-			rootElement.value = appWrapperRef.value
-		}
 
 		useResizeObserver(appWrapperRef, (entries) => {
 			const { width, height } = entries[0].contentRect
@@ -84,6 +115,10 @@
 		}
 	})
 </script>
+
+<style>
+	@unocss-placeholder;
+</style>
 
 <style lang="scss">
 	// 把所有用到的element样式都在这里申明

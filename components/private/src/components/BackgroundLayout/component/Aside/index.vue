@@ -1,26 +1,32 @@
 <template>
 	<el-aside :class="['sider', state.isMobile && 'fixed top-0 bottom-0 left-0 bg-red']" :width="collapseWidth">
-		<Logo>
-			<template #logo>
-				<slot name="logo" />
-			</template>
-		</Logo>
+		<span ref="logoRef" v-if="state.layout === layoutEnum.defaults"></span>
 		<Menu />
 	</el-aside>
 </template>
 
 <script lang="ts" setup>
+	import { layoutEnum } from '../../BackgroundLayout'
+	import useContainer from '../../hooks/useContainer'
 	import useState from '../../hooks/useState'
-	import Logo from './Logo.vue'
 	import Menu from './Menu.vue'
 
+	const logoRef = ref()
+
 	const { state } = useState()
+	const { logoElement } = useContainer()
 
 	const collapseWidth = computed(() => {
 		if (state.isMobile) {
 			return state.isCollapse ? '0' : '210px'
 		} else {
 			return state.isCollapse ? '65px' : '210px'
+		}
+	})
+
+	onMounted(() => {
+		if (logoRef.value) {
+			logoElement.value = logoRef.value
 		}
 	})
 </script>

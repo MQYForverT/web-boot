@@ -72,6 +72,9 @@ importers:
       element-plus:
         specifier: ^2.7.7
         version: 2.7.7(vue@3.4.32(typescript@5.5.3))
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
       sortablejs:
         specifier: ^1.15.2
         version: 1.15.2

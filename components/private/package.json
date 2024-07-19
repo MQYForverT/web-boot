@@ -23,6 +23,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"element-plus": "^2.7.7",
+		"react": "^18.3.1",
 		"sortablejs": "^1.15.2",
 		"vue": "^3.4.32"
 	},

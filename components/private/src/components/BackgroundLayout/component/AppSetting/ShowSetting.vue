@@ -2,6 +2,15 @@
 	<el-divider>界面显示</el-divider>
 	<ul>
 		<li class="flex-y-center justify-between py-1">
+			<div>横向布局</div>
+			<el-switch
+				:model-value="state.layout"
+				:active-value="layoutEnum.defaults"
+				:inactive-value="layoutEnum.vertical"
+				@change="(e) => (state.layout = e as layoutEnum)"
+			/>
+		</li>
+		<li class="flex-y-center justify-between py-1">
 			<div>深色主题</div>
 			<el-switch
 				:model-value="state.isDark"
@@ -40,7 +49,7 @@
 </template>
 
 <script lang="ts" setup>
-	import { menuModeEnum } from '../../BackgroundLayout'
+	import { menuModeEnum, layoutEnum } from '../../BackgroundLayout'
 	import useState from '../../hooks/useState'
 	import { Sunny, Moon } from '@element-plus/icons-vue'
 

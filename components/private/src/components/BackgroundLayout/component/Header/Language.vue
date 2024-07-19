@@ -1,6 +1,6 @@
 <template>
 	<el-dropdown :trigger="props.language.trigger" @command="handleCommand">
-		<div class="h-14 w-10 flex-center cursor-pointer hover:bg-fill">
+		<div class="h-12 w-10 flex-center cursor-pointer hover:bg-fill">
 			<Language width="20" height="20" />
 		</div>
 		<template #dropdown>
@@ -10,7 +10,6 @@
 					:key="item.key"
 					:disabled="item.key === props.activeLanguage"
 					:command="item.key"
-					:divided="item.divided"
 				>
 					{{ item.value }}
 				</el-dropdown-item>

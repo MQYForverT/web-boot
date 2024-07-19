@@ -1,8 +1,8 @@
 <template>
 	<el-header class="header">
-		<div class="h-full flex-y-center">
-			<MenuCollapse />
-			<Breadcrumb />
+		<div class="flex-x-center">
+			<span ref="logoRef" v-if="state.layout === layoutEnum.vertical"></span>
+			<span ref="collapseRef"></span>
 		</div>
 		<div class="h-full flex-y-center">
 			<slot name="header" />
@@ -20,15 +20,30 @@
 </template>
 
 <script lang="ts" setup>
-	import MenuCollapse from './MenuCollapse.vue'
-	import Breadcrumb from './Breadcrumb.vue'
+	import { layoutEnum } from '../../BackgroundLayout'
 	import FullScreen from './FullScreen.vue'
 	import Language from './Language.vue'
 	import UserAvatar from './UserAvatar.vue'
 
 	import useInject from '../../hooks/useInject'
+	import useContainer from '../../hooks/useContainer'
+	import useState from '../../hooks/useState'
+
+	const logoRef = ref()
+	const collapseRef = ref()
 
 	const { props } = useInject()
+	const { state } = useState()
+	const { logoElement, collapseElement } = useContainer()
+
+	onMounted(() => {
+		if (logoRef.value && state.layout === layoutEnum.vertical) {
+			logoElement.value = logoRef.value
+		}
+		if (collapseRef.value) {
+			collapseElement.value = collapseRef.value
+		}
+	})
 </script>
 
 <style>
@@ -37,6 +52,6 @@
 
 <style lang="scss">
 	.header {
-		@apply flex-y-center justify-between h-14 p-x-0 bg-[var(--el-bg-color)] shadow-[0_0_1px_#888];
+		@apply flex-y-center justify-between h-12 p-x-0 bg-[var(--el-bg-color)] shadow-[0_0_1px_#888];
 	}
 </style>

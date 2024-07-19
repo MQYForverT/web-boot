@@ -1,7 +1,8 @@
 import type { ExtractPropTypes, ExtractPublicPropTypes, PropType, InjectionKey } from 'vue'
 
 export enum layoutEnum {
-	defaults = 'defaults',
+	defaults = 'defaults', // 默认也就是横向布局
+	vertical = 'vertical', // 纵向布局
 }
 
 export enum menuModeEnum {
@@ -174,7 +175,7 @@ export const layoutProps = {
 	},
 	[propsEnum.layout]: {
 		type: String as PropType<layoutEnum>,
-		default: layoutEnum.defaults,
+		default: undefined,
 	},
 	[propsEnum.globalTitle]: {
 		type: String,
@@ -236,6 +237,7 @@ export const processPropType = (props: LayoutPrivateProps) => {
 				case propsEnum.menuList:
 					return JSON.parse(value)
 				// 以下是外部可控属性，如果外部传入值，则交给外部控制
+				case propsEnum.layout:
 				case propsEnum.isCollapse:
 				case propsEnum.isMobile:
 				case propsEnum.isDark:

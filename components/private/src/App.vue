@@ -48,7 +48,7 @@
 		},
 		language: {
 			show: true,
-			trigger: 'hover',
+			trigger: 'click',
 			dropdownMenu: [
 				{
 					key: 'zh-CN',

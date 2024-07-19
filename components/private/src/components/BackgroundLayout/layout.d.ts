@@ -28,7 +28,6 @@ declare global {
 		interface DropdownMenu {
 			key: string
 			value: string
-			divided?: boolean
 		}
 		interface FullScreen {
 			show?: boolean
