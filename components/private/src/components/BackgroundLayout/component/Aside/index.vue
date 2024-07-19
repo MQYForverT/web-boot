@@ -10,6 +10,7 @@
 	import useContainer from '../../hooks/useContainer'
 	import useState from '../../hooks/useState'
 	import Menu from './Menu.vue'
+	import { isCollapseWidth, isNotCollapseWidth, isNotCollapseAndMobileWidth } from '../../constants/aside'
 
 	const logoRef = ref()
 
@@ -18,9 +19,9 @@
 
 	const collapseWidth = computed(() => {
 		if (state.isMobile) {
-			return state.isCollapse ? '0' : '210px'
+			return state.isCollapse ? isNotCollapseAndMobileWidth : isCollapseWidth
 		} else {
-			return state.isCollapse ? '65px' : '210px'
+			return state.isCollapse ? isNotCollapseWidth : isCollapseWidth
 		}
 	})
 

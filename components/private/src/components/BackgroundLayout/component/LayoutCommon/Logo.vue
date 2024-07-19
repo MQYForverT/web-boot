@@ -12,6 +12,7 @@
 <script lang="ts" setup>
 	import useInject from '../../hooks/useInject'
 	import useState from '../../hooks/useState'
+	import { isCollapseWidth, isNotCollapseWidth, isNotCollapseAndMobileWidth } from '../../constants/aside'
 
 	const { props } = useInject()
 	const { state } = useState()
@@ -22,9 +23,9 @@
 
 	const width = computed(() => {
 		if (state.isMobile) {
-			return state.isCollapse ? '0' : '210px'
+			return state.isCollapse ? isNotCollapseAndMobileWidth : isCollapseWidth
 		} else {
-			return state.isCollapse ? '65px' : '210px'
+			return state.isCollapse ? isNotCollapseWidth : isCollapseWidth
 		}
 	})
 </script>

@@ -1,4 +1,4 @@
-// shadow-dom中，相互隔离，不能使用元素选择器，所以这里使用ref去记录
+// shadow-dom中，相互隔离，不能跨组件使用元素选择器，所以这里使用ref去记录
 export default createGlobalState(() => {
 	// 根元素
 	const rootElement = shallowRef<HTMLElement | null>(null)
