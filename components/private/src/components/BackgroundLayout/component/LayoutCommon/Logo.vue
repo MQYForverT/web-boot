@@ -1,5 +1,9 @@
 <template>
-	<div class="h-12 w-full flex-center shrink-0 cursor-pointer nowrap-hidden" @click="toggleCollapse">
+	<div
+		class="h-12 w-full flex-center shrink-0 cursor-pointer nowrap-hidden"
+		@click="toggleCollapse"
+		:style="{ width: width }"
+	>
 		<slot name="logo" />
 		<h3 v-show="!state.isCollapse" class="ml-2 text-4 text-primary font-bold">{{ props.globalTitle }}</h3>
 	</div>
@@ -15,6 +19,14 @@
 	const toggleCollapse = () => {
 		state.isCollapse = !state.isCollapse
 	}
+
+	const width = computed(() => {
+		if (state.isMobile) {
+			return state.isCollapse ? '0' : '210px'
+		} else {
+			return state.isCollapse ? '65px' : '210px'
+		}
+	})
 </script>
 
 <style>
