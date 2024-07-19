@@ -6,7 +6,7 @@
 				<slot name="header" />
 			</template>
 		</Header>
-		<el-container>
+		<el-container style="height: calc(100% - 48px)">
 			<Aside />
 			<el-container direction="vertical" class="relative">
 				<NavTab v-if="state.isTagsView" />

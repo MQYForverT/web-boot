@@ -9,6 +9,15 @@ export const menuList = [
 				icon: '',
 				title: '首页1',
 				isShowFooter: false,
+				redirect: '/home11',
+				children: [
+					{
+						path: '/home11',
+						icon: '',
+						title: '首页11',
+						isShowFooter: true,
+					},
+				],
 			},
 			{
 				path: '/home2',

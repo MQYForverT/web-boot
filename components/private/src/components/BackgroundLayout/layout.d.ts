@@ -18,6 +18,7 @@ declare global {
 			path: string
 			title: string
 			redirect?: string
+			children?: IFandPath[]
 		}
 
 		interface containerSize {

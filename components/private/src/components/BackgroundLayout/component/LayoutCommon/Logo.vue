@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="h-12 w-full flex-center shrink-0 cursor-pointer nowrap-hidden"
+		class="h-12 w-full flex-y-center shrink-0 cursor-pointer nowrap-hidden p-y-2.5 p-r-1 p-l-2.5"
 		@click="toggleCollapse"
 		:style="{ width: width }"
 	>

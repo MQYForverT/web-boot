@@ -1,5 +1,5 @@
 <template>
-	<div ref="tagBodyRef" class="h-10 flex-y-center pl-3 pr-3 shadow-[0_0_1px_#888]">
+	<div ref="tagBodyRef" class="h-10 flex-y-center pl-3 pr-3">
 		<div
 			v-show="overBody && !arrivedState.left"
 			class="relative flex-center cursor-pointer rounded-2px -ml-1 hover:bg-[rgb(228,229,230)]"

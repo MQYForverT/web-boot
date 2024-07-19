@@ -4,14 +4,16 @@
 		ref="appWrapperRef"
 		:style="{ height: proxyProps.containerSize.height || '100vh', width: proxyProps.containerSize.width || '100vw' }"
 	>
-		<component :is="curCom">
-			<template #header>
-				<slot name="header" />
-			</template>
-			<template #main>
-				<slot name="main" />
-			</template>
-		</component>
+		<Transition mode="out-in">
+			<component :is="curCom">
+				<template #header>
+					<slot name="header" />
+				</template>
+				<template #main>
+					<slot name="main" />
+				</template>
+			</component>
+		</Transition>
 
 		<!--布局需要，对于动态位置的，直接传送门伺候-->
 		<Teleport v-if="logoElement" :to="logoElement">
@@ -128,7 +130,6 @@
 	@use 'element-plus/theme-chalk/src/scrollbar';
 	@use 'element-plus/theme-chalk/src/aside';
 	@use 'element-plus/theme-chalk/src/menu';
-	@use 'element-plus/theme-chalk/src/breadcrumb';
 	@use 'element-plus/theme-chalk/src/dropdown';
 	@use 'element-plus/theme-chalk/src/avatar';
 	@use 'element-plus/theme-chalk/src/overlay';

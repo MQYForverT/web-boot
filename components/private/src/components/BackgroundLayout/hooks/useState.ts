@@ -34,6 +34,13 @@ export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLEleme
 					path: item.path,
 					title: item.title,
 					redirect: item.redirect,
+					children: item.children?.map((x) => {
+						return {
+							path: x.path,
+							title: x.title,
+							redirect: x.redirect,
+						}
+					}),
 				},
 			]
 			const obj = {

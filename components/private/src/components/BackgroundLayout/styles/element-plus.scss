@@ -3,6 +3,7 @@
 	.el-menu {
 		--el-menu-hover-bg-color: transparent;
 		--el-menu-bg-color: transparent;
+		--el-menu-base-level-padding: 16px;
 
 		.el-sub-menu {
 			&.is-active > .el-sub-menu__title {
@@ -69,6 +70,7 @@
 	.el-menu {
 		--el-menu-hover-bg-color: transparent;
 		--el-menu-bg-color: transparent;
+		--el-menu-base-level-padding: 16px;
 
 		.el-sub-menu {
 			&.is-active > .el-sub-menu__title {
@@ -122,7 +124,7 @@
 				inset: 2px 12px;
 				clear: both;
 				content: '';
-				background: var(--el-color-primary);
+				background: #0960bd;
 				border-radius: 4px;
 			}
 		}
@@ -130,6 +132,24 @@
 
 	.el-menu--popup {
 		background-color: #001529;
+	}
+}
+
+.el-menu--collapse {
+	.el-sub-menu {
+		&.is-active > .el-sub-menu__title {
+			color: var(--el-color-primary);
+
+			&::before {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 3px;
+				height: 100%;
+				content: '';
+				background-color: var(--el-color-primary);
+			}
+		}
 	}
 }
 
