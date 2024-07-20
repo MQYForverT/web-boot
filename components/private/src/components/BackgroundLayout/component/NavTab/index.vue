@@ -1,5 +1,5 @@
 <template>
-	<div ref="tagBodyRef" class="h-10 flex-y-center pl-3 pr-3">
+	<div ref="tagBodyRef" class="h-8 flex-y-center pt-0.5 pl-3 pr-3 shadow-[0_1px_1px_#88888833]">
 		<div
 			v-show="overBody && !arrivedState.left"
 			class="relative flex-center cursor-pointer rounded-2px -ml-1 hover:bg-[rgb(228,229,230)]"
@@ -21,7 +21,7 @@
 			ref="tagGroupRef"
 			name="list"
 			tag="div"
-			class="scroll-container ml-0.5 mr-0.5 h-8 w-full flex-y-center overflow-x-auto overflow-y-hidden whitespace-nowrap bg-[var(--el-bg-color)]"
+			class="scroll-container ml-0.5 mr-0.5 h-7.5 w-full flex-y-center overflow-x-auto overflow-y-hidden whitespace-nowrap bg-[var(--el-bg-color)]"
 			@after-enter="handleTransitionEnd"
 			@after-leave="handleTransitionEnd"
 		>
@@ -30,7 +30,7 @@
 				:ref="(el) => setItemRef(el, item.path)"
 				:key="item.path"
 				:class="[item.path === state.activePath ? 'tagItem-selected' : '']"
-				class="tagItem relative mr-2 h-full flex-center border border-gray-200 rounded-2px bg-white pl-3 pr-2"
+				class="tagItem tagItemOut cursor-pointer relative mr-1.5 h-full flex-center pl-2 pr-2"
 				@click="handleChange(item.path)"
 				@contextmenu.prevent="handleContextMenuHand($event, item.path, item.affix, 'out')"
 			>
@@ -75,7 +75,7 @@
 					v-for="item in state.activeTags.filter((v) => v.title.includes(tagSearch))"
 					:key="item.path"
 					:class="[item.path === state.activePath ? 'tagItem-selected' : '']"
-					class="tagItem relative mb-0.5 h-7 flex-y-center justify-between border border-gray-200 rounded-2px bg-white pl-3 pr-2"
+					class="tagItem cursor-pointer relative mb-0.5 h-7 flex-y-center justify-between border border-gray-200 rounded-2px pl-3 pr-2"
 					@click="handleChange(item.path)"
 					@contextmenu.prevent="handleContextMenuHand($event, item.path, item.affix, 'in')"
 				>
@@ -279,7 +279,6 @@
 		scrollbar-width: none; /* Firefox */
 
 		.tagItem {
-			cursor: pointer;
 			background-color: var(--el-bg-color);
 			border: 1px solid var(--el-border-color-light);
 
@@ -287,6 +286,13 @@
 				color: var(--el-color-primary);
 				border-color: var(--el-color-primary-light-3);
 			}
+		}
+
+		.tagItemOut {
+			background-color: var(--el-bg-color);
+			border: 1px solid var(--el-border-color-dark);
+			border-bottom: none;
+			border-radius: 6px 6px 0 0;
 		}
 
 		.tagItem-selected {
@@ -302,8 +308,8 @@
 		top: -8px;
 		bottom: 0;
 		z-index: 2;
-		width: 32px; /* Width of the gradient */
-		height: 32px;
+		width: 30px; /* Width of the gradient */
+		height: 30px;
 		pointer-events: none;
 	}
 

@@ -1,10 +1,6 @@
 <template>
 	<div class="flex-center">
-		<div
-			v-if="state.isTagsViewIcon"
-			:class="[state.isTagsViewIcon ? item.icon || 'i-ep-tickets' : '']"
-			class="mr-1 text-4"
-		/>
+		<div v-if="state.isTagsViewIcon && item.icon" :class="[item.icon]" class="ml-0.5 mr-1 text-4" />
 		<span>{{ item.title }}</span>
 	</div>
 	<div class="flex-center">

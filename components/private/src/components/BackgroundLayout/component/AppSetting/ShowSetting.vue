@@ -2,13 +2,23 @@
 	<el-divider>界面显示</el-divider>
 	<ul>
 		<li class="flex-y-center justify-between py-1">
-			<div>横向布局</div>
-			<el-switch
-				:model-value="state.layout"
-				:active-value="layoutEnum.defaults"
-				:inactive-value="layoutEnum.vertical"
-				@change="(e) => (state.layout = e as layoutEnum)"
-			/>
+			<div>布局</div>
+			<div class="flex gap-2">
+				<LayoutIcon
+					width="35"
+					height="35"
+					class="defaults layout cursor-pointer"
+					:class="{ layoutSelected: state.layout === layoutEnum.defaults }"
+					@click="state.layout = layoutEnum.defaults"
+				/>
+				<LayoutIcon
+					width="35"
+					height="35"
+					class="layout cursor-pointer"
+					:class="{ layoutSelected: state.layout === layoutEnum.vertical }"
+					@click="state.layout = layoutEnum.vertical"
+				/>
+			</div>
 		</li>
 		<li class="flex-y-center justify-between py-1">
 			<div>深色主题</div>
@@ -52,10 +62,35 @@
 	import { menuModeEnum, layoutEnum } from '../../BackgroundLayout'
 	import useState from '../../hooks/useState'
 	import { Sunny, Moon } from '@element-plus/icons-vue'
+	import LayoutIcon from '~icons/mqy-icon/layout'
 
 	const { state } = useState()
 </script>
 
 <style>
 	@unocss-placeholder;
+</style>
+
+<style lang="scss">
+	.layout {
+		path {
+			fill: var(--el-text-color-primary);
+		}
+
+		&:hover {
+			path {
+				fill: var(--el-color-primary-light-3);
+			}
+		}
+	}
+
+	.defaults {
+		transform: scaleX(-1) rotate(90deg);
+	}
+
+	.layoutSelected {
+		path {
+			fill: var(--el-color-primary);
+		}
+	}
 </style>
