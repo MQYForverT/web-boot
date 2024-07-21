@@ -18,7 +18,7 @@
 					z-index: 1;
 				}
 
-				&:hover::before {
+				&:hover::after {
 					position: absolute;
 					inset: 2px 12px;
 					clear: both;
@@ -86,7 +86,7 @@
 					z-index: 1;
 				}
 
-				&:hover::before {
+				&:hover::after {
 					position: absolute;
 					inset: 2px 12px;
 					clear: both;
