@@ -21,6 +21,11 @@ export function setupViteTest(option?: Option): InlineConfig {
 				},
 			},
 		},
+		server: {
+			deps: {
+				inline: ['element-plus'],
+			},
+		},
 		coverage: {
 			include: option?.coverageInclude ?? ['src'],
 			exclude: option?.coverageExclude ?? ['node_modules', 'dist'],

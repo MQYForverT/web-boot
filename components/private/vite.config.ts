@@ -141,7 +141,7 @@ const config: UserConfig = {
 			},
 		}),
 	],
-	test: setupViteTest({ coverageInclude: ['src/components'] }),
+	test: setupViteTest({ coverageInclude: ['src/components'], coverageExclude: ['src/components/Example'] }),
 	build: setupViteLib({
 		entries: entries,
 		/**

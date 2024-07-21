@@ -63,7 +63,9 @@ export const BackgroundLayoutElement = defineCustomElement(BackgroundLayout)
 
 // 注册
 export function register() {
-	customElements.define('mqy-background-layout', BackgroundLayoutElement)
+	if (!customElements.get('mqy-background-layout')) {
+		customElements.define('mqy-background-layout', BackgroundLayoutElement)
+	}
 }
 
 declare module 'vue' {
