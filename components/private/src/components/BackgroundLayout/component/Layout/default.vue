@@ -1,7 +1,7 @@
 <template>
 	<el-container class="h-full backgroundLayout">
 		<!--mobile下只有默认布局模式，所以其他布局下没有该组件-->
-		<AppMask v-show="showAppMask" @click="closeAppMask" />
+		<AppMask v-if="state.isMobile" v-show="!state.isCollapse" @click="closeAppMask" />
 		<Aside />
 		<el-container direction="vertical" class="relative">
 			<Header>
@@ -33,7 +33,6 @@
 	const { state } = useState()
 	const { props } = useInject()
 
-	const showAppMask = computed(() => state.isMobile && !state.isCollapse)
 	const closeAppMask = () => {
 		state.isCollapse = true
 	}
