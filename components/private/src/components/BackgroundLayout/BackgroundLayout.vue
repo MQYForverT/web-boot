@@ -64,6 +64,10 @@
 	const { state } = useState(proxyProps, rootElement.value)
 
 	const curCom = computed(() => {
+		if (state.isMobile) {
+			return defaults
+		}
+
 		switch (state.layout) {
 			case layoutEnum.vertical:
 				return vertical

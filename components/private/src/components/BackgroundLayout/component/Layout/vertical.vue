@@ -1,6 +1,5 @@
 <template>
 	<el-container class="h-full backgroundLayout flex-col">
-		<AppMask v-show="showAppMask" @click="closeAppMask" />
 		<Header>
 			<template #header>
 				<slot name="header" />
@@ -25,7 +24,6 @@
 	import useState from '../../hooks/useState'
 	import useInject from '../../hooks/useInject'
 	import Aside from '../Aside/index.vue'
-	import AppMask from '../AppMask/index.vue'
 	import Header from '../Header/index.vue'
 	import NavTab from '../NavTab/index.vue'
 	import Main from '../Main/index.vue'
@@ -33,11 +31,6 @@
 
 	const { state } = useState()
 	const { props } = useInject()
-
-	const showAppMask = computed(() => state.isMobile && !state.isCollapse)
-	const closeAppMask = () => {
-		state.isCollapse = true
-	}
 </script>
 
 <style>

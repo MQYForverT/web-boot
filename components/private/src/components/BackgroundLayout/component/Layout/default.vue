@@ -1,5 +1,6 @@
 <template>
 	<el-container class="h-full backgroundLayout">
+		<!--mobile下只有默认布局模式，所以其他布局下没有该组件-->
 		<AppMask v-show="showAppMask" @click="closeAppMask" />
 		<Aside />
 		<el-container direction="vertical" class="relative">

@@ -4,7 +4,7 @@
 			<span ref="logoRef" v-if="state.layout === layoutEnum.vertical"></span>
 			<span ref="collapseRef"></span>
 		</div>
-		<div class="h-full flex-y-center">
+		<div class="h-full flex-y-center overflow-y-hidden">
 			<slot name="header" />
 			<Teleport :to="props.fullScreen.to" :disabled="!props.fullScreen.to">
 				<FullScreen v-if="props.fullScreen.show" />

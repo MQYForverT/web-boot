@@ -1,7 +1,7 @@
 <template>
 	<el-divider>界面显示</el-divider>
 	<ul>
-		<li class="flex-y-center justify-between py-1">
+		<li v-if="!state.isMobile" class="flex-y-center justify-between py-1">
 			<div>布局</div>
 			<div class="flex gap-2">
 				<LayoutIcon
