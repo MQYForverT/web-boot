@@ -63,7 +63,10 @@ export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLEleme
 	}
 
 	const getMenuListFlat = computed(() => {
-		return initChildDataToFlat([], props.menuList)
+		if (props.menuList?.length) {
+			return initChildDataToFlat([], props.menuList)
+		}
+		return []
 	})
 
 	const defaultLayout = computed(() => {
@@ -151,7 +154,9 @@ export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLEleme
 							`${prefix}-activeTags`,
 							getMenuListFlat.value.filter((x) => x.affix).length
 								? getMenuListFlat.value.filter((x) => x.affix)
-								: [getMenuListFlat.value.find((x) => !x.redirect)!],
+								: getMenuListFlat.value.find((x) => !x.redirect)
+									? [getMenuListFlat.value.find((x) => !x.redirect)!]
+									: ([] as Layout.Menu[]),
 						)
 					: ([] as Layout.Menu[]),
 		isCollapse: props.isCollapse !== undefined ? defaultCollapse : false,

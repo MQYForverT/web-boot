@@ -1,26 +1,33 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest'
-import { register } from '../index'
+import { describe, vi, it, expect, beforeAll, afterAll } from 'vitest'
+import { mount } from '@vue/test-utils'
+
+import { BackgroundLayout, register } from '../index'
 
 describe('BackgroundLayout', () => {
-	beforeAll(() => {
-		register()
-	})
-
-	afterAll(() => {
-		// 因为customElements并没有提供卸载wc方法，所以这我使用removeChild把它从body中删除
-		const element = document.querySelector('mqy-background-layout')
-		if (element) {
-			document.body.removeChild(element)
-		}
-	})
-
 	// 检查wc是否以及注册
 	it('should be registered', () => {
+		register()
 		expect(customElements.get('mqy-background-layout')).toBeDefined()
 	})
 
-	it('render', async () => {
-		const element = window.document.createElement('mqy-background-layout')
-		window.document.body.appendChild(element)
+	it('no menuList props', () => {
+		const wrapper = mount(BackgroundLayout, {
+			props: {},
+		})
+		expect(wrapper.props('menuList')).toBe('[]')
+
+		// 模拟 console.warn 并捕获警告信息
+		const consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+		expect(consoleWarnSpy).toHaveBeenCalled()
+		// 获取所有警告调用，并提取警告消息
+		const warningCalls = consoleWarnSpy.mock.calls
+		const warningMessages = warningCalls.map((call) => call[0])
+		// 检查是否有任何警告消息包含指定的警告信息
+		expect(warningMessages.some((message) => message.includes('[Vue warn]: Missing required prop: "menuList"'))).toBe(
+			true,
+		)
+		// 还原 console.warn 的原始实现，避免影响其他测试或代码执行
+		consoleWarnSpy.mockRestore()
 	})
 })
