@@ -25,12 +25,6 @@
 				</template>
 			</Logo>
 		</Teleport>
-		<Teleport v-if="collapseElement" :to="collapseElement">
-			<div class="h-full flex-y-center">
-				<MenuCollapse />
-				<Breadcrumb />
-			</div>
-		</Teleport>
 	</div>
 </template>
 <script setup lang="ts">
@@ -43,8 +37,6 @@
 	import defaults from './component/Layout/default.vue'
 	import vertical from './component/Layout/vertical.vue'
 	import Logo from './component/LayoutCommon/Logo.vue'
-	import MenuCollapse from './component/LayoutCommon/MenuCollapse.vue'
-	import Breadcrumb from './component/LayoutCommon/Breadcrumb.vue'
 
 	import LogoIcon from '~icons/mqy-icon/logo'
 
@@ -59,7 +51,7 @@
 	const emits = defineEmits<LayoutEmits>()
 	provide(emitsKey, emits)
 
-	const { rootElement, logoElement, collapseElement } = useContainer()
+	const { rootElement, logoElement } = useContainer()
 
 	const { state } = useState(proxyProps, rootElement.value)
 
@@ -121,10 +113,6 @@
 		}
 	})
 </script>
-
-<style>
-	@unocss-placeholder;
-</style>
 
 <style lang="scss">
 	// 把所有用到的element样式都在这里申明

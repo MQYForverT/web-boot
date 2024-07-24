@@ -14,8 +14,6 @@ import vertical from './component/Layout/vertical.vue'
 import AppMask from './component/AppMask/index.vue'
 // LayoutCommon
 import Logo from './component/LayoutCommon/Logo.vue'
-import MenuCollapse from './component/LayoutCommon/MenuCollapse.vue'
-import Breadcrumb from './component/LayoutCommon/Breadcrumb.vue'
 //Aside
 import Aside from './component/Aside/index.vue'
 import Menu from './component/Aside/Menu.vue'
@@ -25,6 +23,8 @@ import Header from './component/Header/index.vue'
 import FullScreen from './component/Header/FullScreen.vue'
 import Language from './component/Header/Language.vue'
 import UserAvatar from './component/Header/UserAvatar.vue'
+import MenuCollapse from './component/Header/MenuCollapse.vue'
+import Breadcrumb from './component/Header/Breadcrumb.vue'
 // Setting
 import ShowSetting from './component/AppSetting/ShowSetting.vue'
 // NavTab

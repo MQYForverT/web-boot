@@ -4,7 +4,5 @@ export default createGlobalState(() => {
 	const rootElement = shallowRef<HTMLElement | null>(null)
 	// logo
 	const logoElement = shallowRef<HTMLElement | null>(null)
-	// collapse
-	const collapseElement = shallowRef<HTMLElement | null>(null)
-	return { rootElement, logoElement, collapseElement }
+	return { rootElement, logoElement }
 })
