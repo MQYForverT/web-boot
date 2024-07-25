@@ -139,7 +139,7 @@ export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLEleme
 	const state = reactive({
 		flatMenuList: getMenuListFlat,
 		layout:
-			props.layout !== undefined ? defaultLayout : useStorage<layoutEnum>(`${prefix}-layout`, layoutEnum.vertical),
+			props.layout !== undefined ? defaultLayout : useStorage<layoutEnum>(`${prefix}-layout`, layoutEnum.defaults),
 		// 当前激活的path，默认找到第一个非重定向的path
 		activePath:
 			props.activePath !== undefined
@@ -191,7 +191,7 @@ export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLEleme
 							if (newVal) {
 								state.menuMode = menuModeEnum.light
 								el.className = 'layout-menu-light'
-								document.documentElement.className = 'dark'
+								document.documentElement.classList.add('dark')
 							} else {
 								document.documentElement.classList.remove('dark')
 							}

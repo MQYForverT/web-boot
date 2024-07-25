@@ -141,7 +141,15 @@ const config: UserConfig = {
 			},
 		}),
 	],
-	test: setupViteTest({ coverageInclude: ['src/components'], coverageExclude: ['src/components/Example'] }),
+	test: setupViteTest({
+		server: {
+			deps: {
+				// 指定 element-plus 这个依赖应该被强制内联，而不是通过 CDN 或者外部化处理
+				inline: ['element-plus'],
+			},
+		},
+		coverage: { include: ['src/components'], exclude: ['src/components/index.ts', 'src/components/Example'] },
+	}),
 	build: setupViteLib({
 		entries: entries,
 		/**

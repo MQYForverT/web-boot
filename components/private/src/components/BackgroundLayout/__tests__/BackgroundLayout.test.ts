@@ -1,4 +1,4 @@
-import { describe, vi, it, expect, beforeAll, afterAll } from 'vitest'
+import { describe, vi, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import { BackgroundLayout, register } from '../index'
@@ -36,6 +36,26 @@ describe('BackgroundLayout', () => {
 		consoleWarnSpy.mockRestore()
 	})
 
+	it('isDark props', async () => {
+		const wrapper = mount(BackgroundLayout, {
+			props: {
+				isDark: true,
+			},
+		})
+
+		// 确保组件已被成功挂载
+		expect(wrapper.exists()).toBe(true)
+
+		await wrapper.vm.$nextTick()
+		// wrapper.vm.state.isDark = true
+		// console.log(222, wrapper.vm.state.isDark)
+		const classList = document.documentElement.classList
+		console.log(222, wrapper.find({ ref: 'appWrapperRef' }))
+		// expect(document.documentElement.classList.contains('dark')).toBe(true)
+		// expect(wrapper.vm.state.isMobile).toBe(true)
+		// expect(wrapper.vm.state.isCollapse).toBe(true)
+	})
+
 	it('no logo slot', () => {
 		const wrapper = mount(BackgroundLayout, {
 			slots: {},
@@ -50,5 +70,46 @@ describe('BackgroundLayout', () => {
 		expect(svgIcon.attributes('width')).toBe('30')
 		expect(svgIcon.attributes('height')).toBe('30')
 		expect(svgIcon.attributes('fill')).toContain('var(--el-color-primary)')
+	})
+
+	it('logo slot', () => {
+		const wrapper = mount(BackgroundLayout, {
+			slots: {
+				logo: '<div class="custom-logo">Custom Logo</div>',
+			},
+		})
+		const LogoWrapper = wrapper.findComponent(Logo)
+		expect(LogoWrapper.exists()).toBe(true)
+
+		// 应该找不到 默认svg
+		const svgIcon = LogoWrapper.find('svg')
+		expect(svgIcon.exists()).toBe(false)
+
+		const customLogoDiv = LogoWrapper.find('.custom-logo')
+		expect(customLogoDiv.exists()).toBe(true)
+		expect(customLogoDiv.text()).toBe('Custom Logo')
+	})
+
+	it('handles window resize correctly', async () => {
+		// Mount the component
+		const wrapper = mount(BackgroundLayout, {
+			props: {
+				// Provide necessary props here
+			},
+		})
+
+		const el = wrapper.find({ ref: 'appWrapperRef' })
+		const domElement = el.element as HTMLElement
+		const style = window.getComputedStyle(domElement)
+		console.log(333, el)
+		// wrapper.element.innerWidth = 500
+		// // Simulate resize event
+		// wrapper.element.dispatchEvent(new Event('resize'))
+
+		// // Wait for nextTick to process the update
+		// await wrapper.vm.$nextTick()
+
+		// // Assert changes
+		// expect(wrapper.vm.state.isMobile).toBe(false) // or false depending on your logic
 	})
 })
