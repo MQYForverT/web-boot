@@ -6,7 +6,7 @@
 	"type": "module",
 	"engines": {
 		"node": "20.11.0",
-		"pnpm": "9.0.6"
+		"pnpm": "9.6.0"
 	},
 	"scripts": {
 		"start": "tsx ./scripts/start.ts",
@@ -39,7 +39,7 @@
 	"packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879",
 	"dependencies": {
 		"inquirer": "^9.3.6",
-		"rimraf": "^5.0.9"
+		"rimraf": "^5.0.10"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.3.0",
@@ -47,17 +47,17 @@
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@types/inquirer": "^9.0.7",
-		"@types/node": "^20.14.12",
+		"@types/node": "^20.14.13",
 		"commitlint": "^19.3.0",
 		"depcheck": "^1.4.7",
-		"eslint": "^9.7.0",
+		"eslint": "^9.8.0",
 		"eslint-define-config": "^2.1.0",
-		"husky": "^9.1.1",
+		"husky": "^9.1.4",
 		"lint-staged": "^15.2.7",
 		"prettier": "3.2.5",
-		"stylelint": "^16.7.0",
+		"stylelint": "^16.8.1",
 		"ts-node": "^10.9.2",
-		"tsx": "^4.16.2",
+		"tsx": "^4.16.5",
 		"typescript": "^5.5.4"
 	},
 	"lint-staged": {

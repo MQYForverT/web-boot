@@ -15,19 +15,19 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"element-plus": "^2.7.7",
-		"vue": "^3.4.34"
+		"element-plus": "^2.7.8",
+		"vue": "^3.4.35"
 	},
 	"devDependencies": {
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@mqy/vite-config": "workspace:^",
-		"@vitejs/plugin-vue": "^5.1.0",
+		"@vitejs/plugin-vue": "^5.1.2",
 		"@vue/test-utils": "^2.4.6",
 		"sass": "^1.77.8",
 		"typescript": "^5.5.4",
 		"unplugin-auto-import": "^0.17.8",
-		"vite": "^5.3.4",
-		"vue-tsc": "^2.0.28"
+		"vite": "^5.3.5",
+		"vue-tsc": "^2.0.29"
 	}
 }
