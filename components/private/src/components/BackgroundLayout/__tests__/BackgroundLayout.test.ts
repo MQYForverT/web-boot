@@ -49,7 +49,7 @@ describe('BackgroundLayout', () => {
 		await wrapper.vm.$nextTick()
 		// wrapper.vm.state.isDark = true
 		// console.log(222, wrapper.vm.state.isDark)
-		const classList = document.documentElement.classList
+		// const classList = document.documentElement.classList
 		console.log(222, wrapper.find({ ref: 'appWrapperRef' }))
 		// expect(document.documentElement.classList.contains('dark')).toBe(true)
 		// expect(wrapper.vm.state.isMobile).toBe(true)
@@ -99,8 +99,8 @@ describe('BackgroundLayout', () => {
 		})
 
 		const el = wrapper.find({ ref: 'appWrapperRef' })
-		const domElement = el.element as HTMLElement
-		const style = window.getComputedStyle(domElement)
+		// const domElement = el.element as HTMLElement
+		// const style = window.getComputedStyle(domElement)
 		console.log(333, el)
 		// wrapper.element.innerWidth = 500
 		// // Simulate resize event
