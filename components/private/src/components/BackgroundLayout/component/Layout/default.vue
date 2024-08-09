@@ -1,20 +1,22 @@
 <template>
-	<el-container class="h-full backgroundLayout">
+	<el-container class="backgroundLayout h-full">
 		<!--mobile下只有默认布局模式，所以其他布局下没有该组件-->
 		<AppMask v-if="state.isMobile" v-show="!state.isCollapse" @click="closeAppMask" />
 		<Aside />
-		<el-container direction="vertical" class="relative">
+		<el-container direction="vertical">
 			<Header>
 				<template #header>
 					<slot name="header" />
 				</template>
 			</Header>
-			<NavTab v-if="state.isTagsView" />
-			<Main>
-				<template #main>
-					<slot name="main" />
-				</template>
-			</Main>
+			<el-container direction="vertical" class="tab-main">
+				<NavTab v-if="state.isTagsView" />
+				<Main>
+					<template #main>
+						<slot name="main" />
+					</template>
+				</Main>
+			</el-container>
 			<AppSetting v-if="props.setting.enable" />
 		</el-container>
 	</el-container>

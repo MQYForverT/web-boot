@@ -65,7 +65,7 @@ const config: UserConfig = defineConfig({
 			success: 'var(--el-color-success)',
 			warning: 'var(--el-color-warning)',
 			error: 'var(--el-color-error)',
-			fill: 'var(--el-fill-color-light)',
+			fill: 'var(--el-fill-color-darker)',
 			text: 'var(--el-text-color-primary)',
 			card: 'var(--el-bg-color-overlay)',
 			background: 'var(--el-bg-color)',

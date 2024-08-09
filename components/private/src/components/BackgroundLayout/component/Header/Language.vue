@@ -1,7 +1,7 @@
 <template>
 	<el-dropdown :trigger="props.language.trigger" @command="handleCommand">
-		<div class="h-12 w-10 flex-center cursor-pointer hover:bg-fill">
-			<Language width="20" height="20" class="language" />
+		<div class="h-6.5 w-6.5 flex-center cursor-pointer rounded-6px hover:bg-fill">
+			<Language width="18" height="18" class="language" />
 		</div>
 		<template #dropdown>
 			<el-dropdown-menu>

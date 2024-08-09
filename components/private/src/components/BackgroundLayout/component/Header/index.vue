@@ -1,19 +1,19 @@
 <template>
 	<el-header class="header">
-		<div class="flex-x-center">
-			<span ref="logoRef" v-if="state.layout === layoutEnum.vertical"></span>
+		<div class="h-full flex-x-center">
+			<span v-if="state.layout === layoutEnum.vertical" ref="logoRef"></span>
 			<div class="h-full flex-y-center">
 				<MenuCollapse />
 				<Breadcrumb />
 			</div>
 		</div>
-		<div class="h-full flex-y-center overflow-y-hidden overflow-x-auto">
+		<div class="h-full flex-y-center overflow-x-auto overflow-y-hidden">
 			<slot name="header" />
 			<Teleport :to="props.fullScreen.to" :disabled="!props.fullScreen.to">
-				<FullScreen v-if="props.fullScreen.show" />
+				<FullScreen v-if="props.fullScreen.show" :style="{ margin: `0 ${props.fullScreen.gap || '5px'}` }" />
 			</Teleport>
 			<Teleport :to="props.language.to" :disabled="!props.language.to">
-				<Language v-if="props.language.show" />
+				<Language v-if="props.language.show" :style="{ margin: `0 ${props.fullScreen.gap || '5px'}` }" />
 			</Teleport>
 			<Teleport :to="props.userAvatar.to" :disabled="!props.userAvatar.to">
 				<UserAvatar v-if="props.userAvatar.show" />

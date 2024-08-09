@@ -1,6 +1,6 @@
 <template>
 	<el-aside :class="['sider', state.isMobile && 'fixed top-0 bottom-0 left-0 bg-red']" :width="collapseWidth">
-		<span ref="logoRef" v-if="state.layout === layoutEnum.defaults"></span>
+		<span v-if="state.layout === layoutEnum.defaults" ref="logoRef"></span>
 		<Menu />
 	</el-aside>
 </template>

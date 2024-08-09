@@ -1,5 +1,5 @@
 <template>
-	<div class="h-12 w-10 flex-center cursor-pointer hover:bg-fill" @click="toggle">
+	<div class="h-6.5 w-6.5 flex-center cursor-pointer rounded-6px hover:bg-fill" @click="toggle">
 		<fullscreen v-if="!isFullscreen" width="20" height="20" />
 		<fullscreenExit v-else width="20" height="20" />
 	</div>

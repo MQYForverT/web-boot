@@ -1,6 +1,6 @@
 <template>
 	<el-dropdown :trigger="props.userAvatar.trigger" @command="handleCommand">
-		<div class="h-12 flex-center cursor-pointer p-3 hover:bg-fill">
+		<div class="flex-center cursor-pointer p-3">
 			<el-avatar :src="props.userAvatar.avatar || state.circleUrl" size="small" class="mr-2 shrink-0" />
 			<span>{{ props.userAvatar.name || 'mqy' }}</span>
 		</div>

@@ -182,15 +182,21 @@ export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLEleme
 		},
 		set(target, key: keyof propPrecessType, newVal, receiver) {
 			if (props[key] === undefined) {
-				Reflect.set(target, key, newVal, receiver)
 				// 除了赋值之外额外的逻辑
 				switch (key) {
 					case propsEnum.isDark: {
 						const el = unref(rootElement)
 						if (el) {
+							const oldMode = target[key] ? 'dark' : 'light'
+							const mode = newVal ? 'dark' : 'light'
+
+							el.classList.remove(oldMode)
+							el.classList.add(mode)
+
 							if (newVal) {
 								state.menuMode = menuModeEnum.light
-								el.className = 'layout-menu-light'
+								el.classList.remove('layout-menu-dark')
+								el.classList.add('layout-menu-light')
 								document.documentElement.classList.add('dark')
 							} else {
 								document.documentElement.classList.remove('dark')
@@ -202,12 +208,14 @@ export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLEleme
 					case propsEnum.menuMode: {
 						const el = unref(rootElement)
 						if (el) {
-							const dark = stateProxy.isDark ? 'dark' : ''
-							el.className = `layout-menu-${newVal + ''} ${dark}`
+							// 去除老的，添加新的
+							el.classList.remove(`layout-menu-${target[key] + ''}`)
+							el.classList.add(`layout-menu-${newVal + ''}`)
 						}
 						break
 					}
 				}
+				Reflect.set(target, key, newVal, receiver)
 			} else {
 				emits('changeProp', key, newVal)
 			}

@@ -1,8 +1,8 @@
 <template>
-	<div ref="tagBodyRef" class="h-8 flex-y-center pt-0.5 pl-3 pr-3 shadow-[0_1px_1px_#88888833]">
+	<div ref="tagBodyRef" class="h-8.75 flex-y-center">
 		<div
 			v-show="overBody && !arrivedState.left"
-			class="relative flex-center cursor-pointer rounded-2px -ml-1 hover:bg-[rgb(228,229,230)]"
+			class="relative mr-1 flex-center cursor-pointer rounded-2px hover:bg-fill"
 			@click.prevent.stop="toPage('pre')"
 		>
 			<div
@@ -21,7 +21,7 @@
 			ref="tagGroupRef"
 			name="list"
 			tag="div"
-			class="scroll-container ml-0.5 mr-0.5 h-7.5 w-full flex-y-center overflow-x-auto overflow-y-hidden whitespace-nowrap bg-[var(--el-bg-color)]"
+			class="scroll-container h-8.75 w-full flex-y-center overflow-x-auto overflow-y-hidden whitespace-nowrap"
 			@after-enter="handleTransitionEnd"
 			@after-leave="handleTransitionEnd"
 		>
@@ -29,18 +29,38 @@
 				v-for="item in state.activeTags"
 				:ref="(el) => setItemRef(el, item.path)"
 				:key="item.path"
-				:class="[item.path === state.activePath ? 'tagItem-selected' : '']"
-				class="tagItem tagItemOut cursor-pointer relative mr-1.5 h-full flex-center pl-2 pr-2"
+				:class="[item.path === state.activePath ? 'tagItemOut-selected' : '']"
+				class="tagItem tagItemOut relative mb-1.25 mr-1.5 h-7.5 flex-center cursor-pointer pl-2 pr-2"
 				@click="handleChange(item.path)"
 				@contextmenu.prevent="handleContextMenuHand($event, item.path, item.affix, 'out')"
 			>
 				<TagItem :item="item" />
+				<div class="tagItemOut-svg-container">
+					<svg
+						v-show="item.path === state.activePath"
+						width="9"
+						height="9"
+						xmlns="http://www.w3.org/2000/svg"
+						class="tagItemOut-svg tagItemOut-svg1"
+					>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0v9h9a9 9 0 01-9-9z"></path>
+					</svg>
+					<svg
+						v-show="item.path === state.activePath"
+						width="9"
+						height="9"
+						xmlns="http://www.w3.org/2000/svg"
+						class="tagItemOut-svg tagItemOut-svg2"
+					>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0v9h9a9 9 0 01-9-9z"></path>
+					</svg>
+				</div>
 			</div>
 		</transition-group>
 
 		<div
 			v-show="overBody && !arrivedState.right"
-			class="relative flex-center cursor-pointer rounded-2px hover:bg-[rgb(228,229,230)]"
+			class="relative ml-1 flex-center cursor-pointer rounded-2px hover:bg-fill"
 			@click.prevent.stop="toPage('next')"
 		>
 			<div
@@ -58,7 +78,7 @@
 
 		<el-popover placement="bottom" :width="200" trigger="click" :teleported="false" :hide-after="0" :show-arrow="false">
 			<template #reference>
-				<div v-show="overBody" class="mr-2 flex-center cursor-pointer">
+				<div v-show="overBody" class="mr-2 h-6 flex-center cursor-pointer rounded-4px p-x-2 hover:bg-fill">
 					<div class="whitespace-nowrap">全部</div>
 					<el-icon class="el-icon--right"><arrow-down /></el-icon>
 				</div>
@@ -75,7 +95,7 @@
 					v-for="item in state.activeTags.filter((v) => v.title.includes(tagSearch))"
 					:key="item.path"
 					:class="[item.path === state.activePath ? 'tagItem-selected' : '']"
-					class="tagItem cursor-pointer relative mb-0.5 h-7 flex-y-center justify-between border border-gray-200 rounded-2px pl-3 pr-2"
+					class="tagItem relative mb-0.5 h-7 flex-y-center cursor-pointer justify-between border border-gray-200 rounded-2px pl-3 pr-2"
 					@click="handleChange(item.path)"
 					@contextmenu.prevent="handleContextMenuHand($event, item.path, item.affix, 'in')"
 				>
@@ -279,6 +299,7 @@
 		scrollbar-width: none; /* Firefox */
 
 		.tagItem {
+			color: var(--el-text-color-primary);
 			background-color: var(--el-bg-color);
 			border: 1px solid var(--el-border-color-light);
 
@@ -289,16 +310,56 @@
 		}
 
 		.tagItemOut {
-			background-color: var(--el-bg-color);
-			border: 1px solid var(--el-border-color-dark);
-			border-bottom: none;
-			border-radius: 6px 6px 0 0;
+			background-color: var(--el-fill-color-light);
+			border: none;
+
+			&:hover {
+				color: var(--el-text-color-primary);
+				background-color: var(--el-fill-color-darker);
+				border-radius: 12px;
+			}
 		}
 
 		.tagItem-selected {
 			color: var(--el-color-primary);
 			background: var(--el-color-primary-light-8);
 			border-color: var(--el-color-primary-light-3);
+		}
+
+		.tagItemOut-selected {
+			background-color: var(--el-bg-color);
+			border-radius: 8px 8px 0 0;
+
+			&:hover {
+				color: var(--el-text-color-primary);
+				background-color: var(--el-bg-color);
+				border-radius: 8px 8px 0 0;
+			}
+
+			.tagItemOut-svg-container {
+				position: absolute;
+				bottom: -5px;
+				width: 100%;
+				height: 5px;
+				background-color: var(--el-bg-color);
+
+				.tagItemOut-svg {
+					position: absolute;
+					bottom: 0;
+					width: 8px;
+					height: 8px;
+					fill: var(--el-bg-color);
+				}
+
+				.tagItemOut-svg1 {
+					left: -8px;
+					transform: rotate(-90deg);
+				}
+
+				.tagItemOut-svg2 {
+					right: -8px;
+				}
+			}
 		}
 	}
 

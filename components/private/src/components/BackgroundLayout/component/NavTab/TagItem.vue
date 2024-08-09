@@ -1,7 +1,7 @@
 <template>
-	<div class="flex-center">
-		<div v-if="state.isTagsViewIcon && item.icon" :class="[item.icon]" class="ml-0.5 mr-1 text-4" />
-		<span>{{ item.title }}</span>
+	<div class="w-full flex-y-center">
+		<div v-if="state.isTagsViewIcon && item.icon" :class="[item.icon]" class="mr-1 text-4" />
+		<div class="title">{{ item.title }}</div>
 	</div>
 	<div class="flex-center">
 		<el-icon
@@ -50,6 +50,13 @@
 </style>
 
 <style lang="scss">
+	.title {
+		max-width: 110px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
 	.circle-container {
 		position: absolute;
 		top: 1px;

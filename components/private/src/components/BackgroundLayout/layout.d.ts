@@ -34,6 +34,8 @@ declare global {
 			show?: boolean
 			// 传送到哪个节点下
 			to?: string
+			// 间距
+			gap?: string
 		}
 		interface Language {
 			show?: boolean

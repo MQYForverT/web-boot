@@ -1,5 +1,5 @@
 <template>
-	<div v-if="state.isBreadcrumb && !state.isMobile" class="p-x-2 flex">
+	<div v-if="state.isBreadcrumb && !state.isMobile" class="flex p-x-2">
 		<div v-for="(item, index) in breadcrumbList" :key="item.path" class="flex-center">
 			<el-dropdown v-if="item.children?.length">
 				<div class="breadcrumb flex-center cursor-pointer">

@@ -1,5 +1,5 @@
 <template>
-	<el-container class="h-full backgroundLayout flex-col">
+	<el-container class="backgroundLayout h-full flex-col">
 		<Header>
 			<template #header>
 				<slot name="header" />
@@ -7,7 +7,7 @@
 		</Header>
 		<el-container style="height: calc(100% - 48px)">
 			<Aside />
-			<el-container direction="vertical" class="relative">
+			<el-container direction="vertical" class="tab-main">
 				<NavTab v-if="state.isTagsView" />
 				<Main>
 					<template #main>
