@@ -19,14 +19,10 @@
 
 	const getStyle = computed(() => {
 		const firstItem = state.activeTags.at(0)
-		const lastItem = state.activeTags.at(-1)
 		let borderRadius = '8px 8px 0 0'
 
 		if (state.activePath === firstItem?.path) {
 			borderRadius = '0 8px 0 0'
-		}
-		if (state.activePath === lastItem?.path) {
-			borderRadius = '8px 0 0 0'
 		}
 
 		return {

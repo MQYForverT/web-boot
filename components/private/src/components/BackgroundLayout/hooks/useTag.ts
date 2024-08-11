@@ -4,6 +4,8 @@ import useInject from '../hooks/useInject'
 export function useTag() {
 	const { state } = useState()
 	const { props, emits } = useInject()
+
+	const width = 86
 	const contextmenuLeft = ref(0)
 	const contextmenuTop = ref(0)
 
@@ -53,7 +55,7 @@ export function useTag() {
 		},
 	])
 	const contextMenuStyle = computed(() => {
-		return { left: contextmenuLeft.value + 'px', top: contextmenuTop.value + 'px' }
+		return { width: width + 'px', left: contextmenuLeft.value + 'px', top: contextmenuTop.value + 'px' }
 	})
 
 	// 筛选显示的右键菜单
@@ -99,19 +101,18 @@ export function useTag() {
 	const handleContextMenu = (
 		e: MouseEvent,
 		path: string,
-		container: HTMLElement,
+		container?: HTMLElement | null,
 		affix?: boolean,
 		type?: 'out' | 'in',
 	) => {
+		if (!container) {
+			return
+		}
 		showFilterMenu(path, affix, type)
-		const menuMinWidth = type === 'out' ? 105 : 0
-		// // 容器距离左侧的长度
-		const offsetLeft = container.getBoundingClientRect().left // container margin left
+		const menuWidth = e.clientX + width + 10
 		// // 容器的宽度
 		const offsetWidth = container.offsetWidth // container width
-		const maxLeft = offsetWidth - menuMinWidth // left boundary
-		const left = e.clientX - offsetLeft + 15 // 15: margin right
-		contextmenuLeft.value = left > maxLeft ? maxLeft : left
+		contextmenuLeft.value = menuWidth > offsetWidth ? e.clientX - width : e.clientX + 10
 		contextmenuTop.value = e.clientY
 		contextmenuVisible.value = true
 	}

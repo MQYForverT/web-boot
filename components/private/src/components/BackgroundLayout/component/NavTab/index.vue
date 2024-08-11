@@ -26,15 +26,18 @@
 			@after-leave="handleTransitionEnd"
 		>
 			<div
-				v-for="item in state.activeTags"
+				v-for="(item, index) in state.activeTags"
 				:ref="(el) => setItemRef(el, item.path)"
 				:key="item.path"
 				:class="[item.path === state.activePath ? 'tagItemOut-selected' : '']"
 				class="tagItem tagItemOut relative mb-1.25 mr-1.5 h-7.5 flex-center cursor-pointer pl-2 pr-2"
 				@click="handleChange(item.path)"
+				@mouseenter="hoverTagPath = item.path"
+				@mouseleave="hoverTagPath = ''"
 				@contextmenu.prevent="handleContextMenuHand($event, item.path, item.affix, 'out')"
 			>
 				<TagItem :item="item" />
+				<div v-show="gapIsShow(item, index)" class="tagItemOut-gap"></div>
 				<div class="tagItemOut-svg-container">
 					<svg
 						v-show="item.path === state.activePath"
@@ -116,6 +119,7 @@
 
 <script lang="ts" setup>
 	import { CaretLeft, CaretRight, ArrowDown, Search } from '@element-plus/icons-vue'
+	import useContainer from '../../hooks/useContainer'
 	import useState from '../../hooks/useState'
 	import useInject from '../../hooks/useInject'
 	import { useTag } from '../../hooks/useTag'
@@ -123,6 +127,7 @@
 	import TagItem from './TagItem.vue'
 	import type { SortableEvent } from 'sortablejs'
 
+	const { rootElement } = useContainer()
 	const { state } = useState()
 	const { props } = useInject()
 
@@ -133,6 +138,8 @@
 	// 超出主容器，即出现滚动条
 	const tagGroupRefIn = ref()
 	const overBody = ref(false)
+	// 鼠标此时hover的tag
+	const hoverTagPath = ref('')
 	const itemRefs = ref(new Map<string, HTMLElement | null>())
 	const setItemRef = (el: Element | globalThis.ComponentPublicInstance | null, id: string) => {
 		const htmlElement = el as HTMLElement | null
@@ -159,10 +166,33 @@
 		}
 	})
 
+	const gapIsShow = (item: Layout.Menu, index: number) => {
+		// 数量只有一个不显示
+		if (state.activeTags.length === 1) {
+			return false
+		}
+		// 最后一个不显示
+		if (index === state.activeTags.length - 1) {
+			return false
+		}
+
+		// 如果当前的下一个是选中/hover的，则当前不显示
+		if ([state.activePath, hoverTagPath.value].includes(state.activeTags[index + 1].path)) {
+			return false
+		}
+
+		// 当前选中/hover不显示
+		if ([state.activePath, hoverTagPath.value].includes(item.path)) {
+			return false
+		}
+
+		return true
+	}
+
 	const { handleContextMenu, contextmenuVisible, tabMenuOptions, contextMenuStyle, addTag, switchTag } = useTag()
 
 	const handleContextMenuHand = (e: MouseEvent, path: string, affix?: boolean, type?: 'out' | 'in') => {
-		handleContextMenu(e, path, tagGroupRef.value?.$el, affix, type)
+		handleContextMenu(e, path, unref(rootElement), affix, type)
 		currentPath.value = path
 	}
 
@@ -318,6 +348,16 @@
 				background-color: var(--el-fill-color-darker);
 				border-radius: 12px;
 			}
+
+			.tagItemOut-gap {
+				position: absolute;
+				top: 50%;
+				right: -3.5px;
+				width: 1px;
+				height: 13px;
+				background-color: color-mix(in srgb, var(--el-text-color-regular) 40%, transparent);
+				transform: scaleX(1.2) translateY(-50%);
+			}
 		}
 
 		.tagItem-selected {
@@ -394,8 +434,11 @@
 	}
 
 	.divider {
-		height: 24px;
+		width: 1px;
+		height: 13px;
 		margin: 0 10px;
-		border-left: 1px solid #e4e7ed;
+		margin-bottom: 5px;
+		background-color: color-mix(in srgb, var(--el-text-color-regular) 40%, transparent);
+		transform: scaleX(1.2);
 	}
 </style>
