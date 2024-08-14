@@ -72,6 +72,12 @@
 </style>
 
 <style lang="scss">
+	.layoutSelected {
+		path {
+			fill: var(--el-color-primary);
+		}
+	}
+
 	.layout {
 		path {
 			fill: var(--el-text-color-primary);
@@ -86,11 +92,5 @@
 
 	.defaults {
 		transform: scaleX(-1) rotate(90deg);
-	}
-
-	.layoutSelected {
-		path {
-			fill: var(--el-color-primary);
-		}
 	}
 </style>

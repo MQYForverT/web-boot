@@ -29,7 +29,7 @@
 		"lint:stylelint-react": "cd templates/react && pnpm run lint:stylelint",
 		"clean": "npm cache clean -f && rimraf pnpm-lock.yaml && rimraf -g \"**/node_modules\" && pnpm store prune",
 		"check-update": "pnpm outdated -r",
-		"update": "pnpm update -r",
+		"update": "pnpm update -r --latest",
 		"reinstall": "pnpm run clean && pnpm install",
 		"check-deps": "depcheck"
 	},
@@ -38,8 +38,8 @@
 	"license": "ISC",
 	"packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879",
 	"dependencies": {
-		"inquirer": "^9.3.6",
-		"rimraf": "^5.0.10"
+		"inquirer": "^10.1.8",
+		"rimraf": "^6.0.1"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.4.0",
@@ -47,14 +47,14 @@
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@types/inquirer": "^9.0.7",
-		"@types/node": "^20.14.15",
+		"@types/node": "^22.3.0",
 		"commitlint": "^19.4.0",
 		"depcheck": "^1.4.7",
 		"eslint": "^9.9.0",
 		"eslint-define-config": "^2.1.0",
 		"husky": "^9.1.4",
 		"lint-staged": "^15.2.9",
-		"prettier": "3.2.5",
+		"prettier": "3.3.3",
 		"stylelint": "^16.8.1",
 		"ts-node": "^10.9.2",
 		"tsx": "^4.17.0",
