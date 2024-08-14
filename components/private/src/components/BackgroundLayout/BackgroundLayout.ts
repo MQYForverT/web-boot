@@ -13,6 +13,8 @@ export enum menuModeEnum {
 export enum propsEnum {
 	// 容器大小
 	containerSize = 'containerSize',
+	// 容器背景
+	containerBackground = 'containerBackground',
 	// 设置菜单显示与否，需要把setting.enable设置为true
 	settingVisible = 'settingVisible',
 	// 是否启用设置菜单，形式是抽屉，怎么触发的自己定义
@@ -82,6 +84,10 @@ export enum propsEnum {
 export const layoutProps = {
 	[propsEnum.containerSize]: {
 		type: [Object, String] as PropType<Layout.containerSize | string>,
+		default: '{}',
+	},
+	[propsEnum.containerBackground]: {
+		type: [Object, String] as PropType<Layout.containerBackground | string>,
 		default: '{}',
 	},
 	[propsEnum.settingVisible]: {
@@ -224,6 +230,7 @@ export const processPropType = (props: LayoutPrivateProps) => {
 			const value = Reflect.get(target, propKey, receiver)
 			switch (propKey) {
 				case propsEnum.containerSize:
+				case propsEnum.containerBackground:
 				case propsEnum.settingVisible:
 				case propsEnum.setting:
 				case propsEnum.fullScreen:

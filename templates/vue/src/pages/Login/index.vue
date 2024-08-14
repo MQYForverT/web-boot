@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<mqy-background-layout
+			:containerBackground="JSON.stringify(themeConfig.containerBackground)"
 			:menuList="JSON.stringify(themeConfig.menuList)"
 			:fullScreen="JSON.stringify(themeConfig.fullScreen)"
 			:language="JSON.stringify(themeConfig.language)"
@@ -66,8 +67,16 @@
 			],
 		},
 	]
+	const imgUrl = new URL('@/assets/images/home.jpg', import.meta.url).href
 
 	const themeConfig = ref({
+		containerBackground: {
+			background: imgUrl,
+			opacity: 0.5,
+			style: {
+				opacity: 0.1,
+			},
+		},
 		isCollapse: false,
 		isMobile: false,
 		isDark: false,

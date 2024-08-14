@@ -162,6 +162,7 @@ const config: UserConfig = {
 		// },
 		outputManualChunks: {
 			sortablejs: ['sortablejs'],
+			vue: ['vue'],
 		},
 	}),
 }

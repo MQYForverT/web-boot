@@ -165,7 +165,7 @@ export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLEleme
 		menuMode:
 			props.menuMode !== undefined
 				? defaultMenuMode
-				: useStorage<menuModeEnum>(`${prefix}-menuMode`, menuModeEnum.light),
+				: useStorage<menuModeEnum>(`${prefix}-menuMode`, menuModeEnum.dark),
 		isAllOpen: props.isAllOpen !== undefined ? defaultAllOpen : useStorage(`${prefix}-isAllOpen`, true),
 		isUniqueOpened:
 			props.isUniqueOpened !== undefined ? defaultUniqueOpened : useStorage(`${prefix}-isUniqueOpened`, true),

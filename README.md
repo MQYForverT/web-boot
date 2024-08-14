@@ -7,7 +7,7 @@
 
 ## vscode插件（地基）
 
-1. [eslint：检查js](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+1. [eslint：检查js](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)，记得切换预发布版本
 2. [stylelint：检查css](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 3. [Prettier - Code formatter：代码格式化](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 4. [Prettier ESLint：两者都有格式规则，此插件抹平冲突；另外，eslint计划会放弃格式规则这块](https://marketplace.visualstudio.com/items?itemName=rvest.vs-code-prettier-eslint)

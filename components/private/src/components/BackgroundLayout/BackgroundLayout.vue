@@ -1,8 +1,11 @@
 <template>
-	<!--根元素会动态操作class，所以不要再这个上面加样式-->
 	<div
 		ref="appWrapperRef"
-		:style="{ height: proxyProps.containerSize.height || '100vh', width: proxyProps.containerSize.width || '100vw' }"
+		:style="{
+			height: proxyProps.containerSize.height || '100vh',
+			width: proxyProps.containerSize.width || '100vw',
+			...(proxyProps.containerSize.style || {}),
+		}"
 	>
 		<Transition mode="out-in">
 			<component :is="curCom">
@@ -25,6 +28,17 @@
 				</template>
 			</Logo>
 		</Teleport>
+
+		<!--全局背景图-->
+		<div
+			v-if="proxyProps.containerBackground.background || proxyProps.containerBackground?.style?.background"
+			class="containerBackground"
+			:style="{
+				background: `url(${proxyProps.containerBackground.background}) no-repeat center center / cover`,
+				opacity: proxyProps.containerBackground.opacity || 0.1,
+				...(proxyProps.containerBackground.style || {}),
+			}"
+		></div>
 	</div>
 </template>
 <script setup lang="ts">
@@ -40,7 +54,7 @@
 
 	import LogoIcon from '~icons/mqy-icon/logo'
 
-	const { watermarkEl, getObserver, setWatermark, updateWatermark } = useWatermark()
+	const { setAppendEl, watermarkEl, getObserver, setWatermark, updateWatermark } = useWatermark()
 
 	const appWrapperRef = ref()
 
@@ -71,6 +85,7 @@
 	onMounted(() => {
 		if (appWrapperRef.value) {
 			rootElement.value = appWrapperRef.value
+			setAppendEl(appWrapperRef.value)
 		}
 
 		// 这里直接进行赋值是为了触发set拦截从而初始化主题

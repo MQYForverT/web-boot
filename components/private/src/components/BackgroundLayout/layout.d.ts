@@ -24,6 +24,12 @@ declare global {
 		interface containerSize {
 			height: string
 			width: string
+			style: object
+		}
+		interface containerBackground {
+			background: string
+			opacity: number
+			style: object
 		}
 		// 下拉菜单
 		interface DropdownMenu {

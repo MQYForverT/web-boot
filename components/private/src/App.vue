@@ -2,6 +2,7 @@
 	<!--不能使用ref、不能v-modal:updateModel-->
 	<!-- <mqy-example id="example" ref="mqy" title="title1" style="margin-top: 20px" /> -->
 	<mqy-background-layout
+		:containerBackground="JSON.stringify(themeConfig.containerBackground)"
 		:menuList="JSON.stringify(themeConfig.menuList)"
 		:fullScreen="JSON.stringify(themeConfig.fullScreen)"
 		:language="JSON.stringify(themeConfig.language)"
@@ -30,9 +31,9 @@
 
 <script setup lang="ts">
 	import { menuList } from '@/assets/menuList'
+	const imgUrl = new URL('@/assets/home.jpg', import.meta.url).href
 	// import { register } from '@/components/Example'
 	// register()
-
 	onMounted(() => {
 		setTimeout(() => {
 			themeConfig.value.isCollapse = true
@@ -40,6 +41,13 @@
 	})
 
 	const themeConfig = ref({
+		containerBackground: {
+			background: imgUrl,
+			opacity: 0.5,
+			style: {
+				opacity: 0.1,
+			},
+		},
 		isCollapse: false,
 		isMobile: false,
 		menuList,

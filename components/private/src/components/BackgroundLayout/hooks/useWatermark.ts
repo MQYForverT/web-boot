@@ -1,7 +1,8 @@
 import { shallowRef, unref } from 'vue'
 
-export function useWatermark(appendEl: HTMLElement = document.body) {
+export function useWatermark() {
 	let style = ''
+	let appendEl = document.body
 	let attr: Layout.Watermark | undefined = undefined
 	let observer: MutationObserver | null = null
 	const watermarkEl = shallowRef<HTMLElement | null>(null)
@@ -39,7 +40,7 @@ export function useWatermark(appendEl: HTMLElement = document.body) {
 					// 旋转画布
 					cans.rotate(((attr?.rotate ?? -12) * Math.PI) / 180)
 					// 绘制水印文本
-					cans.fillText(attr?.text!, 0, 0)
+					cans.fillText(attr?.text || '', 0, 0)
 					// 恢复到保存的绘图状态，以便进行下一个水印的绘制
 					cans.restore()
 				}
@@ -64,14 +65,10 @@ export function useWatermark(appendEl: HTMLElement = document.body) {
 		const { clientHeight: height, clientWidth: width } = appendEl
 		// 根据指定dom的宽高更新水印的宽高
 		updateWatermark({ width, height })
-		// 如果主容器是body，则继续创建一个容器，把水印隐藏起来
-		if (appendEl === document.body) {
-			const divContain = document.createElement('div')
-			divContain.appendChild(div)
-			appendEl.appendChild(divContain)
-		} else {
-			appendEl.appendChild(div)
-		}
+		// 继续创建一个容器，把水印隐藏起来
+		const divContain = document.createElement('div')
+		divContain.appendChild(div)
+		appendEl.appendChild(divContain)
 	}
 
 	// 页面随窗口调整更新水印
@@ -84,6 +81,11 @@ export function useWatermark(appendEl: HTMLElement = document.body) {
 			el.style.background = `url(${createBase64(options)}) left top repeat`
 		}
 		style = el.style.cssText
+	}
+
+	// 对外提供的设置容器方法
+	function setAppendEl(el: HTMLElement) {
+		appendEl = el
 	}
 
 	// 对外提供的设置水印方法
@@ -127,5 +129,5 @@ export function useWatermark(appendEl: HTMLElement = document.body) {
 		return observer
 	}
 
-	return { watermarkEl, getObserver, setWatermark, updateWatermark }
+	return { setAppendEl, watermarkEl, getObserver, setWatermark, updateWatermark }
 }
