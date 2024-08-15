@@ -1,4 +1,5 @@
 <template>
+	{{ $slots.header }}
 	<div
 		ref="appWrapperRef"
 		:style="{
@@ -29,16 +30,18 @@
 			</Logo>
 		</Teleport>
 
-		<!--全局背景图-->
-		<div
-			v-if="proxyProps.containerBackground.background || proxyProps.containerBackground?.style?.background"
-			class="containerBackground"
-			:style="{
-				background: `url(${proxyProps.containerBackground.background}) no-repeat center center / cover`,
-				opacity: proxyProps.containerBackground.opacity || 0.1,
-				...(proxyProps.containerBackground.style || {}),
-			}"
-		></div>
+		<!--提供containerBackground插槽来霍霍。可以设置全局背景图，如video、image。默认支持快速配置全局背景图-->
+		<slot name="containerBackground">
+			<div
+				v-if="proxyProps.containerBackground.background || proxyProps.containerBackground?.style"
+				class="containerBackground"
+				:style="{
+					background: `url(${proxyProps.containerBackground.background}) no-repeat center center / cover`,
+					opacity: proxyProps.containerBackground.opacity || 0.1,
+					...(proxyProps.containerBackground.style || {}),
+				}"
+			/>
+		</slot>
 	</div>
 </template>
 <script setup lang="ts">
