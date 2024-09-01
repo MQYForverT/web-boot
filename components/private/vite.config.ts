@@ -148,7 +148,10 @@ const config: UserConfig = {
 				inline: ['element-plus'],
 			},
 		},
-		coverage: { include: ['src/components'], exclude: ['src/components/index.ts', 'src/components/Example'] },
+		coverage: {
+			include: ['src/components'],
+			exclude: ['src/components/index.ts', 'src/components/Example', '**/*.d.ts'],
+		},
 	}),
 	build: setupViteLib({
 		entries: entries,

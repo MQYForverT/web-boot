@@ -2,6 +2,7 @@ import { describe, vi, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import { BackgroundLayout, register } from '../index'
+import { layoutEnum } from '../BackgroundLayout'
 import Logo from '../component/LayoutCommon/Logo.vue'
 
 describe('BackgroundLayout', () => {
@@ -9,6 +10,34 @@ describe('BackgroundLayout', () => {
 	it('should be registered', () => {
 		register()
 		expect(customElements.get('mqy-background-layout')).toBeDefined()
+	})
+
+	// 检查传入可控属性：如:isMobile
+	it('props isMobile', () => {
+		const wrapper = mount(BackgroundLayout, {
+			props: {
+				isMobile: true,
+			},
+		})
+
+		// 确保组件已被成功挂载
+		expect(wrapper.exists()).toBe(true)
+
+		expect(wrapper.props('isMobile')).toBe(true)
+	})
+
+	// 检查传布局属性
+	it('props layout', () => {
+		const wrapper = mount(BackgroundLayout, {
+			props: {
+				layout: layoutEnum.defaults,
+			},
+		})
+
+		// 确保组件已被成功挂载
+		expect(wrapper.exists()).toBe(true)
+
+		expect(wrapper.props('isMobile')).toBe(true)
 	})
 
 	it('no menuList props', () => {
@@ -50,7 +79,7 @@ describe('BackgroundLayout', () => {
 		// wrapper.vm.state.isDark = true
 		// console.log(222, wrapper.vm.state.isDark)
 		// const classList = document.documentElement.classList
-		console.log(222, wrapper.find({ ref: 'appWrapperRef' }))
+		// console.log(222, wrapper.find({ ref: 'appWrapperRef' }))
 		// expect(document.documentElement.classList.contains('dark')).toBe(true)
 		// expect(wrapper.vm.state.isMobile).toBe(true)
 		// expect(wrapper.vm.state.isCollapse).toBe(true)
@@ -101,7 +130,7 @@ describe('BackgroundLayout', () => {
 		const el = wrapper.find({ ref: 'appWrapperRef' })
 		// const domElement = el.element as HTMLElement
 		// const style = window.getComputedStyle(domElement)
-		console.log(333, el)
+		// console.log(333, el)
 		// wrapper.element.innerWidth = 500
 		// // Simulate resize event
 		// wrapper.element.dispatchEvent(new Event('resize'))
