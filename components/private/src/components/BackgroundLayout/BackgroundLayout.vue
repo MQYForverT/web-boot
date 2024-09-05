@@ -1,5 +1,4 @@
 <template>
-	{{ $slots.header }}
 	<div
 		ref="appWrapperRef"
 		:style="{

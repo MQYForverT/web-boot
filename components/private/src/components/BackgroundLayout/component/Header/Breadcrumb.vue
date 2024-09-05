@@ -42,7 +42,6 @@
 		}
 		const data = state.flatMenuList.find((x) => x.path === state.activePath!)?.fullLink
 		cache.set(state.activePath, data)
-		console.log(data)
 		return data
 	})
 

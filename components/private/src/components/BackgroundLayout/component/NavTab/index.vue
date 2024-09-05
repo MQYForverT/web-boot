@@ -265,10 +265,8 @@
 
 			nextTick(() => {
 				if (tagGroupRef.value?.$el && props.isSortableTagsView && !sortableRef.value && !sortableRefIn.value) {
-					console.log(12, sortableRef.value, sortableRefIn.value)
 					import('sortablejs')
 						.then((Sortable) => {
-							console.log(123, Sortable)
 							sortableRef.value = new Sortable.default(tagGroupRef.value.$el, {
 								animation: 300,
 								dataIdAttr: 'data-name',
@@ -282,7 +280,7 @@
 							})
 						})
 						.catch((err) => {
-							console.log(444, err)
+							console.log(err)
 						})
 				}
 			})

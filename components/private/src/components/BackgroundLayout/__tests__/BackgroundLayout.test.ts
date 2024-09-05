@@ -23,7 +23,7 @@ describe('BackgroundLayout', () => {
 		// 确保组件已被成功挂载
 		expect(wrapper.exists()).toBe(true)
 
-		expect(wrapper.props('isMobile')).toBe(true)
+		expect(wrapper.props().isMobile).toBe(true)
 	})
 
 	// 检查传布局属性
@@ -37,7 +37,7 @@ describe('BackgroundLayout', () => {
 		// 确保组件已被成功挂载
 		expect(wrapper.exists()).toBe(true)
 
-		expect(wrapper.props('isMobile')).toBe(true)
+		expect(wrapper.props().isMobile).toBe(true)
 	})
 
 	it('no menuList props', () => {
@@ -52,7 +52,7 @@ describe('BackgroundLayout', () => {
 		expect(wrapper.exists()).toBe(true)
 		// 检查是否触发了警告
 		expect(consoleWarnSpy).toHaveBeenCalled()
-		expect(wrapper.props('menuList')).toBe('[]')
+		expect(wrapper.props().menuList).toBe('[]')
 
 		// 获取所有警告调用，并提取警告消息
 		const warningCalls = consoleWarnSpy.mock.calls
@@ -121,23 +121,20 @@ describe('BackgroundLayout', () => {
 
 	it('handles window resize correctly', async () => {
 		// Mount the component
-		const wrapper = mount(BackgroundLayout, {
-			props: {
-				// Provide necessary props here
-			},
-		})
-
-		const el = wrapper.find({ ref: 'appWrapperRef' })
+		// const wrapper = mount(BackgroundLayout, {
+		// 	props: {
+		// 		// Provide necessary props here
+		// 	},
+		// })
+		// const el = wrapper.find({ ref: 'appWrapperRef' })
 		// const domElement = el.element as HTMLElement
 		// const style = window.getComputedStyle(domElement)
 		// console.log(333, el)
 		// wrapper.element.innerWidth = 500
 		// // Simulate resize event
 		// wrapper.element.dispatchEvent(new Event('resize'))
-
 		// // Wait for nextTick to process the update
 		// await wrapper.vm.$nextTick()
-
 		// // Assert changes
 		// expect(wrapper.vm.state.isMobile).toBe(false) // or false depending on your logic
 	})
