@@ -72,21 +72,21 @@
 </style>
 
 <style lang="scss">
+	.layout {
+		path {
+			fill: var(--el-text-color-primary);
+		}
+	}
+
 	.layoutSelected {
 		path {
 			fill: var(--el-color-primary);
 		}
 	}
 
-	.layout {
+	.layout:hover {
 		path {
-			fill: var(--el-text-color-primary);
-		}
-
-		&:hover {
-			path {
-				fill: var(--el-color-primary-light-3);
-			}
+			fill: var(--el-color-primary-light-3);
 		}
 	}
 
