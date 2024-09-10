@@ -3,9 +3,10 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 	const prefix = '@mqy/component-private-background'
 
 	const state = reactive<Global.setting>({
-		isDark: false,
-		activeLanguage: '',
-		language: {},
+		isDark: config?.isDark,
+		activeLanguage: config?.activeLanguage,
+		language: config?.language,
+		uiConfigProvider: config?.uiConfigProvider,
 	})
 
 	watch(
@@ -49,7 +50,16 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 			state.language = val
 		},
 		{
-			immediate: true,
+			deep: true,
+		},
+	)
+
+	watch(
+		() => config?.uiConfigProvider,
+		(val) => {
+			state.uiConfigProvider = val
+		},
+		{
 			deep: true,
 		},
 	)

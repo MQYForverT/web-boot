@@ -1,41 +1,46 @@
 <template>
-	<div class="login-container">
-		<!-- <Top /> -->
-		<el-card class="z-1 !border-none w-100 !bg-transparent !rounded-4% <sm:w-83">
-			<h3 class="mt-6 font-500 text-primary text-18px" type="primary">{{ $t('login.login') }}</h3>
-			<el-form ref="formRef" :model="form" :rules="formRules" class="mt-6" size="large">
-				<el-form-item prop="username">
-					<el-input v-model="form.username" :placeholder="$t('login.usernamePlaceholder')" />
-				</el-form-item>
-				<el-form-item prop="password">
-					<el-input v-model="form.password" show-password :placeholder="$t('login.passwordPlaceholder')" />
-				</el-form-item>
-				<el-form-item>
-					<div class="w-full flex-y-center justify-between">
-						<el-checkbox v-model="checked" class="<sm:text-sm">
-							{{ $t('login.remember') }}
-						</el-checkbox>
-						<el-text type="primary" class="cursor-pointer <sm:!text-sm">
-							{{ $t('login.forgetPassword') }}
-						</el-text>
-					</div>
-				</el-form-item>
-				<el-form-item>
-					<el-button class="w-full" type="primary" @click="onLogin" :loading="loading">
-						{{ $t('login.login') }}
-					</el-button>
-				</el-form-item>
-				<el-form-item>
-					<el-button class="w-full"> {{ $t('login.register') }}</el-button>
-				</el-form-item>
-			</el-form>
-		</el-card>
-	</div>
+	<el-config-provider v-bind="globalState.uiConfigProvider">
+		<div class="login-container">
+			<!-- <Top /> -->
+			<el-card class="z-1 !border-none w-100 !bg-transparent !rounded-4% <sm:w-83">
+				<h3 class="mt-6 font-500 text-primary text-18px" type="primary">{{ $t('login.login') }}</h3>
+				<el-form ref="formRef" :model="form" :rules="formRules" class="mt-6" size="large">
+					<el-form-item prop="username">
+						<el-input v-model="form.username" :placeholder="$t('login.usernamePlaceholder')" />
+					</el-form-item>
+					<el-form-item prop="password">
+						<el-input v-model="form.password" show-password :placeholder="$t('login.passwordPlaceholder')" />
+					</el-form-item>
+					<el-form-item>
+						<div class="w-full flex-y-center justify-between">
+							<el-checkbox v-model="checked" class="<sm:text-sm">
+								{{ $t('login.remember') }}
+							</el-checkbox>
+							<el-text type="primary" class="cursor-pointer <sm:!text-sm">
+								{{ $t('login.forgetPassword') }}
+							</el-text>
+						</div>
+					</el-form-item>
+					<el-form-item>
+						<el-button class="w-full" type="primary" @click="onLogin" :loading="loading">
+							{{ $t('login.login') }}
+						</el-button>
+					</el-form-item>
+					<el-form-item>
+						<el-button class="w-full"> {{ $t('login.register') }}</el-button>
+					</el-form-item>
+				</el-form>
+			</el-card>
+		</div>
+	</el-config-provider>
 </template>
 <script setup lang="ts">
+	import useGlobalStore from '@/components/globalStore'
 	// import Top from './component/top/index.vue'
 
 	defineOptions({ name: 'Login' })
+
+	const { globalState } = useGlobalStore()
 
 	const formRef = ref()
 	const checked = ref(false)

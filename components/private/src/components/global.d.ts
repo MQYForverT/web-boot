@@ -1,4 +1,5 @@
 import type { RemovableRef } from '@vueuse/core'
+import type { ButtonConfigContext } from 'element-plus'
 
 declare global {
 	namespace Global {
@@ -7,6 +8,8 @@ declare global {
 			isDark?: boolean | RemovableRef
 			activeLanguage?: string | RemovableRef
 			language?: Language
+			// element-ui全局配置，暂时支持size和button
+			uiConfigProvider?: UiConfigProvider
 		}
 		interface DropdownMenu {
 			key: string
@@ -17,6 +20,10 @@ declare global {
 			trigger?: 'click' | 'hover'
 			to?: string
 			dropdownMenu?: DropdownMenu[]
+		}
+		interface UiConfigProvider {
+			size?: 'large' | 'default' | 'small'
+			button?: ButtonConfigContext
 		}
 	}
 }

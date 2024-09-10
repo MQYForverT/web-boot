@@ -1,49 +1,52 @@
 <template>
-	<div
-		ref="appWrapperRef"
-		:style="{
-			height: proxyProps.containerSize.height || '100vh',
-			width: proxyProps.containerSize.width || '100vw',
-			...(proxyProps.containerSize.style || {}),
-		}"
-	>
-		<Transition mode="out-in">
-			<component :is="curCom">
-				<template #header>
-					<slot name="header" />
-				</template>
-				<template #main>
-					<slot name="main" />
-				</template>
-			</component>
-		</Transition>
+	<el-config-provider v-bind="globalState.uiConfigProvider">
+		<div
+			ref="appWrapperRef"
+			:style="{
+				height: proxyProps.containerSize.height || '100vh',
+				width: proxyProps.containerSize.width || '100vw',
+				...(proxyProps.containerSize.style || {}),
+			}"
+		>
+			<Transition mode="out-in">
+				<component :is="curCom">
+					<template #header>
+						<slot name="header" />
+					</template>
+					<template #main>
+						<slot name="main" />
+					</template>
+				</component>
+			</Transition>
 
-		<!--布局需要，对于动态位置的，直接传送门伺候-->
-		<Teleport v-if="logoElement" :to="logoElement">
-			<Logo>
-				<template #logo>
-					<slot name="logo">
-						<LogoIcon width="30" height="30" fill="var(--el-color-primary)" />
-					</slot>
-				</template>
-			</Logo>
-		</Teleport>
+			<!--布局需要，对于动态位置的，直接传送门伺候-->
+			<Teleport v-if="logoElement" :to="logoElement">
+				<Logo>
+					<template #logo>
+						<slot name="logo">
+							<LogoIcon width="30" height="30" fill="var(--el-color-primary)" />
+						</slot>
+					</template>
+				</Logo>
+			</Teleport>
 
-		<!--提供containerBackground插槽来霍霍。可以设置全局背景图，如video、image。默认支持快速配置全局背景图-->
-		<slot name="containerBackground">
-			<div
-				v-if="proxyProps.containerBackground.background || proxyProps.containerBackground?.style"
-				class="containerBackground"
-				:style="{
-					background: `url(${proxyProps.containerBackground.background}) no-repeat center center / cover`,
-					opacity: proxyProps.containerBackground.opacity || 0.1,
-					...(proxyProps.containerBackground.style || {}),
-				}"
-			/>
-		</slot>
-	</div>
+			<!--提供containerBackground插槽来霍霍。可以设置全局背景图，如video、image。默认支持快速配置全局背景图-->
+			<slot name="containerBackground">
+				<div
+					v-if="proxyProps.containerBackground.background || proxyProps.containerBackground?.style"
+					class="containerBackground"
+					:style="{
+						background: `url(${proxyProps.containerBackground.background}) no-repeat center center / cover`,
+						opacity: proxyProps.containerBackground.opacity || 0.1,
+						...(proxyProps.containerBackground.style || {}),
+					}"
+				/>
+			</slot>
+		</div>
+	</el-config-provider>
 </template>
 <script setup lang="ts">
+	import useGlobalStore from '@/components/globalStore'
 	import useState from './hooks/useState'
 	import useContainer from './hooks/useContainer'
 	import { useWatermark } from './hooks/useWatermark'
@@ -67,6 +70,7 @@
 	const emits = defineEmits<LayoutEmits>()
 	provide(emitsKey, emits)
 
+	const { globalState } = useGlobalStore()
 	const { rootElement, logoElement } = useContainer()
 
 	const { state } = useState(proxyProps, emits, rootElement.value)
