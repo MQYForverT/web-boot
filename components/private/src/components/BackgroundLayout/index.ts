@@ -4,9 +4,6 @@ import BackgroundLayout from './BackgroundLayout.vue'
 import type { LayoutPublicProps } from './BackgroundLayout'
 import { layoutEnum, propsEnum } from './BackgroundLayout'
 
-// element的暗黑模式一定要在组件之前引入
-import 'element-plus/theme-chalk/dark/css-vars.css'
-
 // 临时办法，如果组件内部使用unocss，vue不会自动把unocss样式提升到根组件，所以这里需要把所有用到unocss的组件都在这里导入
 // Layout
 import defaults from './component/Layout/default.vue'

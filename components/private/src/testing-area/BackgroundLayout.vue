@@ -5,11 +5,9 @@
 		:containerBackground="JSON.stringify(themeConfig.containerBackground)"
 		:menuList="JSON.stringify(themeConfig.menuList)"
 		:fullScreen="JSON.stringify(themeConfig.fullScreen)"
-		:language="JSON.stringify(themeConfig.language)"
 		:userAvatar="JSON.stringify(themeConfig.userAvatar)"
 		:setting="JSON.stringify(themeConfig.setting)"
 		:settingVisible="JSON.stringify(themeConfig.settingVisible)"
-		activeLanguage="zh-CN"
 		:watermark="JSON.stringify(themeConfig.watermark)"
 		@changeProp="handleChange"
 		@selectMenu="selectMenu"
@@ -48,25 +46,12 @@
 				opacity: 0.1,
 			},
 		},
+		isDark: false,
 		isCollapse: false,
 		isMobile: false,
 		menuList,
 		fullScreen: {
 			show: true,
-		},
-		language: {
-			show: true,
-			trigger: 'click',
-			dropdownMenu: [
-				{
-					key: 'zh-CN',
-					value: '简体中文',
-				},
-				{
-					key: 'en',
-					value: 'English',
-				},
-			],
 		},
 		userAvatar: {
 			show: true,

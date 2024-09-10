@@ -1,17 +1,17 @@
 <template>
-	<el-dropdown :trigger="props.language.trigger" @command="handleCommand">
+	<el-dropdown :trigger="globalState?.language?.trigger" @command="handleCommand">
 		<div class="h-6.5 w-6.5 flex-center cursor-pointer rounded-6px hover:bg-fill">
 			<Language width="18" height="18" class="language" />
 		</div>
 		<template #dropdown>
 			<el-dropdown-menu>
 				<el-dropdown-item
-					v-for="item in props.language.dropdownMenu"
+					v-for="item in globalState?.language?.dropdownMenu"
 					:key="item.key"
-					:disabled="item.key === props.activeLanguage"
+					:disabled="item.key === globalState.activeLanguage"
 					:command="item.key"
 				>
-					{{ item.value }}
+					{{ item.key }}
 				</el-dropdown-item>
 			</el-dropdown-menu>
 		</template>
@@ -19,13 +19,13 @@
 </template>
 
 <script lang="ts" setup>
+	import useGlobalStore from '@/components/globalStore'
 	import Language from '~icons/mqy-icon/language'
-	import useInject from '../../hooks/useInject'
 
-	const { props, emits, propsEnum } = useInject()
+	const { globalState } = useGlobalStore()
 
 	const handleCommand = (val: string) => {
-		emits('changeProp', propsEnum.activeLanguage, val)
+		globalState.activeLanguage = val
 	}
 </script>
 

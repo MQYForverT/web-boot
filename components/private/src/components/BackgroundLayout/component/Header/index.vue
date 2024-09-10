@@ -12,8 +12,8 @@
 			<Teleport :to="props.fullScreen.to" :disabled="!props.fullScreen.to">
 				<FullScreen v-if="props.fullScreen.show" :style="{ margin: `0 ${props.fullScreen.gap || '5px'}` }" />
 			</Teleport>
-			<Teleport :to="props.language.to" :disabled="!props.language.to">
-				<Language v-if="props.language.show" :style="{ margin: `0 ${props.fullScreen.gap || '5px'}` }" />
+			<Teleport :to="globalState?.language?.to" :disabled="!globalState?.language?.to">
+				<Language v-if="globalState?.language?.show" :style="{ margin: `0 ${props.fullScreen.gap || '5px'}` }" />
 			</Teleport>
 			<Teleport :to="props.userAvatar.to" :disabled="!props.userAvatar.to">
 				<UserAvatar v-if="props.userAvatar.show" />
@@ -31,12 +31,14 @@
 	import MenuCollapse from './MenuCollapse.vue'
 	import Breadcrumb from './Breadcrumb.vue'
 
+	import useGlobalStore from '@/components/globalStore'
 	import useInject from '../../hooks/useInject'
 	import useContainer from '../../hooks/useContainer'
 	import useState from '../../hooks/useState'
 
 	const logoRef = ref()
 
+	const { globalState } = useGlobalStore()
 	const { props } = useInject()
 	const { state } = useState()
 	const { logoElement } = useContainer()

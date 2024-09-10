@@ -1,15 +1,18 @@
+import useGlobalStore from '@/components/globalStore'
 import { LayoutEmits, layoutEnum, menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
 import useContainer from './useContainer'
 import useInject from './useInject'
 import packageJson from '../../../../package.json'
 
-export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLElement | null) => {
+export default createGlobalState((proxyProps?: propPrecessType, initEmits?: LayoutEmits, root?: HTMLElement | null) => {
 	const prefix = '@mqy/component-private-background-layout'
+	const { globalState } = useGlobalStore()
 
 	let props, emits, rootElement
-	if (proxyProps) {
+
+	if (proxyProps && initEmits) {
 		props = proxyProps
-		emits = {} as LayoutEmits
+		emits = initEmits
 	} else {
 		const inject = useInject()
 		props = inject.props
@@ -90,10 +93,12 @@ export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLEleme
 	})
 
 	const defaultDark = computed(() => {
+		handleStateChange(propsEnum.isDark, state, props.isDark)
 		return props.isDark
 	})
 
 	const defaultMenuMode = computed(() => {
+		handleStateChange(propsEnum.menuMode, state, props.isDark)
 		return props.menuMode
 	})
 
@@ -161,7 +166,7 @@ export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLEleme
 					: ([] as Layout.Menu[]),
 		isCollapse: props.isCollapse !== undefined ? defaultCollapse : false,
 		isMobile: props.isMobile !== undefined ? defaultMobile : false,
-		isDark: props.isDark !== undefined ? defaultDark : useStorage(`${prefix}-isDark`, false),
+		isDark: props.isDark !== undefined ? defaultDark : globalState.isDark,
 		menuMode:
 			props.menuMode !== undefined
 				? defaultMenuMode
@@ -182,39 +187,7 @@ export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLEleme
 		},
 		set(target, key: keyof propPrecessType, newVal, receiver) {
 			if (props[key] === undefined) {
-				// 除了赋值之外额外的逻辑
-				switch (key) {
-					case propsEnum.isDark: {
-						const el = unref(rootElement)
-						if (el) {
-							const oldMode = target[key] ? 'dark' : 'light'
-							const mode = newVal ? 'dark' : 'light'
-
-							el.classList.remove(oldMode)
-							el.classList.add(mode)
-
-							if (newVal) {
-								state.menuMode = menuModeEnum.light
-								el.classList.remove('layout-menu-dark')
-								el.classList.add('layout-menu-light')
-								document.documentElement.classList.add('dark')
-							} else {
-								document.documentElement.classList.remove('dark')
-							}
-						}
-
-						break
-					}
-					case propsEnum.menuMode: {
-						const el = unref(rootElement)
-						if (el) {
-							// 去除老的，添加新的
-							el.classList.remove(`layout-menu-${target[key] + ''}`)
-							el.classList.add(`layout-menu-${newVal + ''}`)
-						}
-						break
-					}
-				}
+				handleStateChange(key, target, newVal)
 				Reflect.set(target, key, newVal, receiver)
 			} else {
 				emits('changeProp', key, newVal)
@@ -222,6 +195,46 @@ export default createGlobalState((proxyProps?: propPrecessType, root?: HTMLEleme
 			return true
 		},
 	})
+
+	/**
+	 *  处理状态变化，如果数据是内部控制，则在stateProxy触发set时调用；如果数据是外部控制，则在计算属性中触发
+	 * @param key
+	 * @param oldVal
+	 * @param newVal
+	 */
+	const handleStateChange = (key: keyof propPrecessType, target: typeof state, newVal: any) => {
+		switch (key) {
+			case propsEnum.isDark: {
+				const el = unref(rootElement)
+				if (el) {
+					const oldMode = target[key] ? 'dark' : 'light'
+					const mode = newVal ? 'dark' : 'light'
+
+					el.classList.remove(oldMode)
+					el.classList.add(mode)
+
+					if (newVal) {
+						state.menuMode = menuModeEnum.light
+						el.classList.remove('layout-menu-dark')
+						el.classList.add('layout-menu-light')
+						globalState.isDark = true
+					} else {
+						globalState.isDark = false
+					}
+				}
+				break
+			}
+			case propsEnum.menuMode: {
+				const el = unref(rootElement)
+				if (el) {
+					// 去除老的，添加新的
+					el.classList.remove(`layout-menu-${target[key] + ''}`)
+					el.classList.add(`layout-menu-${newVal + ''}`)
+				}
+				break
+			}
+		}
+	}
 
 	return { state: stateProxy }
 })

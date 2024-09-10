@@ -43,12 +43,6 @@ declare global {
 			// 间距
 			gap?: string
 		}
-		interface Language {
-			show?: boolean
-			trigger?: 'click' | 'hover'
-			to?: string
-			dropdownMenu?: DropdownMenu[]
-		}
 		// 用户配置
 		interface UserAvatar {
 			show?: boolean

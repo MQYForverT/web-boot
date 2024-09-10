@@ -1,11 +1,23 @@
 import type { ExtractPropTypes, ExtractPublicPropTypes, InjectionKey } from 'vue'
 
 export enum propsEnum {
-	layout = 'layout',
+	// 容器背景
+	containerBackground = 'containerBackground',
+	// 账号配置
+	account = 'account',
 }
 
 // 为了兼容wc，设置可以传入字符串，然后去做转换
-export const props = {}
+export const props = {
+	[propsEnum.containerBackground]: {
+		type: [Object, String] as PropType<Login.containerBackground | string>,
+		default: '{}',
+	},
+	[propsEnum.account]: {
+		type: [Object, String] as PropType<Login.account | string>,
+		default: '{}',
+	},
+}
 // --------props----------
 // 得到私有类型
 export type PrivateProps = ExtractPropTypes<typeof props>
@@ -13,7 +25,6 @@ export type PrivateProps = ExtractPropTypes<typeof props>
 // --------emits----------分步判断change类型
 export type Emits = {
 	<T extends keyof PrivateProps>(evt: 'changeProp', ...args: [T, PrivateProps[T]]): void
-	(evt: 'selectMenu' | 'commandUser' | 'tagRefresh', ...args: [string]): void
 }
 
 export const emitsKey = Symbol() as InjectionKey<Emits>

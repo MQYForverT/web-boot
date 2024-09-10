@@ -69,7 +69,7 @@
 
 	const { rootElement, logoElement } = useContainer()
 
-	const { state } = useState(proxyProps, rootElement.value)
+	const { state } = useState(proxyProps, emits, rootElement.value)
 
 	const curCom = computed(() => {
 		if (state.isMobile) {
