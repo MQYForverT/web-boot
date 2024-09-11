@@ -6,6 +6,7 @@ declare global {
 		interface setting {
 			// element-ui的样式是否暗黑样式
 			isDark?: boolean | RemovableRef
+			themeAnimation?: ThemeAnimation
 			activeLanguage?: string | RemovableRef
 			language?: Language
 			// element-ui全局配置，暂时支持size和button
@@ -24,6 +25,10 @@ declare global {
 		interface UiConfigProvider {
 			size?: 'large' | 'default' | 'small'
 			button?: ButtonConfigContext
+		}
+		interface ThemeAnimation {
+			show?: boolean // 是否展示动画
+			duration?: number // 动画时长
 		}
 	}
 }

@@ -24,7 +24,7 @@ export type PrivateProps = ExtractPropTypes<typeof props>
 
 // --------emits----------分步判断change类型
 export type Emits = {
-	<T extends keyof PrivateProps>(evt: 'changeProp', ...args: [T, PrivateProps[T]]): void
+	(evt: 'submit', ...args: [string]): void
 }
 
 export const emitsKey = Symbol() as InjectionKey<Emits>
@@ -44,7 +44,8 @@ export const processPropType = (props: PrivateProps) => {
 		get(target, propKey, receiver) {
 			const value = Reflect.get(target, propKey, receiver)
 			switch (propKey) {
-				case propsEnum.layout:
+				case propsEnum.containerBackground:
+				case propsEnum.account:
 					return JSON.parse(value)
 			}
 			return value

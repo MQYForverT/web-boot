@@ -23,6 +23,7 @@
 		<li class="flex-y-center justify-between py-1">
 			<div>深色主题</div>
 			<el-switch
+				ref="isDarkRef"
 				:model-value="state.isDark"
 				inline-prompt
 				:active-icon="Sunny"
@@ -59,12 +60,22 @@
 </template>
 
 <script lang="ts" setup>
+	import useGlobalStore from '@/components/globalStore'
 	import { menuModeEnum, layoutEnum } from '../../BackgroundLayout'
 	import useState from '../../hooks/useState'
 	import { Sunny, Moon } from '@element-plus/icons-vue'
 	import LayoutIcon from '~icons/mqy-icon/layout'
 
 	const { state } = useState()
+	const isDarkRef = ref()
+
+	const { isDarkElement } = useGlobalStore()
+
+	onMounted(() => {
+		if (isDarkRef.value?.$el) {
+			isDarkElement.value = isDarkRef.value.$el
+		}
+	})
 </script>
 
 <style>

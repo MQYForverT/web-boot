@@ -5,6 +5,8 @@ import globalStore from './globalStore'
 
 // 所有组件共用，element的暗黑模式一定要在组件之前引入
 import 'element-plus/theme-chalk/dark/css-vars.css'
+// 自定义样式
+import './styles/index.scss'
 
 export function registerAll() {
 	BackgroundLayoutRegister()

@@ -1,13 +1,18 @@
+import { setIsDarkByAnimation } from './utils/setIsDarkByAnimation'
+
 // 全部组件共有的状态，如果调用这个函数
 export default createGlobalState((config?: Global.setting, cb?: (key: keyof Global.setting, val: any) => void) => {
 	const prefix = '@mqy/component-private-background'
 
 	const state = reactive<Global.setting>({
-		isDark: config?.isDark,
-		activeLanguage: config?.activeLanguage,
+		isDark: false,
+		themeAnimation: config?.themeAnimation || { show: true, duration: 500 },
+		activeLanguage: '',
 		language: config?.language,
 		uiConfigProvider: config?.uiConfigProvider,
 	})
+
+	const isDarkElement = shallowRef<HTMLElement | null>(null)
 
 	watch(
 		() => config?.isDark,
@@ -64,6 +69,16 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 		},
 	)
 
+	watch(
+		() => config?.themeAnimation,
+		(val) => {
+			state.themeAnimation = val
+		},
+		{
+			deep: true,
+		},
+	)
+
 	const stateProxy = new Proxy(state, {
 		get(target, propKey, receiver) {
 			return Reflect.get(target, propKey, receiver)
@@ -89,15 +104,22 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 	function handleStateChange(key: keyof Global.setting, target: typeof state, newVal: any) {
 		switch (key) {
 			case 'isDark': {
-				if (newVal) {
-					document.documentElement.classList.add('dark')
-				} else {
-					document.documentElement.classList.remove('dark')
+				const isDarkEl = unref(isDarkElement)
+
+				if (!isDarkEl || !target.themeAnimation?.show) {
+					if (newVal) {
+						document.documentElement.classList.add('dark')
+					} else {
+						document.documentElement.classList.remove('dark')
+					}
+					return
 				}
+
+				setIsDarkByAnimation(newVal, isDarkEl)
 				break
 			}
 		}
 	}
 
-	return { globalState: stateProxy }
+	return { globalState: stateProxy, isDarkElement }
 })

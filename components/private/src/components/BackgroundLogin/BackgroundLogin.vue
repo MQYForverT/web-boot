@@ -64,6 +64,7 @@
 
 <style lang="scss">
 	// 把所有用到的element样式都在这里申明
+	@use 'element-plus/theme-chalk/src/button';
 	@use 'element-plus/theme-chalk/src/input';
 
 	.login-container {

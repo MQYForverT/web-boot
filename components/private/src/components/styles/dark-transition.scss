@@ -1,0 +1,10 @@
+::view-transition-new(root),
+::view-transition-old(root) {
+	/* 关闭默认的谈入淡出动画，否则影响自定义动画的执行 */
+	animation: none;
+}
+
+/* 因为层级原因，我们需要调整过渡到暗色模式时 ::view-transition-old(root) 的层级 */
+.dark::view-transition-old(root) {
+	z-index: 100;
+}
