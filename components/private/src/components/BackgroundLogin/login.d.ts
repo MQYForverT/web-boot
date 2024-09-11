@@ -1,5 +1,10 @@
 declare global {
 	namespace Login {
+		interface containerSize {
+			height: string
+			width: string
+			style: object
+		}
 		interface containerBackground {
 			background: string
 			opacity: number

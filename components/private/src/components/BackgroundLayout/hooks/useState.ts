@@ -186,11 +186,12 @@ export default createGlobalState((proxyProps?: propPrecessType, initEmits?: Layo
 			return Reflect.get(target, propKey, receiver)
 		},
 		set(target, key: keyof propPrecessType, newVal, receiver) {
+			// 无论是否受控模式，返回值出去
+			emits('changeProp', key, newVal)
+
 			if (props[key] === undefined) {
 				handleStateChange(key, target, newVal)
 				Reflect.set(target, key, newVal, receiver)
-			} else {
-				emits('changeProp', key, newVal)
 			}
 			return true
 		},

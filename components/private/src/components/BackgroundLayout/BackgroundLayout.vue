@@ -147,7 +147,6 @@
 	@use 'element-plus/theme-chalk/src/avatar';
 	@use 'element-plus/theme-chalk/src/overlay';
 	@use 'element-plus/theme-chalk/src/drawer';
-	@use 'element-plus/theme-chalk/src/divider';
 	@use 'element-plus/theme-chalk/src/switch';
 	@use 'element-plus/theme-chalk/src/select';
 	@use 'element-plus/theme-chalk/src/option';
@@ -156,4 +155,15 @@
 	@use 'element-plus/theme-chalk/src/popover';
 
 	@import url('./styles/index.scss');
+
+	.containerBackground {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1000;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		filter: brightness(0.75);
+	}
 </style>

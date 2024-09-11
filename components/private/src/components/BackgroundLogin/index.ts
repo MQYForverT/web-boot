@@ -4,6 +4,12 @@ import BackgroundLogin from './BackgroundLogin.vue'
 import type { PublicProps } from './BackgroundLogin'
 import { propsEnum } from './BackgroundLogin'
 
+// 临时办法，如果组件内部使用unocss，vue不会自动把unocss样式提升到根组件，所以这里需要把所有用到unocss的组件都在这里导入
+// Top
+import Top from './component/Top/index.vue'
+
+BackgroundLogin.styles.push(...Top.styles)
+
 // 将组件转换为 web components
 export const BackgroundLoginElement = defineCustomElement(BackgroundLogin)
 

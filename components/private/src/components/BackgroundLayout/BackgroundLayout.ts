@@ -66,8 +66,6 @@ export enum propsEnum {
 	 */
 	// 布局
 	layout = 'layout',
-	// 主标题
-	globalTitle = 'globalTitle',
 	// 是否显示底部注册、公司信息
 	isFooter = 'isFooter',
 	// 公司名字
@@ -170,10 +168,6 @@ export const layoutProps = {
 	[propsEnum.layout]: {
 		type: String as PropType<layoutEnum>,
 		default: undefined,
-	},
-	[propsEnum.globalTitle]: {
-		type: String,
-		default: 'WebBoot',
 	},
 	[propsEnum.isFooter]: {
 		type: [Boolean, String],

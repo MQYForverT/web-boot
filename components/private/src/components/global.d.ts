@@ -11,6 +11,8 @@ declare global {
 			language?: Language
 			// element-ui全局配置，暂时支持size和button
 			uiConfigProvider?: UiConfigProvider
+			// 主标题
+			globalTitle?: string
 		}
 		interface DropdownMenu {
 			key: string

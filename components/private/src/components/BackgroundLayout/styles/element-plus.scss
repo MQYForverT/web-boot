@@ -164,3 +164,16 @@
 		width: 100%;
 	}
 }
+
+.el-drawer {
+	.el-drawer__header {
+		padding: 12px 16px;
+		margin-bottom: 0;
+		color: var(--el-text-color-primary);
+		border-bottom: 1px solid var(--el-border-color);
+	}
+
+	.el-drawer__body {
+		padding: 16px;
+	}
+}

@@ -2,7 +2,7 @@
 	<el-drawer
 		:model-value="props.settingVisible"
 		:title="props.setting.title || '个性设置'"
-		:size="330"
+		:size="380"
 		show-close
 		:before-close="handleOpen"
 	>

@@ -5,16 +5,16 @@
 		:style="{ width: width }"
 	>
 		<slot name="logo" />
-		<h3 v-show="!state.isCollapse" class="ml-2 text-4 text-primary font-bold">{{ props.globalTitle }}</h3>
+		<h3 v-show="!state.isCollapse" class="ml-2 text-4 text-primary font-bold">{{ globalState.globalTitle }}</h3>
 	</div>
 </template>
 
 <script lang="ts" setup>
-	import useInject from '../../hooks/useInject'
+	import useGlobalStore from '@/components/globalStore'
 	import useState from '../../hooks/useState'
 	import { isCollapseWidth, isNotCollapseWidth, isNotCollapseAndMobileWidth } from '../../constants/aside'
 
-	const { props } = useInject()
+	const { globalState } = useGlobalStore()
 	const { state } = useState()
 
 	const toggleCollapse = () => {

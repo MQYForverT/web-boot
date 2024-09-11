@@ -1,6 +1,8 @@
 import type { ExtractPropTypes, ExtractPublicPropTypes, InjectionKey } from 'vue'
 
 export enum propsEnum {
+	// 容器大小
+	containerSize = 'containerSize',
 	// 容器背景
 	containerBackground = 'containerBackground',
 	// 账号配置
@@ -8,7 +10,11 @@ export enum propsEnum {
 }
 
 // 为了兼容wc，设置可以传入字符串，然后去做转换
-export const props = {
+export const initProps = {
+	[propsEnum.containerSize]: {
+		type: [Object, String] as PropType<Login.containerSize | string>,
+		default: '{}',
+	},
 	[propsEnum.containerBackground]: {
 		type: [Object, String] as PropType<Login.containerBackground | string>,
 		default: '{}',
@@ -20,7 +26,7 @@ export const props = {
 }
 // --------props----------
 // 得到私有类型
-export type PrivateProps = ExtractPropTypes<typeof props>
+export type PrivateProps = ExtractPropTypes<typeof initProps>
 
 // --------emits----------分步判断change类型
 export type Emits = {
@@ -29,7 +35,7 @@ export type Emits = {
 
 export const emitsKey = Symbol() as InjectionKey<Emits>
 
-export type PublicProps = ExtractPublicPropTypes<typeof props>
+export type PublicProps = ExtractPublicPropTypes<typeof initProps>
 
 // 排除掉string类型
 export type propPrecessType = {
@@ -44,6 +50,7 @@ export const processPropType = (props: PrivateProps) => {
 		get(target, propKey, receiver) {
 			const value = Reflect.get(target, propKey, receiver)
 			switch (propKey) {
+				case propsEnum.containerSize:
 				case propsEnum.containerBackground:
 				case propsEnum.account:
 					return JSON.parse(value)

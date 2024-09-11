@@ -10,10 +10,13 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 		activeLanguage: '',
 		language: config?.language,
 		uiConfigProvider: config?.uiConfigProvider,
+		globalTitle: config?.globalTitle || 'WebBoot',
 	})
 
+	const isDarkInit = ref(false)
 	const isDarkElement = shallowRef<HTMLElement | null>(null)
 
+	// 只有这些一开始除了赋值之外需要进行额外操作的，才需要设置immediate: true
 	watch(
 		() => config?.isDark,
 		(val) => {
@@ -79,17 +82,24 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 		},
 	)
 
+	watch(
+		() => config?.globalTitle,
+		(val) => {
+			state.globalTitle = val
+		},
+	)
+
 	const stateProxy = new Proxy(state, {
 		get(target, propKey, receiver) {
 			return Reflect.get(target, propKey, receiver)
 		},
 		set(target, key: keyof Global.setting, newVal, receiver) {
+			// 无论是否受控模式，返回值出去
+			cb && cb(key, newVal)
+
 			if (!config || config[key] === undefined) {
 				handleStateChange(key, target, newVal)
 				Reflect.set(target, key, newVal, receiver)
-			} else {
-				// 受控模式，返回值出去
-				cb && cb(key, newVal)
 			}
 			return true
 		},
@@ -106,12 +116,14 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 			case 'isDark': {
 				const isDarkEl = unref(isDarkElement)
 
-				if (!isDarkEl || !target.themeAnimation?.show) {
+				// 如果没有基点、或者设置不显示动画、或者是初始化，则不显示动画
+				if (!isDarkEl || !target.themeAnimation?.show || !isDarkInit.value) {
+					isDarkInit.value = true
 					setIsDark(newVal)
 					return
 				}
 
-				setIsDarkByAnimation(newVal, isDarkEl)
+				setIsDarkByAnimation(newVal, isDarkEl, target.themeAnimation.duration)
 				break
 			}
 		}

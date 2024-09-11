@@ -1,35 +1,81 @@
 <template>
-	<el-divider>界面显示</el-divider>
 	<ul>
-		<li v-if="!state.isMobile" class="flex-y-center justify-between py-1">
-			<div>布局</div>
-			<div class="flex gap-2">
-				<LayoutIcon
-					width="35"
-					height="35"
-					class="defaults layout cursor-pointer"
-					:class="{ layoutSelected: state.layout === layoutEnum.defaults }"
-					@click="state.layout = layoutEnum.defaults"
-				/>
-				<LayoutIcon
-					width="35"
-					height="35"
-					class="layout cursor-pointer"
-					:class="{ layoutSelected: state.layout === layoutEnum.vertical }"
-					@click="state.layout = layoutEnum.vertical"
-				/>
+		<h3>布局</h3>
+		<li v-if="!state.isMobile" class="flex-y-center py-1">
+			<div class="flex flex-wrap gap-5">
+				<div class="flex-col cursor-pointer w-[100px]">
+					<div
+						class="flex-center pa-1"
+						:class="state.layout === layoutEnum.defaults ? 'layoutSelected' : 'layoutContainer'"
+						@click="state.layout = layoutEnum.defaults"
+					>
+						<LayoutDefaults width="92" height="66" class="layout-defaults" />
+					</div>
+					<div class="tip">水平</div>
+				</div>
+
+				<div class="flex-col cursor-pointer w-[100px]">
+					<div
+						class="flex-center pa-1"
+						:class="state.layout === layoutEnum.vertical ? 'layoutSelected' : 'layoutContainer'"
+						@click="state.layout = layoutEnum.vertical"
+					>
+						<LayoutVertical width="92" height="66" class="layout-vertical" />
+					</div>
+					<div class="tip">垂直</div>
+				</div>
 			</div>
 		</li>
-		<li class="flex-y-center justify-between py-1">
-			<div>深色主题</div>
+		<h3>主题</h3>
+		<li class="flex-y-center py-1">
+			<div class="flex flex-wrap gap-5">
+				<div class="flex-col cursor-pointer w-[100px]">
+					<div
+						class="flex-center h-13"
+						:class="state.isDark === false ? 'layoutSelected' : 'layoutContainer'"
+						@click="state.isDark = false"
+					>
+						<Sunny width="20" height="20" />
+					</div>
+					<div class="tip">浅色</div>
+				</div>
+
+				<div class="flex-col cursor-pointer w-[100px]">
+					<div
+						class="flex-center h-13"
+						:class="state.isDark === true ? 'layoutSelected' : 'layoutContainer'"
+						@click="state.isDark = true"
+					>
+						<Moon width="20" height="20" />
+					</div>
+					<div class="tip">深色</div>
+				</div>
+
+				<div class="flex-col cursor-pointer w-[100px]">
+					<div
+						class="flex-center h-13"
+						:class="state.layout === layoutEnum.defaults ? 'layoutSelected' : 'layoutContainer'"
+						@click="state.layout = layoutEnum.defaults"
+					>
+						<Sunrise width="20" height="20" />
+					</div>
+					<div class="tip">跟随系统</div>
+				</div>
+			</div>
+			<!-- <div>深色主题</div>
 			<el-switch
 				ref="isDarkRef"
 				:model-value="state.isDark"
 				inline-prompt
 				:active-icon="Sunny"
 				:inactive-icon="Moon"
-				@change="(e) => (state.isDark = Boolean(e))"
-			/>
+				@change="
+					(e) => {
+						state.isDark = Boolean(e)
+						isDarkElement = isDarkRef.$el
+					}
+				"
+			/> -->
 		</li>
 		<li class="flex-y-center justify-between py-1">
 			<div>深色菜单栏</div>
@@ -63,19 +109,20 @@
 	import useGlobalStore from '@/components/globalStore'
 	import { menuModeEnum, layoutEnum } from '../../BackgroundLayout'
 	import useState from '../../hooks/useState'
-	import { Sunny, Moon } from '@element-plus/icons-vue'
-	import LayoutIcon from '~icons/mqy-icon/layout'
+	import { Sunny, Moon, Sunrise } from '@element-plus/icons-vue'
+	import LayoutDefaults from '~icons/mqy-icon/layout-defaults'
+	import LayoutVertical from '~icons/mqy-icon/layout-vertical'
 
 	const { state } = useState()
 	const isDarkRef = ref()
 
 	const { isDarkElement } = useGlobalStore()
 
-	onMounted(() => {
-		if (isDarkRef.value?.$el) {
-			isDarkElement.value = isDarkRef.value.$el
-		}
-	})
+	// onMounted(() => {
+	// 	if (isDarkRef.value?.$el) {
+	// 		isDarkElement.value = isDarkRef.value.$el
+	// 	}
+	// })
 </script>
 
 <style>
@@ -83,25 +130,53 @@
 </style>
 
 <style lang="scss">
-	.layout {
-		path {
-			fill: var(--el-text-color-primary);
-		}
-	}
-
-	.layoutSelected {
-		path {
+	/* stylelint-disable selector-id-pattern */
+	.layout-defaults {
+		#svg_2 {
 			fill: var(--el-color-primary);
 		}
 	}
 
-	.layout:hover {
-		path {
-			fill: var(--el-color-primary-light-3);
+	.layout-vertical {
+		#svg_8 {
+			fill: var(--el-color-primary);
 		}
 	}
 
-	.defaults {
-		transform: scaleX(-1) rotate(90deg);
+	ul {
+		padding-inline-start: 0;
+	}
+
+	.layoutContainer {
+		position: relative;
+		border: 1px solid var(--el-border-color-light);
+		border-radius: 6px;
+	}
+
+	.layoutContainer::before {
+		position: absolute;
+		inset: -1px;
+		content: '';
+		border: 2px solid var(--el-color-primary);
+		border-radius: 6px;
+		transition: transform 0.2s ease;
+		transform: scale(0);
+		transform-origin: center;
+	}
+
+	.layoutContainer:hover::before {
+		transform: scale(1);
+	}
+
+	.layoutSelected {
+		border: 2px solid var(--el-color-primary);
+		border-radius: 6px;
+	}
+
+	.tip {
+		margin-top: 8px;
+		font-size: 12px;
+		color: color-mix(in srgb, var(--el-text-color-regular) 65%, transparent);
+		text-align: center;
 	}
 </style>
