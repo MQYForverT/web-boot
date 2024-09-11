@@ -1,4 +1,3 @@
-import useGlobalStore from '@/components/globalStore'
 import { LayoutEmits, layoutEnum, menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
 import useContainer from './useContainer'
 import useInject from './useInject'
@@ -6,7 +5,6 @@ import packageJson from '../../../../package.json'
 
 export default createGlobalState((proxyProps?: propPrecessType, initEmits?: LayoutEmits, root?: HTMLElement | null) => {
 	const prefix = '@mqy/component-private-background-layout'
-	const { globalState } = useGlobalStore()
 
 	let props, emits, rootElement
 
@@ -92,13 +90,8 @@ export default createGlobalState((proxyProps?: propPrecessType, initEmits?: Layo
 		return props.isMobile
 	})
 
-	const defaultDark = computed(() => {
-		handleStateChange(propsEnum.isDark, state, props.isDark)
-		return props.isDark
-	})
-
 	const defaultMenuMode = computed(() => {
-		handleStateChange(propsEnum.menuMode, state, props.isDark)
+		handleStateChange(propsEnum.menuMode, state, props.menuMode)
 		return props.menuMode
 	})
 
@@ -166,7 +159,6 @@ export default createGlobalState((proxyProps?: propPrecessType, initEmits?: Layo
 					: ([] as Layout.Menu[]),
 		isCollapse: props.isCollapse !== undefined ? defaultCollapse : false,
 		isMobile: props.isMobile !== undefined ? defaultMobile : false,
-		isDark: props.isDark !== undefined ? defaultDark : globalState.isDark,
 		menuMode:
 			props.menuMode !== undefined
 				? defaultMenuMode
@@ -179,6 +171,8 @@ export default createGlobalState((proxyProps?: propPrecessType, initEmits?: Layo
 		isTagsViewIcon:
 			props.isTagsViewIcon !== undefined ? defaultTagsViewIcon : useStorage(`${prefix}-isTagsViewIcon`, true),
 	})
+
+	const handMenuMode = ref<menuModeEnum | undefined>(state.menuMode)
 
 	// 对外可控属性做代理，当设值当时候，自动识别是内部控制，还是外部控制
 	const stateProxy = new Proxy(state, {
@@ -205,26 +199,6 @@ export default createGlobalState((proxyProps?: propPrecessType, initEmits?: Layo
 	 */
 	const handleStateChange = (key: keyof propPrecessType, target: typeof state, newVal: any) => {
 		switch (key) {
-			case propsEnum.isDark: {
-				const el = unref(rootElement)
-				if (el) {
-					const oldMode = target[key] ? 'dark' : 'light'
-					const mode = newVal ? 'dark' : 'light'
-
-					el.classList.remove(oldMode)
-					el.classList.add(mode)
-
-					if (newVal) {
-						state.menuMode = menuModeEnum.light
-						el.classList.remove('layout-menu-dark')
-						el.classList.add('layout-menu-light')
-						globalState.isDark = true
-					} else {
-						globalState.isDark = false
-					}
-				}
-				break
-			}
 			case propsEnum.menuMode: {
 				const el = unref(rootElement)
 				if (el) {
@@ -237,5 +211,5 @@ export default createGlobalState((proxyProps?: propPrecessType, initEmits?: Layo
 		}
 	}
 
-	return { state: stateProxy }
+	return { state: stateProxy, handMenuMode }
 })

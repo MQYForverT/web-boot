@@ -49,6 +49,7 @@
 	import useGlobalStore from '@/components/globalStore'
 	import useState from './hooks/useState'
 	import useContainer from './hooks/useContainer'
+	import { handleSetIsDark } from './hooks/useTheme'
 	import { useWatermark } from './hooks/useWatermark'
 	import { layoutEnum, layoutProps, propsKey, processPropType, emitsKey } from './BackgroundLayout'
 	import type { LayoutEmits } from './BackgroundLayout'
@@ -70,7 +71,7 @@
 	const emits = defineEmits<LayoutEmits>()
 	provide(emitsKey, emits)
 
-	const { globalState } = useGlobalStore()
+	const { globalState, setIsDarkHandle } = useGlobalStore()
 	const { rootElement, logoElement } = useContainer()
 
 	const { state } = useState(proxyProps, emits, rootElement.value)
@@ -97,7 +98,8 @@
 		// 这里直接进行赋值是为了触发set拦截从而初始化主题
 		nextTick(() => {
 			state.menuMode = state.menuMode
-			state.isDark = state.isDark
+			setIsDarkHandle(handleSetIsDark)
+			globalState.theme = globalState.theme
 		})
 
 		useResizeObserver(appWrapperRef, (entries) => {

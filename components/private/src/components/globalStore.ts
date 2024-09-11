@@ -1,11 +1,17 @@
 import { setIsDarkByAnimation, setIsDark } from './utils/setIsDarkByAnimation'
 
+export enum themeModeEnum {
+	light = 'light',
+	dark = 'dark',
+	system = 'system',
+}
+
 // 全部组件共有的状态，如果调用这个函数
 export default createGlobalState((config?: Global.setting, cb?: (key: keyof Global.setting, val: any) => void) => {
 	const prefix = '@mqy/component-private-background'
 
 	const state = reactive<Global.setting>({
-		isDark: false,
+		theme: themeModeEnum.light,
 		themeAnimation: config?.themeAnimation || { show: true, duration: 500 },
 		activeLanguage: '',
 		language: config?.language,
@@ -14,17 +20,19 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 	})
 
 	const isDarkInit = ref(false)
+	const isDarkHandle = ref<(val: boolean) => void>(setIsDark)
 	const isDarkElement = shallowRef<HTMLElement | null>(null)
+	const isSystemTrigger = ref(false)
 
 	// 只有这些一开始除了赋值之外需要进行额外操作的，才需要设置immediate: true
 	watch(
-		() => config?.isDark,
+		() => config?.theme,
 		(val) => {
 			if (val !== undefined) {
-				handleStateChange('isDark', state, val)
-				state.isDark = val
+				handleStateChange('theme', state, val)
+				state.theme = val
 			} else {
-				state.isDark = useStorage(`${prefix}-isDark`, state.isDark)
+				state.theme = useStorage(`${prefix}-theme`, state.theme)
 			}
 		},
 		{
@@ -113,21 +121,60 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 	 */
 	function handleStateChange(key: keyof Global.setting, target: typeof state, newVal: any) {
 		switch (key) {
-			case 'isDark': {
+			case 'theme': {
 				const isDarkEl = unref(isDarkElement)
-
+				const isDarkFlag = isDark(newVal)
 				// 如果没有基点、或者设置不显示动画、或者是初始化，则不显示动画
 				if (!isDarkEl || !target.themeAnimation?.show || !isDarkInit.value) {
 					isDarkInit.value = true
-					setIsDark(newVal)
+					if (isDarkHandle.value) {
+						isDarkHandle.value(isDarkFlag)
+					}
 					return
 				}
-
-				setIsDarkByAnimation(newVal, isDarkEl, target.themeAnimation.duration)
+				// 只有前后不一致，或者监听到系统主题变化时才执行动画
+				if (isDark() !== isDarkFlag || isSystemTrigger.value) {
+					setIsDarkByAnimation(isDarkFlag, isDarkEl, target.themeAnimation.duration, isDarkHandle.value)
+					isSystemTrigger.value = false
+				}
 				break
 			}
 		}
 	}
 
-	return { globalState: stateProxy, isDarkElement }
+	watch(
+		() => usePreferredDark().value,
+		(val) => {
+			isSystemTrigger.value = true
+			const mode = val ? themeModeEnum.dark : themeModeEnum.light
+			stateProxy.theme = mode
+		},
+	)
+
+	// 默认获取老数据
+	const isDark = (mode: themeModeEnum = state.theme): boolean => {
+		let is = false
+		switch (mode) {
+			case themeModeEnum.light:
+				is = false
+				break
+			case themeModeEnum.dark:
+				is = true
+				break
+			case themeModeEnum.system:
+				is = usePreferredDark().value
+				break
+		}
+		return is
+	}
+
+	function setThemeElement(el: HTMLElement) {
+		isDarkElement.value = el
+	}
+
+	function setIsDarkHandle(fn: (val: boolean) => void) {
+		isDarkHandle.value = fn
+	}
+
+	return { globalState: stateProxy, isDark, setThemeElement, setIsDarkHandle }
 })

@@ -21,8 +21,6 @@ export enum propsEnum {
 	setting = 'setting',
 	// 当前是否是移动端，移动端的判断交给外部，如果不传，则判断逻辑交给内部
 	isMobile = 'isMobile',
-	// 当前是否暗黑模式【内部逻辑属性】
-	isDark = 'isDark',
 	// 菜单栏模式【内部逻辑属性】
 	menuMode = 'menuMode',
 	/**
@@ -93,10 +91,6 @@ export const layoutProps = {
 		default: '{}',
 	},
 	[propsEnum.isMobile]: {
-		type: [Boolean, String],
-		default: undefined,
-	},
-	[propsEnum.isDark]: {
 		type: [Boolean, String],
 		default: undefined,
 	},
@@ -228,7 +222,6 @@ export const processPropType = (props: LayoutPrivateProps) => {
 				case propsEnum.layout:
 				case propsEnum.isCollapse:
 				case propsEnum.isMobile:
-				case propsEnum.isDark:
 				case propsEnum.menuMode:
 				case propsEnum.isAllOpen:
 				case propsEnum.isUniqueOpened:

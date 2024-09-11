@@ -1,128 +1,125 @@
 <template>
-	<ul>
-		<h3>布局</h3>
-		<li v-if="!state.isMobile" class="flex-y-center py-1">
-			<div class="flex flex-wrap gap-5">
-				<div class="flex-col cursor-pointer w-[100px]">
-					<div
-						class="flex-center pa-1"
-						:class="state.layout === layoutEnum.defaults ? 'layoutSelected' : 'layoutContainer'"
-						@click="state.layout = layoutEnum.defaults"
-					>
-						<LayoutDefaults width="92" height="66" class="layout-defaults" />
+	<el-scrollbar class="pa-4">
+		<ul>
+			<h3>布局</h3>
+			<li v-if="!state.isMobile" class="flex-y-center">
+				<div class="flex flex-wrap gap-5">
+					<div class="flex-col cursor-pointer w-[100px]">
+						<div
+							class="flex-center pa-1"
+							:class="state.layout === layoutEnum.defaults ? 'layoutSelected' : 'layoutContainer'"
+							@click="state.layout = layoutEnum.defaults"
+						>
+							<LayoutDefaults width="92" height="66" class="layout-defaults" />
+						</div>
+						<div class="tip">水平</div>
 					</div>
-					<div class="tip">水平</div>
-				</div>
 
-				<div class="flex-col cursor-pointer w-[100px]">
-					<div
-						class="flex-center pa-1"
-						:class="state.layout === layoutEnum.vertical ? 'layoutSelected' : 'layoutContainer'"
-						@click="state.layout = layoutEnum.vertical"
-					>
-						<LayoutVertical width="92" height="66" class="layout-vertical" />
+					<div class="flex-col cursor-pointer w-[100px]">
+						<div
+							class="flex-center pa-1"
+							:class="state.layout === layoutEnum.vertical ? 'layoutSelected' : 'layoutContainer'"
+							@click="state.layout = layoutEnum.vertical"
+						>
+							<LayoutVertical width="92" height="66" class="layout-vertical" />
+						</div>
+						<div class="tip">垂直</div>
 					</div>
-					<div class="tip">垂直</div>
 				</div>
-			</div>
-		</li>
-		<h3>主题</h3>
-		<li class="flex-y-center py-1">
-			<div class="flex flex-wrap gap-5">
-				<div class="flex-col cursor-pointer w-[100px]">
-					<div
-						class="flex-center h-13"
-						:class="state.isDark === false ? 'layoutSelected' : 'layoutContainer'"
-						@click="state.isDark = false"
-					>
-						<Sunny width="20" height="20" />
+			</li>
+			<h3>主题</h3>
+			<li class="flex-y-center">
+				<div class="flex flex-wrap gap-5">
+					<div class="flex-col cursor-pointer w-[100px]">
+						<div
+							ref="isLightRef"
+							class="flex-center h-13"
+							:class="globalState.theme === themeModeEnum.light ? 'layoutSelected' : 'layoutContainer'"
+							@click="clickThemeMode(themeModeEnum.light, isLightRef)"
+						>
+							<Sunny width="20" height="20" />
+						</div>
+						<div class="tip">浅色</div>
 					</div>
-					<div class="tip">浅色</div>
-				</div>
 
-				<div class="flex-col cursor-pointer w-[100px]">
-					<div
-						class="flex-center h-13"
-						:class="state.isDark === true ? 'layoutSelected' : 'layoutContainer'"
-						@click="state.isDark = true"
-					>
-						<Moon width="20" height="20" />
+					<div class="flex-col cursor-pointer w-[100px]">
+						<div
+							ref="isDarkRef"
+							class="flex-center h-13"
+							:class="globalState.theme === themeModeEnum.dark ? 'layoutSelected' : 'layoutContainer'"
+							@click="clickThemeMode(themeModeEnum.dark, isDarkRef)"
+						>
+							<Moon width="20" height="20" />
+						</div>
+						<div class="tip">深色</div>
 					</div>
-					<div class="tip">深色</div>
-				</div>
 
-				<div class="flex-col cursor-pointer w-[100px]">
-					<div
-						class="flex-center h-13"
-						:class="state.layout === layoutEnum.defaults ? 'layoutSelected' : 'layoutContainer'"
-						@click="state.layout = layoutEnum.defaults"
-					>
-						<Sunrise width="20" height="20" />
+					<div class="flex-col cursor-pointer w-[100px]">
+						<div
+							ref="isSystemRef"
+							class="flex-center h-13"
+							:class="globalState.theme === themeModeEnum.system ? 'layoutSelected' : 'layoutContainer'"
+							@click="clickThemeMode(themeModeEnum.system, isSystemRef)"
+						>
+							<Sunrise width="20" height="20" />
+						</div>
+						<div class="tip">跟随系统</div>
 					</div>
-					<div class="tip">跟随系统</div>
 				</div>
-			</div>
-			<!-- <div>深色主题</div>
-			<el-switch
-				ref="isDarkRef"
-				:model-value="state.isDark"
-				inline-prompt
-				:active-icon="Sunny"
-				:inactive-icon="Moon"
-				@change="
-					(e) => {
-						state.isDark = Boolean(e)
-						isDarkElement = isDarkRef.$el
-					}
-				"
-			/> -->
-		</li>
-		<li class="flex-y-center justify-between py-1">
-			<div>深色菜单栏</div>
-			<el-switch
-				:model-value="state.menuMode"
-				:active-value="menuModeEnum.dark"
-				:inactive-value="menuModeEnum.light"
-				@change="(e) => (state.menuMode = e as menuModeEnum)"
-			/>
-		</li>
-		<li class="flex-y-center justify-between py-1">
-			<div>显示面包屑</div>
-			<el-switch :model-value="state.isBreadcrumb" @change="(e) => (state.isBreadcrumb = Boolean(e))" />
-		</li>
-		<li class="flex-y-center justify-between py-1">
-			<div>显示标签页</div>
-			<el-switch :model-value="state.isTagsView" @change="(e) => (state.isTagsView = Boolean(e))" />
-		</li>
-		<li class="flex-y-center justify-between py-1">
-			<div>显示标签页图标</div>
-			<el-switch :model-value="state.isTagsViewIcon" @change="(e) => (state.isTagsViewIcon = Boolean(e))" />
-		</li>
-		<li class="flex-y-center justify-between py-1">
-			<div>菜单手风琴模式</div>
-			<el-switch :model-value="state.isUniqueOpened" @change="(e) => (state.isUniqueOpened = Boolean(e))" />
-		</li>
-	</ul>
+			</li>
+			<li class="flex-y-center justify-between">
+				<div>深色菜单栏</div>
+				<el-switch
+					:model-value="state.menuMode"
+					:active-value="menuModeEnum.dark"
+					:inactive-value="menuModeEnum.light"
+					@change="
+						(e) => {
+							state.menuMode = e as menuModeEnum
+							handMenuMode = e as menuModeEnum
+						}
+					"
+				/>
+			</li>
+			<li class="flex-y-center justify-between">
+				<div>显示面包屑</div>
+				<el-switch :model-value="state.isBreadcrumb" @change="(e) => (state.isBreadcrumb = Boolean(e))" />
+			</li>
+			<li class="flex-y-center justify-between">
+				<div>显示标签页</div>
+				<el-switch :model-value="state.isTagsView" @change="(e) => (state.isTagsView = Boolean(e))" />
+			</li>
+			<li class="flex-y-center justify-between">
+				<div>显示标签页图标</div>
+				<el-switch :model-value="state.isTagsViewIcon" @change="(e) => (state.isTagsViewIcon = Boolean(e))" />
+			</li>
+			<li class="flex-y-center justify-between">
+				<div>菜单手风琴模式</div>
+				<el-switch :model-value="state.isUniqueOpened" @change="(e) => (state.isUniqueOpened = Boolean(e))" />
+			</li>
+		</ul>
+	</el-scrollbar>
 </template>
 
 <script lang="ts" setup>
-	import useGlobalStore from '@/components/globalStore'
+	import useGlobalStore, { themeModeEnum } from '@/components/globalStore'
 	import { menuModeEnum, layoutEnum } from '../../BackgroundLayout'
 	import useState from '../../hooks/useState'
 	import { Sunny, Moon, Sunrise } from '@element-plus/icons-vue'
 	import LayoutDefaults from '~icons/mqy-icon/layout-defaults'
 	import LayoutVertical from '~icons/mqy-icon/layout-vertical'
 
-	const { state } = useState()
+	const { state, handMenuMode } = useState()
+	const isLightRef = ref()
 	const isDarkRef = ref()
+	const isSystemRef = ref()
 
-	const { isDarkElement } = useGlobalStore()
+	const { setThemeElement, globalState } = useGlobalStore()
 
-	// onMounted(() => {
-	// 	if (isDarkRef.value?.$el) {
-	// 		isDarkElement.value = isDarkRef.value.$el
-	// 	}
-	// })
+	const clickThemeMode = (mode: themeModeEnum, el: HTMLElement) => {
+		setThemeElement(el)
+		globalState.theme = mode
+	}
 </script>
 
 <style>

@@ -8,7 +8,7 @@
 			<div
 				class="over-width-left"
 				:style="{
-					background: `linear-gradient(to right, rgb(255 255 255 / ${state.isDark ? '40%' : '100%'}), rgb(255 255 255 / 0%))`,
+					background: `linear-gradient(to right, rgb(255 255 255 / ${isDark() ? '40%' : '100%'}), rgb(255 255 255 / 0%))`,
 				}"
 			></div>
 			<el-icon color="rgb(100, 106, 115)" size="16">
@@ -69,7 +69,7 @@
 			<div
 				class="over-width-right"
 				:style="{
-					background: `linear-gradient(to left, rgb(255 255 255 / ${state.isDark ? '40%' : '100%'}), rgb(255 255 255 / 0%))`,
+					background: `linear-gradient(to left, rgb(255 255 255 / ${isDark() ? '40%' : '100%'}), rgb(255 255 255 / 0%))`,
 				}"
 			></div>
 			<el-icon color="rgb(100, 106, 115)" size="16">
@@ -118,6 +118,7 @@
 </template>
 
 <script lang="ts" setup>
+	import useGlobalStore from '@/components/globalStore'
 	import { CaretLeft, CaretRight, ArrowDown, Search } from '@element-plus/icons-vue'
 	import useContainer from '../../hooks/useContainer'
 	import useState from '../../hooks/useState'
@@ -127,6 +128,7 @@
 	import TagItem from './TagItem.vue'
 	import type { SortableEvent } from 'sortablejs'
 
+	const { isDark } = useGlobalStore()
 	const { rootElement } = useContainer()
 	const { state } = useState()
 	const { props } = useInject()

@@ -1,11 +1,12 @@
 import type { RemovableRef } from '@vueuse/core'
 import type { ButtonConfigContext } from 'element-plus'
+import { themeModeEnum } from './globalStore'
 
 declare global {
 	namespace Global {
 		interface setting {
-			// element-ui的样式是否暗黑样式
-			isDark?: boolean | RemovableRef
+			// element-ui的主题
+			theme?: themeModeEnum | RemovableRef
 			themeAnimation?: ThemeAnimation
 			activeLanguage?: string | RemovableRef
 			language?: Language

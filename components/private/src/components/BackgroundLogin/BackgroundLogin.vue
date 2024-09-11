@@ -96,7 +96,7 @@
 	onMounted(() => {
 		// 这里直接进行赋值是为了触发set拦截从而初始化主题
 		nextTick(() => {
-			globalState.isDark = globalState.isDark
+			globalState.theme = globalState.theme
 		})
 	})
 </script>

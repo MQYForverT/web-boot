@@ -46,7 +46,6 @@
 				opacity: 0.1,
 			},
 		},
-		isDark: false,
 		isCollapse: false,
 		isMobile: false,
 		menuList,
