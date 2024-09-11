@@ -31,6 +31,9 @@ declare global {
 			duration?: number // 动画时长
 		}
 	}
+	interface Document {
+		startViewTransition(callback: () => void): ViewTransition
+	}
 }
 // 使得这个文件变成一个模块
 export {}

@@ -1,4 +1,4 @@
-import { setIsDarkByAnimation } from './utils/setIsDarkByAnimation'
+import { setIsDarkByAnimation, setIsDark } from './utils/setIsDarkByAnimation'
 
 // 全部组件共有的状态，如果调用这个函数
 export default createGlobalState((config?: Global.setting, cb?: (key: keyof Global.setting, val: any) => void) => {
@@ -107,11 +107,7 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 				const isDarkEl = unref(isDarkElement)
 
 				if (!isDarkEl || !target.themeAnimation?.show) {
-					if (newVal) {
-						document.documentElement.classList.add('dark')
-					} else {
-						document.documentElement.classList.remove('dark')
-					}
+					setIsDark(newVal)
 					return
 				}
 

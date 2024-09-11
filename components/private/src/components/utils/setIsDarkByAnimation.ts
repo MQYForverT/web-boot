@@ -1,11 +1,12 @@
 // 切换主题，伴随动画
 export const setIsDarkByAnimation = (val: boolean, isDarkEl: HTMLElement, duration: number = 500) => {
+	if (!document.startViewTransition) {
+		setIsDark(val)
+		return
+	}
+
 	const transition = document.startViewTransition(() => {
-		if (val) {
-			document.documentElement.classList.add('dark')
-		} else {
-			document.documentElement.classList.remove('dark')
-		}
+		setIsDark(val)
 	})
 
 	// 在 transition.ready 的 Promise 完成后，执行自定义动画
@@ -29,4 +30,12 @@ export const setIsDarkByAnimation = (val: boolean, isDarkEl: HTMLElement, durati
 			},
 		)
 	})
+}
+
+export function setIsDark(val: boolean) {
+	if (val) {
+		document.documentElement.classList.add('dark')
+	} else {
+		document.documentElement.classList.remove('dark')
+	}
 }

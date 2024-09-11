@@ -38,7 +38,7 @@
 	"license": "ISC",
 	"packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879",
 	"dependencies": {
-		"inquirer": "^10.2.0",
+		"inquirer": "^10.2.2",
 		"rimraf": "^6.0.1"
 	},
 	"devDependencies": {
@@ -50,7 +50,7 @@
 		"@types/node": "^22.5.4",
 		"commitlint": "^19.4.1",
 		"depcheck": "^1.4.7",
-		"eslint": "^9.9.1",
+		"eslint": "^9.10.0",
 		"eslint-define-config": "^2.1.0",
 		"husky": "^9.1.5",
 		"lint-staged": "^15.2.10",
@@ -58,7 +58,7 @@
 		"stylelint": "^16.9.0",
 		"ts-node": "^10.9.2",
 		"tsx": "^4.19.0",
-		"typescript": "^5.5.4"
+		"typescript": "^5.6.2"
 	},
 	"lint-staged": {
 		"templates/vue/**/*.{js,ts,jsx,tsx,vue,ce.vue}": [
