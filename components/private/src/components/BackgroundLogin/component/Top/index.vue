@@ -14,8 +14,8 @@
 				inactive-value="light"
 				@change="
 					(e) => {
-						setThemeElement(isDarkRef.$el)
-						globalState.theme = e
+						// setThemeElement(isDarkRef.value.$el)
+						// globalState.theme = e
 					}
 				"
 			/>

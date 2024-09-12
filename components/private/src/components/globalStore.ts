@@ -19,84 +19,60 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 		globalTitle: config?.globalTitle || 'WebBoot',
 	})
 
+	// 因为config会改变，所以需要记录最初输入进来的数据，在下面判断最初数据时有用
+	const inputConfig = JSON.parse(JSON.stringify(config))
+
 	const isDarkInit = ref(false)
 	const isDarkHandle = ref<(val: boolean) => void>(setIsDark)
 	const isDarkElement = shallowRef<HTMLElement | null>(null)
 	const isSystemTrigger = ref(false)
 
-	// 只有这些一开始除了赋值之外需要进行额外操作的，才需要设置immediate: true
-	watch(
-		() => config?.theme,
-		(val) => {
-			if (val !== undefined) {
-				handleStateChange('theme', state, val)
-				state.theme = val
-			} else {
-				state.theme = useStorage(`${prefix}-theme`, state.theme)
+	// 初始化任务
+	handleActiveLanguage(config?.activeLanguage)
+	handleTheme(config?.theme)
+
+	// 初始化监听
+	if (config) {
+		for (const key in config) {
+			const configkey = key as keyof Global.setting
+			const configVal = config[configkey]
+			// 如果不为空，则监听
+			if (configVal !== undefined) {
+				const isObject = configVal instanceof Object
+				watch(
+					() => config[configkey],
+					(val) => {
+						switch (configkey) {
+							case 'theme':
+								handleTheme(val)
+								break
+							case 'activeLanguage':
+								handleActiveLanguage(val)
+								break
+							default:
+								state[configkey] = val
+								break
+						}
+					},
+					{
+						deep: isObject,
+					},
+				)
 			}
-		},
-		{
-			immediate: true,
-		},
-	)
+		}
+	}
 
+	// 监听系统主题变化
 	watch(
-		() => config?.activeLanguage,
+		() => usePreferredDark().value,
 		(val) => {
-			if (val !== undefined) {
-				state.activeLanguage = val
-			} else {
-				// 如果不显示或者没有值，则不存储
-				if (!config?.language?.show || !config.language?.dropdownMenu?.length) {
-					return
-				}
-				// 默认找到第一个
-				const firstItem = config.language?.dropdownMenu![0] as Global.DropdownMenu
-				state.activeLanguage = useStorage(`${prefix}-activeLanguage`, firstItem.key)
-			}
-		},
-		{
-			immediate: true,
+			isSystemTrigger.value = true
+			const mode = val ? themeModeEnum.dark : themeModeEnum.light
+			stateProxy.theme = mode
 		},
 	)
 
-	watch(
-		() => config?.language,
-		(val) => {
-			state.language = val
-		},
-		{
-			deep: true,
-		},
-	)
-
-	watch(
-		() => config?.uiConfigProvider,
-		(val) => {
-			state.uiConfigProvider = val
-		},
-		{
-			deep: true,
-		},
-	)
-
-	watch(
-		() => config?.themeAnimation,
-		(val) => {
-			state.themeAnimation = val
-		},
-		{
-			deep: true,
-		},
-	)
-
-	watch(
-		() => config?.globalTitle,
-		(val) => {
-			state.globalTitle = val
-		},
-	)
-
+	// 代理操作对象
 	const stateProxy = new Proxy(state, {
 		get(target, propKey, receiver) {
 			return Reflect.get(target, propKey, receiver)
@@ -105,16 +81,43 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 			// 无论是否受控模式，返回值出去
 			cb && cb(key, newVal)
 
-			if (!config || config[key] === undefined) {
+			// 只有受控属性才内部管控
+			if (!inputConfig || inputConfig[key] === undefined) {
 				handleStateChange(key, target, newVal)
 				Reflect.set(target, key, newVal, receiver)
 			}
+
 			return true
 		},
 	})
 
+	// 初始化激活的语言
+	function handleActiveLanguage(val: string) {
+		if (val !== undefined) {
+			state.activeLanguage = val
+		} else {
+			// 如果不显示或者没有值，则不存储
+			if (!config?.language?.show || !config.language?.dropdownMenu?.length) {
+				return
+			}
+			// 默认找到第一个
+			const firstItem = config.language?.dropdownMenu![0] as Global.DropdownMenu
+			state.activeLanguage = useStorage(`${prefix}-activeLanguage`, firstItem.key)
+		}
+	}
+
+	// 初始化主题
+	function handleTheme(mode: themeModeEnum) {
+		if (mode !== undefined) {
+			handleStateChange('theme', state, mode)
+			state.theme = mode
+		} else {
+			state.theme = useStorage(`${prefix}-theme`, state.theme)
+		}
+	}
+
 	/**
-	 *  处理状态变化，如果数据是内部控制，则在stateProxy触发set时调用；如果数据是外部控制，则在计算属性中触发
+	 *  处理状态变化，如果数据是内部控制，则在stateProxy触发set时调用；如果数据是外部控制，则在watch中触发
 	 * @param key
 	 * @param oldVal
 	 * @param newVal
@@ -141,15 +144,6 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 			}
 		}
 	}
-
-	watch(
-		() => usePreferredDark().value,
-		(val) => {
-			isSystemTrigger.value = true
-			const mode = val ? themeModeEnum.dark : themeModeEnum.light
-			stateProxy.theme = mode
-		},
-	)
 
 	// 默认获取老数据
 	const isDark = (mode: themeModeEnum = state.theme): boolean => {

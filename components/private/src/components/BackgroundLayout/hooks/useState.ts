@@ -183,6 +183,7 @@ export default createGlobalState((proxyProps?: propPrecessType, initEmits?: Layo
 			// 无论是否受控模式，返回值出去
 			emits('changeProp', key, newVal)
 
+			// 只有受控属性才内部管控
 			if (props[key] === undefined) {
 				handleStateChange(key, target, newVal)
 				Reflect.set(target, key, newVal, receiver)
