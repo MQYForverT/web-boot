@@ -90,7 +90,7 @@ export const layoutProps = {
 	},
 	[propsEnum.setting]: {
 		type: [Object, String] as PropType<Layout.Setting | string>,
-		default: '{}',
+		default: '{"enable":true}',
 	},
 	[propsEnum.isMobile]: {
 		type: [Boolean, String],

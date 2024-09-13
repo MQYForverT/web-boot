@@ -1,13 +1,13 @@
 <template>
-	<el-config-provider v-bind="globalState.uiConfigProvider">
-		<div
-			class="login-container"
-			:style="{
-				height: proxyProps.containerSize.height || '100vh',
-				width: proxyProps.containerSize.width || '100vw',
-				...(proxyProps.containerSize.style || {}),
-			}"
-		>
+	<div
+		class="login-container"
+		:style="{
+			height: proxyProps.containerSize.height || '100vh',
+			width: proxyProps.containerSize.width || '100vw',
+			...(proxyProps.containerSize.style || {}),
+		}"
+	>
+		<el-config-provider v-bind="globalState.uiConfigProvider">
 			<Top>
 				<template #logo>
 					<slot name="logo">
@@ -49,8 +49,8 @@
 					}"
 				/>
 			</slot>
-		</div>
-	</el-config-provider>
+		</el-config-provider>
+	</div>
 </template>
 
 <script setup lang="ts">

@@ -4,7 +4,6 @@
 			:containerBackground="JSON.stringify(themeConfig.containerBackground)"
 			:menuList="JSON.stringify(themeConfig.menuList)"
 			:userAvatar="JSON.stringify(themeConfig.userAvatar)"
-			:setting="JSON.stringify(themeConfig.setting)"
 			:settingVisible="JSON.stringify(themeConfig.settingVisible)"
 			:watermark="JSON.stringify(themeConfig.watermark)"
 			@changeProp="handleChange"
@@ -95,9 +94,6 @@
 		},
 		watermark: {
 			text: '漠轻阴666',
-		},
-		setting: {
-			enable: true,
 		},
 		settingVisible: false,
 	})

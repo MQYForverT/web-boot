@@ -3,9 +3,9 @@
 	<!-- <mqy-example id="example" ref="mqy" title="title1" style="margin-top: 20px" /> -->
 	<mqy-background-layout
 		:containerBackground="JSON.stringify(themeConfig.containerBackground)"
+		:layout="JSON.stringify(themeConfig.layout)"
 		:menuList="JSON.stringify(themeConfig.menuList)"
 		:userAvatar="JSON.stringify(themeConfig.userAvatar)"
-		:setting="JSON.stringify(themeConfig.setting)"
 		:settingVisible="JSON.stringify(themeConfig.settingVisible)"
 		:watermark="JSON.stringify(themeConfig.watermark)"
 		@changeProp="handleChange"
@@ -15,7 +15,7 @@
 	>
 		<div slot="header">
 			<div class="headerSlot">
-				<span>button1</span>
+				<span @click="themeConfig.layout = 'vertical'">button1</span>
 				<span>button2</span>
 			</div>
 		</div>
@@ -45,6 +45,7 @@
 				opacity: 0.1,
 			},
 		},
+		layout: 'defaults',
 		isCollapse: false,
 		isMobile: false,
 		menuList,
@@ -65,9 +66,6 @@
 		},
 		watermark: {
 			text: '漠轻阴666',
-		},
-		setting: {
-			enable: true,
 		},
 		settingVisible: false,
 	})

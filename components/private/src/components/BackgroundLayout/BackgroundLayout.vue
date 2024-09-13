@@ -1,13 +1,13 @@
 <template>
-	<el-config-provider v-bind="globalState.uiConfigProvider">
-		<div
-			ref="appWrapperRef"
-			:style="{
-				height: proxyProps.containerSize.height || '100vh',
-				width: proxyProps.containerSize.width || '100vw',
-				...(proxyProps.containerSize.style || {}),
-			}"
-		>
+	<div
+		ref="appWrapperRef"
+		:style="{
+			height: proxyProps.containerSize.height || '100vh',
+			width: proxyProps.containerSize.width || '100vw',
+			...(proxyProps.containerSize.style || {}),
+		}"
+	>
+		<el-config-provider v-bind="globalState.uiConfigProvider">
 			<Transition mode="out-in">
 				<component :is="curCom">
 					<template #header>
@@ -42,8 +42,8 @@
 					}"
 				/>
 			</slot>
-		</div>
-	</el-config-provider>
+		</el-config-provider>
+	</div>
 </template>
 <script setup lang="ts">
 	import useGlobalStore from '@/components/globalStore'
