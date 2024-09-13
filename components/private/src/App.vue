@@ -1,9 +1,9 @@
 <template>
-	<!-- <BackgroundLayout /> -->
-	<BackgroundLogin />
+	<BackgroundLayout />
+	<!-- <BackgroundLogin /> -->
 </template>
 
 <script setup lang="ts">
-	// import BackgroundLayout from '@/testing-area/BackgroundLayout.vue'
-	import BackgroundLogin from '@/testing-area/BackgroundLogin.vue'
+	import BackgroundLayout from '@/testing-area/BackgroundLayout.vue'
+	// import BackgroundLogin from '@/testing-area/BackgroundLogin.vue'
 </script>

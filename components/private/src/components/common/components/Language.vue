@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-	import useGlobalStore from '@/components/globalStore'
+	import useGlobalStore from '@/components/common/globalStore'
 	import Language from '~icons/mqy-icon/language'
 
 	const { globalState } = useGlobalStore()

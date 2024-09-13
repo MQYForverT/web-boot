@@ -69,7 +69,7 @@
 </template>
 
 <script lang="ts" setup>
-	import useGlobalStore, { themeModeEnum } from '@/components/globalStore'
+	import useGlobalStore, { themeModeEnum } from '@/components/common/globalStore'
 	import { menuModeEnum, layoutEnum } from '../../BackgroundLayout'
 	import useState from '../../hooks/useState'
 

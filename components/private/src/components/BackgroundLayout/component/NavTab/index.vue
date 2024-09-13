@@ -118,7 +118,7 @@
 </template>
 
 <script lang="ts" setup>
-	import useGlobalStore from '@/components/globalStore'
+	import useGlobalStore from '@/components/common/globalStore'
 	import { CaretLeft, CaretRight, ArrowDown, Search } from '@element-plus/icons-vue'
 	import useContainer from '../../hooks/useContainer'
 	import useState from '../../hooks/useState'

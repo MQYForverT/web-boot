@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-	import useGlobalStore from '@/components/globalStore'
+	import useGlobalStore from '@/components/common/globalStore'
 	import { initProps, propsKey, processPropType, emitsKey } from './BackgroundLogin'
 	import type { Emits } from './BackgroundLogin'
 

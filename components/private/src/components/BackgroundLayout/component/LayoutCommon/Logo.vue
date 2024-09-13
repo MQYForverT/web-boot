@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-	import useGlobalStore from '@/components/globalStore'
+	import useGlobalStore from '@/components/common/globalStore'
 	import useState from '../../hooks/useState'
 	import { isCollapseWidth, isNotCollapseWidth, isNotCollapseAndMobileWidth } from '../../constants/aside'
 

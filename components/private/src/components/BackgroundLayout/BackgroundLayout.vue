@@ -46,7 +46,7 @@
 	</div>
 </template>
 <script setup lang="ts">
-	import useGlobalStore from '@/components/globalStore'
+	import useGlobalStore from '@/components/common/globalStore'
 	import useState from './hooks/useState'
 	import useContainer from './hooks/useContainer'
 	import { handleSetIsDark } from './hooks/useTheme'

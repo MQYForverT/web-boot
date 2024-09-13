@@ -28,14 +28,14 @@
 <script lang="ts" setup>
 	import { layoutEnum } from '../../BackgroundLayout'
 	import FullScreen from './FullScreen.vue'
-	import Language from '@/components/commonComp/Language.vue'
-	import Theme from '@/components/commonComp/Theme.vue'
+	import Language from '@/components/common/components/Language.vue'
+	import Theme from '@/components/common/components/Theme.vue'
 	import UserAvatar from './UserAvatar.vue'
 
 	import MenuCollapse from './MenuCollapse.vue'
 	import Breadcrumb from './Breadcrumb.vue'
 
-	import useGlobalStore from '@/components/globalStore'
+	import useGlobalStore from '@/components/common/globalStore'
 	import useInject from '../../hooks/useInject'
 	import useContainer from '../../hooks/useContainer'
 	import useState from '../../hooks/useState'

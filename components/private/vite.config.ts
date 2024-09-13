@@ -5,7 +5,8 @@ import copy from 'rollup-plugin-copy'
 import { resolve } from 'path'
 import { readdirSync } from 'fs'
 
-const whiteList = ['index.ts', 'Example']
+// 入口文件的白名单，白名单成员不成为入口文件
+const whiteList = ['index.ts', 'Example', 'common']
 // 获取所有组件目录
 const componentDirs = readdirSync(resolve(__dirname, 'src/components')).filter((dir) => !whiteList.includes(dir))
 

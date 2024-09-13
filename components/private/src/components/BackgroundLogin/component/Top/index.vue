@@ -12,10 +12,10 @@
 </template>
 
 <script lang="ts" setup>
-	import Language from '@/components/commonComp/Language.vue'
-	import Theme from '@/components/commonComp/Theme.vue'
+	import Language from '@/components/common/components/Language.vue'
+	import Theme from '@/components/common/components/Theme.vue'
 
-	import globalStore from '@/components/globalStore'
+	import globalStore from '@/components/common/globalStore'
 
 	const { globalState } = globalStore()
 </script>

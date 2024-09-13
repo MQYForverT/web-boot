@@ -2,7 +2,7 @@ import { menuModeEnum } from '../BackgroundLayout'
 import useContainer from './useContainer'
 import useState from './useState'
 
-import { setIsDark } from '@/components/utils/setIsDarkByAnimation'
+import { setIsDark } from '@/components/common/utils/setIsDarkByAnimation'
 
 export const handleSetIsDark = (val: boolean) => {
 	const { rootElement } = useContainer()

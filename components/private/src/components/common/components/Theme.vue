@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-	import useGlobalStore, { themeModeEnum } from '@/components/globalStore'
+	import useGlobalStore, { themeModeEnum } from '@/components/common/globalStore'
 	import { Sunny, Moon } from '@element-plus/icons-vue'
 
 	const { setThemeElement, globalState, isDark } = useGlobalStore()

@@ -2,6 +2,7 @@
 	<div>
 		<mqy-background-layout
 			:containerBackground="JSON.stringify(themeConfig.containerBackground)"
+			:layout="JSON.stringify(themeConfig.layout)"
 			:menuList="JSON.stringify(themeConfig.menuList)"
 			:userAvatar="JSON.stringify(themeConfig.userAvatar)"
 			:settingVisible="JSON.stringify(themeConfig.settingVisible)"
@@ -13,11 +14,14 @@
 		>
 			<div slot="header">
 				<div class="headerSlot">
-					<span>button1</span>
+					<span @click="themeConfig.layout = 'vertical'">button1</span>
 					<span>button2</span>
 				</div>
 			</div>
-			<div slot="main">123</div>
+			<div slot="main">
+				<div style="height: 120px">hello</div>
+				<div style="height: 120px">hello</div>
+			</div>
 		</mqy-background-layout>
 	</div>
 </template>
@@ -73,14 +77,14 @@
 				opacity: 0.1,
 			},
 		},
+		layout: 'defaults',
 		isCollapse: false,
 		isMobile: false,
-		isDark: false,
 		menuList,
 		userAvatar: {
 			show: true,
-			name: '12',
 			trigger: 'click',
+			name: '12',
 			dropdownMenu: [
 				{
 					key: 'loginOut',
