@@ -3,7 +3,6 @@
 		<mqy-background-layout
 			:containerBackground="JSON.stringify(themeConfig.containerBackground)"
 			:menuList="JSON.stringify(themeConfig.menuList)"
-			:fullScreen="JSON.stringify(themeConfig.fullScreen)"
 			:userAvatar="JSON.stringify(themeConfig.userAvatar)"
 			:setting="JSON.stringify(themeConfig.setting)"
 			:settingVisible="JSON.stringify(themeConfig.settingVisible)"
@@ -79,9 +78,6 @@
 		isMobile: false,
 		isDark: false,
 		menuList,
-		fullScreen: {
-			show: true,
-		},
 		userAvatar: {
 			show: true,
 			name: '12',

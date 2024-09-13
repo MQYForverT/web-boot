@@ -4,55 +4,20 @@
 			<slot name="logo" />
 			<div class="text-5 ml-4">{{ globalState.globalTitle }}</div>
 		</div>
-		<div class="flex-y-center">
-			<el-switch
-				ref="isDarkRef"
-				inline-prompt
-				:active-icon="Sunny"
-				:inactive-icon="Moon"
-				active-value="dark"
-				inactive-value="light"
-				@change="
-					(e) => {
-						// setThemeElement(isDarkRef.value.$el)
-						// globalState.theme = e
-					}
-				"
-			/>
-			<el-dropdown :trigger="globalState?.language?.trigger" @command="handleCommand">
-				<div class="flex-center h-5 w-10 cursor-pointer">
-					<Language width="20" height="20" class="language" />
-				</div>
-				<template #dropdown>
-					<el-dropdown-menu>
-						<el-dropdown-item
-							v-for="item in globalState?.language?.dropdownMenu"
-							:key="item.key"
-							:disabled="item.key === globalState.activeLanguage"
-							:command="item.key"
-						>
-							{{ item.key }}
-						</el-dropdown-item>
-					</el-dropdown-menu>
-				</template>
-			</el-dropdown>
+		<div class="flex-y-center gap-2.5">
+			<Language />
+			<Theme />
 		</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
-	import useGlobalStore from '@/components/globalStore'
-	import { Sunny, Moon } from '@element-plus/icons-vue'
+	import Language from '@/components/commonComp/Language.vue'
+	import Theme from '@/components/commonComp/Theme.vue'
 
-	import Language from '~icons/mqy-icon/language'
+	import globalStore from '@/components/globalStore'
 
-	const isDarkRef = ref()
-
-	const { globalState, setThemeElement } = useGlobalStore()
-
-	const handleCommand = (val: string) => {
-		globalState.activeLanguage = val
-	}
+	const { globalState } = globalStore()
 </script>
 
 <style>

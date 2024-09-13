@@ -10,7 +10,7 @@ export const setIsDarkByAnimation = (
 		return
 	}
 
-	const transition = document.startViewTransition(() => {
+	const transition = document.startViewTransition(async () => {
 		handle(val)
 	})
 
@@ -21,8 +21,10 @@ export const setIsDarkByAnimation = (
 
 		// 计算半径，以鼠标点击的位置为圆心，到四个角的距离中最大的那个作为半径
 		const radius = Math.hypot(Math.max(left, innerWidth - left), Math.max(top, innerHeight - top))
+		// 圆心位于元素左上角坐标（left和top），初始化半径为0，逐渐扩散到最终半径radius
 		const clipPath = [`circle(0% at ${left}px ${top}px)`, `circle(${radius}px at ${left}px ${top}px)`]
-		// 自定义动画
+
+		// 新视图的根元素动画
 		document.documentElement.animate(
 			{
 				// 如果要切换到暗色主题，我们在过渡的时候从半径 100% 的圆开始，到 0% 的圆结束
@@ -30,7 +32,7 @@ export const setIsDarkByAnimation = (
 			},
 			{
 				duration,
-				// 如果要切换到暗色主题，我们应该裁剪 view-transition-old(root) 的内容
+				// 指定要附加动画的伪元素，如果要切换到暗色主题，我们应该裁剪 view-transition-old(root) 的内容
 				pseudoElement: val ? '::view-transition-old(root)' : '::view-transition-new(root)',
 			},
 		)

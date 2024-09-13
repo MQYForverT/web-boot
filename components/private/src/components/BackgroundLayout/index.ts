@@ -18,12 +18,14 @@ import MenuItem from './component/Aside/MenuItem.vue'
 // Header
 import Header from './component/Header/index.vue'
 import FullScreen from './component/Header/FullScreen.vue'
-import Language from './component/Header/Language.vue'
+import Theme from '@/components/commonComp/Theme.vue'
+import Language from '@/components/commonComp/Language.vue'
 import UserAvatar from './component/Header/UserAvatar.vue'
 import MenuCollapse from './component/Header/MenuCollapse.vue'
 import Breadcrumb from './component/Header/Breadcrumb.vue'
 // Setting
 import ShowSetting from './component/AppSetting/ShowSetting.vue'
+import RectItem from './component/AppSetting/RectItem.vue'
 // NavTab
 import NavTab from './component/NavTab/index.vue'
 import TabDropdown from './component/NavTab/TagDropdown.vue'
@@ -45,9 +47,11 @@ BackgroundLayout.styles.push(
 	...MenuCollapse.styles,
 	...Breadcrumb.styles,
 	...FullScreen.styles,
+	...Theme.styles,
 	...Language.styles,
 	...UserAvatar.styles,
 	...ShowSetting.styles,
+	...RectItem.styles,
 	...NavTab.styles,
 	...TabDropdown.styles,
 	...TagItem.styles,

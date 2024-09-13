@@ -4,7 +4,6 @@
 	<mqy-background-layout
 		:containerBackground="JSON.stringify(themeConfig.containerBackground)"
 		:menuList="JSON.stringify(themeConfig.menuList)"
-		:fullScreen="JSON.stringify(themeConfig.fullScreen)"
 		:userAvatar="JSON.stringify(themeConfig.userAvatar)"
 		:setting="JSON.stringify(themeConfig.setting)"
 		:settingVisible="JSON.stringify(themeConfig.settingVisible)"
@@ -49,9 +48,6 @@
 		isCollapse: false,
 		isMobile: false,
 		menuList,
-		fullScreen: {
-			show: true,
-		},
 		userAvatar: {
 			show: true,
 			trigger: 'click',

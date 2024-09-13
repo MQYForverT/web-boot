@@ -45,6 +45,8 @@ export enum propsEnum {
 	 */
 	// 全屏功能配置
 	fullScreen = 'fullScreen',
+	// 主题按钮配置
+	themeBtn = 'themeBtn',
 	// 用户配置
 	userAvatar = 'userAvatar',
 	// 是否开启 TagsView【内部逻辑属性】
@@ -129,7 +131,11 @@ export const layoutProps = {
 	},
 	[propsEnum.fullScreen]: {
 		type: [Object, String] as PropType<Layout.FullScreen | string>,
-		default: '{}',
+		default: '{"show":true}',
+	},
+	[propsEnum.themeBtn]: {
+		type: [Object, String] as PropType<Layout.ThemeBtn | string>,
+		default: '{"show":true}',
 	},
 	[propsEnum.userAvatar]: {
 		type: [Object, String] as PropType<Layout.UserAvatar | string>,
@@ -210,6 +216,7 @@ export const processPropType = (props: LayoutPrivateProps) => {
 				case propsEnum.settingVisible:
 				case propsEnum.setting:
 				case propsEnum.fullScreen:
+				case propsEnum.themeBtn:
 				case propsEnum.userAvatar:
 				case propsEnum.tagsShowNum:
 				case propsEnum.isCacheTagsView:

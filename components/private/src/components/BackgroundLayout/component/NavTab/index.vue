@@ -143,7 +143,7 @@
 	// 鼠标此时hover的tag
 	const hoverTagPath = ref('')
 	const itemRefs = ref(new Map<string, HTMLElement | null>())
-	const setItemRef = (el: Element | globalThis.ComponentPublicInstance | null, id: string) => {
+	const setItemRef = (el: Element | ComponentPublicInstance | null, id: string) => {
 		const htmlElement = el as HTMLElement | null
 		itemRefs.value.set(id, htmlElement)
 	}

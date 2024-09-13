@@ -15,6 +15,9 @@
 			<Teleport :to="globalState?.language?.to" :disabled="!globalState?.language?.to">
 				<Language v-if="globalState?.language?.show" :style="{ margin: `0 ${props.fullScreen.gap || '5px'}` }" />
 			</Teleport>
+			<Teleport :to="props.themeBtn.to" :disabled="!props.themeBtn.to">
+				<Theme v-if="props?.themeBtn?.show" :style="{ margin: `0 ${props.themeBtn.gap || '5px'}` }" />
+			</Teleport>
 			<Teleport :to="props.userAvatar.to" :disabled="!props.userAvatar.to">
 				<UserAvatar v-if="props.userAvatar.show" />
 			</Teleport>
@@ -25,7 +28,8 @@
 <script lang="ts" setup>
 	import { layoutEnum } from '../../BackgroundLayout'
 	import FullScreen from './FullScreen.vue'
-	import Language from './Language.vue'
+	import Language from '@/components/commonComp/Language.vue'
+	import Theme from '@/components/commonComp/Theme.vue'
 	import UserAvatar from './UserAvatar.vue'
 
 	import MenuCollapse from './MenuCollapse.vue'
