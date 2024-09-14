@@ -2,7 +2,7 @@ import React from 'react'
 import { defineCustomElement } from 'vue'
 import BackgroundLayout from './BackgroundLayout.vue'
 import type { LayoutPublicProps } from './BackgroundLayout'
-import { layoutEnum, propsEnum } from './BackgroundLayout'
+import { layoutEnum, menuModeEnum, propsEnum } from './BackgroundLayout'
 
 // 临时办法，如果组件内部使用unocss，vue不会自动把unocss样式提升到根组件，所以这里需要把所有用到unocss的组件都在这里导入
 // Layout
@@ -71,7 +71,7 @@ export function register() {
 
 declare module 'vue' {
 	export interface GlobalComponents {
-		MqyBackgroundLayout: LayoutPublicProps
+		MqyBackgroundLayout: typeof BackgroundLayoutElement & LayoutPublicProps
 	}
 }
 
@@ -84,4 +84,4 @@ declare global {
 	}
 }
 
-export { BackgroundLayout, layoutEnum, propsEnum }
+export { BackgroundLayout, layoutEnum, menuModeEnum, propsEnum }

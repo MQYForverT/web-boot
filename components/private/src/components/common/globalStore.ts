@@ -20,7 +20,7 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 	})
 
 	// 因为config会改变，所以需要记录最初输入进来的数据，在下面判断最初数据时有用
-	const inputConfig = JSON.parse(JSON.stringify(config))
+	const inputConfig = config instanceof Object ? JSON.parse(JSON.stringify(config)) : undefined
 
 	const isDarkInit = ref(false)
 	const isDarkHandle = ref<(val: boolean) => void>(setIsDark)

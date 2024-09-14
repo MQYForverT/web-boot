@@ -226,10 +226,8 @@ export const processPropType = (props: LayoutPrivateProps) => {
 				case propsEnum.menuList:
 					return JSON.parse(value)
 				// 以下是外部可控属性，如果外部传入值，则交给外部控制
-				case propsEnum.layout:
 				case propsEnum.isCollapse:
 				case propsEnum.isMobile:
-				case propsEnum.menuMode:
 				case propsEnum.isAllOpen:
 				case propsEnum.isUniqueOpened:
 				case propsEnum.isBreadcrumb:
@@ -242,6 +240,7 @@ export const processPropType = (props: LayoutPrivateProps) => {
 						return value
 					}
 			}
+			// menuMode、activePath、layout、footerCompany、footerRecord这些是string或者字符串枚举，都不处理，直接返回
 			return value
 		},
 	}) as propPrecessType

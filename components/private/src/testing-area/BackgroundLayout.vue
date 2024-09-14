@@ -3,7 +3,7 @@
 	<!-- <mqy-example id="example" ref="mqy" title="title1" style="margin-top: 20px" /> -->
 	<mqy-background-layout
 		:containerBackground="JSON.stringify(themeConfig.containerBackground)"
-		:layout="JSON.stringify(themeConfig.layout)"
+		:layout="themeConfig.layout"
 		:menuList="JSON.stringify(themeConfig.menuList)"
 		:userAvatar="JSON.stringify(themeConfig.userAvatar)"
 		:settingVisible="JSON.stringify(themeConfig.settingVisible)"

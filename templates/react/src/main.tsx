@@ -4,6 +4,7 @@ import App from './App'
 
 import 'virtual:uno.css'
 import '@mqy/component-private/dist/base.css'
+import '@/styles/index.scss'
 
 // 全局注册所有
 import { registerAll } from '@mqy/component-private'

@@ -2,7 +2,7 @@
 	<div>
 		<mqy-background-layout
 			:containerBackground="JSON.stringify(themeConfig.containerBackground)"
-			:layout="JSON.stringify(themeConfig.layout)"
+			:layout="themeConfig.layout"
 			:menuList="JSON.stringify(themeConfig.menuList)"
 			:userAvatar="JSON.stringify(themeConfig.userAvatar)"
 			:settingVisible="JSON.stringify(themeConfig.settingVisible)"
@@ -14,7 +14,7 @@
 		>
 			<div slot="header">
 				<div class="headerSlot">
-					<span @click="themeConfig.layout = 'vertical'">button1</span>
+					<span @click="themeConfig.layout = layoutEnum.vertical">button1</span>
 					<span>button2</span>
 				</div>
 			</div>
@@ -27,6 +27,7 @@
 </template>
 
 <script setup lang="ts" name="Login">
+	import { layoutEnum } from '@mqy/component-private/dist/BackgroundLayout'
 	// import { ApiGetSendSms } from '@/api/global'
 
 	const { isCollapse, animateMode } = useSettingStore()
@@ -77,7 +78,7 @@
 				opacity: 0.1,
 			},
 		},
-		layout: 'defaults',
+		layout: layoutEnum.defaults,
 		isCollapse: false,
 		isMobile: false,
 		menuList,

@@ -1,73 +1,141 @@
-import { propsEnum } from '@mqy/component-private/dist/BackgroundLayout'
+import { layoutEnum } from '@mqy/component-private/dist/BackgroundLayout'
 
 function App() {
 	const ref = useRef(null)
-	const [isCollapse, setCollapse] = useState(false)
-
-	const handleCustomEvent = (detail) => {
-		console.log('web1', detail)
-		switch (detail[0]) {
-			case propsEnum.isCollapse:
-				setCollapse(Boolean(detail[1]))
-				break
-		}
-		// 你的逻辑
-	}
-
-	useEventListener(
-		'changeProp',
-		({ detail = [] }) => {
-			console.log('web1', detail)
-			handleCustomEvent(detail)
-		},
-		{ target: ref },
-	)
-
-	const { width } = useSize(document.body)!
-
-	const getCollapse = useMemo(() => {
-		return width < 1000 ? true : isCollapse
-	}, [width])
 
 	const menuList = [
 		{
 			path: '/',
-			meta: {
-				icon: 'i-mdi-alarm',
-				title: '首页',
-				isMenu: true,
-				isViewRouter: false,
-			},
+			title: '首页',
+			redirect: '/home1',
 			children: [
 				{
 					path: '/home1',
-					meta: {
-						icon: 'mdi mdi-account',
-						title: '首页1',
-						isMenu: true,
-						isViewRouter: false,
-					},
+					icon: '',
+					title: '首页1',
+					isShowFooter: false,
 				},
 				{
 					path: '/home2',
-					meta: {
-						icon: 'mdi mdi-account',
-						title: '首页2',
-						isMenu: true,
-						isViewRouter: false,
-					},
+					icon: 'i-ep-tickets',
+					title: '首页2',
+					affix: true,
+					isShowFooter: true,
+				},
+			],
+		},
+		{
+			path: '/menu',
+			icon: '',
+			title: '菜单',
+			redirect: '/menu/menu1',
+			children: [
+				{
+					path: '/menu/menu1',
+					icon: '',
+					title: '菜单1',
 				},
 			],
 		},
 	]
+	const imgUrl = new URL('@/assets/images/home.jpg', import.meta.url).href
+
+	const [themeConfig, setThemeConfig] = useState({
+		containerBackground: {
+			background: imgUrl,
+			opacity: 0.5,
+			style: {
+				opacity: 0.1,
+			},
+		},
+		layout: layoutEnum.defaults,
+		isCollapse: false,
+		isMobile: false,
+		menuList,
+		userAvatar: {
+			show: true,
+			trigger: 'click',
+			name: '12',
+			dropdownMenu: [
+				{
+					key: 'loginOut',
+					value: '退出登录',
+				},
+				{
+					key: 'setting',
+					value: '个性设置',
+				},
+			],
+		},
+		watermark: {
+			text: '漠轻阴666',
+		},
+		settingVisible: false,
+	})
+
+	useEventListener(
+		'changeProp',
+		({ detail = [] }) => {
+			console.log('handleChange', detail)
+			changeThemeConfig(detail[0], detail[1])
+		},
+		{ target: ref },
+	)
+
+	useEventListener(
+		'commandUser',
+		({ detail = [] }) => {
+			console.log('commandUser', detail)
+			changeThemeConfig(detail[0], detail[1])
+		},
+		{ target: ref },
+	)
+
+	useEventListener(
+		'selectMenu',
+		({ detail = [] }) => {
+			console.log('selectMenu', detail)
+		},
+		{ target: ref },
+	)
+
+	useEventListener(
+		'tagRefresh',
+		({ detail = [] }) => {
+			console.log('tagRefresh', detail)
+		},
+		{ target: ref },
+	)
+
+	const changeThemeConfig = <T extends keyof typeof themeConfig>(key: T, val: (typeof themeConfig)[T]) => {
+		const obj = {
+			[key]: val,
+		}
+		setThemeConfig({ ...themeConfig, ...obj })
+	}
 
 	return (
 		<>
-			<div>react</div>
-			<div>{isCollapse + ''}</div>
 			<div>
-				<mqy-background-layout ref={ref} is-collapse={isCollapse} menu-list={JSON.stringify(menuList)} is-mobile={true}>
-					<div slot="body">666</div>
+				<mqy-background-layout
+					ref={ref}
+					container-background={JSON.stringify(themeConfig.containerBackground)}
+					layout={themeConfig.layout}
+					menu-list={JSON.stringify(themeConfig.menuList)}
+					user-avatar={JSON.stringify(themeConfig.userAvatar)}
+					setting-visible={JSON.stringify(themeConfig.settingVisible)}
+					watermark={JSON.stringify(themeConfig.watermark)}
+				>
+					<div slot="header">
+						<div className="headerSlot">
+							<span onClick={() => changeThemeConfig('layout', layoutEnum.vertical)}>button1</span>
+							<span>button2</span>
+						</div>
+					</div>
+					<div slot="main">
+						<div style={{ height: '120px' }}>hello</div>
+						<div style={{ height: '120px' }}>hello</div>
+					</div>
 				</mqy-background-layout>
 			</div>
 		</>

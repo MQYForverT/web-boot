@@ -1,7 +1,7 @@
 import { register as BackgroundLayoutRegister } from './BackgroundLayout'
 import { register as BackgroundLoginRegister } from './BackgroundLogin'
 
-import globalStore from './common/globalStore'
+import globalStore, { themeModeEnum } from './common/globalStore'
 
 // 所有组件共用，element的暗黑模式一定要在组件之前引入
 import 'element-plus/theme-chalk/dark/css-vars.css'
@@ -22,4 +22,4 @@ export function setGlobalConfig(config: Global.setting, cb?: (key: keyof Global.
 	globalStore(config, cb)
 }
 
-export {}
+export { themeModeEnum }
