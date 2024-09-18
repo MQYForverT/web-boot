@@ -62,12 +62,17 @@ command + shift + p 输入：restart ESlint server
 为了实现公用性，选择了用`vue3 + element plus 开发 web component`的，关于这两者之间的可用性，我凭借自己的经验做一点说明（[官网](https://cn.vuejs.org/guide/extras/web-components.html#vue-and-web-components)有的我就不复述了）。
 
 1. 不支持v-model，所以所有的属性都是单向数据流，不存在update:xxx这种写法了，以后都要定义事件去父组件改
-2. 关于传递属性，最大的问题在于类型，因为wc属性attribute都是字符串，所以为了兼容所有平台，我要求对外提供的类型都为string【这个需要特别注意，虽然有类型提示，但是需要传入string类型】，
-   然后在项目内自己再做类型映射转换
-3. 事件注册在customEvent上，使用addEventListener监听接收，但是在vue中可以通过@xxx接收，比如emit('click', 'xxx')，父组件可以<parent @click="handClick"/>
+2. 关于传递属性，最大的问题在于类型，因为wc属性attribute都是字符串，所以为了兼容所有平台，我要求对外提供的类型都为string【这个需要特别注意，虽然有类型提示，但是需要传入string类型】，然后在项目内自己再做类型映射转换
+3. 属性传递注意事项：不是string类型都需要转为string，用JSON.stringify去转；如果本就是string，则不需要转。对于属性的key，在react中，需要把驼峰命名转为中划线，如myName => my-name
+
+```
+<parent myName="xxx" />   =>   <parent my-name="xxx" />
+```
+
+4. 事件注册在customEvent上，使用addEventListener监听接收，但是在vue中可以通过@xxx接收，比如emit('click', 'xxx')，父组件可以<parent @click="handClick"/>
    <br/>
    `注意：`因为组件前后挂载顺序问题，如果在wc初始化时就触发事件，父组件监听不到，因为此时父组件监听还没挂载，或许你可以延时来解决
-4. ref可以起作用，可以通过`_instance`属性拿到所有子组件属性
+5. ref可以起作用，可以通过`_instance`属性拿到所有子组件属性
 
 ```
 <parent ref="mqy" @click="handClick"/>
