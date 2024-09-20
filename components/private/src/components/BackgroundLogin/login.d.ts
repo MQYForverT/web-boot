@@ -1,3 +1,5 @@
+import type { FormRules } from 'element-plus'
+
 declare global {
 	namespace Login {
 		interface containerSize {
@@ -10,8 +12,19 @@ declare global {
 			opacity: number
 			style: object
 		}
+		interface IAccountItem {
+			show: boolean
+			field: string
+			placeholder: string
+			default?: string
+			validate?: FormRules
+		}
 		interface account {
-			username: string
+			username: IAccountItem & {
+				btnLabel: string
+			}
+			password: IAccountItem
+			code?: IAccountItem
 		}
 	}
 }

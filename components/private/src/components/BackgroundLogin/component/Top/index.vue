@@ -1,10 +1,10 @@
 <template>
-	<div class="flex-y-center justify-between px-6 <sm:px-8 absolute top-0 right-0 left-0 h-20">
+	<div class="flex-y-center justify-between px-6 <sm:px-8 absolute top-0 right-0 left-0 h-20 z-2">
 		<div class="flex-y-center">
 			<slot name="logo" />
 			<div class="text-5 ml-4">{{ globalState.globalTitle }}</div>
 		</div>
-		<div class="flex-y-center gap-2.5">
+		<div class="flex-y-center gap-2.5 px-3 py-1 bg-[var(--el-color-info-light-9)] rounded-2xl">
 			<Language />
 			<Theme />
 		</div>
