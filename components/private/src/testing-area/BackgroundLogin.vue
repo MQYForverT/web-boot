@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 	import { layoutEnum } from '@/components/BackgroundLogin'
-	const isShowDefaultBody = ref(false)
+	// const isShowDefaultBody = ref(false)
 	const config = ref({
 		tip: {
 			title: '登录',
