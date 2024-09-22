@@ -12,8 +12,31 @@ import '@/styles/element.scss'
 import '@/styles/common.scss'
 
 // 全局注册所有
-import { registerAll } from '@mqy/component-private'
+import { registerAll, setGlobalConfig } from '@mqy/component-private'
+import type { Global } from '@mqy/component-private/dist/common/global'
+
 registerAll()
+
+const themeConfig = ref<Global.setting>({
+	language: {
+		show: true,
+		trigger: 'click',
+		dropdownMenu: [
+			{
+				key: 'zh-CN',
+				value: '简体中文',
+			},
+			{
+				key: 'en',
+				value: 'English',
+			},
+		],
+	},
+})
+setGlobalConfig(themeConfig.value, (key, val) => {
+	console.log(key, val)
+	themeConfig.value[key] = val
+})
 
 const app = createApp(App)
 app.use(router).mount('#app')

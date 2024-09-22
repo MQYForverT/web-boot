@@ -72,4 +72,4 @@ declare global {
 	}
 }
 // 使得这个文件变成一个模块
-export {}
+export { Layout }

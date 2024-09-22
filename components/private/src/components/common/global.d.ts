@@ -1,6 +1,7 @@
 import type { RemovableRef } from '@vueuse/core'
 import type { ButtonConfigContext } from 'element-plus'
 import { themeModeEnum } from './globalStore'
+import type { Layout } from '../BackgroundLayout/layout'
 
 declare global {
 	namespace Global {
@@ -37,4 +38,4 @@ declare global {
 	}
 }
 // 使得这个文件变成一个模块
-export {}
+export { Global }
