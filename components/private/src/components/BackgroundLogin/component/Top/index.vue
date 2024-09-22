@@ -5,8 +5,8 @@
 			<div class="text-5 ml-4">{{ globalState.globalTitle }}</div>
 		</div>
 		<div class="flex-y-center gap-2.5 px-3 py-1 bg-[var(--el-color-info-light-9)] rounded-2xl">
-			<Language />
-			<Theme />
+			<Language v-if="globalState?.language?.show" />
+			<Theme v-if="globalState?.themeConfig?.show" />
 		</div>
 	</div>
 </template>

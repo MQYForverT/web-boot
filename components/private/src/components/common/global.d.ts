@@ -7,7 +7,7 @@ declare global {
 		interface setting {
 			// element-ui的主题
 			theme?: themeModeEnum | RemovableRef
-			themeAnimation?: ThemeAnimation
+			themeConfig?: ThemeConfig
 			activeLanguage?: string | RemovableRef
 			language?: Language
 			// element-ui全局配置，暂时支持size和button
@@ -19,19 +19,17 @@ declare global {
 			key: string
 			value: string
 		}
-		interface Language {
-			show?: boolean
+		interface Language extends Layout.FullScreen {
 			trigger?: 'click' | 'hover'
-			to?: string
 			dropdownMenu?: DropdownMenu[]
 		}
 		interface UiConfigProvider {
 			size?: 'large' | 'default' | 'small'
 			button?: ButtonConfigContext
 		}
-		interface ThemeAnimation {
-			show?: boolean // 是否展示动画
-			duration?: number // 动画时长
+		interface ThemeConfig extends Layout.FullScreen {
+			showAnimation?: boolean // 是否展示动画
+			AnimationDuration?: number // 动画时长
 		}
 	}
 	interface Document {

@@ -43,13 +43,6 @@ declare global {
 			// 间距
 			gap?: string
 		}
-		interface ThemeBtn {
-			show?: boolean
-			// 传送到哪个节点下
-			to?: string
-			// 间距
-			gap?: string
-		}
 		// 用户配置
 		interface UserAvatar {
 			show?: boolean

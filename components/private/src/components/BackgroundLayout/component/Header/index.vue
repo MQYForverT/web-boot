@@ -13,10 +13,10 @@
 				<FullScreen v-if="props.fullScreen.show" :style="{ margin: `0 ${props.fullScreen.gap || '5px'}` }" />
 			</Teleport>
 			<Teleport :to="globalState?.language?.to" :disabled="!globalState?.language?.to">
-				<Language v-if="globalState?.language?.show" :style="{ margin: `0 ${props.fullScreen.gap || '5px'}` }" />
+				<Language v-if="globalState?.language?.show" :style="{ margin: `0 ${globalState.language.gap || '5px'}` }" />
 			</Teleport>
-			<Teleport :to="props.themeBtn.to" :disabled="!props.themeBtn.to">
-				<Theme v-if="props?.themeBtn?.show" :style="{ margin: `0 ${props.themeBtn.gap || '5px'}` }" />
+			<Teleport :to="globalState?.themeConfig?.to" :disabled="!globalState?.themeConfig?.to">
+				<Theme v-if="globalState?.themeConfig?.show" :style="{ margin: `0 ${globalState.themeConfig.gap || '5px'}` }" />
 			</Teleport>
 			<Teleport :to="props.userAvatar.to" :disabled="!props.userAvatar.to">
 				<UserAvatar v-if="props.userAvatar.show" />

@@ -12,7 +12,7 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 
 	const state = reactive<Global.setting>({
 		theme: themeModeEnum.light,
-		themeAnimation: config?.themeAnimation || { show: true, duration: 500 },
+		themeConfig: config?.themeConfig || { show: true, showAnimation: true, AnimationDuration: 500 },
 		activeLanguage: '',
 		language: config?.language,
 		uiConfigProvider: config?.uiConfigProvider,
@@ -128,7 +128,7 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 				const isDarkEl = unref(isDarkElement)
 				const isDarkFlag = isDark(newVal)
 				// 如果没有基点、或者设置不显示动画、或者是初始化，则不显示动画
-				if (!isDarkEl || !target.themeAnimation?.show || !isDarkInit.value) {
+				if (!isDarkEl || !target.themeConfig?.showAnimation || !isDarkInit.value) {
 					isDarkInit.value = true
 					if (isDarkHandle.value) {
 						isDarkHandle.value(isDarkFlag)
@@ -137,7 +137,7 @@ export default createGlobalState((config?: Global.setting, cb?: (key: keyof Glob
 				}
 				// 只有前后不一致，或者监听到系统主题变化时才执行动画
 				if (isDark() !== isDarkFlag || isSystemTrigger.value) {
-					setIsDarkByAnimation(isDarkFlag, isDarkEl, target.themeAnimation.duration, isDarkHandle.value)
+					setIsDarkByAnimation(isDarkFlag, isDarkEl, target.themeConfig.AnimationDuration, isDarkHandle.value)
 					isSystemTrigger.value = false
 				}
 				break
