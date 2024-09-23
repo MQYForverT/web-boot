@@ -4,9 +4,13 @@
 			<slot name="logo" />
 			<div class="text-5 ml-4">{{ globalState.globalTitle }}</div>
 		</div>
-		<div class="flex-y-center gap-2.5 px-3 py-1 bg-[var(--el-color-info-light-9)] rounded-2xl">
-			<Language v-if="globalState?.language?.show" />
-			<Theme v-if="globalState?.themeConfig?.show" />
+		<div class="flex-y-center px-2 py-1 bg-[var(--el-color-info-light-9)] rounded-2xl">
+			<Teleport :to="globalState?.language?.to" :disabled="!globalState?.language?.to">
+				<Language v-if="globalState?.language?.show" :style="{ margin: `0 ${globalState.language.gap || '3px'}` }" />
+			</Teleport>
+			<Teleport :to="globalState?.themeConfig?.to" :disabled="!globalState?.themeConfig?.to">
+				<Theme v-if="globalState?.themeConfig?.show" :style="{ margin: `0 ${globalState.themeConfig.gap || '3px'}` }" />
+			</Teleport>
 		</div>
 	</div>
 </template>
