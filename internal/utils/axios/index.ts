@@ -12,19 +12,24 @@ import type { AxiosInstance, AxiosRequestConfig } from 'axios'
 import qs from 'qs'
 import downBlobFile from './downBlobFile'
 
+type myAxiosConfig = AxiosRequestConfig & {
+	// 请求时会把当前请求的id添加到请求头，但是当前参数可能服务端不允许，所以支持配置
+	requestIdHeaderKey?: string
+}
+
 type myAxiosInstance = AxiosInstance & {
 	cancelAllRequests: () => void
 }
 
 class Axios {
-	private defaultConfig: AxiosRequestConfig
+	private defaultConfig: myAxiosConfig
 	private requestMap: Map<string, CancelTokenSource> = new Map()
 	public instance: myAxiosInstance
 
 	// 传入用户默认配置
-	constructor(config?: AxiosRequestConfig) {
+	constructor(config?: myAxiosConfig) {
 		this.defaultConfig = {
-			...this.getInsideConfig(),
+			...(this.getInsideConfig() as myAxiosConfig),
 			...config,
 		}
 
@@ -60,7 +65,8 @@ class Axios {
 
 					// 使用url+随机数 防止业务出现需要调用相同接口的情况
 					const requestId = `${url}-${performance.now().toString()}`
-					config.headers.requestId = requestId
+					const { requestIdHeaderKey = 'requestId' } = this.defaultConfig
+					config.headers[requestIdHeaderKey] = requestId
 
 					// 将取消函数存储到请求 Map 中
 					this.requestMap.set(requestId, cancelTokenSource)
@@ -81,7 +87,8 @@ class Axios {
 		instance.interceptors.response.use(
 			(response) => {
 				const { config, headers } = response
-				const requestId = config.headers.requestId
+				const { requestIdHeaderKey = 'requestId' } = this.defaultConfig
+				const requestId = config.headers[requestIdHeaderKey]
 				this.requestMap.delete(requestId)
 
 				// 判断是否是文件
@@ -94,7 +101,8 @@ class Axios {
 			},
 			(error) => {
 				// 请求完成后从 Map 中移除
-				const requestId = error.config.headers.requestId
+				const { requestIdHeaderKey = 'requestId' } = this.defaultConfig
+				const requestId = error.config.headers[requestIdHeaderKey]
 				this.requestMap.delete(requestId)
 
 				return Promise.reject(error)
@@ -112,7 +120,7 @@ class Axios {
 }
 
 // 导出工厂函数来创建 Axios 实例
-export function createAxiosInstance(config?: AxiosRequestConfig): myAxiosInstance {
+export function createAxiosInstance(config?: myAxiosConfig): myAxiosInstance {
 	const axiosInstance = new Axios(config).instance
 	return axiosInstance
 }
