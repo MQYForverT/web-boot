@@ -11,7 +11,7 @@
 
 <script setup lang="ts" name="Login">
 	import { layoutEnum } from '@mqy/component-private/dist/BackgroundLogin'
-	// import { ApiGetSendSms } from '@/api/global'
+	import { ApiGetSendSms } from '@/api/global'
 
 	const config = ref({
 		tip: {
@@ -46,6 +46,10 @@
 
 	const getCode = ({ detail = [] }) => {
 		console.log('getcode:', detail[0])
+		const { phone } = detail[0]
+		ApiGetSendSms({
+			phone,
+		})
 	}
 
 	const submit = ({ detail = [] }) => {
