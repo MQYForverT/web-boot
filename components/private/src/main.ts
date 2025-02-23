@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
-
 import App from './App.vue'
-
+import type { Global } from '@/components/common/global'
 import { registerAll, setGlobalConfig } from '@/components'
 // import { registerAll } from '../dist/index'
 registerAll()

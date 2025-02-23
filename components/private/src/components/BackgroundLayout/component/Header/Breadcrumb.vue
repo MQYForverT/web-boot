@@ -28,6 +28,7 @@
 </template>
 
 <script lang="ts" setup>
+	import type { Layout } from '../../layout'
 	import useInject from '../../hooks/useInject'
 	import useState from '../../hooks/useState'
 	import { ArrowDown } from '@element-plus/icons-vue'

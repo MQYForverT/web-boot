@@ -1,4 +1,5 @@
 import type { ExtractPropTypes, ExtractPublicPropTypes, PropType, InjectionKey } from 'vue'
+import type { Layout } from './layout'
 
 export enum layoutEnum {
 	defaults = 'defaults', // 默认也就是横向布局

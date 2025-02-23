@@ -1,5 +1,6 @@
 import useState from '../hooks/useState'
 import useInject from '../hooks/useInject'
+import type { Layout } from '../layout'
 
 export function useTag() {
 	const { state } = useState()

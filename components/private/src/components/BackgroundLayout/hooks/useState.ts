@@ -2,6 +2,7 @@ import { LayoutEmits, layoutEnum, menuModeEnum, propPrecessType, propsEnum } fro
 import useContainer from './useContainer'
 import useInject from './useInject'
 import packageJson from '../../../../package.json'
+import type { Layout } from '../layout'
 
 export default createGlobalState((proxyProps?: propPrecessType, initEmits?: LayoutEmits, root?: HTMLElement | null) => {
 	const prefix = '@mqy/component-private-background-layout'

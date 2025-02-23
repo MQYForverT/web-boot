@@ -13,6 +13,7 @@
 </template>
 
 <script lang="ts" setup>
+	import type { Layout } from '../../layout'
 	interface Props {
 		menu: Layout.Menu
 	}

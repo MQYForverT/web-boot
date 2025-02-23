@@ -1,4 +1,5 @@
 import { setIsDarkByAnimation, setIsDark } from './utils/setIsDarkByAnimation'
+import type { Global } from './global'
 
 export enum themeModeEnum {
 	light = 'light',

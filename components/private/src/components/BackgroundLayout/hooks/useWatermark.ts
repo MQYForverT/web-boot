@@ -1,4 +1,5 @@
 import { shallowRef, unref } from 'vue'
+import type { Layout } from '../layout'
 
 export function useWatermark() {
 	let style = ''

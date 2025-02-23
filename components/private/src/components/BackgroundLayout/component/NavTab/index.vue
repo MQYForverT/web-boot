@@ -127,6 +127,7 @@
 	import TagDropdown from './TagDropdown.vue'
 	import TagItem from './TagItem.vue'
 	import type { SortableEvent } from 'sortablejs'
+	import type { Layout } from '../../layout'
 
 	const { isDark } = useGlobalStore()
 	const { rootElement } = useContainer()

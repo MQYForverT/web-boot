@@ -30,6 +30,7 @@
 	import { Close, RefreshRight } from '@element-plus/icons-vue'
 	import useState from '../../hooks/useState'
 	import { useTag } from '../../hooks/useTag'
+	import type { Layout } from '../../layout'
 
 	const { closeTag, refreshTag } = useTag()
 

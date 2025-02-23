@@ -1,4 +1,5 @@
 import type { ExtractPropTypes, ExtractPublicPropTypes, InjectionKey } from 'vue'
+import type { Login } from './login'
 
 export enum layoutEnum {
 	left = 'left',
