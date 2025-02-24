@@ -2,6 +2,7 @@ import { getPermissionData } from '@/routers/modules/help'
 import router, { localRoutes } from '@/routers'
 import { notFoundRouter } from '@/routers/modules/staticRouter'
 import { HOME_URL } from '@/config/config'
+import type { RouteRecordRaw } from 'vue-router'
 
 export const useRoutesStore = createGlobalState(() => {
 	// state
@@ -12,8 +13,8 @@ export const useRoutesStore = createGlobalState(() => {
 
 	// 删除/重置路由
 	function resetRoute() {
-		router.removeRoute('layout')
-		router.removeRoute('notFound')
+		if (router.hasRoute('layout')) router.removeRoute('layout')
+		if (router.hasRoute('notFound')) router.removeRoute('notFound')
 
 		routeList.value = []
 		tagsViewRoutes.value = []
@@ -35,7 +36,11 @@ export const useRoutesStore = createGlobalState(() => {
 		// }
 		//模拟接口
 		const result: Menu.permissionMenu[] = [
-			{ permission: 'aaa', children: [{ permission: 'bbb' }, { permission: 'ccc' }] },
+			{ permission: 'home', children: [{ permission: 'home1' }] },
+			{
+				permission: 'menu',
+				children: [{ permission: 'menu1', children: [{ permission: 'menu11' }] }, { permission: 'menu2' }],
+			},
 		]
 		const resultData = getPermissionData(localRoutes, result, true)
 
@@ -52,13 +57,13 @@ export const useRoutesStore = createGlobalState(() => {
 		const app = {
 			path: HOME_URL,
 			name: 'layout',
-			component: import('@/layouts/index.vue'),
+			component: () => import('@/layouts/index.vue'),
 			redirect: routerResult[0].path, //可能没有home页面，所以取第一个
 			meta: {
 				isKeepAlive: true,
 			},
 			children: routerResult,
-		}
+		} as RouteRecordRaw
 		router.addRoute(app)
 		// 添加 notFoundRouter
 		router.addRoute(notFoundRouter)

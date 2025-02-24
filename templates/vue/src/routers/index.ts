@@ -2,11 +2,12 @@ import { RouteLocationNormalized, createRouter, createWebHistory } from 'vue-rou
 import NProgress from '@mqy/utils/dist/nprogress'
 import '@mqy/utils/dist/nprogress/nprogress.css'
 import { errorRouter, staticRouter } from '@/routers/modules/staticRouter'
-import { LOGIN_URL } from '@/config/config'
+import { LOGIN_URL, TABS_WHITE_LIST } from '@/config/config'
+import { menuList } from './modules/owner'
 import $axios from '@/config/request'
 
 //自己的所有页面
-export const localRoutes: Menu.MenuOptions[] = []
+export const localRoutes: Menu.MenuOptions[] = menuList
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -33,17 +34,24 @@ router.beforeEach(async (to, _, next) => {
 
 	// 3.判断是否有 Token，没有重定向到 login
 	const { token } = useGlobalStore()
+
 	if (!token.value) {
 		NProgress.done()
+
+		if (TABS_WHITE_LIST.includes(to.path)) {
+			return next()
+		}
 		return next(`${LOGIN_URL}?redirect=${to.path}&params=${JSON.stringify(to.query ? to.query : to.params)}`)
 	}
 
 	// 4.登陆完毕之后，如果没有菜单列表，就重新请求菜单列表并添加动态路由
 	const { routeList, getPermission } = useRoutesStore()
+
 	if (!routeList.value.length) {
 		// 获取用户信息
 
 		getPermission()
+
 		return next({ ...to, replace: true })
 	}
 

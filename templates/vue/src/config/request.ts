@@ -1,5 +1,5 @@
-// import { createAxiosInstance } from '@mqy/utils/dist/axios'
-import { createAxiosInstance } from '../../../../internal/utils/axios'
+import { createAxiosInstance } from '@mqy/utils/dist/axios'
+// import { createAxiosInstance } from '../../../../internal/utils/axios'
 
 /**
  * axios内置
@@ -9,12 +9,12 @@ import { createAxiosInstance } from '../../../../internal/utils/axios'
  * 4、插件内置的请求拦截【A】和响应拦截【B】和自定义的请求拦截【C】和响应拦截【D】顺序为：C -> A -> B -> D
  */
 const $axios = createAxiosInstance({
-	baseURL: import.meta.env.VITE_BASE_URL,
+	baseURL: import.meta.env.VITE_BASE_API,
 })
 
 $axios.interceptors.request.use(async (config) => {
 	const headers = config.headers || {}
-	headers.Authorization = useGlobalStore().token.value
+	headers.Authorization = `Bearer ${useGlobalStore().token.value}`
 	config.headers = headers
 	return config
 })
@@ -23,9 +23,9 @@ $axios.interceptors.response.use(
 	(response) => {
 		const { data } = response
 
-		if (data.code === 200) {
-			return data.data
-		} else if (data.code === 401) {
+		if (response.status === 200) {
+			return data
+		} else {
 			// 未登录
 			useGlobalStore().token.value = ''
 

@@ -28,12 +28,6 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 			...server,
 		},
 		css: {
-			preprocessorOptions: {
-				scss: {
-					// 主题定制方案
-					additionalData: `@use "@/styles/element/index.scss" as *;`,
-				},
-			},
 			...css,
 		},
 		plugins: [

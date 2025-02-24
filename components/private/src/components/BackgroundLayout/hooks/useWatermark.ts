@@ -1,5 +1,6 @@
 import { shallowRef, unref } from 'vue'
 import type { Layout } from '../layout'
+import useGlobalStore from '@/components/common/globalStore'
 
 export function useWatermark() {
 	let style = ''
@@ -7,6 +8,23 @@ export function useWatermark() {
 	let attr: Layout.Watermark | undefined = undefined
 	let observer: MutationObserver | null = null
 	const watermarkEl = shallowRef<HTMLElement | null>(null)
+	const { isDark } = useGlobalStore()
+
+	watch(
+		() => isDark(),
+		() => {
+			const widthMatch = style.match(/width:\s*(\d+)px/)
+			const heightMatch = style.match(/height:\s*(\d+)px/)
+			const width = widthMatch ? parseInt(widthMatch[1]) : 0
+			const height = heightMatch ? parseInt(heightMatch[1]) : 0
+
+			updateWatermark({ width, height })
+		},
+	)
+
+	const getWatermarkColor = () => {
+		return isDark() ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'
+	}
 
 	// 绘制文字背景图
 	const createBase64 = (options: { width: number; height: number }) => {
@@ -20,7 +38,7 @@ export function useWatermark() {
 			cans.clearRect(0, 0, can.width, can.height)
 			// 设置属性
 			cans.font = `${attr?.size ?? '14px'} ${attr?.fontFamily ?? 'Arial'}`
-			cans.fillStyle = attr?.color ?? 'rgba(0, 0, 0, 0.06)'
+			cans.fillStyle = attr?.color ?? getWatermarkColor()
 			cans.textAlign = 'left'
 			cans.textBaseline = 'middle'
 			// 计算行数和列数

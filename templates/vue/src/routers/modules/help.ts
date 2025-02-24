@@ -24,7 +24,9 @@ export const initChildDataToFlat = (
  * @param {*} localRoutes //本地所有页面
  * @param {*} result //后台数据
  * @param {*} tree //后台数据是否树形结构，如果是，则需要化为平板数据
- * @returns 排序好的路由数组
+ * @returns routeList: 排序后的路由列表
+ * @returns result: 处理后的权限数据
+ * @returns keepAliveNames: 需要缓存的路由列表
  */
 export const getPermissionData = (
 	localRoutes: Menu.MenuOptions[],

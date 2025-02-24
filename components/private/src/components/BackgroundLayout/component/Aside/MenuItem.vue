@@ -7,8 +7,10 @@
 		<MenuItem v-for="menuItem in menu.children" :key="menuItem.path" :menu="menuItem" />
 	</el-sub-menu>
 	<el-menu-item v-else :index="menu.path">
-		<div :class="menu.icon" class="text-4"></div>
-		<span class="truncate" :class="{ 'ml-1.25': !state.isCollapse }">{{ menu.title }}</span>
+		<div :class="!parentPath(menu.path) ? menu.icon || 'i-ep-tickets' : menu.icon" class="text-4"></div>
+		<template #title>
+			<span class="truncate" :class="{ 'ml-1.25': !state.isCollapse }">{{ menu.title }}</span>
+		</template>
 	</el-menu-item>
 </template>
 
@@ -21,6 +23,10 @@
 
 	import useState from '../../hooks/useState'
 	const { state } = useState()
+
+	const parentPath = (path: string) => {
+		return state.flatMenuList.find((x) => x.path === path)?.parentPath
+	}
 </script>
 
 <style>

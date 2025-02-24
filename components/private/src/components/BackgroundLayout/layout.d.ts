@@ -10,6 +10,8 @@ export namespace Layout {
 		// 该菜单是否需要显示footer
 		isShowFooter?: boolean
 		children?: Menu[]
+		// 菜单的父菜单路径
+		parentPath?: string
 		fullLink?: IFandPath[]
 	}
 

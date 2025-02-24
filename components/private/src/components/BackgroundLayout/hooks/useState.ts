@@ -52,6 +52,7 @@ export default createGlobalState((proxyProps?: propPrecessType, initEmits?: Layo
 				affix: item.affix,
 				redirect: item.redirect,
 				isShowFooter: item.isShowFooter,
+				parentPath: parentObj?.path,
 				fullLink: parentObj?.fullLink ? [...parentObj.fullLink, ...fullLink] : fullLink,
 			}
 

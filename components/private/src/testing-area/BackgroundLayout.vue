@@ -65,7 +65,7 @@
 			],
 		},
 		watermark: {
-			text: '漠轻阴666',
+			text: '漠轻阴',
 		},
 		settingVisible: false,
 	})
