@@ -4,6 +4,9 @@ import vue from '@vitejs/plugin-vue'
 import copy from 'rollup-plugin-copy'
 import { resolve } from 'path'
 import { readdirSync } from 'fs'
+import { fileURLToPath } from 'url'
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 // 入口文件的白名单，白名单成员不成为入口文件
 const whiteList = ['index.ts', 'Example', 'common']

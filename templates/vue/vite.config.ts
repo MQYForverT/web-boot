@@ -1,5 +1,8 @@
 import { ConfigEnv, defineConfig, loadEnv } from 'vite'
 import { resolve } from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 // 目前这种导入方式需要tsx支持
 import viteConfig from '@mqy/vite-config/vue'

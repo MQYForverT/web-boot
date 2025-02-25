@@ -4,8 +4,8 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"start": "NODE_OPTIONS=\"--import tsx/esm\" pnpm exec vite",
-		"build": "rimraf dist && NODE_OPTIONS=\"--import tsx/esm\" pnpm exec tsc && NODE_OPTIONS=\"--import tsx/esm\" pnpm exec vite build",
+		"start": "vite --configLoader runner",
+		"build": "rimraf dist && tsc && vite build --configLoader runner",
 		"preview": "vite preview",
 		"lint:eslint": "eslint --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,html,md}\"",
@@ -13,16 +13,16 @@
 	},
 	"dependencies": {
 		"@mqy/component-private": "workspace:^",
-		"react": "^18.3.1",
-		"react-dom": "^18.3.1"
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
 	},
 	"devDependencies": {
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@mqy/vite-config": "workspace:^",
-		"@types/react": "^18.3.5",
-		"@types/react-dom": "^18.3.0",
-		"typescript": "^5.6.2",
-		"vite": "^5.4.3"
+		"@types/react": "^19.0.10",
+		"@types/react-dom": "^19.0.4",
+		"typescript": "^5.7.3",
+		"vite": "^6.2.0"
 	}
 }

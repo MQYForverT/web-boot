@@ -3,6 +3,10 @@ import AutoImport from 'unplugin-auto-import/vite'
 import { resolve } from 'path'
 import UnoCSS from 'unocss/vite'
 
+import { fileURLToPath } from 'url'
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
+
 // import viteConfig from '@mqy/vite-config/vue'
 
 // https://vitejs.dev/config/
