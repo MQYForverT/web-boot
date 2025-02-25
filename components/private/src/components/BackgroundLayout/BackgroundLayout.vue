@@ -138,7 +138,7 @@
 </script>
 
 <style lang="scss">
-	// 把所有用到的element样式都在这里申明
+	// 不想全局导入所有样式，就把所有用到的element样式都在这里申明
 	@use 'element-plus/theme-chalk/src/container';
 	@use 'element-plus/theme-chalk/src/main';
 	@use 'element-plus/theme-chalk/src/header';
