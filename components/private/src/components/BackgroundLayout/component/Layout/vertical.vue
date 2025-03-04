@@ -1,5 +1,5 @@
 <template>
-	<el-container class="backgroundLayout h-full flex-col">
+	<el-container class="backgroundLayout h-full !flex-col">
 		<Header>
 			<template #header>
 				<slot name="header" />
