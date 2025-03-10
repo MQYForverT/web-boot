@@ -16,7 +16,7 @@
 	"dependencies": {
 		"@mqy/component-private": "workspace:^",
 		"@mqy/utils": "workspace:^",
-		"element-plus": "^2.9.5",
+		"element-plus": "^2.9.6",
 		"vue": "^3.5.13",
 		"vue-router": "^4.5.0"
 	},
@@ -25,8 +25,8 @@
 		"@mqy/stylelint-config": "workspace:^",
 		"@mqy/vite-config": "workspace:^",
 		"@vue/test-utils": "^2.4.6",
-		"typescript": "^5.7.3",
-		"vite": "^6.2.0",
-		"vue-tsc": "^2.2.4"
+		"typescript": "^5.8.2",
+		"vite": "^6.2.1",
+		"vue-tsc": "^2.2.8"
 	}
 }

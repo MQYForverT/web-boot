@@ -38,27 +38,27 @@
 	"license": "ISC",
 	"packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879",
 	"dependencies": {
-		"inquirer": "^12.4.2",
+		"inquirer": "^12.4.3",
 		"rimraf": "^6.0.1"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^19.7.1",
-		"@commitlint/config-conventional": "^19.7.1",
+		"@commitlint/cli": "^19.8.0",
+		"@commitlint/config-conventional": "^19.8.0",
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@types/inquirer": "^9.0.7",
-		"@types/node": "^22.13.5",
-		"commitlint": "^19.7.1",
+		"@types/node": "^22.13.10",
+		"commitlint": "^19.8.0",
 		"depcheck": "^1.4.7",
-		"eslint": "^9.21.0",
+		"eslint": "^9.22.0",
 		"eslint-define-config": "^2.1.0",
 		"husky": "^9.1.7",
 		"lint-staged": "^15.4.3",
-		"prettier": "3.5.2",
-		"stylelint": "^16.14.1",
+		"prettier": "3.5.3",
+		"stylelint": "^16.15.0",
 		"ts-node": "^10.9.2",
 		"tsx": "^4.19.3",
-		"typescript": "^5.7.3"
+		"typescript": "^5.8.2"
 	},
 	"lint-staged": {
 		"templates/vue/**/*.{js,ts,jsx,tsx,vue,ce.vue}": [
