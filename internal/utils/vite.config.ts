@@ -13,6 +13,8 @@ const entries = {
 	index: getPath('index.ts'),
 	axios: getPath('axios/index.ts'),
 	nprogress: getPath('nprogress/index.ts'),
+	compatibleScrollTo: getPath('compatibleScrollTo/index.ts'),
+	typewriter: getPath('typewriter/index.ts'),
 }
 
 import { setupViteLib, dts, compress, visualizer } from '@mqy/vite-config/common'
