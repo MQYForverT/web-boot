@@ -12,9 +12,14 @@ import type { AxiosInstance, AxiosRequestConfig, InternalAxiosRequestConfig } fr
 import qs from 'qs'
 import downBlobFile from './downBlobFile'
 
-type myRequestConfig = InternalAxiosRequestConfig & {
+export type myRequestConfig = AxiosRequestConfig & {
 	requestId?: string
+	skipCancel?: boolean // 是否跳过取消请求功能
+	isFile?: boolean // 是否为文件请求
 }
+
+// 内部使用的配置类型
+type myInternalRequestConfig = InternalAxiosRequestConfig & myRequestConfig
 
 type myAxiosInstance = AxiosInstance & {
 	cancelAllRequests: () => void
@@ -55,23 +60,11 @@ class Axios {
 	private interceptors(instance: myAxiosInstance) {
 		instance.interceptors.request.use(
 			// 传入用户自定义配置
-			(config: myRequestConfig) => {
-				const url = config.url // 动态获取请求的URL
-				// 创建取消令牌和取消函数
-				if (url && !config.headers.skipCancel) {
-					const cancelTokenSource = axios.CancelToken.source()
-					config.cancelToken = cancelTokenSource.token
-
-					// 使用url+随机数 防止业务出现需要调用相同接口的情况
-					const requestId = `${url}-${performance.now().toString()}`
-					config.requestId = requestId
-
-					// 将取消函数存储到请求 Map 中
-					this.requestMap.set(requestId, cancelTokenSource)
-				}
+			(config: myInternalRequestConfig) => {
+				this.setRequestMap(config)
 
 				// 请求二进制文件流
-				if (config.headers.isFile) {
+				if (config.isFile) {
 					config.responseType = 'blob'
 				}
 
@@ -85,29 +78,52 @@ class Axios {
 		instance.interceptors.response.use(
 			(response) => {
 				const { headers } = response
-				const config: myRequestConfig = response.config
-				if (config.requestId) {
-					this.requestMap.delete(config.requestId)
-				}
+				const config: myInternalRequestConfig = response.config
+				// 请求完成后从 Map 中移除
+				this.cleanRequests(config)
 
 				// 判断是否是文件
 				const contentType = headers['content-type']
-				if (config.headers.isFile && contentType === 'application/msexcel;charset=UTF-8') {
+				if (config.isFile && contentType === 'application/msexcel;charset=UTF-8') {
 					downBlobFile(response)
 				}
 
 				return response
 			},
 			(error) => {
+				const config: myInternalRequestConfig = error.config
 				// 请求完成后从 Map 中移除
-				const config: myRequestConfig = error.config
-				if (config.requestId) {
-					this.requestMap.delete(config.requestId)
-				}
+				this.cleanRequests(config)
 
 				return Promise.reject(error)
 			},
 		)
+	}
+
+	private setRequestMap = (config: myInternalRequestConfig) => {
+		const url = config.url // 动态获取请求的URL
+		// 创建取消令牌和取消函数
+		if (url && !config?.skipCancel) {
+			const cancelTokenSource = axios.CancelToken.source()
+			config.cancelToken = cancelTokenSource.token
+
+			// 使用url+随机数 防止业务出现需要调用相同接口的情况
+			const requestId = `${url}-${performance.now().toString()}`
+			config.requestId = requestId
+
+			// 将取消函数存储到请求 Map 中
+			this.requestMap.set(requestId, cancelTokenSource)
+		}
+	}
+
+	private cleanRequests = (config: myInternalRequestConfig) => {
+		const requestId = config?.requestId
+
+		if (!requestId) {
+			return
+		}
+
+		this.requestMap.delete(requestId)
 	}
 
 	// 可以取消所有请求，在路由跳转时很有用

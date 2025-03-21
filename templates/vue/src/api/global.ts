@@ -1,4 +1,5 @@
 import $axios from '@/config/request'
+import type { myRequestConfig } from '@mqy/utils/dist/axios'
 
 interface LoginResponse {
 	id: number
@@ -12,4 +13,5 @@ interface LoginResponse {
 	refreshToken: string
 }
 
-export const ApiPostLogin = (data: unknown): Promise<LoginResponse> => $axios.post('/auth/login', data)
+export const ApiPostLogin = (data: unknown, config?: myRequestConfig): Promise<LoginResponse> =>
+	$axios.post('/auth/login', data, config)
