@@ -15,6 +15,7 @@ const entries = {
 	nprogress: getPath('nprogress/index.ts'),
 	compatibleScrollTo: getPath('compatibleScrollTo/index.ts'),
 	typewriter: getPath('typewriter/index.ts'),
+	funcOverload: getPath('funcOverload/index.ts'),
 }
 
 import { setupViteLib, dts, compress, visualizer } from '@mqy/vite-config/common'
