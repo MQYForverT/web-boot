@@ -1,144 +1,86 @@
-import { layoutEnum } from '@mqy/component-private/dist/BackgroundLayout'
+import React from 'react'
+import { ConfigProvider, App as AntdApp, message } from 'antd'
+import zhCN from 'antd/locale/zh_CN'
+import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { useSettingStore } from '@/stores'
+import { useGlobalStore } from '@/stores'
+import { useEffect } from 'react'
+import { LOGIN_URL, TABS_WHITE_LIST } from '@/config/config'
+import NProgress from '@mqy/utils/dist/nprogress'
+import Layout from '@/layouts'
+import Login from '@/pages/Login'
+import Home from '@/pages/Home'
+import NotAuth from '@/pages/ErrorMessage/403'
+import ErrorMessage from '@/pages/ErrorMessage/404'
+import ServerError from '@/pages/ErrorMessage/500'
 
-function App() {
-	const ref = useRef(null)
+const App: React.FC = () => {
+	// 配置全局组件大小 (small/default(medium)/large)
+	const { buttonSize } = useSettingStore()
+	const { token } = useGlobalStore()
+	const location = useLocation()
+	const navigate = useNavigate()
 
-	const menuList = [
-		{
-			path: '/',
-			title: '首页',
-			redirect: '/home1',
-			children: [
-				{
-					path: '/home1',
-					icon: '',
-					title: '首页1',
-					isShowFooter: false,
-				},
-				{
-					path: '/home2',
-					icon: 'i-ep-tickets',
-					title: '首页2',
-					affix: true,
-					isShowFooter: true,
-				},
-			],
-		},
-		{
-			path: '/menu',
-			icon: '',
-			title: '菜单',
-			redirect: '/menu/menu1',
-			children: [
-				{
-					path: '/menu/menu1',
-					icon: '',
-					title: '菜单1',
-				},
-			],
-		},
-	]
-	const imgUrl = new URL('@/assets/images/home.jpg', import.meta.url).href
-
-	const [themeConfig, setThemeConfig] = useState({
-		containerBackground: {
-			background: imgUrl,
-			opacity: 0.5,
-			style: {
-				opacity: 0.1,
-			},
-		},
-		layout: layoutEnum.defaults,
-		isCollapse: false,
-		isMobile: false,
-		menuList,
-		userAvatar: {
-			show: true,
-			trigger: 'click',
-			name: '12',
-			dropdownMenu: [
-				{
-					key: 'loginOut',
-					value: '退出登录',
-				},
-				{
-					key: 'setting',
-					value: '个性设置',
-				},
-			],
-		},
-		watermark: {
-			text: '漠轻阴666',
-		},
-		settingVisible: false,
-	})
-
-	useEventListener(
-		'changeProp',
-		({ detail = [] }) => {
-			console.log('handleChange', detail)
-			changeThemeConfig(detail[0], detail[1])
-		},
-		{ target: ref },
-	)
-
-	useEventListener(
-		'commandUser',
-		({ detail = [] }) => {
-			console.log('commandUser', detail)
-			changeThemeConfig(detail[0], detail[1])
-		},
-		{ target: ref },
-	)
-
-	useEventListener(
-		'selectMenu',
-		({ detail = [] }) => {
-			console.log('selectMenu', detail)
-		},
-		{ target: ref },
-	)
-
-	useEventListener(
-		'tagRefresh',
-		({ detail = [] }) => {
-			console.log('tagRefresh', detail)
-		},
-		{ target: ref },
-	)
-
-	const changeThemeConfig = <T extends keyof typeof themeConfig>(key: T, val: (typeof themeConfig)[T]) => {
-		const obj = {
-			[key]: val,
-		}
-		setThemeConfig({ ...themeConfig, ...obj })
+	// 配置按钮文字中间是否有空格
+	const config = {
+		autoInsertSpace: false,
 	}
 
+	// 消息配置
+	const messageConfig = {
+		maxCount: 1,
+	}
+
+	// 设置全局消息配置
+	message.config(messageConfig)
+
+	// 路由守卫
+	useEffect(() => {
+		// 清除所有正在进行的请求
+		// $axios.cancelAllRequests()
+
+		// 1.NProgress 开始
+		NProgress.start()
+
+		// 2.如果是访问登陆页，直接放行
+		if (location.pathname === LOGIN_URL) {
+			NProgress.done()
+			return
+		}
+
+		// 3.判断是否有 Token，没有重定向到 login
+		if (!token) {
+			NProgress.done()
+
+			if (TABS_WHITE_LIST.includes(location.pathname)) {
+				return
+			}
+			navigate('/login')
+			return
+		}
+
+		// 路由后置守卫
+		const title = location.pathname ? 'React Admin' : 'React Admin'
+		document.title = title
+		NProgress.done()
+	}, [location, token, navigate])
+
 	return (
-		<>
-			<div>
-				<mqy-background-layout
-					ref={ref}
-					container-background={JSON.stringify(themeConfig.containerBackground)}
-					layout={themeConfig.layout}
-					menu-list={JSON.stringify(themeConfig.menuList)}
-					user-avatar={JSON.stringify(themeConfig.userAvatar)}
-					setting-visible={JSON.stringify(themeConfig.settingVisible)}
-					watermark={JSON.stringify(themeConfig.watermark)}
-				>
-					<div slot="header">
-						<div className="headerSlot">
-							<span onClick={() => changeThemeConfig('layout', layoutEnum.vertical)}>button1</span>
-							<span>button2</span>
-						</div>
-					</div>
-					<div slot="main">
-						<div style={{ height: '120px' }}>hello</div>
-						<div style={{ height: '120px' }}>hello</div>
-					</div>
-				</mqy-background-layout>
-			</div>
-		</>
+		<ConfigProvider locale={zhCN} button={config} componentSize={buttonSize}>
+			<AntdApp>
+				<Routes>
+					<Route path="/login" element={<Login />} />
+					<Route path="/" element={<Layout />}>
+						<Route path="home" element={<Home />} />
+						<Route path="" element={<Navigate to="/home" replace />} />
+					</Route>
+					<Route path="/403" element={<NotAuth />} />
+					<Route path="/404" element={<ErrorMessage />} />
+					<Route path="/500" element={<ServerError />} />
+					<Route path="*" element={<Navigate to="/404" replace />} />
+				</Routes>
+			</AntdApp>
+		</ConfigProvider>
 	)
 }
 

@@ -13,8 +13,13 @@
 	},
 	"dependencies": {
 		"@mqy/component-private": "workspace:^",
+		"@mqy/utils": "workspace:^",
+		"antd": "^5.24.5",
+		"framer-motion": "^12.6.2",
 		"react": "^19.0.0",
-		"react-dom": "^19.0.0"
+		"react-activation": "^0.13.0",
+		"react-dom": "^19.0.0",
+		"react-router-dom": "^7.4.1"
 	},
 	"devDependencies": {
 		"@mqy/eslint-config": "workspace:^",

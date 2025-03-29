@@ -1,0 +1,23 @@
+.not-container {
+	--at-apply: flex justify-center items-center w-full h-full gap-10;
+
+	.not-img {
+		margin-right: 120px;
+	}
+
+	.not-detail {
+		--at-apply: flex flex-col;
+
+		div:nth-child(1) {
+			--at-apply: text-8xl;
+		}
+
+		div:nth-child(2) {
+			--at-apply: text-[var(--el-text-color-primary)];
+		}
+
+		.el-button {
+			--at-apply: m-t-4 w-24;
+		}
+	}
+}

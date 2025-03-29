@@ -8,7 +8,7 @@ import {
 	setupViteBuild,
 	setupViteEsBuild,
 	AutoImport,
-	Components,
+	ComponentsVue,
 	// style
 	createStyleImportPlugin,
 	ElementPlusResolve,
@@ -16,7 +16,7 @@ import {
 	Icons,
 	IconsResolver,
 } from '../common'
-import { ElementPlusResolver } from '../common/autoImport/components'
+import { ElementPlusResolver } from '../common/autoImport/components_vue'
 
 // https://vitejs.dev/config/
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {
@@ -57,7 +57,7 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 				dirs: ['./src/stores'],
 				vueTemplate: true,
 			}),
-			Components({
+			ComponentsVue({
 				// allow auto load markdown components under `./src/components/`
 				extensions: ['vue', 'md'],
 				// allow auto import and register components used in markdown

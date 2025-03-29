@@ -33,7 +33,7 @@ import {
 	unocss,
 	setupViteLib,
 	AutoImport,
-	Components,
+	ComponentsVue,
 	// Icon
 	Icons,
 	IconsResolver,
@@ -41,7 +41,7 @@ import {
 	// cssInJs
 	CssInJs,
 } from '@mqy/vite-config/common'
-import { ElementPlusResolver } from '@mqy/vite-config/common/autoImport/components'
+import { ElementPlusResolver } from '@mqy/vite-config/common/autoImport/components_vue'
 import { presetIcons } from '@mqy/vite-config/common/plugins/unocss'
 
 // loader helpers
@@ -100,7 +100,7 @@ const config: UserConfig = {
 			],
 			vueTemplate: true,
 		}),
-		Components({
+		ComponentsVue({
 			// allow auto load markdown components under `./src/components/`
 			extensions: ['vue', 'md'],
 			// allow auto import and register components used in markdown
