@@ -10,8 +10,8 @@
 		"lint:eslint": "eslint --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
 		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix",
-		"test": "NODE_OPTIONS=\"--import tsx/esm\" pnpm exec vitest --coverage.enabled",
-		"test:ui": "NODE_OPTIONS=\"--import tsx/esm\" pnpm exec vitest --ui --open --coverage.enabled"
+		"test": "vitest --coverage.enabled --configLoader runner",
+		"test:ui": "vitest --ui --open --coverage.enabled --configLoader runner"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -22,8 +22,8 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"element-plus": "^2.9.6",
-		"react": "^19.0.0",
+		"element-plus": "^2.9.7",
+		"react": "^19.1.0",
 		"sortablejs": "^1.15.6",
 		"vue": "^3.5.13"
 	},
@@ -33,12 +33,12 @@
 		"@mqy/stylelint-config": "workspace:^",
 		"@mqy/vite-config": "workspace:^",
 		"@types/sortablejs": "^1.15.8",
-		"@vitejs/plugin-vue": "^5.2.1",
+		"@vitejs/plugin-vue": "^5.2.3",
 		"@vue/test-utils": "^2.4.6",
 		"rollup-plugin-copy": "^3.5.0",
-		"sass": "^1.85.1",
+		"sass": "^1.86.1",
 		"typescript": "^5.8.2",
-		"vite": "^6.2.1",
+		"vite": "^6.2.4",
 		"vue-tsc": "^2.2.8"
 	}
 }

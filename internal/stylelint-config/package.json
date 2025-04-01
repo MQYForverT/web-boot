@@ -17,7 +17,7 @@
 	"license": "ISC",
 	"devDependencies": {
 		"postcss-scss": "^4.0.9",
-		"stylelint": "^16.15.0",
+		"stylelint": "^16.17.0",
 		"stylelint-config-html": "^1.1.0",
 		"stylelint-config-recess-order": "^6.0.0",
 		"stylelint-config-recommended-scss": "^14.1.0",

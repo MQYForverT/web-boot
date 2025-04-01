@@ -38,7 +38,7 @@
 	"license": "ISC",
 	"packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879",
 	"dependencies": {
-		"inquirer": "^12.4.3",
+		"inquirer": "^12.5.0",
 		"rimraf": "^6.0.1"
 	},
 	"devDependencies": {
@@ -47,15 +47,15 @@
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@types/inquirer": "^9.0.7",
-		"@types/node": "^22.13.10",
+		"@types/node": "^22.13.15",
 		"commitlint": "^19.8.0",
 		"depcheck": "^1.4.7",
-		"eslint": "^9.22.0",
+		"eslint": "^9.23.0",
 		"eslint-define-config": "^2.1.0",
 		"husky": "^9.1.7",
-		"lint-staged": "^15.4.3",
+		"lint-staged": "^15.5.0",
 		"prettier": "3.5.3",
-		"stylelint": "^16.15.0",
+		"stylelint": "^16.17.0",
 		"ts-node": "^10.9.2",
 		"tsx": "^4.19.3",
 		"typescript": "^5.8.2"
