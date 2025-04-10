@@ -29,6 +29,10 @@
 		"noEmit": true,
 		// 指定 jsx 代码的生成: 'preserve', 'react-native', or 'react'
 		"jsx": "preserve",
+		// 开启了 TypeScript 对装饰器语法的支持
+		"experimentalDecorators": true,
+		// 允许 TypeScript 为装饰器生成元数据
+		"emitDecoratorMetadata": true,
 
 		/* Linting */
 		// 启用所有严格类型检查选项。

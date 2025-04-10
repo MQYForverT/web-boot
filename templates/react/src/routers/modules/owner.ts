@@ -1,11 +1,24 @@
 import { lazy } from 'react'
+import type { LazyExoticComponent } from 'react'
 
 // 路由懒加载
 const lazyLoad = (path: string) => {
-	return lazy(() => import(`@/pages/${path}`))
+	const componentMap: Record<string, any> = {
+		'Home/index': () => import('@/pages/Home/index'),
+		'Menu/Menu1/Menu11/index': () => import('@/pages/Menu/Menu1/Menu11/index'),
+		'Menu/Menu2/index': () => import('@/pages/Menu/Menu2/index'),
+		'Menu/Menu3/index': () => import('@/pages/Menu/Menu3/index'),
+	}
+
+	if (!componentMap[path]) {
+		console.error(`路径 ${path} 没有对应的组件`)
+		return lazy(() => import('@/pages/ErrorMessage/404'))
+	}
+
+	return lazy(componentMap[path])
 }
 
-export const menuList: Menu.MenuOptions[] = [
+export const menuList: Menu.MenuOptions<LazyExoticComponent<any>>[] = [
 	{
 		path: '/home',
 		name: 'home',

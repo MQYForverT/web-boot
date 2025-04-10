@@ -24,6 +24,7 @@
 <script setup lang="ts">
 	import { HOME_URL } from '@/config/config'
 	import type { Layout } from '@mqy/component-private/dist/BackgroundLayout/layout'
+	import type { RouteComponent } from 'vue-router'
 
 	const refreshRouterViewKey = ref('')
 	const router = useRouter()
@@ -34,7 +35,7 @@
 	})
 
 	// 把路由列表转换成菜单列表
-	const convertToLayoutMenu = (route: Menu.MenuOptions): Layout.Menu => {
+	const convertToLayoutMenu = (route: Menu.MenuOptions<RouteComponent>): Layout.Menu => {
 		return {
 			path: route.path,
 			title: route.meta?.title || '',

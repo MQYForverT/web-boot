@@ -12,22 +12,24 @@
 		"lint:stylelint": "stylelint \"**/*.{css,scss,html}\" --cache --fix"
 	},
 	"dependencies": {
+		"@ant-design/v5-patch-for-react-19": "^1.0.3",
 		"@mqy/component-private": "workspace:^",
 		"@mqy/utils": "workspace:^",
-		"antd": "^5.24.5",
-		"framer-motion": "^12.6.2",
+		"antd": "^5.24.6",
+		"framer-motion": "^12.6.3",
+		"mobx": "^6.13.7",
+		"mobx-react-lite": "^4.1.0",
 		"react": "^19.1.0",
-		"react-activation": "^0.13.0",
 		"react-dom": "^19.1.0",
-		"react-router-dom": "^7.4.1"
+		"react-router-dom": "^7.5.0"
 	},
 	"devDependencies": {
 		"@mqy/eslint-config": "workspace:^",
 		"@mqy/stylelint-config": "workspace:^",
 		"@mqy/vite-config": "workspace:^",
-		"@types/react": "^19.0.12",
-		"@types/react-dom": "^19.0.4",
-		"typescript": "^5.8.2",
-		"vite": "^6.2.4"
+		"@types/react": "^19.1.0",
+		"@types/react-dom": "^19.1.1",
+		"typescript": "^5.8.3",
+		"vite": "^6.2.5"
 	}
 }

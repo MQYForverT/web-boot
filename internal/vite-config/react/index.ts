@@ -25,7 +25,9 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 		},
 		plugins: [
 			...commonVitePlugins(viteEnv),
-			react(),
+			react({
+				tsDecorators: true,
+			}),
 			// 通过 【option/alt】 + 鼠标右键 可以查看组件信息，及打开组件
 			reactClickToComponent(),
 			AutoImport({

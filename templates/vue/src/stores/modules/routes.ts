@@ -2,14 +2,14 @@ import { getPermissionData } from '@/routers/modules/help'
 import router, { localRoutes } from '@/routers'
 import { notFoundRouter } from '@/routers/modules/staticRouter'
 import { HOME_URL } from '@/config/config'
-import type { RouteRecordRaw } from 'vue-router'
+import type { RouteComponent, RouteRecordRaw } from 'vue-router'
 
 export const useRoutesStore = createGlobalState(() => {
 	// state
-	const permissionFlat = ref<Menu.permissionMenu[]>([]) //转换之后后端返回的数据，存的是平板数据
-	const routeList = ref<Menu.MenuOptions[]>([]) //添加的所有路由
-	const tagsViewRoutes = ref<Menu.MenuOptions[]>([]) //
-	const keepAliveNames = ref<Menu.MenuOptions[]>([]) //路由缓存（name字段）
+	const routeListFlat = ref<Menu.MenuOptions<RouteComponent>[]>([]) //转换之后后端返回的数据，存的是平板数据
+	const routeList = ref<Menu.MenuOptions<RouteComponent>[]>([]) //添加的所有路由
+	const tagsViewRoutes = ref<Menu.MenuOptions<RouteComponent>[]>([]) //
+	const keepAliveNames = ref<Menu.MenuOptions<RouteComponent>[]>([]) //路由缓存（name字段）
 
 	// 删除/重置路由
 	function resetRoute() {
@@ -45,7 +45,7 @@ export const useRoutesStore = createGlobalState(() => {
 		const resultData = getPermissionData(localRoutes, result, true)
 
 		routerResult = resultData.routeList
-		permissionFlat.value = resultData.result
+		routeListFlat.value = resultData.routeListFlat
 
 		// 设置keepAlive 缓存
 		keepAliveNames.value = resultData.keepAliveList
@@ -74,5 +74,5 @@ export const useRoutesStore = createGlobalState(() => {
 		tagsViewRoutes.value = [routerResult[0]]
 	}
 
-	return { permissionFlat, routeList, keepAliveNames, tagsViewRoutes, resetRoute, getPermission }
+	return { routeListFlat, routeList, keepAliveNames, tagsViewRoutes, resetRoute, getPermission }
 })

@@ -36,9 +36,9 @@
 		"@vitejs/plugin-vue": "^5.2.3",
 		"@vue/test-utils": "^2.4.6",
 		"rollup-plugin-copy": "^3.5.0",
-		"sass": "^1.86.1",
-		"typescript": "^5.8.2",
-		"vite": "^6.2.4",
+		"sass": "^1.86.3",
+		"typescript": "^5.8.3",
+		"vite": "^6.2.5",
 		"vue-tsc": "^2.2.8"
 	}
 }

@@ -8,7 +8,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@vueuse/core": "^13.0.0",
+		"@vueuse/core": "^13.1.0",
 		"ahooks": "^3.8.4"
 	},
 	"devDependencies": {
@@ -19,13 +19,13 @@
 		"happy-dom": "^17.4.4",
 		"rollup-plugin-external-globals": "^0.13.0",
 		"rollup-plugin-visualizer": "^5.14.0",
-		"sass": "^1.86.1",
-		"typescript": "^5.8.2",
-		"unocss": "66.1.0-beta.8",
+		"sass": "^1.86.3",
+		"typescript": "^5.8.3",
+		"unocss": "66.1.0-beta.10",
 		"unplugin-auto-import": "^19.1.2",
 		"unplugin-icons": "^22.1.0",
 		"unplugin-vue-components": "^28.4.1",
-		"vite": "^6.2.4",
+		"vite": "^6.2.5",
 		"vite-plugin-compression2": "^1.3.3",
 		"vite-plugin-dts": "^4.5.3",
 		"vite-plugin-inspect": "^11.0.0",

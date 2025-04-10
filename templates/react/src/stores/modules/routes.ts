@@ -1,27 +1,32 @@
-import { useState, useCallback } from 'react'
+import { observable, action, runInAction, makeObservable } from 'mobx'
 import { getPermissionData } from '@/routers/modules/help'
-import { localRoutes } from '@/routers'
+import { localRoutes } from '@/routers/index.tsx'
+import type { LazyExoticComponent } from 'react'
 
-export const useRoutesStore = () => {
-	// state
-	const [permissionFlat, setPermissionFlat] = useState<Menu.permissionMenu[]>([]) // 转换之后后端返回的数据，存的是平板数据
-	const [routeList, setRouteList] = useState<Menu.MenuOptions[]>([]) // 添加的所有路由
-	const [tagsViewRoutes, setTagsViewRoutes] = useState<Menu.MenuOptions[]>([]) //
-	const [keepAliveNames, setKeepAliveNames] = useState<Menu.MenuOptions[]>([]) // 路由缓存（name字段）
+// 定义路由状态类
+class RoutesStore {
+	@observable routeList: Menu.MenuOptions<LazyExoticComponent<any>>[] = []
+	@observable routeListFlat: Menu.MenuOptions<LazyExoticComponent<any>>[] = []
+	@observable tagsViewRoutes: Menu.MenuOptions<LazyExoticComponent<any>>[] = []
+	@observable keepAliveNames: Menu.MenuOptions<LazyExoticComponent<any>>[] = []
 
-	// 删除/重置路由
-	const resetRoute = useCallback(() => {
-		setRouteList([])
-		setTagsViewRoutes([])
-		setKeepAliveNames([])
-	}, [])
+	constructor() {
+		makeObservable(this)
+	}
 
-	// 获取权限路由
-	const getPermission = useCallback(async () => {
+	@action
+	resetRoute = () => {
+		this.routeList = []
+		this.tagsViewRoutes = []
+		this.keepAliveNames = []
+	}
+
+	@action
+	getPermission = async () => {
 		// 重置路由
-		resetRoute()
+		this.resetRoute()
 
-		let routerResult: Menu.MenuOptions[] = [] // 结果集
+		let routerResult: Menu.MenuOptions<LazyExoticComponent<any>>[] = [] // 结果集
 
 		// const { result, error } = await ApiGetPermission()
 		// // 结果集格式化
@@ -39,49 +44,26 @@ export const useRoutesStore = () => {
 		]
 		const resultData = getPermissionData(localRoutes, result, true)
 
-		routerResult = resultData.routeList
-		setPermissionFlat(resultData.result)
+		// 使用runInAction包裹多个状态更新
+		runInAction(() => {
+			routerResult = resultData.routeList
+			this.routeListFlat = resultData.routeListFlat
 
-		// 设置keepAlive 缓存
-		setKeepAliveNames(resultData.keepAliveList)
+			// 设置keepAlive 缓存
+			this.keepAliveNames = resultData.keepAliveList
 
-		// 添加动态路由
-		if (routerResult.length > 0) {
-			routerResult = routerResult.map((item) => {
-				return {
-					...item,
-					children: item.children?.map((child) => {
-						if (child.meta?.isFull) {
-							return {
-								...child,
-								component: child.component,
-							}
-						}
-						return {
-							...child,
-							component: child.component,
-						}
-					}),
-				}
-			})
+			// 添加动态路由
+			if (routerResult.length > 0) {
+				// 添加路由
+				this.routeList = routerResult
 
-			// 添加路由
-			setRouteList(routerResult)
-
-			// 设置菜单列表
-			setTagsViewRoutes(routerResult)
-		}
-	}, [resetRoute])
-
-	return useCreation(
-		() => ({
-			permissionFlat,
-			routeList,
-			keepAliveNames,
-			tagsViewRoutes,
-			resetRoute,
-			getPermission,
-		}),
-		[permissionFlat, routeList, keepAliveNames, tagsViewRoutes, resetRoute, getPermission],
-	)
+				// 设置菜单列表
+				this.tagsViewRoutes = [routerResult[0]]
+			}
+		})
+	}
 }
+
+// 创建并导出单例
+const routesStore = new RoutesStore()
+export default routesStore

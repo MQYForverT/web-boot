@@ -1,15 +1,15 @@
 import React, { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { notification } from 'antd'
-import { BackgroundLogin } from '@mqy/component-private/dist/BackgroundLogin'
 import { layoutEnum } from '@mqy/component-private/dist/BackgroundLogin'
 import { HOME_URL } from '@/config/config'
 import { ApiPostLogin } from '@/api/global'
-import { useGlobalStore } from '@/stores'
+import { observer } from 'mobx-react-lite'
+import globalStore from '@/stores'
 
 const Login: React.FC = () => {
+	const ref = useRef(null)
 	const navigate = useNavigate()
-	const globalStore = useGlobalStore()
 
 	const config = {
 		account: {
@@ -50,10 +50,8 @@ const Login: React.FC = () => {
 	}, [])
 
 	const submit = async ({ detail = [] }: { detail: any[] }) => {
-		console.log('submit:', detail[0])
 		try {
 			const res = await ApiPostLogin(detail[0])
-
 			globalStore.setToken(res.accessToken)
 
 			navigate(HOME_URL)
@@ -65,7 +63,19 @@ const Login: React.FC = () => {
 		}
 	}
 
-	return <BackgroundLogin account={JSON.stringify(config.account)} layout={config.layout} onSubmit={submit} />
+	useEventListener(
+		'submit',
+		(res) => {
+			switch (res.type) {
+				case 'submit':
+					submit(res)
+					break
+			}
+		},
+		{ target: ref },
+	)
+
+	return <mqy-background-login ref={ref} account={JSON.stringify(config.account)} layout={config.layout} />
 }
 
-export default Login
+export default observer(Login)

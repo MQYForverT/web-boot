@@ -1,23 +1,19 @@
-import React from 'react'
-import { ConfigProvider, App as AntdApp, message } from 'antd'
+import React, { useEffect, Suspense } from 'react'
+import { ConfigProvider, App as AntdApp, message, Spin } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
-import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom'
-import { useSettingStore } from '@/stores'
-import { useGlobalStore } from '@/stores'
-import { useEffect } from 'react'
-import { LOGIN_URL, TABS_WHITE_LIST } from '@/config/config'
-import NProgress from '@mqy/utils/dist/nprogress'
-import Layout from '@/layouts'
-import Login from '@/pages/Login'
-import Home from '@/pages/Home'
-import NotAuth from '@/pages/ErrorMessage/403'
-import ErrorMessage from '@/pages/ErrorMessage/404'
-import ServerError from '@/pages/ErrorMessage/500'
+import { useLocation, useNavigate } from 'react-router-dom'
+import globalStore from '@/stores'
+import settingStore from '@/stores/modules/setting'
+import routesStore from '@/stores/modules/routes'
+import { beforeEach, afterEach, createRoutes } from '@/routers/index.tsx'
+import { observer } from 'mobx-react-lite'
+import { toJS } from 'mobx'
 
 const App: React.FC = () => {
-	// 配置全局组件大小 (small/default(medium)/large)
-	const { buttonSize } = useSettingStore()
-	const { token } = useGlobalStore()
+	// 获取全局状态
+	const { buttonSize } = settingStore
+	const { token } = globalStore
+	const { routeList } = routesStore
 	const location = useLocation()
 	const navigate = useNavigate()
 
@@ -34,54 +30,41 @@ const App: React.FC = () => {
 	// 设置全局消息配置
 	message.config(messageConfig)
 
+	// 初始化获取权限路由
+	useEffect(() => {
+		if (token) {
+			routesStore.getPermission()
+		}
+	}, [token, routesStore])
+
+	// 创建路由配置
+	const routes = useMemo(() => {
+		// 获取路由配置
+		const routeConfig = createRoutes(toJS(routeList))
+		return routeConfig
+	}, [routeList])
+
 	// 路由守卫
 	useEffect(() => {
-		// 清除所有正在进行的请求
-		// $axios.cancelAllRequests()
-
-		// 1.NProgress 开始
-		NProgress.start()
-
-		// 2.如果是访问登陆页，直接放行
-		if (location.pathname === LOGIN_URL) {
-			NProgress.done()
-			return
-		}
-
-		// 3.判断是否有 Token，没有重定向到 login
-		if (!token) {
-			NProgress.done()
-
-			if (TABS_WHITE_LIST.includes(location.pathname)) {
-				return
-			}
+		const canAccess = beforeEach(location, token || '')
+		if (!canAccess) {
 			navigate('/login')
 			return
 		}
 
-		// 路由后置守卫
-		const title = location.pathname ? 'React Admin' : 'React Admin'
-		document.title = title
-		NProgress.done()
-	}, [location, token, navigate])
+		afterEach(location)
+	}, [location, navigate, token])
+
+	// 使用useRoutes渲染路由
+	const RouterElement = useRoutes(routes)
 
 	return (
 		<ConfigProvider locale={zhCN} button={config} componentSize={buttonSize}>
 			<AntdApp>
-				<Routes>
-					<Route path="/login" element={<Login />} />
-					<Route path="/" element={<Layout />}>
-						<Route path="home" element={<Home />} />
-						<Route path="" element={<Navigate to="/home" replace />} />
-					</Route>
-					<Route path="/403" element={<NotAuth />} />
-					<Route path="/404" element={<ErrorMessage />} />
-					<Route path="/500" element={<ServerError />} />
-					<Route path="*" element={<Navigate to="/404" replace />} />
-				</Routes>
+				<Suspense fallback={<Spin size="large" className="global-spin" />}>{RouterElement}</Suspense>
 			</AntdApp>
 		</ConfigProvider>
 	)
 }
 
-export default App
+export default observer(App)

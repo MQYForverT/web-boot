@@ -1,3 +1,5 @@
+import type { RouteComponent } from 'vue-router'
+
 //后端数据化为平板数据
 export const initChildDataToFlat = (
 	result: Menu.permissionMenu[] = [],
@@ -25,11 +27,11 @@ export const initChildDataToFlat = (
  * @param {*} result //后台数据
  * @param {*} tree //后台数据是否树形结构，如果是，则需要化为平板数据
  * @returns routeList: 排序后的路由列表
- * @returns result: 处理后的权限数据
+ * @returns routeListFlat: 处理后的权限数据
  * @returns keepAliveNames: 需要缓存的路由列表
  */
 export const getPermissionData = (
-	localRoutes: Menu.MenuOptions[],
+	localRoutes: Menu.MenuOptions<RouteComponent>[],
 	result: Menu.permissionMenu[],
 	tree: boolean = false,
 ) => {
@@ -37,27 +39,48 @@ export const getPermissionData = (
 		result = initChildDataToFlat([], result)
 	}
 
-	const keepAliveList: Menu.MenuOptions[] = []
+	const keepAliveList: Menu.MenuOptions<RouteComponent>[] = []
+	const routeListFlat: Menu.MenuOptions<RouteComponent>[] = []
 	const sortMap = new Map(result.map((item) => [item.permission, item.sort || 1]))
 
-	const routeList = localRoutes
-		.filter((item) => {
-			//有权限
-			const isPermission = sortMap.has(item.name)
+	// 递归处理路由及其子路由
+	const processRoutes = (routes: Menu.MenuOptions<RouteComponent>[] = []) => {
+		return routes
+			.filter((item) => {
+				// 有权限
+				const isPermission = sortMap.has(item.name as string)
 
-			if (isPermission) {
-				if (item.meta?.isKeepAlive) {
-					keepAliveList.push(item)
+				if (isPermission) {
+					// 如果当前路由需要缓存，添加到keepAliveList
+					if (item.meta?.isKeepAlive) {
+						keepAliveList.push(item)
+					}
+
+					// 添加到平板路由列表
+					routeListFlat.push(item)
+
+					// 递归处理子路由
+					if (item.children && item.children.length > 0) {
+						item.children = processRoutes(item.children)
+					}
+
+					return true
 				}
-				item.children && (item.children = getPermissionData(item.children, result).routeList)
-			}
-			return isPermission
-		})
-		.sort((item1, item2) => sortMap.get(item1.name)! - sortMap.get(item2.name)!)
+
+				return false
+			})
+			.sort((a, b) => {
+				const aSort = sortMap.get(a.name as string) || 0
+				const bSort = sortMap.get(b.name as string) || 0
+				return aSort - bSort
+			})
+	}
+
+	const routeList = processRoutes(localRoutes)
 
 	return {
 		routeList,
-		result,
+		routeListFlat,
 		keepAliveList,
 	}
 }

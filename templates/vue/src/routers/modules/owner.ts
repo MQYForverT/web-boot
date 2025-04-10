@@ -1,4 +1,6 @@
-export const menuList: Menu.MenuOptions[] = [
+import type { RouteComponent } from 'vue-router'
+
+export const menuList: Menu.MenuOptions<RouteComponent>[] = [
 	{
 		path: '/home',
 		name: 'home',

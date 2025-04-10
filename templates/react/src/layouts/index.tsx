@@ -1,23 +1,25 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import { useNavigate, Outlet, useLocation } from 'react-router-dom'
-import { BackgroundLayout } from '@mqy/component-private/dist/BackgroundLayout'
+import type { LazyExoticComponent } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { Modal, message } from 'antd'
 import { HOME_URL } from '@/config/config'
-import { useGlobalStore } from '@/stores'
-import { useRoutesStore } from '@/stores/modules/routes'
+import globalStore from '@/stores'
+import routesStore from '@/stores/modules/routes'
 import type { Layout } from '@mqy/component-private/dist/BackgroundLayout/layout'
-import { KeepAlive } from 'react-activation'
 import { motion, AnimatePresence } from 'framer-motion'
+import { observer } from 'mobx-react-lite'
 
 const LayoutIndex: React.FC = () => {
+	const outlet = useOutlet()
+	const ref = useRef(null)
 	const [refreshRouterViewKey, setRefreshRouterViewKey] = useState('')
 	const navigate = useNavigate()
 	const location = useLocation()
-	const routesStore = useRoutesStore()
-	const { keepAliveNames } = routesStore
+	const { setToken } = globalStore
+	const { routeList, resetRoute, keepAliveNames } = routesStore
 
 	// 把路由列表转换成菜单列表
-	const convertToLayoutMenu = (route: Menu.MenuOptions): Layout.Menu => {
+	const convertToLayoutMenu = (route: Menu.MenuOptions<LazyExoticComponent<any>>): Layout.Menu => {
 		return {
 			path: route.path,
 			title: route.meta?.title || '',
@@ -29,7 +31,16 @@ const LayoutIndex: React.FC = () => {
 		}
 	}
 
-	const menuList = useMemo(() => routesStore.routeList.map(convertToLayoutMenu), [routesStore.routeList])
+	const menuList = useMemo(() => routeList.map(convertToLayoutMenu), [routeList])
+
+	useEffect(() => {
+		if (routeList.length > 0) {
+			setThemeConfig((prev) => ({
+				...prev,
+				menuList: routeList.map(convertToLayoutMenu),
+			}))
+		}
+	}, [routeList])
 
 	const [themeConfig, setThemeConfig] = useState({
 		menuList,
@@ -70,7 +81,10 @@ const LayoutIndex: React.FC = () => {
 			{ replace: true },
 		)
 
-		setRefreshRouterViewKey(detail[0])
+		// 设置刷新key，确保组件能够识别刷新操作
+		setTimeout(() => {
+			setRefreshRouterViewKey(detail[0])
+		}, 100) // 添加短暂延迟，确保导航完成
 	}
 
 	const commandUser = ({ detail = [] }: { detail: string[] }) => {
@@ -91,9 +105,8 @@ const LayoutIndex: React.FC = () => {
 				onOk: async () => {
 					return new Promise((resolve) => {
 						setTimeout(() => {
-							const globalStore = useGlobalStore()
-							globalStore.setToken('')
-							routesStore.resetRoute()
+							setToken('')
+							resetRoute()
 
 							navigate(HOME_URL)
 							setTimeout(() => {
@@ -131,32 +144,51 @@ const LayoutIndex: React.FC = () => {
 		transition: { duration: 0.3 },
 	}
 
+	useEventListener(
+		['changeProp', 'selectMenu', 'commandUser', 'tagRefresh'],
+		(res) => {
+			switch (res.type) {
+				case 'changeProp':
+					handleChange(res)
+					break
+				case 'selectMenu':
+					selectMenu(res)
+					break
+				case 'commandUser':
+					commandUser(res)
+					break
+				case 'tagRefresh':
+					tagRefresh(res)
+					break
+			}
+		},
+		{ target: ref },
+	)
+
+	// 渲染内容
+	const renderContent = () => (
+		<AnimatePresence mode="wait">
+			<motion.div key={location.pathname} {...pageTransition}>
+				{outlet}
+			</motion.div>
+		</AnimatePresence>
+	)
+
 	return (
-		<BackgroundLayout
-			menuList={JSON.stringify(themeConfig.menuList)}
-			userAvatar={JSON.stringify(themeConfig.userAvatar)}
-			settingVisible={JSON.stringify(themeConfig.settingVisible)}
-			watermark={JSON.stringify(themeConfig.watermark)}
-			onChangeProp={handleChange}
-			onSelectMenu={selectMenu}
-			onCommandUser={commandUser}
-			onTagRefresh={tagRefresh}
-		>
-			<div slot="main">
-				<AnimatePresence mode="wait">
-					<motion.div key={location.pathname} {...pageTransition}>
-						<KeepAlive
-							id={location.pathname}
-							when={shouldKeepAlive(location.pathname)}
-							key={refreshRouterViewKey || location.pathname}
-						>
-							<Outlet />
-						</KeepAlive>
-					</motion.div>
-				</AnimatePresence>
-			</div>
-		</BackgroundLayout>
+		<>
+			{themeConfig.menuList.length > 0 ? (
+				<mqy-background-layout
+					ref={ref}
+					menu-list={JSON.stringify(themeConfig.menuList)}
+					user-avatar={JSON.stringify(themeConfig.userAvatar)}
+					setting-visible={JSON.stringify(themeConfig.settingVisible)}
+					watermark={JSON.stringify(themeConfig.watermark)}
+				>
+					<div slot="main">{renderContent()}</div>
+				</mqy-background-layout>
+			) : null}
+		</>
 	)
 }
 
-export default LayoutIndex
+export default observer(LayoutIndex)
