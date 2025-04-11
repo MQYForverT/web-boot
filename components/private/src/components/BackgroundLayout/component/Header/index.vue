@@ -1,5 +1,5 @@
 <template>
-	<el-header class="header">
+	<div class="header">
 		<div class="h-full flex-x-center">
 			<span v-if="state.layout === layoutEnum.vertical" ref="logoRef"></span>
 			<div class="h-full flex-y-center">
@@ -22,7 +22,7 @@
 				<UserAvatar v-if="props.userAvatar.show" />
 			</Teleport>
 		</div>
-	</el-header>
+	</div>
 </template>
 
 <script lang="ts" setup>
