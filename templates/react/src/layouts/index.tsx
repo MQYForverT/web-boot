@@ -6,22 +6,26 @@ import { HOME_URL } from '@/config/config'
 import globalStore from '@/stores'
 import routesStore from '@/stores/modules/routes'
 import type { Layout } from '@mqy/component-private/dist/BackgroundLayout/layout'
-import { motion, AnimatePresence } from 'framer-motion'
 import { observer } from 'mobx-react-lite'
+import { KeepAlive, useKeepAliveRef } from 'keepalive-for-react'
 
 const LayoutIndex: React.FC = () => {
 	const outlet = useOutlet()
+	const aliveRef = useKeepAliveRef()
 	const ref = useRef(null)
-	const [refreshRouterViewKey, setRefreshRouterViewKey] = useState('')
 	const navigate = useNavigate()
 	const location = useLocation()
 	const { setToken } = globalStore
 	const { routeList, resetRoute, keepAliveNames } = routesStore
 
+	const keepAliveNameList = useMemo(() => {
+		return keepAliveNames.filter((item) => item.path).map((item) => item.path || '')
+	}, [keepAliveNames])
+
 	// 把路由列表转换成菜单列表
 	const convertToLayoutMenu = (route: Menu.MenuOptions<LazyExoticComponent<any>>): Layout.Menu => {
 		return {
-			path: route.path,
+			path: route.path || '',
 			title: route.meta?.title || '',
 			icon: route.meta?.icon,
 			redirect: route.redirect,
@@ -70,7 +74,7 @@ const LayoutIndex: React.FC = () => {
 	}
 
 	const tagRefresh = async ({ detail = [] }: { detail: string[] }) => {
-		setRefreshRouterViewKey('')
+		aliveRef.current?.refresh()
 
 		// 使用 replace 并添加强制刷新参数
 		navigate(
@@ -80,11 +84,6 @@ const LayoutIndex: React.FC = () => {
 			},
 			{ replace: true },
 		)
-
-		// 设置刷新key，确保组件能够识别刷新操作
-		setTimeout(() => {
-			setRefreshRouterViewKey(detail[0])
-		}, 100) // 添加短暂延迟，确保导航完成
 	}
 
 	const commandUser = ({ detail = [] }: { detail: string[] }) => {
@@ -127,23 +126,6 @@ const LayoutIndex: React.FC = () => {
 		}))
 	}
 
-	useEffect(() => {
-		setRefreshRouterViewKey(menuList[0]?.path || '')
-	}, [menuList])
-
-	// 检查当前路径是否需要缓存
-	const shouldKeepAlive = (path: string) => {
-		return keepAliveNames.some((item: any) => item.name === path || path.includes(item.name))
-	}
-
-	// 动画变量
-	const pageTransition = {
-		initial: { opacity: 0 },
-		animate: { opacity: 1 },
-		exit: { opacity: 0 },
-		transition: { duration: 0.3 },
-	}
-
 	useEventListener(
 		['changeProp', 'selectMenu', 'commandUser', 'tagRefresh'],
 		(res) => {
@@ -165,15 +147,6 @@ const LayoutIndex: React.FC = () => {
 		{ target: ref },
 	)
 
-	// 渲染内容
-	const renderContent = () => (
-		<AnimatePresence mode="wait">
-			<motion.div key={location.pathname} {...pageTransition}>
-				{outlet}
-			</motion.div>
-		</AnimatePresence>
-	)
-
 	return (
 		<>
 			{themeConfig.menuList.length > 0 ? (
@@ -184,7 +157,11 @@ const LayoutIndex: React.FC = () => {
 					setting-visible={JSON.stringify(themeConfig.settingVisible)}
 					watermark={JSON.stringify(themeConfig.watermark)}
 				>
-					<div slot="main">{renderContent()}</div>
+					<div slot="main">
+						<KeepAlive transition aliveRef={aliveRef} activeCacheKey={location.pathname} include={keepAliveNameList}>
+							{outlet}
+						</KeepAlive>
+					</div>
 				</mqy-background-layout>
 			) : null}
 		</>

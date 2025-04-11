@@ -60,9 +60,7 @@ const App: React.FC = () => {
 
 	return (
 		<ConfigProvider locale={zhCN} button={config} componentSize={buttonSize}>
-			<AntdApp>
-				<Suspense fallback={<Spin size="large" className="global-spin" />}>{RouterElement}</Suspense>
-			</AntdApp>
+			<AntdApp>{RouterElement}</AntdApp>
 		</ConfigProvider>
 	)
 }
