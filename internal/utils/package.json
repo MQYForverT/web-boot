@@ -21,7 +21,7 @@
 	},
 	"devDependencies": {
 		"@mqy/vite-config": "workspace:^",
-		"vite": "^6.2.5",
+		"vite": "^6.3.2",
 		"vue-tsc": "^2.2.8"
 	}
 }
