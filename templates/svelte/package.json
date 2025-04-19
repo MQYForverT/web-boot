@@ -1,0 +1,23 @@
+{
+	"name": "svelte",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"start": "vite --configLoader runner",
+		"build": "rimraf dist && tsc && vite build --configLoader runner",
+		"preview": "vite preview",
+		"check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
+		"lint:eslint": "eslint --cache --fix",
+		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,html,md}\"",
+		"lint:stylelint": "stylelint \"**/*.{css,scss,html}\" --cache --fix"
+	},
+	"devDependencies": {
+		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@tsconfig/svelte": "^5.0.4",
+		"svelte": "^5.23.1",
+		"svelte-check": "^4.1.5",
+		"typescript": "~5.7.2",
+		"vite": "^6.3.1"
+	}
+}

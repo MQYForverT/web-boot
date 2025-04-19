@@ -6,7 +6,7 @@ const Configuration = {
 		// 不允许作用域为空，即作用域必须存在
 		'scope-empty': [2, 'never'],
 		// 定义了作用域（Scope）的枚举列表，即作用域只能是列表中指定的值。[2, 'always', [...]] 表示作用域必须在列表中指定的值之一
-		'scope-enum': [2, 'always', ['root', 'internal', 'vue', 'react', 'docx', 'comp-private', 'comp-public']],
+		'scope-enum': [2, 'always', ['root', 'internal', 'vue', 'react', 'svelte', 'docx', 'comp-private', 'comp-public']],
 		// 提交类型（Type）的枚举列表，即提交类型只能是列表中指定的值，[2, 'always', [...]] 表示提交类型必须在列表中指定的值之一
 		'type-enum': [
 			2,

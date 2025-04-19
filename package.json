@@ -12,6 +12,7 @@
 		"start": "tsx ./scripts/start.ts",
 		"start:vue": "cd templates/vue && pnpm run start",
 		"start:react": "cd templates/react && pnpm run start",
+		"start:svelte": "cd templates/svelte && pnpm run start",
 		"start:component-private": "cd components/private && pnpm run start",
 		"start:component-public": "cd components/public && pnpm run start",
 		"start:docx": "cd docx && pnpm run start",
@@ -19,14 +20,18 @@
 		"test:react": "cd templates/react && pnpm run test",
 		"test:ui-vue": "cd templates/vue && pnpm run test:ui",
 		"test:ui-react": "cd templates/react && pnpm run test:ui",
+		"test:svelte": "cd templates/svelte && pnpm run test",
+		"test:ui-svelte": "cd templates/svelte && pnpm run test:ui",
 		"prepare": "husky",
-		"lint:eslint": "eslint --cache --fix && pnpm run lint:eslint-vue && pnpm run lint:eslint-react",
+		"lint:eslint": "eslint --cache --fix && pnpm run lint:eslint-vue && pnpm run lint:eslint-react && pnpm run lint:eslint-svelte",
 		"lint:eslint-vue": "cd templates/vue && pnpm run lint:eslint --no-warn-ignored",
 		"lint:eslint-react": "cd templates/react && pnpm run lint:eslint --no-warn-ignored",
+		"lint:eslint-svelte": "cd templates/svelte && pnpm run lint:eslint --no-warn-ignored",
 		"lint:format": "prettier --write --log-level warn \"{templates,components}/**/src/**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
-		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix && pnpm run lint:stylelint-vue && pnpm run lint:stylelint-react",
+		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix && pnpm run lint:stylelint-vue && pnpm run lint:stylelint-react && pnpm run lint:stylelint-svelte",
 		"lint:stylelint-vue": "cd templates/vue && pnpm run lint:stylelint",
 		"lint:stylelint-react": "cd templates/react && pnpm run lint:stylelint",
+		"lint:stylelint-svelte": "cd templates/svelte && pnpm run lint:stylelint",
 		"clean": "npm cache clean -f && rimraf pnpm-lock.yaml && rimraf -g \"**/node_modules\" && pnpm store prune",
 		"check-update": "pnpm outdated -r",
 		"update": "pnpm update -r --latest",
@@ -73,14 +78,21 @@
 			"pnpm run lint:eslint-react",
 			"pnpm run lint:format"
 		],
+		"templates/svelte/**/*.{js,ts,jsx,tsx,svelte}": [
+			"pnpm run lint:eslint-svelte",
+			"pnpm run lint:format"
+		],
 		"templates/vue/**/*.{css,scss,sass,less,vue,html}": [
 			"pnpm run lint:stylelint-vue"
 		],
 		"components/**/*.{css,scss,sass,less,vue,html}": [
 			"pnpm run lint:stylelint-vue"
 		],
-		"templates/react/**/*.{css,scss,sass,less,vue,html}": [
+		"templates/react/**/*.{css,scss,sass,less,html}": [
 			"pnpm run lint:stylelint-react"
+		],
+		"templates/svelte/**/*.{css,scss,sass,less,svelte,html}": [
+			"pnpm run lint:stylelint-svelte"
 		],
 		"*.test.{js,jsx,ts,tsx}": [
 			"vitest related --run --globals"
