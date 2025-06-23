@@ -33,7 +33,7 @@ const Login: React.FC = () => {
 	}
 
 	const formatAxis = (param: Date) => {
-		let hour = new Date(param).getHours()
+		const hour = new Date(param).getHours()
 		if (hour < 6) return '凌晨好'
 		else if (hour < 9) return '早上好'
 		else if (hour < 12) return '上午好'

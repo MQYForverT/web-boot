@@ -1,4 +1,12 @@
 {
-	"files": [],
-	"references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"types": ["vite/client", "../../types/env.d.ts", "../../types/route.d.ts", "../../internal/utils/global.d.ts"],
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["src/*"]
+		}
+	},
+	"include": ["**/*.ts", "**/*.svelte", "vite.config.ts"]
 }

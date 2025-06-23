@@ -1,5 +1,5 @@
-import React, { useEffect, Suspense } from 'react'
-import { ConfigProvider, App as AntdApp, message, Spin } from 'antd'
+import React, { useEffect } from 'react'
+import { ConfigProvider, App as AntdApp, message } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import { useLocation, useNavigate } from 'react-router-dom'
 import globalStore from '@/stores'

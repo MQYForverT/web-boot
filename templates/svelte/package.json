@@ -12,7 +12,18 @@
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,html,md}\"",
 		"lint:stylelint": "stylelint \"**/*.{css,scss,html}\" --cache --fix"
 	},
+	"dependencies": {
+		"@mqy/component-private": "workspace:^",
+		"@mqy/utils": "workspace:^",
+		"carbon-components-svelte": "^0.89.4",
+		"carbon-icons-svelte": "^12.11.0",
+		"svelte-spa-router": "^4.0.1",
+		"svelte-use": "^0.0.1"
+	},
 	"devDependencies": {
+		"@mqy/eslint-config": "workspace:^",
+		"@mqy/stylelint-config": "workspace:^",
+		"@mqy/vite-config": "workspace:^",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"@tsconfig/svelte": "^5.0.4",
 		"svelte": "^5.23.1",
