@@ -1,0 +1,27 @@
+.not-container {
+	--at-apply: flex justify-center items-center w-full h-full gap-10;
+
+	.not-img {
+		margin-right: 120px;
+	}
+
+	.not-detail {
+		--at-apply: flex flex-col;
+
+		div:nth-child(1) {
+			--at-apply: text-8xl;
+		}
+
+		div:nth-child(2) {
+			--at-apply: text-[var(--el-text-color-primary)];
+		}
+
+		.home-button {
+			--at-apply: m-t-4 w-24 px-4 py-2 bg-blue-500 text-white rounded cursor-pointer border-none;
+		}
+
+		.home-button:hover {
+			--at-apply: bg-blue-600;
+		}
+	}
+}

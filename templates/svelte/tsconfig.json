@@ -8,5 +8,5 @@
 			"@/*": ["src/*"]
 		}
 	},
-	"include": ["**/*.ts", "**/*.svelte", "vite.config.ts"]
+	"include": ["**/*.ts", "**/*.svelte"]
 }

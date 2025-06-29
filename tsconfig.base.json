@@ -17,7 +17,8 @@
 		"lib": [],
 		// 忽略所有的声明文件（ *.d.ts）的类型检查
 		"skipLibCheck": true,
-
+		// 强制对Types使用“import type”而不是“import”
+		"verbatimModuleSyntax": true,
 		/* Bundler mode */
 		// 用于选择模块解析策略，有'node'和'classic'两种类型
 		"moduleResolution": "node",
