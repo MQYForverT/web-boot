@@ -10,12 +10,6 @@
 	let ref: HTMLElement
 	let routeList: any[] = []
 	
-	// 订阅路由状态
-	routesStore.routeList.subscribe(value => {
-		routeList = value
-		updateThemeConfig()
-	})
-	
 	// 把路由列表转换成菜单列表
 	const convertToLayoutMenu = (route: any): Layout.Menu => {
 		return {
@@ -65,6 +59,12 @@
 			}
 		}
 	}
+	
+	// 订阅路由状态
+	routesStore.routeList.subscribe(value => {
+		routeList = value
+		updateThemeConfig()
+	})
 	
 	const selectMenu = ({ detail = [] }: { detail: string[] }) => {
 		router(detail[0])
