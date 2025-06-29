@@ -8,7 +8,6 @@ const lazyLoad = (path: string) => {
 	}
 
 	if (!componentMap[path]) {
-		console.error(`路径 ${path} 没有对应的组件`)
 		return () => import('@/pages/ErrorMessage/404.svelte')
 	}
 

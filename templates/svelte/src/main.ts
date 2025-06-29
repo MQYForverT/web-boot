@@ -29,7 +29,6 @@ const themeConfig: Global.setting = {
 }
 
 setGlobalConfig(themeConfig, (key, val) => {
-	console.log(key, val)
 	themeConfig[key] = val
 })
 

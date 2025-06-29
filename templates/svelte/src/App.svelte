@@ -11,30 +11,15 @@
 	// 获取全局状态
 	$: token = $globalStore
 	let routeList: any[] = []
-	let keepAliveNames: any[] = []
 	let currentComponent: any = null
 	let currentChildComponent: any = null
 	let needsLayout = false
-	let currentPath = ''
-	
-	// 缓存相关
-	let cachedComponents: Map<string, any> = new Map()
-	let cachedInstances: Map<string, any> = new Map()
 
 	// 路由处理函数
 	const handleRoute = async (ctx: any) => {
 		const pathname = ctx.pathname
-		const TABS_WHITE_LIST = ['/403', '/404', '/500', '/login']
 
-		// 路由守卫检查
-		if (pathname !== '/login' && !TABS_WHITE_LIST.includes(pathname)) {
-			if (!token) {
-				router('/login')
-				return
-			}
-		}
-
-		// 执行原有的路由守卫逻辑
+		// 执行路由守卫逻辑
 		if (!beforeEach({ pathname }, token)) {
 			router('/login')
 			return
@@ -44,14 +29,10 @@
 			needsLayout = pathNeedsLayout(pathname)
 			const allRoutes = [...staticRouter, ...errorRouter, ...routeList]
 
-			console.log('Route handling:', { pathname, needsLayout, routeListLength: routeList.length, allRoutesLength: allRoutes.length })
-
 			if (needsLayout) {
 				// 需要布局的页面
 				currentComponent = Layout
 				const childComponentLoader = findRouteComponent(pathname, allRoutes)
-				
-				console.log('Found child component loader:', !!childComponentLoader)
 				
 				if (childComponentLoader) {
 					const childModule = await childComponentLoader()
@@ -59,12 +40,9 @@
 				} else {
 					// 如果是动态路由但还没加载，等待加载
 					if (routeList.length === 0 && pathname !== '/login') {
-						console.log('Dynamic routes not loaded yet, waiting...')
-						// 等待动态路由加载
 						const unsubscribe = routesStore.routeList.subscribe(value => {
 							if (value.length > 0) {
 								unsubscribe()
-								// 重新处理路由
 								router(pathname)
 							}
 						})
@@ -72,8 +50,7 @@
 						return
 					}
 					
-					// 如果找不到组件，显示404
-					console.log('Component not found for:', pathname)
+					// 显示404
 					const errorComponent = await import('@/pages/ErrorMessage/404.svelte')
 					currentComponent = errorComponent.default
 					currentChildComponent = null
@@ -96,7 +73,6 @@
 
 			afterEach({ pathname })
 		} catch (error) {
-			console.error('Failed to load component:', error)
 			const errorComponent = await import('@/pages/ErrorMessage/404.svelte')
 			currentComponent = errorComponent.default
 			currentChildComponent = null
@@ -112,11 +88,8 @@
 
 	// 在所有路由中查找组件
 	const findRouteComponent = (path: string, routes: any[]): any => {
-		console.log('Searching for component:', path, 'in routes:', routes.map(r => ({ path: r.path, hasComponent: !!r.component })))
-		
 		for (const route of routes) {
 			if (route.path === path && route.component) {
-				console.log('Found component for:', path)
 				return route.component
 			}
 			if (route.children && route.children.length > 0) {
@@ -126,19 +99,16 @@
 				}
 			}
 		}
-		
-		console.log('Component not found for:', path)
 		return null
 	}
 
 	// 设置路由
 	function setupRoutes() {
-		// 添加根路径重定向
+		// 根路径重定向
 		router('/', () => {
 			if (!token) {
 				router.redirect('/login')
 			} else {
-				console.log('Redirecting to /home')
 				router.redirect('/home')
 			}
 		})
@@ -146,7 +116,6 @@
 		// 添加静态路由
 		staticRouter.forEach((route: any) => {
 			if (route.component && route.path) {
-				console.log('Registering static route:', route.path)
 				router(route.path, handleRoute)
 			}
 		})
@@ -154,7 +123,6 @@
 		// 添加错误路由
 		errorRouter.forEach((route: any) => {
 			if (route.component && route.path) {
-				console.log('Registering error route:', route.path)
 				router(route.path, handleRoute)
 			}
 		})
@@ -167,37 +135,31 @@
 		router('/menu/menu2', handleRoute)
 		router('/menu/menu3', handleRoute)
 
-		// 添加404路由 - 必须在最后添加
-		router('*', async (ctx: any) => {
-			console.log('404 route hit:', ctx.pathname)
+		// 404路由（必须在最后）
+		router('*', async () => {
 			const component = await import('@/pages/ErrorMessage/404.svelte')
 			currentComponent = component.default
 			currentChildComponent = null
 			needsLayout = false
 		})
 
-		// 启动路由
 		router.start()
 	}
 
 	// 订阅路由列表变化
 	routesStore.routeList.subscribe(value => {
 		routeList = value
-		console.log('Route list updated:', value.length)
 	})
 
 	// 响应式监听token变化
 	$: if (!token) {
 		routesStore.resetRoute()
 	} else if (routeList.length === 0) {
-		// 有token但没有路由数据时，获取权限
-		console.log('Token exists but no routes, getting permission')
 		routesStore.getPermission()
 	}
 
 	onMount(() => {
 		setupRoutes()
-
 		return () => {
 			router.stop()
 		}

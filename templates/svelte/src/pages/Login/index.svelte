@@ -46,8 +46,6 @@
 	
 	// 显示成功通知（使用浏览器原生通知）
 	const showSuccessNotification = (message: string) => {
-		console.log(`✅ ${message}`)
-		
 		// 使用浏览器原生通知API
 		if (Notification.permission === 'granted') {
 			new Notification('登录成功', {
@@ -59,7 +57,6 @@
 	
 	// 显示错误通知
 	const showErrorNotification = (message: string) => {
-		console.error(`❌ ${message}`)
 		alert(message) // 使用原生alert显示错误
 	}
 	
@@ -77,8 +74,6 @@
 			}, 500)
 			
 		} catch (error: any) {
-			console.error('Login failed:', error)
-			
 			// 根据错误类型显示不同的错误消息
 			let errorMsg = '登录失败，请重试'
 			if (error?.response?.status === 401) {

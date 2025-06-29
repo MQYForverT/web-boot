@@ -93,9 +93,6 @@
 					routesStore.resetRoute()
 					
 					router(HOME_URL)
-					setTimeout(() => {
-						console.log('安全退出成功！')
-					}, 300)
 				}, 700)
 			}
 		}
