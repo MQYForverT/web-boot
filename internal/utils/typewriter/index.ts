@@ -2,12 +2,15 @@ interface TypewriterChar {
 	text: string
 	color?: string
 	type?: string
+	itemKey?: string
 }
 
 interface ChangeText {
 	textMap: Record<string, TypewriterChar[]>
 	lastChar?: TypewriterChar
 	queueSize?: number
+	itemKey?: string
+	type?: string
 }
 
 export interface TypewriterOptions {
@@ -15,8 +18,9 @@ export interface TypewriterOptions {
 	deleteSpeed?: number
 	pauseDuration?: number
 	onUpdate?: (obj: ChangeText) => void
-	onComplete?: (obj: ChangeText) => void
+	onComplete?: (obj: ChangeText, type: 'process' | 'flush') => void
 	onStart?: () => void
+	onTypeComplete?: (obj: ChangeText) => void
 }
 
 export class Typewriter {
@@ -29,12 +33,13 @@ export class Typewriter {
 
 	constructor(options?: TypewriterOptions & { immediateMode?: boolean }) {
 		this.options = {
-			speed: 15,
+			speed: 10,
 			deleteSpeed: 25,
 			pauseDuration: 1500,
 			onUpdate: () => {},
 			onComplete: () => {},
 			onStart: () => {},
+			onTypeComplete: () => {},
 			...options,
 		}
 		this.immediateMode = options?.immediateMode ?? false
@@ -43,11 +48,13 @@ export class Typewriter {
 	public async append(
 		text: string | { text?: string; content?: string; color?: string; type?: string },
 		type?: string,
+		itemKey?: string,
 	): Promise<void> {
 		if (typeof text === 'string') {
 			const chars = text.split('').map((char) => ({
 				text: char,
 				type,
+				itemKey,
 			}))
 			this.queue.push(...chars)
 		} else {
@@ -56,10 +63,16 @@ export class Typewriter {
 				text: char,
 				color: text.color,
 				type: text.type || type,
+				itemKey,
 			}))
 			this.queue.push(...chars)
 		}
-		this.options.onUpdate({ textMap: this.textMap, lastChar: undefined, queueSize: this.queue.length })
+		this.options.onUpdate({
+			textMap: this.textMap,
+			lastChar: undefined,
+			queueSize: this.queue.length,
+			itemKey: itemKey,
+		})
 		if (!this.isProcessing) {
 			if (this.immediateMode) {
 				this.process()
@@ -98,6 +111,8 @@ export class Typewriter {
 			if (this.textMap[type]) {
 				this.textMap[type] = []
 				this.options.onUpdate({ textMap: this.textMap, lastChar: undefined, queueSize: this.queue.length })
+				// 触发type完成事件
+				this.options.onTypeComplete({ textMap: this.textMap, lastChar: undefined, queueSize: this.queue.length, type })
 			}
 		} else {
 			this.clearAll()
@@ -111,7 +126,15 @@ export class Typewriter {
 	private async process(): Promise<void> {
 		if (this.queue.length === 0) {
 			this.isProcessing = false
-			this.options.onComplete({ textMap: this.textMap, lastChar: this.lastChar, queueSize: this.queue.length })
+			this.options.onComplete(
+				{
+					textMap: this.textMap,
+					lastChar: this.lastChar,
+					queueSize: this.queue.length,
+					itemKey: this.lastChar?.itemKey,
+				},
+				'process',
+			)
 			return
 		}
 
@@ -127,7 +150,25 @@ export class Typewriter {
 				}
 				this.textMap[type].push(char)
 				this.lastChar = char
-				this.options.onUpdate({ textMap: this.textMap, lastChar: this.lastChar, queueSize: this.queue.length })
+				this.options.onUpdate({
+					textMap: this.textMap,
+					lastChar: this.lastChar,
+					queueSize: this.queue.length,
+					itemKey: char.itemKey,
+				})
+
+				// 检查队列中是否还有相同type的字符
+				const hasMoreOfSameType = this.queue.some((qChar) => (qChar.type || 'default') === type)
+				if (!hasMoreOfSameType) {
+					// 如果队列中没有更多相同type的字符，触发type完成事件
+					this.options.onTypeComplete({
+						textMap: this.textMap,
+						lastChar: this.lastChar,
+						queueSize: this.queue.length,
+						itemKey: char.itemKey,
+						type,
+					})
+				}
 			}
 		}
 
@@ -139,7 +180,15 @@ export class Typewriter {
 	public async flush(): Promise<void> {
 		if (this.queue.length === 0) {
 			this.isProcessing = false
-			this.options.onComplete({ textMap: this.textMap, lastChar: this.lastChar, queueSize: this.queue.length })
+			this.options.onComplete(
+				{
+					textMap: this.textMap,
+					lastChar: this.lastChar,
+					queueSize: this.queue.length,
+					itemKey: this.lastChar?.itemKey,
+				},
+				'flush',
+			)
 			return
 		}
 
@@ -153,11 +202,32 @@ export class Typewriter {
 				}
 				this.textMap[type].push(char)
 				this.lastChar = char
-				this.options.onUpdate({ textMap: this.textMap, lastChar: this.lastChar, queueSize: this.queue.length })
+				this.options.onUpdate({
+					textMap: this.textMap,
+					lastChar: this.lastChar,
+					queueSize: this.queue.length,
+					itemKey: char.itemKey,
+				})
+
+				// 检查队列中是否还有相同type的字符
+				const hasMoreOfSameType = this.queue.some((qChar) => (qChar.type || 'default') === type)
+				if (!hasMoreOfSameType) {
+					// 如果队列中没有更多相同type的字符，触发type完成事件
+					this.options.onTypeComplete({
+						textMap: this.textMap,
+						lastChar: this.lastChar,
+						queueSize: this.queue.length,
+						itemKey: char.itemKey,
+						type,
+					})
+				}
 			}
 		}
 
-		this.options.onComplete({ textMap: this.textMap, lastChar: this.lastChar, queueSize: this.queue.length })
+		this.options.onComplete(
+			{ textMap: this.textMap, lastChar: this.lastChar, queueSize: this.queue.length, itemKey: this.lastChar?.itemKey },
+			'flush',
+		)
 		this.isProcessing = false
 	}
 }

@@ -95,8 +95,9 @@ export function compatibleScrollTo(element: HTMLElement, options: ScrollOptions 
 	let lastScrollLeft = element.scrollLeft
 	let lastScrollTop = element.scrollTop
 
+	let scrollHandler: () => void
 	if (onComplete) {
-		const scrollHandler = () => {
+		scrollHandler = () => {
 			if (!isScrolling) return
 
 			// 清除之前的超时
@@ -109,7 +110,7 @@ export function compatibleScrollTo(element: HTMLElement, options: ScrollOptions 
 			lastScrollLeft = currentLeft
 			lastScrollTop = currentTop
 
-			// 如果位置接近目标位置，等待 100ms 确保滚动真正停止
+			// 如果位置接近目标位置，等待 50ms 确保滚动真正停止
 			if (Math.abs(currentLeft - left) < 1 && Math.abs(currentTop - top) < 1) {
 				scrollTimeout = window.setTimeout(() => {
 					// 再次检查位置是否变化
@@ -118,11 +119,22 @@ export function compatibleScrollTo(element: HTMLElement, options: ScrollOptions 
 						element.removeEventListener('scroll', scrollHandler)
 						onComplete()
 					}
-				}, 100)
+				}, 50)
 			}
 		}
 
 		element.addEventListener('scroll', scrollHandler)
+		// 添加一个额外的超时保障，确保即使没有触发滚动事件也会调用回调
+		setTimeout(() => {
+			if (isScrolling) {
+				// 如果已经接近目标位置但没有触发回调，强制调用
+				if (Math.abs(element.scrollLeft - left) < 1 && Math.abs(element.scrollTop - top) < 1) {
+					isScrolling = false
+					element.removeEventListener('scroll', scrollHandler)
+					onComplete()
+				}
+			}
+		}, duration + 100) // 比动画时间稍长一点
 	}
 
 	function animate() {
@@ -137,6 +149,12 @@ export function compatibleScrollTo(element: HTMLElement, options: ScrollOptions 
 			element.scrollLeft = left
 			element.scrollTop = top
 			isScrolling = false
+
+			// 动画结束后直接调用 onComplete 回调
+			if (onComplete) {
+				element.removeEventListener('scroll', scrollHandler)
+				onComplete()
+			}
 		}
 	}
 
