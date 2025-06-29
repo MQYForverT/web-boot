@@ -1,0 +1,22 @@
+{
+	"name": "docx",
+	"description": "一键式任何前端语言开发后端管理系统",
+	"version": "0.0.1",
+	"license": "MIT",
+	"type": "module",
+	"scripts": {
+		"start": "vuepress dev docs --open",
+		"dev": "vuepress dev docs --open",
+		"dev:host": "vuepress dev docs --open --host 0.0.0.0",
+		"build": "vuepress build docs",
+		"clean-dev": "vuepress dev docs --clean-cache --open",
+		"update-package": "pnpm dlx vp-update"
+	},
+	"devDependencies": {
+		"@vuepress/bundler-vite": "2.0.0-rc.20",
+		"@vuepress/theme-default": "2.0.0-rc.88",
+		"sass-embedded": "^1.86.0",
+		"vue": "^3.5.13",
+		"vuepress": "2.0.0-rc.20"
+	}
+}
