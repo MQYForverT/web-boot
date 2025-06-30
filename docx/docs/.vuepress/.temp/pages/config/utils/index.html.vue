@@ -1,10 +1,28 @@
-<template><div><h1 id="实用工具函数" tabindex="-1"><a class="header-anchor" href="#实用工具函数"><span>实用工具函数</span></a></h1>
-<p><strong>@mqy/utils</strong> - 项目开发中常用的工具函数库，提供 HTTP 请求、进度条、特效等实用功能。</p>
-<h2 id="📦-安装" tabindex="-1"><a class="header-anchor" href="#📦-安装"><span>📦 安装</span></a></h2>
-<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh"><pre v-pre><code><span class="line"><span class="token function">npm</span> <span class="token function">install</span> @mqy/utils</span>
+<template>
+	<div>
+		<h1 id="实用工具函数" tabindex="-1">
+			<a class="header-anchor" href="#实用工具函数"><span>实用工具函数</span></a>
+		</h1>
+		<p><strong>@mqy/utils</strong> - 项目开发中常用的工具函数库，提供 HTTP 请求、进度条、特效等实用功能。</p>
+		<h2 id="📦-安装" tabindex="-1">
+			<a class="header-anchor" href="#📦-安装"><span>📦 安装</span></a>
+		</h2>
+		<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token function">npm</span> <span class="token function">install</span> @mqy/utils</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h2 id="🚀-快速开始" tabindex="-1"><a class="header-anchor" href="#🚀-快速开始"><span>🚀 快速开始</span></a></h2>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpRequest<span class="token punctuation">,</span> nprogress<span class="token punctuation">,</span> typewriter<span class="token punctuation">,</span> compatibleScrollTo <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="🚀-快速开始" tabindex="-1">
+			<a class="header-anchor" href="#🚀-快速开始"><span>🚀 快速开始</span></a>
+		</h2>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpRequest<span class="token punctuation">,</span> nprogress<span class="token punctuation">,</span> typewriter<span class="token punctuation">,</span> compatibleScrollTo <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// HTTP 请求</span></span>
 <span class="line"><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">await</span> httpRequest<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/api/users'</span><span class="token punctuation">)</span></span>
@@ -18,9 +36,32 @@
 <span class="line"><span class="token comment">// 兼容性滚动</span></span>
 <span class="line"><span class="token function">compatibleScrollTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span> top<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> behavior<span class="token operator">:</span> <span class="token string">'smooth'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="🌐-http-请求工具" tabindex="-1"><a class="header-anchor" href="#🌐-http-请求工具"><span>🌐 HTTP 请求工具</span></a></h2>
-<h3 id="基础用法" tabindex="-1"><a class="header-anchor" href="#基础用法"><span>基础用法</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpRequest <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="🌐-http-请求工具" tabindex="-1">
+			<a class="header-anchor" href="#🌐-http-请求工具"><span>🌐 HTTP 请求工具</span></a>
+		</h2>
+		<h3 id="基础用法" tabindex="-1">
+			<a class="header-anchor" href="#基础用法"><span>基础用法</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpRequest <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// GET 请求</span></span>
 <span class="line"><span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> httpRequest<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/api/users'</span><span class="token punctuation">)</span></span>
@@ -40,9 +81,36 @@
 <span class="line"><span class="token comment">// DELETE 请求</span></span>
 <span class="line"><span class="token keyword">await</span> httpRequest<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token string">'/api/users/1'</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="高级功能" tabindex="-1"><a class="header-anchor" href="#高级功能"><span>高级功能</span></a></h3>
-<p><strong>文件上传</strong>：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpRequest <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="高级功能" tabindex="-1">
+			<a class="header-anchor" href="#高级功能"><span>高级功能</span></a>
+		</h3>
+		<p><strong>文件上传</strong>：</p>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpRequest <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 单文件上传</span></span>
 <span class="line"><span class="token keyword">const</span> file <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'input[type="file"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>files<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></span>
@@ -59,8 +127,30 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>文件下载</strong>：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpRequest<span class="token punctuation">,</span> downBlobFile <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<p><strong>文件下载</strong>：</p>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpRequest<span class="token punctuation">,</span> downBlobFile <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 直接下载</span></span>
 <span class="line"><span class="token keyword">await</span> httpRequest<span class="token punctuation">.</span><span class="token function">download</span><span class="token punctuation">(</span><span class="token string">'/api/download/file.pdf'</span><span class="token punctuation">)</span></span>
@@ -76,8 +166,31 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="请求配置" tabindex="-1"><a class="header-anchor" href="#请求配置"><span>请求配置</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpRequest <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="请求配置" tabindex="-1">
+			<a class="header-anchor" href="#请求配置"><span>请求配置</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpRequest <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 全局配置</span></span>
 <span class="line">httpRequest<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
@@ -112,8 +225,50 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="错误处理" tabindex="-1"><a class="header-anchor" href="#错误处理"><span>错误处理</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">try</span> <span class="token punctuation">{</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="错误处理" tabindex="-1">
+			<a class="header-anchor" href="#错误处理"><span>错误处理</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">try</span> <span class="token punctuation">{</span></span>
 <span class="line">	<span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">await</span> httpRequest<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/api/users'</span><span class="token punctuation">)</span></span>
 <span class="line"><span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">	<span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
@@ -129,9 +284,34 @@
 <span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="📊-进度条工具" tabindex="-1"><a class="header-anchor" href="#📊-进度条工具"><span>📊 进度条工具</span></a></h2>
-<h3 id="基础用法-1" tabindex="-1"><a class="header-anchor" href="#基础用法-1"><span>基础用法</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> nprogress <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="📊-进度条工具" tabindex="-1">
+			<a class="header-anchor" href="#📊-进度条工具"><span>📊 进度条工具</span></a>
+		</h2>
+		<h3 id="基础用法-1" tabindex="-1">
+			<a class="header-anchor" href="#基础用法-1"><span>基础用法</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> nprogress <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 开始进度条</span></span>
 <span class="line">nprogress<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
@@ -145,8 +325,29 @@
 <span class="line"><span class="token comment">// 完成进度</span></span>
 <span class="line">nprogress<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="高级配置" tabindex="-1"><a class="header-anchor" href="#高级配置"><span>高级配置</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> nprogress <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="高级配置" tabindex="-1">
+			<a class="header-anchor" href="#高级配置"><span>高级配置</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> nprogress <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 自定义配置</span></span>
 <span class="line">nprogress<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
@@ -184,9 +385,54 @@
 <span class="line">  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="路由集成" tabindex="-1"><a class="header-anchor" href="#路由集成"><span>路由集成</span></a></h3>
-<p><strong>Vue Router</strong>：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> nprogress <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="路由集成" tabindex="-1">
+			<a class="header-anchor" href="#路由集成"><span>路由集成</span></a>
+		</h3>
+		<p><strong>Vue Router</strong>：</p>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> nprogress <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"><span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'./router'</span></span>
 <span class="line"></span>
 <span class="line">router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
@@ -198,8 +444,25 @@
 <span class="line">	nprogress<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>React Router</strong>：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> nprogress <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<p><strong>React Router</strong>：</p>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> nprogress <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> useLocation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-router-dom'</span></span>
 <span class="line"></span>
@@ -215,9 +478,34 @@
 <span class="line">  <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">></span><span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="⌨️-打字机效果" tabindex="-1"><a class="header-anchor" href="#⌨️-打字机效果"><span>⌨️ 打字机效果</span></a></h2>
-<h3 id="基础用法-2" tabindex="-1"><a class="header-anchor" href="#基础用法-2"><span>基础用法</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> typewriter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="⌨️-打字机效果" tabindex="-1">
+			<a class="header-anchor" href="#⌨️-打字机效果"><span>⌨️ 打字机效果</span></a>
+		</h2>
+		<h3 id="基础用法-2" tabindex="-1">
+			<a class="header-anchor" href="#基础用法-2"><span>基础用法</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> typewriter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 简单打字效果</span></span>
 <span class="line"><span class="token keyword">await</span> typewriter<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">'Hello World!'</span><span class="token punctuation">)</span></span>
@@ -226,8 +514,24 @@
 <span class="line"><span class="token keyword">const</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'typewriter'</span><span class="token punctuation">)</span></span>
 <span class="line"><span class="token keyword">await</span> typewriter<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">'Hello World!'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> element <span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="高级配置-1" tabindex="-1"><a class="header-anchor" href="#高级配置-1"><span>高级配置</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> typewriter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="高级配置-1" tabindex="-1">
+			<a class="header-anchor" href="#高级配置-1"><span>高级配置</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> typewriter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 完整配置</span></span>
 <span class="line"><span class="token keyword">await</span> typewriter<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">'Welcome to Web Boot!'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span></span>
@@ -262,8 +566,50 @@
 <span class="line">	deleteDelay<span class="token operator">:</span> <span class="token number">1000</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="多段文本" tabindex="-1"><a class="header-anchor" href="#多段文本"><span>多段文本</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> typewriter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="多段文本" tabindex="-1">
+			<a class="header-anchor" href="#多段文本"><span>多段文本</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> typewriter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 依次显示多段文本</span></span>
 <span class="line"><span class="token keyword">const</span> texts <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Welcome to Web Boot!'</span><span class="token punctuation">,</span> <span class="token string">'Build amazing applications.'</span><span class="token punctuation">,</span> <span class="token string">'With modern web technologies.'</span><span class="token punctuation">]</span></span>
@@ -277,8 +623,29 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="实时控制" tabindex="-1"><a class="header-anchor" href="#实时控制"><span>实时控制</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> typewriter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="实时控制" tabindex="-1">
+			<a class="header-anchor" href="#实时控制"><span>实时控制</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> typewriter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 开始打字</span></span>
 <span class="line"><span class="token keyword">const</span> instance <span class="token operator">=</span> typewriter<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token string">'Your text here...'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span></span>
@@ -298,9 +665,38 @@
 <span class="line"><span class="token comment">// 重置</span></span>
 <span class="line">instance<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="📜-兼容性滚动" tabindex="-1"><a class="header-anchor" href="#📜-兼容性滚动"><span>📜 兼容性滚动</span></a></h2>
-<h3 id="基础用法-3" tabindex="-1"><a class="header-anchor" href="#基础用法-3"><span>基础用法</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> compatibleScrollTo <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="📜-兼容性滚动" tabindex="-1">
+			<a class="header-anchor" href="#📜-兼容性滚动"><span>📜 兼容性滚动</span></a>
+		</h2>
+		<h3 id="基础用法-3" tabindex="-1">
+			<a class="header-anchor" href="#基础用法-3"><span>基础用法</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> compatibleScrollTo <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 滚动到顶部</span></span>
 <span class="line"><span class="token function">compatibleScrollTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span> top<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">)</span></span>
@@ -321,8 +717,36 @@
 <span class="line">	inline<span class="token operator">:</span> <span class="token string">'nearest'</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="高级功能-1" tabindex="-1"><a class="header-anchor" href="#高级功能-1"><span>高级功能</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> compatibleScrollTo <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="高级功能-1" tabindex="-1">
+			<a class="header-anchor" href="#高级功能-1"><span>高级功能</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> compatibleScrollTo <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 带回调的滚动</span></span>
 <span class="line"><span class="token function">compatibleScrollTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
@@ -351,9 +775,47 @@
 <span class="line">	behavior<span class="token operator">:</span> <span class="token string">'smooth'</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="🔄-函数重载工具" tabindex="-1"><a class="header-anchor" href="#🔄-函数重载工具"><span>🔄 函数重载工具</span></a></h2>
-<h3 id="基础用法-4" tabindex="-1"><a class="header-anchor" href="#基础用法-4"><span>基础用法</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> createOverload <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="🔄-函数重载工具" tabindex="-1">
+			<a class="header-anchor" href="#🔄-函数重载工具"><span>🔄 函数重载工具</span></a>
+		</h2>
+		<h3 id="基础用法-4" tabindex="-1">
+			<a class="header-anchor" href="#基础用法-4"><span>基础用法</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> createOverload <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 创建重载函数</span></span>
 <span class="line"><span class="token keyword">const</span> myFunction <span class="token operator">=</span> <span class="token function">createOverload</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
@@ -367,8 +829,29 @@
 <span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// "Number: 42"</span></span>
 <span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// "String: hello, Number: 42"</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="复杂类型支持" tabindex="-1"><a class="header-anchor" href="#复杂类型支持"><span>复杂类型支持</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> createOverload <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="复杂类型支持" tabindex="-1">
+			<a class="header-anchor" href="#复杂类型支持"><span>复杂类型支持</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> createOverload <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">interface</span> <span class="token class-name">User</span> <span class="token punctuation">{</span></span>
 <span class="line">	name<span class="token operator">:</span> <span class="token builtin">string</span></span>
@@ -392,9 +875,42 @@
 <span class="line"><span class="token function">processData</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'John'</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"><span class="token function">processData</span><span class="token punctuation">(</span><span class="token string">'user1'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'John'</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="🛠️-其他实用函数" tabindex="-1"><a class="header-anchor" href="#🛠️-其他实用函数"><span>🛠️ 其他实用函数</span></a></h2>
-<h3 id="防抖和节流" tabindex="-1"><a class="header-anchor" href="#防抖和节流"><span>防抖和节流</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> debounce<span class="token punctuation">,</span> throttle <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="🛠️-其他实用函数" tabindex="-1">
+			<a class="header-anchor" href="#🛠️-其他实用函数"><span>🛠️ 其他实用函数</span></a>
+		</h2>
+		<h3 id="防抖和节流" tabindex="-1">
+			<a class="header-anchor" href="#防抖和节流"><span>防抖和节流</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> debounce<span class="token punctuation">,</span> throttle <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 防抖</span></span>
 <span class="line"><span class="token keyword">const</span> debouncedFn <span class="token operator">=</span> <span class="token function">debounce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>value<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
@@ -410,8 +926,31 @@
 <span class="line">debouncedFn<span class="token punctuation">.</span><span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
 <span class="line">throttledFn<span class="token punctuation">.</span><span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="深拷贝" tabindex="-1"><a class="header-anchor" href="#深拷贝"><span>深拷贝</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> deepClone <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="深拷贝" tabindex="-1">
+			<a class="header-anchor" href="#深拷贝"><span>深拷贝</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> deepClone <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">const</span> original <span class="token operator">=</span> <span class="token punctuation">{</span></span>
 <span class="line">	name<span class="token operator">:</span> <span class="token string">'John'</span><span class="token punctuation">,</span></span>
@@ -424,8 +963,28 @@
 <span class="line"></span>
 <span class="line"><span class="token keyword">const</span> cloned <span class="token operator">=</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>original<span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="日期格式化" tabindex="-1"><a class="header-anchor" href="#日期格式化"><span>日期格式化</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> formatDate<span class="token punctuation">,</span> parseDate <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="日期格式化" tabindex="-1">
+			<a class="header-anchor" href="#日期格式化"><span>日期格式化</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> formatDate<span class="token punctuation">,</span> parseDate <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 格式化日期</span></span>
 <span class="line"><span class="token keyword">const</span> formatted <span class="token operator">=</span> <span class="token function">formatDate</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'YYYY-MM-DD HH:mm:ss'</span><span class="token punctuation">)</span></span>
@@ -434,8 +993,24 @@
 <span class="line"><span class="token comment">// 解析日期</span></span>
 <span class="line"><span class="token keyword">const</span> date <span class="token operator">=</span> <span class="token function">parseDate</span><span class="token punctuation">(</span><span class="token string">'2024-01-20'</span><span class="token punctuation">,</span> <span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="本地存储" tabindex="-1"><a class="header-anchor" href="#本地存储"><span>本地存储</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> storage <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="本地存储" tabindex="-1">
+			<a class="header-anchor" href="#本地存储"><span>本地存储</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> storage <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// localStorage 封装</span></span>
 <span class="line">storage<span class="token punctuation">.</span>local<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'John'</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">)</span></span>
@@ -450,9 +1025,33 @@
 <span class="line"><span class="token comment">// 带过期时间的存储</span></span>
 <span class="line">storage<span class="token punctuation">.</span>local<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'temp-data'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token number">3600</span><span class="token punctuation">)</span> <span class="token comment">// 1小时后过期</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="📋-完整示例" tabindex="-1"><a class="header-anchor" href="#📋-完整示例"><span>📋 完整示例</span></a></h2>
-<h3 id="综合使用示例" tabindex="-1"><a class="header-anchor" href="#综合使用示例"><span>综合使用示例</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpRequest<span class="token punctuation">,</span> nprogress<span class="token punctuation">,</span> typewriter<span class="token punctuation">,</span> compatibleScrollTo<span class="token punctuation">,</span> debounce <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="📋-完整示例" tabindex="-1">
+			<a class="header-anchor" href="#📋-完整示例"><span>📋 完整示例</span></a>
+		</h2>
+		<h3 id="综合使用示例" tabindex="-1">
+			<a class="header-anchor" href="#综合使用示例"><span>综合使用示例</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpRequest<span class="token punctuation">,</span> nprogress<span class="token punctuation">,</span> typewriter<span class="token punctuation">,</span> compatibleScrollTo<span class="token punctuation">,</span> debounce <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/utils'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">class</span> <span class="token class-name">DataService</span> <span class="token punctuation">{</span></span>
 <span class="line">	<span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
@@ -512,16 +1111,79 @@
 <span class="line">service<span class="token punctuation">.</span><span class="token function">showWelcome</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
 <span class="line">service<span class="token punctuation">.</span><span class="token function">loadData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="🚀-最佳实践" tabindex="-1"><a class="header-anchor" href="#🚀-最佳实践"><span>🚀 最佳实践</span></a></h2>
-<ol>
-<li><strong>统一错误处理</strong>：在应用入口配置全局错误拦截</li>
-<li><strong>合理使用防抖节流</strong>：避免频繁的网络请求或计算</li>
-<li><strong>进度反馈</strong>：长时间操作添加进度提示</li>
-<li><strong>用户体验优化</strong>：使用动画和特效提升交互体验</li>
-<li><strong>性能考虑</strong>：大数据量处理时注意内存占用</li>
-<li><strong>兼容性处理</strong>：在不同浏览器环境下测试工具函数</li>
-</ol>
-<p>通过使用 @mqy/utils，您可以大大提升开发效率，同时确保代码的健壮性和用户体验。</p>
-</div></template>
-
-
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="🚀-最佳实践" tabindex="-1">
+			<a class="header-anchor" href="#🚀-最佳实践"><span>🚀 最佳实践</span></a>
+		</h2>
+		<ol>
+			<li><strong>统一错误处理</strong>：在应用入口配置全局错误拦截</li>
+			<li><strong>合理使用防抖节流</strong>：避免频繁的网络请求或计算</li>
+			<li><strong>进度反馈</strong>：长时间操作添加进度提示</li>
+			<li><strong>用户体验优化</strong>：使用动画和特效提升交互体验</li>
+			<li><strong>性能考虑</strong>：大数据量处理时注意内存占用</li>
+			<li><strong>兼容性处理</strong>：在不同浏览器环境下测试工具函数</li>
+		</ol>
+		<p>通过使用 @mqy/utils，您可以大大提升开发效率，同时确保代码的健壮性和用户体验。</p>
+	</div>
+</template>

@@ -1,96 +1,166 @@
-<template><div><h1 id="web-components-组件库" tabindex="-1"><a class="header-anchor" href="#web-components-组件库"><span>Web Components 组件库</span></a></h1>
-<p><strong>Web Boot 的核心产品</strong> - 基于 Web Components 标准的企业级组件库，可在任何前端框架中使用，包括 Vue、React、Svelte、Angular 或原生 JavaScript。</p>
-<h2 id="🎯-核心优势" tabindex="-1"><a class="header-anchor" href="#🎯-核心优势"><span>🎯 核心优势</span></a></h2>
-<p><strong>🔧 框架无关</strong></p>
-<ul>
-<li>基于 Web Components 标准，不依赖特定框架</li>
-<li>可在任何现代浏览器中运行</li>
-<li>提供统一的 API，无论使用什么技术栈</li>
-</ul>
-<p><strong>⚡ 开箱即用</strong></p>
-<ul>
-<li>完整的后台管理系统解决方案</li>
-<li>无需重复开发常见功能</li>
-<li>高度可配置化，满足各种需求</li>
-</ul>
-<h2 id="组件概览" tabindex="-1"><a class="header-anchor" href="#组件概览"><span>组件概览</span></a></h2>
-<h3 id="🏗️-布局组件-backgroundlayout" tabindex="-1"><a class="header-anchor" href="#🏗️-布局组件-backgroundlayout"><span>🏗️ <RouteLink to="/components/layout/">布局组件 (BackgroundLayout)</RouteLink></span></a></h3>
-<ul>
-<li>完整的后台管理系统布局</li>
-<li>响应式设计，支持移动端</li>
-<li>多种布局模式切换</li>
-<li>侧边栏折叠/展开功能</li>
-<li>面包屑导航和标签页管理</li>
-<li>主题切换（明暗模式）</li>
-</ul>
-<h3 id="🔐-登录组件-backgroundlogin" tabindex="-1"><a class="header-anchor" href="#🔐-登录组件-backgroundlogin"><span>🔐 <RouteLink to="/components/login/">登录组件 (BackgroundLogin)</RouteLink></span></a></h3>
-<ul>
-<li>美观的登录界面设计</li>
-<li>表单验证和错误处理</li>
-<li>多种登录方式支持</li>
-<li>响应式布局适配</li>
-<li>国际化支持</li>
-</ul>
-<h3 id="🧩-通用组件" tabindex="-1"><a class="header-anchor" href="#🧩-通用组件"><span>🧩 <RouteLink to="/components/common/">通用组件</RouteLink></span></a></h3>
-<ul>
-<li>主题切换组件</li>
-<li>语言切换组件</li>
-<li>全局状态管理</li>
-<li>通用工具函数</li>
-</ul>
-<h2 id="组件特性" tabindex="-1"><a class="header-anchor" href="#组件特性"><span>组件特性</span></a></h2>
-<h3 id="🎨-统一设计风格" tabindex="-1"><a class="header-anchor" href="#🎨-统一设计风格"><span>🎨 统一设计风格</span></a></h3>
-<ul>
-<li>现代化的 UI 设计</li>
-<li>一致的交互体验</li>
-<li>丰富的动画效果</li>
-<li>优雅的过渡动画</li>
-</ul>
-<h3 id="🔧-高度可配置" tabindex="-1"><a class="header-anchor" href="#🔧-高度可配置"><span>🔧 高度可配置</span></a></h3>
-<ul>
-<li>灵活的配置选项</li>
-<li>支持自定义主题</li>
-<li>可扩展的功能模块</li>
-<li>类型安全的 API</li>
-</ul>
-<h3 id="📱-响应式设计" tabindex="-1"><a class="header-anchor" href="#📱-响应式设计"><span>📱 响应式设计</span></a></h3>
-<ul>
-<li>移动端优先设计</li>
-<li>自适应不同屏幕尺寸</li>
-<li>触摸友好的交互</li>
-<li>优化的性能表现</li>
-</ul>
-<h3 id="🌍-国际化支持" tabindex="-1"><a class="header-anchor" href="#🌍-国际化支持"><span>🌍 国际化支持</span></a></h3>
-<ul>
-<li>多语言切换</li>
-<li>本地化配置</li>
-<li>RTL 语言支持</li>
-<li>时区处理</li>
-</ul>
-<h2 id="安装使用" tabindex="-1"><a class="header-anchor" href="#安装使用"><span>安装使用</span></a></h2>
-<h3 id="npm-安装" tabindex="-1"><a class="header-anchor" href="#npm-安装"><span>NPM 安装</span></a></h3>
-<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh"><pre v-pre><code><span class="line"><span class="token comment"># 安装企业级组件库</span></span>
+<template>
+	<div>
+		<h1 id="web-components-组件库" tabindex="-1">
+			<a class="header-anchor" href="#web-components-组件库"><span>Web Components 组件库</span></a>
+		</h1>
+		<p>
+			<strong>Web Boot 的核心产品</strong> - 基于 Web Components 标准的企业级组件库，可在任何前端框架中使用，包括
+			Vue、React、Svelte、Angular 或原生 JavaScript。
+		</p>
+		<h2 id="🎯-核心优势" tabindex="-1">
+			<a class="header-anchor" href="#🎯-核心优势"><span>🎯 核心优势</span></a>
+		</h2>
+		<p><strong>🔧 框架无关</strong></p>
+		<ul>
+			<li>基于 Web Components 标准，不依赖特定框架</li>
+			<li>可在任何现代浏览器中运行</li>
+			<li>提供统一的 API，无论使用什么技术栈</li>
+		</ul>
+		<p><strong>⚡ 开箱即用</strong></p>
+		<ul>
+			<li>完整的后台管理系统解决方案</li>
+			<li>无需重复开发常见功能</li>
+			<li>高度可配置化，满足各种需求</li>
+		</ul>
+		<h2 id="组件概览" tabindex="-1">
+			<a class="header-anchor" href="#组件概览"><span>组件概览</span></a>
+		</h2>
+		<h3 id="🏗️-布局组件-backgroundlayout" tabindex="-1">
+			<a class="header-anchor" href="#🏗️-布局组件-backgroundlayout"
+				><span>🏗️ <RouteLink to="/components/layout/">布局组件 (BackgroundLayout)</RouteLink></span></a
+			>
+		</h3>
+		<ul>
+			<li>完整的后台管理系统布局</li>
+			<li>响应式设计，支持移动端</li>
+			<li>多种布局模式切换</li>
+			<li>侧边栏折叠/展开功能</li>
+			<li>面包屑导航和标签页管理</li>
+			<li>主题切换（明暗模式）</li>
+		</ul>
+		<h3 id="🔐-登录组件-backgroundlogin" tabindex="-1">
+			<a class="header-anchor" href="#🔐-登录组件-backgroundlogin"
+				><span>🔐 <RouteLink to="/components/login/">登录组件 (BackgroundLogin)</RouteLink></span></a
+			>
+		</h3>
+		<ul>
+			<li>美观的登录界面设计</li>
+			<li>表单验证和错误处理</li>
+			<li>多种登录方式支持</li>
+			<li>响应式布局适配</li>
+			<li>国际化支持</li>
+		</ul>
+		<h3 id="🧩-通用组件" tabindex="-1">
+			<a class="header-anchor" href="#🧩-通用组件"
+				><span>🧩 <RouteLink to="/components/common/">通用组件</RouteLink></span></a
+			>
+		</h3>
+		<ul>
+			<li>主题切换组件</li>
+			<li>语言切换组件</li>
+			<li>全局状态管理</li>
+			<li>通用工具函数</li>
+		</ul>
+		<h2 id="组件特性" tabindex="-1">
+			<a class="header-anchor" href="#组件特性"><span>组件特性</span></a>
+		</h2>
+		<h3 id="🎨-统一设计风格" tabindex="-1">
+			<a class="header-anchor" href="#🎨-统一设计风格"><span>🎨 统一设计风格</span></a>
+		</h3>
+		<ul>
+			<li>现代化的 UI 设计</li>
+			<li>一致的交互体验</li>
+			<li>丰富的动画效果</li>
+			<li>优雅的过渡动画</li>
+		</ul>
+		<h3 id="🔧-高度可配置" tabindex="-1">
+			<a class="header-anchor" href="#🔧-高度可配置"><span>🔧 高度可配置</span></a>
+		</h3>
+		<ul>
+			<li>灵活的配置选项</li>
+			<li>支持自定义主题</li>
+			<li>可扩展的功能模块</li>
+			<li>类型安全的 API</li>
+		</ul>
+		<h3 id="📱-响应式设计" tabindex="-1">
+			<a class="header-anchor" href="#📱-响应式设计"><span>📱 响应式设计</span></a>
+		</h3>
+		<ul>
+			<li>移动端优先设计</li>
+			<li>自适应不同屏幕尺寸</li>
+			<li>触摸友好的交互</li>
+			<li>优化的性能表现</li>
+		</ul>
+		<h3 id="🌍-国际化支持" tabindex="-1">
+			<a class="header-anchor" href="#🌍-国际化支持"><span>🌍 国际化支持</span></a>
+		</h3>
+		<ul>
+			<li>多语言切换</li>
+			<li>本地化配置</li>
+			<li>RTL 语言支持</li>
+			<li>时区处理</li>
+		</ul>
+		<h2 id="安装使用" tabindex="-1">
+			<a class="header-anchor" href="#安装使用"><span>安装使用</span></a>
+		</h2>
+		<h3 id="npm-安装" tabindex="-1">
+			<a class="header-anchor" href="#npm-安装"><span>NPM 安装</span></a>
+		</h3>
+		<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh">
+			<pre v-pre><code><span class="line"><span class="token comment"># 安装企业级组件库</span></span>
 <span class="line"><span class="token function">npm</span> <span class="token function">install</span> @mqy/component-private</span>
 <span class="line"></span>
 <span class="line"><span class="token comment"># 安装通用组件库</span></span>
 <span class="line"><span class="token function">npm</span> <span class="token function">install</span> @mqy/component-public</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="框架集成" tabindex="-1"><a class="header-anchor" href="#框架集成"><span>框架集成</span></a></h3>
-<p><strong>原生 HTML</strong></p>
-<div class="language-html line-numbers-mode" data-highlighter="prismjs" data-ext="html"><pre v-pre><code><span class="line"><span class="token comment">&lt;!-- 直接在 HTML 中使用 --></span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="框架集成" tabindex="-1">
+			<a class="header-anchor" href="#框架集成"><span>框架集成</span></a>
+		</h3>
+		<p><strong>原生 HTML</strong></p>
+		<div class="language-html line-numbers-mode" data-highlighter="prismjs" data-ext="html">
+			<pre v-pre><code><span class="line"><span class="token comment">&lt;!-- 直接在 HTML 中使用 --></span></span>
 <span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mqy-background-layout</span> <span class="token attr-name">theme</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
 <span class="line">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mqy-background-login</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mqy-background-login</span><span class="token punctuation">></span></span></span>
 <span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mqy-background-layout</span><span class="token punctuation">></span></span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>Vue 3</strong></p>
-<div class="language-vue line-numbers-mode" data-highlighter="prismjs" data-ext="vue"><pre v-pre><code><span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<p><strong>Vue 3</strong></p>
+		<div class="language-vue line-numbers-mode" data-highlighter="prismjs" data-ext="vue">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span></span>
 <span class="line">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mqy-background-layout</span> <span class="token attr-name">:theme-config</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>config<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
 <span class="line">		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span> <span class="token punctuation">/></span></span></span>
 <span class="line">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mqy-background-layout</span><span class="token punctuation">></span></span></span>
 <span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>React</strong></p>
-<div class="language-jsx line-numbers-mode" data-highlighter="prismjs" data-ext="jsx"><pre v-pre><code><span class="line"><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<p><strong>React</strong></p>
+		<div class="language-jsx line-numbers-mode" data-highlighter="prismjs" data-ext="jsx">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">	<span class="token keyword">return</span> <span class="token punctuation">(</span></span>
 <span class="line">		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mqy-background-layout</span> <span class="token attr-name">themeConfig</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>config<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span>
 <span class="line">			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Routes</span></span><span class="token punctuation">></span></span><span class="token plain-text">...</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Routes</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span>
@@ -98,15 +168,39 @@
 <span class="line">	<span class="token punctuation">)</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>Svelte</strong></p>
-<div class="language-svelte line-numbers-mode" data-highlighter="prismjs" data-ext="svelte"><pre v-pre><code><span class="line">&lt;mqy-background-layout bind:themeConfig={config}&gt;</span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<p><strong>Svelte</strong></p>
+		<div class="language-svelte line-numbers-mode" data-highlighter="prismjs" data-ext="svelte">
+			<pre v-pre><code><span class="line">&lt;mqy-background-layout bind:themeConfig={config}&gt;</span>
 <span class="line">  &lt;main&gt;</span>
 <span class="line">    &lt;!-- 你的应用内容 --&gt;</span>
 <span class="line">  &lt;/main&gt;</span>
 <span class="line">&lt;/mqy-background-layout&gt;</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="配置示例" tabindex="-1"><a class="header-anchor" href="#配置示例"><span>配置示例</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">const</span> layoutConfig <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="配置示例" tabindex="-1">
+			<a class="header-anchor" href="#配置示例"><span>配置示例</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">const</span> layoutConfig <span class="token operator">=</span> <span class="token punctuation">{</span></span>
 <span class="line">	<span class="token comment">// 主题配置</span></span>
 <span class="line">	theme<span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">,</span> <span class="token comment">// 'light' | 'dark'</span></span>
 <span class="line"></span>
@@ -135,8 +229,42 @@
 <span class="line">	<span class="token comment">// 其他配置...</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="组件架构" tabindex="-1"><a class="header-anchor" href="#组件架构"><span>组件架构</span></a></h2>
-<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line">components/</span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="组件架构" tabindex="-1">
+			<a class="header-anchor" href="#组件架构"><span>组件架构</span></a>
+		</h2>
+		<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text">
+			<pre v-pre><code><span class="line">components/</span>
 <span class="line">├── BackgroundLayout/     # 布局组件</span>
 <span class="line">│   ├── component/       # 子组件</span>
 <span class="line">│   │   ├── Aside/      # 侧边栏</span>
@@ -156,9 +284,36 @@
 <span class="line">    ├── utils/          # 工具函数</span>
 <span class="line">    └── styles/         # 全局样式</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="开发指南" tabindex="-1"><a class="header-anchor" href="#开发指南"><span>开发指南</span></a></h2>
-<h3 id="自定义主题" tabindex="-1"><a class="header-anchor" href="#自定义主题"><span>自定义主题</span></a></h3>
-<div class="language-scss line-numbers-mode" data-highlighter="prismjs" data-ext="scss"><pre v-pre><code><span class="line"><span class="token comment">// 定义主题变量</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="开发指南" tabindex="-1">
+			<a class="header-anchor" href="#开发指南"><span>开发指南</span></a>
+		</h2>
+		<h3 id="自定义主题" tabindex="-1">
+			<a class="header-anchor" href="#自定义主题"><span>自定义主题</span></a>
+		</h3>
+		<div class="language-scss line-numbers-mode" data-highlighter="prismjs" data-ext="scss">
+			<pre v-pre><code><span class="line"><span class="token comment">// 定义主题变量</span></span>
 <span class="line"><span class="token selector">:root </span><span class="token punctuation">{</span></span>
 <span class="line">	<span class="token property">--primary-color</span><span class="token punctuation">:</span> #1890ff<span class="token punctuation">;</span></span>
 <span class="line">	<span class="token property">--success-color</span><span class="token punctuation">:</span> #52c41a<span class="token punctuation">;</span></span>
@@ -178,8 +333,33 @@
 <span class="line">	<span class="token property">--text-color</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="扩展组件" tabindex="-1"><a class="header-anchor" href="#扩展组件"><span>扩展组件</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// 扩展布局组件</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="扩展组件" tabindex="-1">
+			<a class="header-anchor" href="#扩展组件"><span>扩展组件</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// 扩展布局组件</span></span>
 <span class="line"><span class="token keyword">interface</span> <span class="token class-name">CustomLayoutConfig</span> <span class="token keyword">extends</span> <span class="token class-name">LayoutConfig</span> <span class="token punctuation">{</span></span>
 <span class="line">	<span class="token comment">// 添加自定义配置</span></span>
 <span class="line">	customFeature<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></span>
@@ -194,8 +374,28 @@
 <span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="事件处理" tabindex="-1"><a class="header-anchor" href="#事件处理"><span>事件处理</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// 组件事件</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="事件处理" tabindex="-1">
+			<a class="header-anchor" href="#事件处理"><span>事件处理</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// 组件事件</span></span>
 <span class="line"><span class="token keyword">interface</span> <span class="token class-name">LayoutEvents</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token string-property property">'update:theme'</span><span class="token operator">:</span> <span class="token punctuation">(</span>theme<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">void</span></span>
 <span class="line">  <span class="token string-property property">'update:collapsed'</span><span class="token operator">:</span> <span class="token punctuation">(</span>collapsed<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">void</span></span>
@@ -210,73 +410,107 @@
 <span class="line">  <span class="token decorator"><span class="token at operator">@</span><span class="token function">tab</span></span><span class="token operator">-</span>close<span class="token operator">=</span><span class="token string">"handleTabClose"</span></span>
 <span class="line"><span class="token operator">/</span><span class="token operator">></span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="最佳实践" tabindex="-1"><a class="header-anchor" href="#最佳实践"><span>最佳实践</span></a></h2>
-<h3 id="_1-配置管理" tabindex="-1"><a class="header-anchor" href="#_1-配置管理"><span>1. 配置管理</span></a></h3>
-<ul>
-<li>使用 TypeScript 确保配置类型安全</li>
-<li>将配置文件独立管理</li>
-<li>支持运行时动态配置</li>
-</ul>
-<h3 id="_2-性能优化" tabindex="-1"><a class="header-anchor" href="#_2-性能优化"><span>2. 性能优化</span></a></h3>
-<ul>
-<li>使用虚拟滚动处理大量数据</li>
-<li>实现组件懒加载</li>
-<li>优化重渲染性能</li>
-</ul>
-<h3 id="_3-可访问性" tabindex="-1"><a class="header-anchor" href="#_3-可访问性"><span>3. 可访问性</span></a></h3>
-<ul>
-<li>支持键盘导航</li>
-<li>提供 ARIA 标签</li>
-<li>确保颜色对比度</li>
-</ul>
-<h3 id="_4-测试覆盖" tabindex="-1"><a class="header-anchor" href="#_4-测试覆盖"><span>4. 测试覆盖</span></a></h3>
-<ul>
-<li>单元测试覆盖核心逻辑</li>
-<li>集成测试验证组件交互</li>
-<li>E2E 测试保证用户体验</li>
-</ul>
-<h2 id="浏览器支持" tabindex="-1"><a class="header-anchor" href="#浏览器支持"><span>浏览器支持</span></a></h2>
-<table>
-<thead>
-<tr>
-<th>浏览器</th>
-<th>版本</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Chrome</td>
-<td>≥ 80</td>
-</tr>
-<tr>
-<td>Firefox</td>
-<td>≥ 78</td>
-</tr>
-<tr>
-<td>Safari</td>
-<td>≥ 14</td>
-</tr>
-<tr>
-<td>Edge</td>
-<td>≥ 80</td>
-</tr>
-</tbody>
-</table>
-<h2 id="更新日志" tabindex="-1"><a class="header-anchor" href="#更新日志"><span>更新日志</span></a></h2>
-<h3 id="v2-0-0-2024-01-20" tabindex="-1"><a class="header-anchor" href="#v2-0-0-2024-01-20"><span>v2.0.0 (2024-01-20)</span></a></h3>
-<ul>
-<li>🎉 支持 Vue 3、React 18、Svelte 5</li>
-<li>🆕 新增暗色主题支持</li>
-<li>🔧 重构组件架构</li>
-<li>📱 优化移动端体验</li>
-</ul>
-<h3 id="v1-5-0-2023-12-15" tabindex="-1"><a class="header-anchor" href="#v1-5-0-2023-12-15"><span>v1.5.0 (2023-12-15)</span></a></h3>
-<ul>
-<li>✨ 新增标签页管理功能</li>
-<li>🐛 修复侧边栏折叠问题</li>
-<li>💄 优化组件样式</li>
-</ul>
-<p>查看完整的更新日志和迁移指南，请访问各组件的详细文档页面。</p>
-</div></template>
-
-
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="最佳实践" tabindex="-1">
+			<a class="header-anchor" href="#最佳实践"><span>最佳实践</span></a>
+		</h2>
+		<h3 id="_1-配置管理" tabindex="-1">
+			<a class="header-anchor" href="#_1-配置管理"><span>1. 配置管理</span></a>
+		</h3>
+		<ul>
+			<li>使用 TypeScript 确保配置类型安全</li>
+			<li>将配置文件独立管理</li>
+			<li>支持运行时动态配置</li>
+		</ul>
+		<h3 id="_2-性能优化" tabindex="-1">
+			<a class="header-anchor" href="#_2-性能优化"><span>2. 性能优化</span></a>
+		</h3>
+		<ul>
+			<li>使用虚拟滚动处理大量数据</li>
+			<li>实现组件懒加载</li>
+			<li>优化重渲染性能</li>
+		</ul>
+		<h3 id="_3-可访问性" tabindex="-1">
+			<a class="header-anchor" href="#_3-可访问性"><span>3. 可访问性</span></a>
+		</h3>
+		<ul>
+			<li>支持键盘导航</li>
+			<li>提供 ARIA 标签</li>
+			<li>确保颜色对比度</li>
+		</ul>
+		<h3 id="_4-测试覆盖" tabindex="-1">
+			<a class="header-anchor" href="#_4-测试覆盖"><span>4. 测试覆盖</span></a>
+		</h3>
+		<ul>
+			<li>单元测试覆盖核心逻辑</li>
+			<li>集成测试验证组件交互</li>
+			<li>E2E 测试保证用户体验</li>
+		</ul>
+		<h2 id="浏览器支持" tabindex="-1">
+			<a class="header-anchor" href="#浏览器支持"><span>浏览器支持</span></a>
+		</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>浏览器</th>
+					<th>版本</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Chrome</td>
+					<td>≥ 80</td>
+				</tr>
+				<tr>
+					<td>Firefox</td>
+					<td>≥ 78</td>
+				</tr>
+				<tr>
+					<td>Safari</td>
+					<td>≥ 14</td>
+				</tr>
+				<tr>
+					<td>Edge</td>
+					<td>≥ 80</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 id="更新日志" tabindex="-1">
+			<a class="header-anchor" href="#更新日志"><span>更新日志</span></a>
+		</h2>
+		<h3 id="v2-0-0-2024-01-20" tabindex="-1">
+			<a class="header-anchor" href="#v2-0-0-2024-01-20"><span>v2.0.0 (2024-01-20)</span></a>
+		</h3>
+		<ul>
+			<li>🎉 支持 Vue 3、React 18、Svelte 5</li>
+			<li>🆕 新增暗色主题支持</li>
+			<li>🔧 重构组件架构</li>
+			<li>📱 优化移动端体验</li>
+		</ul>
+		<h3 id="v1-5-0-2023-12-15" tabindex="-1">
+			<a class="header-anchor" href="#v1-5-0-2023-12-15"><span>v1.5.0 (2023-12-15)</span></a>
+		</h3>
+		<ul>
+			<li>✨ 新增标签页管理功能</li>
+			<li>🐛 修复侧边栏折叠问题</li>
+			<li>💄 优化组件样式</li>
+		</ul>
+		<p>查看完整的更新日志和迁移指南，请访问各组件的详细文档页面。</p>
+	</div>
+</template>

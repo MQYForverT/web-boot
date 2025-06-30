@@ -1,11 +1,29 @@
-<template><div><h1 id="vite-配置" tabindex="-1"><a class="header-anchor" href="#vite-配置"><span>Vite 配置</span></a></h1>
-<p><strong>@mqy/vite-config</strong> - 优化的构建配置包，提供框架特定的 Vite 配置和插件集成。</p>
-<h2 id="📦-安装" tabindex="-1"><a class="header-anchor" href="#📦-安装"><span>📦 安装</span></a></h2>
-<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh"><pre v-pre><code><span class="line"><span class="token function">npm</span> <span class="token function">install</span> @mqy/vite-config --save-dev</span>
+<template>
+	<div>
+		<h1 id="vite-配置" tabindex="-1">
+			<a class="header-anchor" href="#vite-配置"><span>Vite 配置</span></a>
+		</h1>
+		<p><strong>@mqy/vite-config</strong> - 优化的构建配置包，提供框架特定的 Vite 配置和插件集成。</p>
+		<h2 id="📦-安装" tabindex="-1">
+			<a class="header-anchor" href="#📦-安装"><span>📦 安装</span></a>
+		</h2>
+		<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token function">npm</span> <span class="token function">install</span> @mqy/vite-config --save-dev</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h2 id="🚀-快速开始" tabindex="-1"><a class="header-anchor" href="#🚀-快速开始"><span>🚀 快速开始</span></a></h2>
-<h3 id="vue-项目" tabindex="-1"><a class="header-anchor" href="#vue-项目"><span>Vue 项目</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="🚀-快速开始" tabindex="-1">
+			<a class="header-anchor" href="#🚀-快速开始"><span>🚀 快速开始</span></a>
+		</h2>
+		<h3 id="vue-项目" tabindex="-1">
+			<a class="header-anchor" href="#vue-项目"><span>Vue 项目</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/vite-config/vue'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
@@ -15,8 +33,23 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="react-项目" tabindex="-1"><a class="header-anchor" href="#react-项目"><span>React 项目</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="react-项目" tabindex="-1">
+			<a class="header-anchor" href="#react-项目"><span>React 项目</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/vite-config/react'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
@@ -26,8 +59,23 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="svelte-项目" tabindex="-1"><a class="header-anchor" href="#svelte-项目"><span>Svelte 项目</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="svelte-项目" tabindex="-1">
+			<a class="header-anchor" href="#svelte-项目"><span>Svelte 项目</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/vite-config/svelte'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
@@ -37,41 +85,62 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="🔧-内置插件" tabindex="-1"><a class="header-anchor" href="#🔧-内置插件"><span>🔧 内置插件</span></a></h2>
-<h3 id="核心插件" tabindex="-1"><a class="header-anchor" href="#核心插件"><span>核心插件</span></a></h3>
-<p><strong>🎨 UnoCSS</strong></p>
-<ul>
-<li>原子化 CSS 框架</li>
-<li>按需生成样式</li>
-<li>自定义主题支持</li>
-</ul>
-<p><strong>📦 Auto Import</strong></p>
-<ul>
-<li>自动导入 Vue/React/Svelte API</li>
-<li>自定义导入规则</li>
-<li>TypeScript 类型支持</li>
-</ul>
-<p><strong>🧩 Components</strong></p>
-<ul>
-<li>组件自动注册</li>
-<li>按需导入组件</li>
-<li>支持多种组件库</li>
-</ul>
-<p><strong>📊 Bundle Analyzer</strong></p>
-<ul>
-<li>打包分析工具</li>
-<li>可视化依赖关系</li>
-<li>体积优化建议</li>
-</ul>
-<p><strong>🗜️ Compression</strong></p>
-<ul>
-<li>Gzip/Brotli 压缩</li>
-<li>资源优化</li>
-<li>缓存策略</li>
-</ul>
-<h2 id="📋-完整配置选项" tabindex="-1"><a class="header-anchor" href="#📋-完整配置选项"><span>📋 完整配置选项</span></a></h2>
-<h3 id="vue-项目配置" tabindex="-1"><a class="header-anchor" href="#vue-项目配置"><span>Vue 项目配置</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="🔧-内置插件" tabindex="-1">
+			<a class="header-anchor" href="#🔧-内置插件"><span>🔧 内置插件</span></a>
+		</h2>
+		<h3 id="核心插件" tabindex="-1">
+			<a class="header-anchor" href="#核心插件"><span>核心插件</span></a>
+		</h3>
+		<p><strong>🎨 UnoCSS</strong></p>
+		<ul>
+			<li>原子化 CSS 框架</li>
+			<li>按需生成样式</li>
+			<li>自定义主题支持</li>
+		</ul>
+		<p><strong>📦 Auto Import</strong></p>
+		<ul>
+			<li>自动导入 Vue/React/Svelte API</li>
+			<li>自定义导入规则</li>
+			<li>TypeScript 类型支持</li>
+		</ul>
+		<p><strong>🧩 Components</strong></p>
+		<ul>
+			<li>组件自动注册</li>
+			<li>按需导入组件</li>
+			<li>支持多种组件库</li>
+		</ul>
+		<p><strong>📊 Bundle Analyzer</strong></p>
+		<ul>
+			<li>打包分析工具</li>
+			<li>可视化依赖关系</li>
+			<li>体积优化建议</li>
+		</ul>
+		<p><strong>🗜️ Compression</strong></p>
+		<ul>
+			<li>Gzip/Brotli 压缩</li>
+			<li>资源优化</li>
+			<li>缓存策略</li>
+		</ul>
+		<h2 id="📋-完整配置选项" tabindex="-1">
+			<a class="header-anchor" href="#📋-完整配置选项"><span>📋 完整配置选项</span></a>
+		</h2>
+		<h3 id="vue-项目配置" tabindex="-1">
+			<a class="header-anchor" href="#vue-项目配置"><span>Vue 项目配置</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/vite-config/vue'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
@@ -138,8 +207,80 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="react-项目配置" tabindex="-1"><a class="header-anchor" href="#react-项目配置"><span>React 项目配置</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="react-项目配置" tabindex="-1">
+			<a class="header-anchor" href="#react-项目配置"><span>React 项目配置</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/vite-config/react'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
@@ -168,8 +309,42 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="svelte-项目配置" tabindex="-1"><a class="header-anchor" href="#svelte-项目配置"><span>Svelte 项目配置</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="svelte-项目配置" tabindex="-1">
+			<a class="header-anchor" href="#svelte-项目配置"><span>Svelte 项目配置</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/vite-config/svelte'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
@@ -189,9 +364,36 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="🎯-自定义插件" tabindex="-1"><a class="header-anchor" href="#🎯-自定义插件"><span>🎯 自定义插件</span></a></h2>
-<h3 id="添加自定义插件" tabindex="-1"><a class="header-anchor" href="#添加自定义插件"><span>添加自定义插件</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="🎯-自定义插件" tabindex="-1">
+			<a class="header-anchor" href="#🎯-自定义插件"><span>🎯 自定义插件</span></a>
+		</h2>
+		<h3 id="添加自定义插件" tabindex="-1">
+			<a class="header-anchor" href="#添加自定义插件"><span>添加自定义插件</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/vite-config/vue'</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> createSvgIconsPlugin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite-plugin-svg-icons'</span></span>
 <span class="line"><span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span></span>
@@ -206,8 +408,28 @@
 <span class="line">	<span class="token punctuation">]</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="自定义-unocss-配置" tabindex="-1"><a class="header-anchor" href="#自定义-unocss-配置"><span>自定义 UnoCSS 配置</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="自定义-unocss-配置" tabindex="-1">
+			<a class="header-anchor" href="#自定义-unocss-配置"><span>自定义 UnoCSS 配置</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// vite.config.ts</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mqy/vite-config/vue'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
@@ -231,9 +453,42 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="🏗️-构建优化" tabindex="-1"><a class="header-anchor" href="#🏗️-构建优化"><span>🏗️ 构建优化</span></a></h2>
-<h3 id="代码分割" tabindex="-1"><a class="header-anchor" href="#代码分割"><span>代码分割</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="🏗️-构建优化" tabindex="-1">
+			<a class="header-anchor" href="#🏗️-构建优化"><span>🏗️ 构建优化</span></a>
+		</h2>
+		<h3 id="代码分割" tabindex="-1">
+			<a class="header-anchor" href="#代码分割"><span>代码分割</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
 <span class="line">	build<span class="token operator">:</span> <span class="token punctuation">{</span></span>
 <span class="line">		rollupOptions<span class="token operator">:</span> <span class="token punctuation">{</span></span>
 <span class="line">			output<span class="token operator">:</span> <span class="token punctuation">{</span></span>
@@ -248,8 +503,30 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="预加载优化" tabindex="-1"><a class="header-anchor" href="#预加载优化"><span>预加载优化</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="预加载优化" tabindex="-1">
+			<a class="header-anchor" href="#预加载优化"><span>预加载优化</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
 <span class="line">	build<span class="token operator">:</span> <span class="token punctuation">{</span></span>
 <span class="line">		rollupOptions<span class="token operator">:</span> <span class="token punctuation">{</span></span>
 <span class="line">			output<span class="token operator">:</span> <span class="token punctuation">{</span></span>
@@ -265,8 +542,31 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="资源处理" tabindex="-1"><a class="header-anchor" href="#资源处理"><span>资源处理</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="资源处理" tabindex="-1">
+			<a class="header-anchor" href="#资源处理"><span>资源处理</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
 <span class="line">	<span class="token comment">// 静态资源处理</span></span>
 <span class="line">	assetsInclude<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'**/*.woff'</span><span class="token punctuation">,</span> <span class="token string">'**/*.woff2'</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
 <span class="line"></span>
@@ -290,9 +590,42 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="🔍-开发工具" tabindex="-1"><a class="header-anchor" href="#🔍-开发工具"><span>🔍 开发工具</span></a></h2>
-<h3 id="调试配置" tabindex="-1"><a class="header-anchor" href="#调试配置"><span>调试配置</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="🔍-开发工具" tabindex="-1">
+			<a class="header-anchor" href="#🔍-开发工具"><span>🔍 开发工具</span></a>
+		</h2>
+		<h3 id="调试配置" tabindex="-1">
+			<a class="header-anchor" href="#调试配置"><span>调试配置</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
 <span class="line">	<span class="token comment">// 开发模式配置</span></span>
 <span class="line">	define<span class="token operator">:</span> <span class="token punctuation">{</span></span>
 <span class="line">		__DEV__<span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'development'</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
@@ -313,8 +646,36 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="性能监控" tabindex="-1"><a class="header-anchor" href="#性能监控"><span>性能监控</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="性能监控" tabindex="-1">
+			<a class="header-anchor" href="#性能监控"><span>性能监控</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
 <span class="line">	plugins<span class="token operator">:</span> <span class="token punctuation">[</span></span>
 <span class="line">		<span class="token comment">// 打包分析</span></span>
 <span class="line">		process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">ANALYZE</span> <span class="token operator">===</span> <span class="token string">'true'</span> <span class="token operator">&amp;&amp;</span></span>
@@ -325,8 +686,26 @@
 <span class="line">	<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>Boolean<span class="token punctuation">)</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="自动化部署" tabindex="-1"><a class="header-anchor" href="#自动化部署"><span>自动化部署</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="自动化部署" tabindex="-1">
+			<a class="header-anchor" href="#自动化部署"><span>自动化部署</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
 <span class="line">	base<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span> <span class="token operator">?</span> <span class="token string">'/my-app/'</span> <span class="token operator">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span></span>
 <span class="line"></span>
 <span class="line">	build<span class="token operator">:</span> <span class="token punctuation">{</span></span>
@@ -339,9 +718,31 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="🧪-测试集成" tabindex="-1"><a class="header-anchor" href="#🧪-测试集成"><span>🧪 测试集成</span></a></h2>
-<h3 id="vitest-配置" tabindex="-1"><a class="header-anchor" href="#vitest-配置"><span>Vitest 配置</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="🧪-测试集成" tabindex="-1">
+			<a class="header-anchor" href="#🧪-测试集成"><span>🧪 测试集成</span></a>
+		</h2>
+		<h3 id="vitest-配置" tabindex="-1">
+			<a class="header-anchor" href="#vitest-配置"><span>Vitest 配置</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre
+				v-pre
+			><code><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
 <span class="line">	test<span class="token operator">:</span> <span class="token punctuation">{</span></span>
 <span class="line">		environment<span class="token operator">:</span> <span class="token string">'jsdom'</span><span class="token punctuation">,</span></span>
 <span class="line">		globals<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
@@ -353,16 +754,46 @@
 <span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="📊-性能优化建议" tabindex="-1"><a class="header-anchor" href="#📊-性能优化建议"><span>📊 性能优化建议</span></a></h2>
-<h3 id="_1-依赖优化" tabindex="-1"><a class="header-anchor" href="#_1-依赖优化"><span>1. 依赖优化</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// 预构建常用依赖</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="📊-性能优化建议" tabindex="-1">
+			<a class="header-anchor" href="#📊-性能优化建议"><span>📊 性能优化建议</span></a>
+		</h2>
+		<h3 id="_1-依赖优化" tabindex="-1">
+			<a class="header-anchor" href="#_1-依赖优化"><span>1. 依赖优化</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// 预构建常用依赖</span></span>
 <span class="line">optimizeDeps<span class="token operator">:</span> <span class="token punctuation">{</span></span>
 <span class="line">  include<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'vue'</span><span class="token punctuation">,</span> <span class="token string">'vue-router'</span><span class="token punctuation">,</span> <span class="token string">'pinia'</span><span class="token punctuation">,</span> <span class="token string">'element-plus/es'</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
 <span class="line">  exclude<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'@vueuse/core'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 按需导入的库</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-代码分割" tabindex="-1"><a class="header-anchor" href="#_2-代码分割"><span>2. 代码分割</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// 智能分包</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="_2-代码分割" tabindex="-1">
+			<a class="header-anchor" href="#_2-代码分割"><span>2. 代码分割</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// 智能分包</span></span>
 <span class="line"><span class="token function-variable function">manualChunks</span><span class="token operator">:</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
 <span class="line">	<span class="token keyword">if</span> <span class="token punctuation">(</span>id<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'node_modules'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">		<span class="token keyword">if</span> <span class="token punctuation">(</span>id<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'vue'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">'vue-vendor'</span></span>
@@ -371,8 +802,22 @@
 <span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-资源优化" tabindex="-1"><a class="header-anchor" href="#_3-资源优化"><span>3. 资源优化</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// 图片优化</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="_3-资源优化" tabindex="-1">
+			<a class="header-anchor" href="#_3-资源优化"><span>3. 资源优化</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// 图片优化</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> createSvgIconsPlugin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite-plugin-svg-icons'</span></span>
 <span class="line"><span class="token keyword">import</span> viteImageOptimize <span class="token keyword">from</span> <span class="token string">'vite-plugin-imagemin'</span></span>
@@ -388,9 +833,32 @@
 <span class="line">	<span class="token punctuation">]</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="🔧-环境配置" tabindex="-1"><a class="header-anchor" href="#🔧-环境配置"><span>🔧 环境配置</span></a></h2>
-<h3 id="多环境管理" tabindex="-1"><a class="header-anchor" href="#多环境管理"><span>多环境管理</span></a></h3>
-<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh"><pre v-pre><code><span class="line"><span class="token comment"># .env.development</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="🔧-环境配置" tabindex="-1">
+			<a class="header-anchor" href="#🔧-环境配置"><span>🔧 环境配置</span></a>
+		</h2>
+		<h3 id="多环境管理" tabindex="-1">
+			<a class="header-anchor" href="#多环境管理"><span>多环境管理</span></a>
+		</h3>
+		<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh">
+			<pre v-pre><code><span class="line"><span class="token comment"># .env.development</span></span>
 <span class="line"><span class="token assign-left variable">VITE_API_BASE_URL</span><span class="token operator">=</span>http://localhost:8080/api</span>
 <span class="line"><span class="token assign-left variable">VITE_APP_TITLE</span><span class="token operator">=</span>开发环境</span>
 <span class="line"></span>
@@ -402,8 +870,25 @@
 <span class="line"><span class="token assign-left variable">VITE_API_BASE_URL</span><span class="token operator">=</span>https://staging-api.example.com</span>
 <span class="line"><span class="token assign-left variable">VITE_APP_TITLE</span><span class="token operator">=</span>测试环境</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="typescript-类型定义" tabindex="-1"><a class="header-anchor" href="#typescript-类型定义"><span>TypeScript 类型定义</span></a></h3>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre v-pre><code><span class="line"><span class="token comment">// vite-env.d.ts</span></span>
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h3 id="typescript-类型定义" tabindex="-1">
+			<a class="header-anchor" href="#typescript-类型定义"><span>TypeScript 类型定义</span></a>
+		</h3>
+		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
+			<pre v-pre><code><span class="line"><span class="token comment">// vite-env.d.ts</span></span>
 <span class="line"><span class="token comment">/// &lt;reference types="vite/client" /></span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">interface</span> <span class="token class-name">ImportMetaEnv</span> <span class="token punctuation">{</span></span>
@@ -416,17 +901,33 @@
 <span class="line">	<span class="token keyword">readonly</span> env<span class="token operator">:</span> ImportMetaEnv</span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="🚀-最佳实践" tabindex="-1"><a class="header-anchor" href="#🚀-最佳实践"><span>🚀 最佳实践</span></a></h2>
-<ol>
-<li><strong>合理配置代理</strong>：避开跨域问题</li>
-<li><strong>智能代码分割</strong>：提升加载性能</li>
-<li><strong>资源优化</strong>：压缩图片和字体文件</li>
-<li><strong>环境变量管理</strong>：区分不同部署环境</li>
-<li><strong>依赖预构建</strong>：加速开发体验</li>
-<li><strong>构建分析</strong>：定期检查打包体积</li>
-<li><strong>缓存策略</strong>：合理设置资源缓存</li>
-</ol>
-<p>通过使用 @mqy/vite-config，您可以获得经过优化的构建配置和最佳的开发体验。</p>
-</div></template>
-
-
+			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+				<div class="line-number"></div>
+			</div>
+		</div>
+		<h2 id="🚀-最佳实践" tabindex="-1">
+			<a class="header-anchor" href="#🚀-最佳实践"><span>🚀 最佳实践</span></a>
+		</h2>
+		<ol>
+			<li><strong>合理配置代理</strong>：避开跨域问题</li>
+			<li><strong>智能代码分割</strong>：提升加载性能</li>
+			<li><strong>资源优化</strong>：压缩图片和字体文件</li>
+			<li><strong>环境变量管理</strong>：区分不同部署环境</li>
+			<li><strong>依赖预构建</strong>：加速开发体验</li>
+			<li><strong>构建分析</strong>：定期检查打包体积</li>
+			<li><strong>缓存策略</strong>：合理设置资源缓存</li>
+		</ol>
+		<p>通过使用 @mqy/vite-config，您可以获得经过优化的构建配置和最佳的开发体验。</p>
+	</div>
+</template>
