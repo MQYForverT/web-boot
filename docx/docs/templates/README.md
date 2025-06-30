@@ -6,7 +6,7 @@ Web Boot 提供三种主流前端框架的项目模板，每个模板都包含�
 
 | 特性      | Vue 模板      | React 模板    | Svelte 模板     |
 | --------- | ------------- | ------------- | --------------- |
-| 框架版本  | Vue 3.5+      | React 18+     | Svelte 4+       |
+| 框架版本  | Vue 3.5+      | React 18+     | Svelte 5+       |
 | 构建工具  | Vite          | Vite          | Vite            |
 | 类型支持  | TypeScript    | TypeScript    | TypeScript      |
 | 状态管理  | Pinia         | Zustand       | Writable Stores |

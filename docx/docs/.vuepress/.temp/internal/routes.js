@@ -26,7 +26,7 @@ export const routes = Object.fromEntries([
 				import(
 					/* webpackChunkName: "components_index.html" */ 'E:/mqy/web-boot/docx/docs/.vuepress/.temp/pages/components/index.html.js'
 				),
-			meta: { title: '组件文档' },
+			meta: { title: 'Web Components 组件库' },
 		},
 	],
 	[
@@ -36,7 +36,7 @@ export const routes = Object.fromEntries([
 				import(
 					/* webpackChunkName: "config_index.html" */ 'E:/mqy/web-boot/docx/docs/.vuepress/.temp/pages/config/index.html.js'
 				),
-			meta: { title: '配置说明' },
+			meta: { title: '开发工具集' },
 		},
 	],
 	[
@@ -77,6 +77,36 @@ export const routes = Object.fromEntries([
 					/* webpackChunkName: "components_login_index.html" */ 'E:/mqy/web-boot/docx/docs/.vuepress/.temp/pages/components/login/index.html.js'
 				),
 			meta: { title: '登录组件 (BackgroundLogin)' },
+		},
+	],
+	[
+		'/config/eslint/',
+		{
+			loader: () =>
+				import(
+					/* webpackChunkName: "config_eslint_index.html" */ 'E:/mqy/web-boot/docx/docs/.vuepress/.temp/pages/config/eslint/index.html.js'
+				),
+			meta: { title: 'ESLint 配置' },
+		},
+	],
+	[
+		'/config/utils/',
+		{
+			loader: () =>
+				import(
+					/* webpackChunkName: "config_utils_index.html" */ 'E:/mqy/web-boot/docx/docs/.vuepress/.temp/pages/config/utils/index.html.js'
+				),
+			meta: { title: '实用工具函数' },
+		},
+	],
+	[
+		'/config/vite/',
+		{
+			loader: () =>
+				import(
+					/* webpackChunkName: "config_vite_index.html" */ 'E:/mqy/web-boot/docx/docs/.vuepress/.temp/pages/config/vite/index.html.js'
+				),
+			meta: { title: 'Vite 配置' },
 		},
 	],
 	[

@@ -1,6 +1,20 @@
-# 组件文档
+# Web Components 组件库
 
-Web Boot 提供了丰富的组件库，包括布局组件、登录组件和通用组件，帮助您快速构建现代化的后台管理系统。
+**Web Boot 的核心产品** - 基于 Web Components 标准的企业级组件库，可在任何前端框架中使用，包括 Vue、React、Svelte、Angular 或原生 JavaScript。
+
+## 🎯 核心优势
+
+**🔧 框架无关**
+
+- 基于 Web Components 标准，不依赖特定框架
+- 可在任何现代浏览器中运行
+- 提供统一的 API，无论使用什么技术栈
+
+**⚡ 开箱即用**
+
+- 完整的后台管理系统解决方案
+- 无需重复开发常见功能
+- 高度可配置化，满足各种需求
 
 ## 组件概览
 
@@ -63,24 +77,54 @@ Web Boot 提供了丰富的组件库，包括布局组件、登录组件和通�
 ### NPM 安装
 
 ```bash
-# 安装布局组件
-npm install mqy-background-layout
+# 安装企业级组件库
+npm install @mqy/component-private
 
-# 安装登录组件
-npm install mqy-background-login
+# 安装通用组件库
+npm install @mqy/component-public
 ```
 
-### 基础使用
+### 框架集成
 
-```typescript
-// Vue 3
-import { BackgroundLayout } from 'mqy-background-layout'
+**原生 HTML**
 
-// React
-import { BackgroundLayout } from 'mqy-background-layout'
+```html
+<!-- 直接在 HTML 中使用 -->
+<mqy-background-layout theme="dark">
+	<mqy-background-login></mqy-background-login>
+</mqy-background-layout>
+```
 
-// Svelte
-import { BackgroundLayout } from 'mqy-background-layout'
+**Vue 3**
+
+```vue
+<template>
+	<mqy-background-layout :theme-config="config">
+		<router-view />
+	</mqy-background-layout>
+</template>
+```
+
+**React**
+
+```jsx
+function App() {
+	return (
+		<mqy-background-layout themeConfig={config}>
+			<Routes>...</Routes>
+		</mqy-background-layout>
+	)
+}
+```
+
+**Svelte**
+
+```svelte
+<mqy-background-layout bind:themeConfig={config}>
+  <main>
+    <!-- 你的应用内容 -->
+  </main>
+</mqy-background-layout>
 ```
 
 ### 配置示例
@@ -243,7 +287,7 @@ interface LayoutEvents {
 
 ### v2.0.0 (2024-01-20)
 
-- 🎉 支持 Vue 3、React 18、Svelte 4
+- 🎉 支持 Vue 3、React 18、Svelte 5
 - 🆕 新增暗色主题支持
 - 🔧 重构组件架构
 - 📱 优化移动端体验

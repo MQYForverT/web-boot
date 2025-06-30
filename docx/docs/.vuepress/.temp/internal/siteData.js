@@ -1,5 +1,5 @@
 export const siteData = JSON.parse(
-	'{"base":"/","lang":"zh-CN","title":"Web Boot","description":"一键式任何前端语言开发后端管理系统","head":[],"locales":{}}',
+	'{"base":"/","lang":"zh-CN","title":"Web Boot","description":"通用 Web Components 组件库和开发工具集","head":[],"locales":{}}',
 )
 
 if (import.meta.webpackHot) {

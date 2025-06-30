@@ -1,10 +1,10 @@
 # Svelte 模板
 
-基于 Svelte 4 + Vite + TypeScript 的轻量级后台管理系统模板。
+基于 Svelte 5 + Vite + TypeScript 的轻量级后台管理系统模板。
 
 ## 技术栈
 
-- **前端框架**: Svelte 4+
+- **前端框架**: Svelte 5+
 - **构建工具**: Vite 6.0+
 - **开发语言**: TypeScript 5.0+
 - **状态管理**: Writable Stores

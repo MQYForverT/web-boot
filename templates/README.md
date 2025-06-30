@@ -1,20 +1,20 @@
-# Web-Boot 模板库
+# 框架集成示例
 
 ## 📖 概述
 
-`templates` 目录包含了基于不同前端框架的完整项目模板，为快速搭建中后台管理系统提供了开箱即用的解决方案。所有模板都采用相同的设计理念和功能特性，确保一致的开发体验。
+`templates` 目录提供了三个主流前端框架的**完整集成示例**，展示如何在不同技术栈中使用 Web Boot 的组件库和开发工具。这些不是独立的项目模板，而是学习和参考的示例代码。
 
-## 🎯 设计理念
+## 🎯 示例目标
 
-- **统一性**：三个模板保持相同的功能逻辑、路由结构和用户体验
-- **现代化**：采用最新的前端技术栈和开发工具
-- **企业级**：内置完整的权限管理、路由守卫、状态管理等企业级功能
-- **组件化**：基于 `@mqy/component-private` 组件库，提供统一的 UI 体验
-- **开发友好**：完善的 TypeScript 支持、ESLint/Prettier 配置、热重载等
+- **学习参考**：展示 Web Boot 组件在不同框架中的集成方法
+- **快速上手**：提供完整的集成流程和最佳实践
+- **对比学习**：通过对比了解各框架的差异和特点
+- **组件演示**：展示 `@mqy/component-private` 组件库的完整功能
+- **工具集成**：演示如何使用 Web Boot 开发工具集
 
-## 📁 模板列表
+## 📁 示例列表
 
-### 🟢 Vue 模板 (`vue/`)
+### 🟢 Vue 集成示例 (`vue/`)
 
 **技术选型：**
 
@@ -36,7 +36,7 @@
 - ✅ 完善的 TypeScript 类型支持
 - ✅ 热重载开发体验
 
-### ⚛️ React 模板 (`react/`)
+### ⚛️ React 集成示例 (`react/`)
 
 **技术选型：**
 
@@ -59,7 +59,7 @@
 - ✅ Ant Design 企业级 UI 组件
 - ✅ 完整的 TypeScript 类型推导
 
-### 🔥 Svelte 模板 (`svelte/`)
+### 🔥 Svelte 集成示例 (`svelte/`)
 
 **技术选型：**
 
@@ -143,22 +143,22 @@ export const TABS_WHITE_LIST = ['/403', '/404', '/500', LOGIN_URL]
 - ❌ `/404` - 页面不存在
 - ❌ `/500` - 服务器错误
 
-## 🚀 快速开始
+## 🚀 运行示例
 
-### 1. 选择模板
+### 1. 选择示例
 
 ```bash
-# Vue 模板
+# Vue 集成示例
 cd templates/vue
 npm install
 npm run dev
 
-# React 模板
+# React 集成示例
 cd templates/react
 npm install
 npm run dev
 
-# Svelte 模板
+# Svelte 集成示例
 cd templates/svelte
 npm install
 npm run dev
@@ -181,22 +181,23 @@ npm run lint         # 代码检查
 npm run lint:fix     # 修复代码问题
 ```
 
-## 🎨 组件库集成
+## 🎨 集成要点
 
-所有模板都集成了 `@mqy/component-private` 组件库：
+所有示例都展示了如何集成 `@mqy/component-private` 组件库：
 
-- **mqy-background-layout** - 中后台布局组件
-- **mqy-background-login** - 登录页面组件
+- **mqy-background-layout** - 中后台布局组件的使用方法
+- **mqy-background-login** - 登录页面组件的集成方式
+- **主题配置** - 如何配置和切换主题
+- **路由集成** - 如何与各框架路由系统结合
 
-提供统一的视觉风格和交互体验。
+## 💡 学习建议
 
-## 📋 最佳实践
+### 如何使用这些示例
 
-### 代码规范
-
-- 使用 TypeScript 进行类型安全开发
-- 遵循 ESLint + Prettier 代码规范
-- 使用 Stylelint 确保 CSS 代码质量
+1. **选择熟悉的框架**：从您最熟悉的框架示例开始学习
+2. **对比学习**：观察同一功能在不同框架中的实现差异
+3. **参考集成**：将学到的集成方法应用到您的实际项目
+4. **组件文档**：配合 [组件文档](/components/) 深入了解组件用法
 
 ### 项目开发
 

@@ -21,7 +21,7 @@
 					<td>框架版本</td>
 					<td>Vue 3.5+</td>
 					<td>React 18+</td>
-					<td>Svelte 4+</td>
+					<td>Svelte 5+</td>
 				</tr>
 				<tr>
 					<td>构建工具</td>

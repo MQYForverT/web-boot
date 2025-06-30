@@ -43,39 +43,39 @@
 			<pre
 				v-pre
 			><code><span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span></span>
-<span class="line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BackgroundLogin</span> </span>
-<span class="line">    <span class="token attr-name">:config</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>loginConfig<span class="token punctuation">"</span></span></span>
-<span class="line">    <span class="token attr-name">@submit</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleLogin<span class="token punctuation">"</span></span></span>
-<span class="line">    <span class="token attr-name">@register</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleRegister<span class="token punctuation">"</span></span></span>
-<span class="line">    <span class="token attr-name">@forgot-password</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleForgotPassword<span class="token punctuation">"</span></span></span>
-<span class="line">  <span class="token punctuation">/></span></span></span>
+<span class="line">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BackgroundLogin</span></span>
+<span class="line">		<span class="token attr-name">:config</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>loginConfig<span class="token punctuation">"</span></span></span>
+<span class="line">		<span class="token attr-name">@submit</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleLogin<span class="token punctuation">"</span></span></span>
+<span class="line">		<span class="token attr-name">@register</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleRegister<span class="token punctuation">"</span></span></span>
+<span class="line">		<span class="token attr-name">@forgot-password</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleForgotPassword<span class="token punctuation">"</span></span></span>
+<span class="line">	<span class="token punctuation">/></span></span></span>
 <span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></span>
 <span class="line"></span>
 <span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ts<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"></span>
-<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> ref <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></span>
-<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> BackgroundLogin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'mqy-background-login'</span></span>
+<span class="line">	<span class="token keyword">import</span> <span class="token punctuation">{</span> ref <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></span>
+<span class="line">	<span class="token keyword">import</span> <span class="token punctuation">{</span> BackgroundLogin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'mqy-background-login'</span></span>
 <span class="line"></span>
-<span class="line"><span class="token keyword">const</span> loginConfig <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
-<span class="line">  <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Web Boot'</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">subtitle</span><span class="token operator">:</span> <span class="token string">'一键式任何前端语言开发后端管理系统'</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">theme</span><span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">loginMethods</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">,</span> <span class="token string">'email'</span><span class="token punctuation">,</span> <span class="token string">'phone'</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">showRegister</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">showForgotPassword</span><span class="token operator">:</span> <span class="token boolean">true</span></span>
-<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token keyword">const</span> loginConfig <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">		<span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Web Boot'</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">subtitle</span><span class="token operator">:</span> <span class="token string">'一键式任何前端语言开发后端管理系统'</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">theme</span><span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">loginMethods</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">,</span> <span class="token string">'email'</span><span class="token punctuation">,</span> <span class="token string">'phone'</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">showRegister</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">showForgotPassword</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="token keyword">const</span> <span class="token function-variable function">handleLogin</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">formData</span><span class="token operator">:</span> LoginFormData</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'登录数据:'</span><span class="token punctuation">,</span> formData<span class="token punctuation">)</span></span>
-<span class="line">  <span class="token comment">// 处理登录逻辑</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token function-variable function">handleLogin</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">formData</span><span class="token operator">:</span> LoginFormData</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'登录数据:'</span><span class="token punctuation">,</span> formData<span class="token punctuation">)</span></span>
+<span class="line">		<span class="token comment">// 处理登录逻辑</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="token keyword">const</span> <span class="token function-variable function">handleRegister</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'跳转注册页面'</span><span class="token punctuation">)</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token function-variable function">handleRegister</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'跳转注册页面'</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="token keyword">const</span> <span class="token function-variable function">handleForgotPassword</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'跳转忘记密码页面'</span><span class="token punctuation">)</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token function-variable function">handleForgotPassword</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'跳转忘记密码页面'</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -126,36 +126,36 @@
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> BackgroundLogin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'mqy-background-login'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">const</span> LoginPage<span class="token operator">:</span> React<span class="token punctuation">.</span><span class="token function-variable function">FC</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token keyword">const</span> <span class="token punctuation">[</span>loginConfig<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
-<span class="line">    title<span class="token operator">:</span> <span class="token string">'Web Boot'</span><span class="token punctuation">,</span></span>
-<span class="line">    subtitle<span class="token operator">:</span> <span class="token string">'一键式任何前端语言开发后端管理系统'</span><span class="token punctuation">,</span></span>
-<span class="line">    theme<span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">,</span></span>
-<span class="line">    loginMethods<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">,</span> <span class="token string">'email'</span><span class="token punctuation">,</span> <span class="token string">'phone'</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
-<span class="line">    showRegister<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
-<span class="line">    showForgotPassword<span class="token operator">:</span> <span class="token boolean">true</span></span>
-<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token punctuation">[</span>loginConfig<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">		title<span class="token operator">:</span> <span class="token string">'Web Boot'</span><span class="token punctuation">,</span></span>
+<span class="line">		subtitle<span class="token operator">:</span> <span class="token string">'一键式任何前端语言开发后端管理系统'</span><span class="token punctuation">,</span></span>
+<span class="line">		theme<span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">,</span></span>
+<span class="line">		loginMethods<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">,</span> <span class="token string">'email'</span><span class="token punctuation">,</span> <span class="token string">'phone'</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">		showRegister<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">		showForgotPassword<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span>
-<span class="line">  <span class="token keyword">const</span> <span class="token function-variable function">handleLogin</span> <span class="token operator">=</span> <span class="token punctuation">(</span>formData<span class="token operator">:</span> LoginFormData<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'登录数据:'</span><span class="token punctuation">,</span> formData<span class="token punctuation">)</span></span>
-<span class="line">    <span class="token comment">// 处理登录逻辑</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token function-variable function">handleLogin</span> <span class="token operator">=</span> <span class="token punctuation">(</span>formData<span class="token operator">:</span> LoginFormData<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">		<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'登录数据:'</span><span class="token punctuation">,</span> formData<span class="token punctuation">)</span></span>
+<span class="line">		<span class="token comment">// 处理登录逻辑</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"></span>
-<span class="line">  <span class="token keyword">const</span> <span class="token function-variable function">handleRegister</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'跳转注册页面'</span><span class="token punctuation">)</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token function-variable function">handleRegister</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">		<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'跳转注册页面'</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"></span>
-<span class="line">  <span class="token keyword">const</span> <span class="token function-variable function">handleForgotPassword</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'跳转忘记密码页面'</span><span class="token punctuation">)</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token function-variable function">handleForgotPassword</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">		<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'跳转忘记密码页面'</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"></span>
-<span class="line">  <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
-<span class="line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">BackgroundLogin</span></span></span>
-<span class="line">      <span class="token attr-name">config</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>loginConfig<span class="token punctuation">}</span></span></span>
-<span class="line">      <span class="token attr-name">onSubmit</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleLogin<span class="token punctuation">}</span></span></span>
-<span class="line">      <span class="token attr-name">onRegister</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleRegister<span class="token punctuation">}</span></span></span>
-<span class="line">      <span class="token attr-name">onForgotPassword</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleForgotPassword<span class="token punctuation">}</span></span></span>
-<span class="line">    <span class="token punctuation">/></span></span></span>
-<span class="line">  <span class="token punctuation">)</span></span>
+<span class="line">	<span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">BackgroundLogin</span></span></span>
+<span class="line">			<span class="token attr-name">config</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>loginConfig<span class="token punctuation">}</span></span></span>
+<span class="line">			<span class="token attr-name">onSubmit</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleLogin<span class="token punctuation">}</span></span></span>
+<span class="line">			<span class="token attr-name">onRegister</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleRegister<span class="token punctuation">}</span></span></span>
+<span class="line">			<span class="token attr-name">onForgotPassword</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleForgotPassword<span class="token punctuation">}</span></span></span>
+<span class="line">		<span class="token punctuation">/></span></span></span>
+<span class="line">	<span class="token punctuation">)</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> LoginPage</span>
@@ -206,7 +206,7 @@
 		<div class="language-svelte line-numbers-mode" data-highlighter="prismjs" data-ext="svelte">
 			<pre v-pre><code><span class="line">&lt;script lang=&quot;ts&quot;&gt;</span>
 <span class="line">  import { BackgroundLogin } from 'mqy-background-login'</span>
-<span class="line">  </span>
+<span class="line"></span>
 <span class="line">  let loginConfig = {</span>
 <span class="line">    title: 'Web Boot',</span>
 <span class="line">    subtitle: '一键式任何前端语言开发后端管理系统',</span>
@@ -231,7 +231,7 @@
 <span class="line">  }</span>
 <span class="line">&lt;/script&gt;</span>
 <span class="line"></span>
-<span class="line">&lt;BackgroundLogin </span>
+<span class="line">&lt;BackgroundLogin</span>
 <span class="line">  config={loginConfig}</span>
 <span class="line">  on:submit={handleLogin}</span>
 <span class="line">  on:register={handleRegister}</span>
@@ -284,52 +284,52 @@
 			<pre
 				v-pre
 			><code><span class="line"><span class="token keyword">interface</span> <span class="token class-name">LoginConfig</span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token comment">// 基础配置</span></span>
-<span class="line">  title<span class="token operator">:</span> <span class="token builtin">string</span>                    <span class="token comment">// 登录页标题</span></span>
-<span class="line">  subtitle<span class="token operator">:</span> <span class="token builtin">string</span>                 <span class="token comment">// 副标题</span></span>
-<span class="line">  logo<span class="token operator">:</span> <span class="token builtin">string</span>                     <span class="token comment">// Logo 图片地址</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 主题配置</span></span>
-<span class="line">  theme<span class="token operator">:</span> <span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'auto'</span> <span class="token comment">// 主题模式</span></span>
-<span class="line">  primaryColor<span class="token operator">:</span> <span class="token builtin">string</span>             <span class="token comment">// 主色调</span></span>
-<span class="line">  backgroundImage<span class="token operator">:</span> <span class="token builtin">string</span>          <span class="token comment">// 背景图片</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 登录方式配置</span></span>
-<span class="line">  loginMethods<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token string">'username'</span> <span class="token operator">|</span> <span class="token string">'email'</span> <span class="token operator">|</span> <span class="token string">'phone'</span><span class="token operator">></span></span>
-<span class="line">  defaultMethod<span class="token operator">:</span> <span class="token string">'username'</span> <span class="token operator">|</span> <span class="token string">'email'</span> <span class="token operator">|</span> <span class="token string">'phone'</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 功能开关</span></span>
-<span class="line">  showRegister<span class="token operator">:</span> <span class="token builtin">boolean</span>            <span class="token comment">// 是否显示注册链接</span></span>
-<span class="line">  showForgotPassword<span class="token operator">:</span> <span class="token builtin">boolean</span>      <span class="token comment">// 是否显示忘记密码</span></span>
-<span class="line">  showRememberMe<span class="token operator">:</span> <span class="token builtin">boolean</span>          <span class="token comment">// 是否显示记住我</span></span>
-<span class="line">  showSocialLogin<span class="token operator">:</span> <span class="token builtin">boolean</span>         <span class="token comment">// 是否显示第三方登录</span></span>
-<span class="line">  showCaptcha<span class="token operator">:</span> <span class="token builtin">boolean</span>             <span class="token comment">// 是否显示验证码</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 第三方登录配置</span></span>
-<span class="line">  socialProviders<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token punctuation">{</span></span>
-<span class="line">    name<span class="token operator">:</span> <span class="token builtin">string</span>                   <span class="token comment">// 提供商名称</span></span>
-<span class="line">    icon<span class="token operator">:</span> <span class="token builtin">string</span>                   <span class="token comment">// 图标</span></span>
-<span class="line">    color<span class="token operator">:</span> <span class="token builtin">string</span>                  <span class="token comment">// 主题色</span></span>
-<span class="line">    enabled<span class="token operator">:</span> <span class="token builtin">boolean</span>               <span class="token comment">// 是否启用</span></span>
-<span class="line">  <span class="token punctuation">}</span><span class="token operator">></span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 验证规则配置</span></span>
-<span class="line">  validation<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    username<span class="token operator">:</span> ValidationRule       <span class="token comment">// 用户名验证规则</span></span>
-<span class="line">    email<span class="token operator">:</span> ValidationRule          <span class="token comment">// 邮箱验证规则</span></span>
-<span class="line">    phone<span class="token operator">:</span> ValidationRule          <span class="token comment">// 手机号验证规则</span></span>
-<span class="line">    password<span class="token operator">:</span> ValidationRule       <span class="token comment">// 密码验证规则</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 文本配置（国际化）</span></span>
-<span class="line">  texts<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    loginTitle<span class="token operator">:</span> <span class="token builtin">string</span>             <span class="token comment">// 登录标题</span></span>
-<span class="line">    loginButton<span class="token operator">:</span> <span class="token builtin">string</span>            <span class="token comment">// 登录按钮文本</span></span>
-<span class="line">    registerLink<span class="token operator">:</span> <span class="token builtin">string</span>           <span class="token comment">// 注册链接文本</span></span>
-<span class="line">    forgotPasswordLink<span class="token operator">:</span> <span class="token builtin">string</span>     <span class="token comment">// 忘记密码链接文本</span></span>
-<span class="line">    rememberMe<span class="token operator">:</span> <span class="token builtin">string</span>             <span class="token comment">// 记住我文本</span></span>
-<span class="line">    <span class="token comment">// 更多文本配置...</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">	<span class="token comment">// 基础配置</span></span>
+<span class="line">	title<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 登录页标题</span></span>
+<span class="line">	subtitle<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 副标题</span></span>
+<span class="line">	logo<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// Logo 图片地址</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 主题配置</span></span>
+<span class="line">	theme<span class="token operator">:</span> <span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'auto'</span> <span class="token comment">// 主题模式</span></span>
+<span class="line">	primaryColor<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 主色调</span></span>
+<span class="line">	backgroundImage<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 背景图片</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 登录方式配置</span></span>
+<span class="line">	loginMethods<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token string">'username'</span> <span class="token operator">|</span> <span class="token string">'email'</span> <span class="token operator">|</span> <span class="token string">'phone'</span><span class="token operator">></span></span>
+<span class="line">	defaultMethod<span class="token operator">:</span> <span class="token string">'username'</span> <span class="token operator">|</span> <span class="token string">'email'</span> <span class="token operator">|</span> <span class="token string">'phone'</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 功能开关</span></span>
+<span class="line">	showRegister<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token comment">// 是否显示注册链接</span></span>
+<span class="line">	showForgotPassword<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token comment">// 是否显示忘记密码</span></span>
+<span class="line">	showRememberMe<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token comment">// 是否显示记住我</span></span>
+<span class="line">	showSocialLogin<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token comment">// 是否显示第三方登录</span></span>
+<span class="line">	showCaptcha<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token comment">// 是否显示验证码</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 第三方登录配置</span></span>
+<span class="line">	socialProviders<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token punctuation">{</span></span>
+<span class="line">		name<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 提供商名称</span></span>
+<span class="line">		icon<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 图标</span></span>
+<span class="line">		color<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 主题色</span></span>
+<span class="line">		enabled<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token comment">// 是否启用</span></span>
+<span class="line">	<span class="token punctuation">}</span><span class="token operator">></span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 验证规则配置</span></span>
+<span class="line">	validation<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		username<span class="token operator">:</span> ValidationRule <span class="token comment">// 用户名验证规则</span></span>
+<span class="line">		email<span class="token operator">:</span> ValidationRule <span class="token comment">// 邮箱验证规则</span></span>
+<span class="line">		phone<span class="token operator">:</span> ValidationRule <span class="token comment">// 手机号验证规则</span></span>
+<span class="line">		password<span class="token operator">:</span> ValidationRule <span class="token comment">// 密码验证规则</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 文本配置（国际化）</span></span>
+<span class="line">	texts<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		loginTitle<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 登录标题</span></span>
+<span class="line">		loginButton<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 登录按钮文本</span></span>
+<span class="line">		registerLink<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 注册链接文本</span></span>
+<span class="line">		forgotPasswordLink<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 忘记密码链接文本</span></span>
+<span class="line">		rememberMe<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 记住我文本</span></span>
+<span class="line">		<span class="token comment">// 更多文本配置...</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -390,21 +390,21 @@
 			<pre
 				v-pre
 			><code><span class="line"><span class="token keyword">interface</span> <span class="token class-name">LoginFormData</span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token comment">// 登录凭据</span></span>
-<span class="line">  credential<span class="token operator">:</span> <span class="token builtin">string</span>               <span class="token comment">// 用户名/邮箱/手机号</span></span>
-<span class="line">  password<span class="token operator">:</span> <span class="token builtin">string</span>                 <span class="token comment">// 密码</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 附加信息</span></span>
-<span class="line">  loginMethod<span class="token operator">:</span> <span class="token string">'username'</span> <span class="token operator">|</span> <span class="token string">'email'</span> <span class="token operator">|</span> <span class="token string">'phone'</span></span>
-<span class="line">  rememberMe<span class="token operator">:</span> <span class="token builtin">boolean</span>              <span class="token comment">// 是否记住登录</span></span>
-<span class="line">  captcha<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span>                 <span class="token comment">// 验证码</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 设备信息</span></span>
-<span class="line">  device<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    userAgent<span class="token operator">:</span> <span class="token builtin">string</span>              <span class="token comment">// 用户代理</span></span>
-<span class="line">    fingerprint<span class="token operator">:</span> <span class="token builtin">string</span>            <span class="token comment">// 设备指纹</span></span>
-<span class="line">    timestamp<span class="token operator">:</span> <span class="token builtin">number</span>              <span class="token comment">// 时间戳</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">	<span class="token comment">// 登录凭据</span></span>
+<span class="line">	credential<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 用户名/邮箱/手机号</span></span>
+<span class="line">	password<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 密码</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 附加信息</span></span>
+<span class="line">	loginMethod<span class="token operator">:</span> <span class="token string">'username'</span> <span class="token operator">|</span> <span class="token string">'email'</span> <span class="token operator">|</span> <span class="token string">'phone'</span></span>
+<span class="line">	rememberMe<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token comment">// 是否记住登录</span></span>
+<span class="line">	captcha<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 验证码</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 设备信息</span></span>
+<span class="line">	device<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		userAgent<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 用户代理</span></span>
+<span class="line">		fingerprint<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// 设备指纹</span></span>
+<span class="line">		timestamp<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token comment">// 时间戳</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -552,26 +552,26 @@
 			<pre
 				v-pre
 			><code><span class="line"><span class="token keyword">const</span> customValidation <span class="token operator">=</span> <span class="token punctuation">{</span></span>
-<span class="line">  username<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
-<span class="line">    minLength<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span></span>
-<span class="line">    maxLength<span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span></span>
-<span class="line">    pattern<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^[a-zA-Z0-9_]+$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span></span>
-<span class="line">    message<span class="token operator">:</span> <span class="token string">'用户名只能包含字母、数字和下划线'</span></span>
-<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
-<span class="line">  </span>
-<span class="line">  password<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
-<span class="line">    minLength<span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span></span>
-<span class="line">    pattern<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&amp;])[A-Za-z\d@$!%*?&amp;]</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span></span>
-<span class="line">    message<span class="token operator">:</span> <span class="token string">'密码必须包含大小写字母、数字和特殊字符'</span></span>
-<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
-<span class="line">  </span>
-<span class="line">  email<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
-<span class="line">    pattern<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^[^\s@]+@[^\s@]+\.[^\s@]+$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span></span>
-<span class="line">    message<span class="token operator">:</span> <span class="token string">'请输入有效的邮箱地址'</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">	username<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">		minLength<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span></span>
+<span class="line">		maxLength<span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span></span>
+<span class="line">		pattern<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^[a-zA-Z0-9_]+$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span></span>
+<span class="line">		message<span class="token operator">:</span> <span class="token string">'用户名只能包含字母、数字和下划线'</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line"></span>
+<span class="line">	password<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">		minLength<span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span></span>
+<span class="line">		pattern<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&amp;])[A-Za-z\d@$!%*?&amp;]</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span></span>
+<span class="line">		message<span class="token operator">:</span> <span class="token string">'密码必须包含大小写字母、数字和特殊字符'</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line"></span>
+<span class="line">	email<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">		pattern<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^[^\s@]+@[^\s@]+\.[^\s@]+$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span></span>
+<span class="line">		message<span class="token operator">:</span> <span class="token string">'请输入有效的邮箱地址'</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -606,24 +606,24 @@
 			<pre
 				v-pre
 			><code><span class="line"><span class="token keyword">const</span> socialProviders <span class="token operator">=</span> <span class="token punctuation">[</span></span>
-<span class="line">  <span class="token punctuation">{</span></span>
-<span class="line">    name<span class="token operator">:</span> <span class="token string">'google'</span><span class="token punctuation">,</span></span>
-<span class="line">    icon<span class="token operator">:</span> <span class="token string">'fab fa-google'</span><span class="token punctuation">,</span></span>
-<span class="line">    color<span class="token operator">:</span> <span class="token string">'#db4437'</span><span class="token punctuation">,</span></span>
-<span class="line">    enabled<span class="token operator">:</span> <span class="token boolean">true</span></span>
-<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token punctuation">{</span></span>
-<span class="line">    name<span class="token operator">:</span> <span class="token string">'github'</span><span class="token punctuation">,</span></span>
-<span class="line">    icon<span class="token operator">:</span> <span class="token string">'fab fa-github'</span><span class="token punctuation">,</span></span>
-<span class="line">    color<span class="token operator">:</span> <span class="token string">'#333333'</span><span class="token punctuation">,</span></span>
-<span class="line">    enabled<span class="token operator">:</span> <span class="token boolean">true</span></span>
-<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token punctuation">{</span></span>
-<span class="line">    name<span class="token operator">:</span> <span class="token string">'wechat'</span><span class="token punctuation">,</span></span>
-<span class="line">    icon<span class="token operator">:</span> <span class="token string">'fab fa-weixin'</span><span class="token punctuation">,</span></span>
-<span class="line">    color<span class="token operator">:</span> <span class="token string">'#7bb32e'</span><span class="token punctuation">,</span></span>
-<span class="line">    enabled<span class="token operator">:</span> <span class="token boolean">true</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">	<span class="token punctuation">{</span></span>
+<span class="line">		name<span class="token operator">:</span> <span class="token string">'google'</span><span class="token punctuation">,</span></span>
+<span class="line">		icon<span class="token operator">:</span> <span class="token string">'fab fa-google'</span><span class="token punctuation">,</span></span>
+<span class="line">		color<span class="token operator">:</span> <span class="token string">'#db4437'</span><span class="token punctuation">,</span></span>
+<span class="line">		enabled<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">{</span></span>
+<span class="line">		name<span class="token operator">:</span> <span class="token string">'github'</span><span class="token punctuation">,</span></span>
+<span class="line">		icon<span class="token operator">:</span> <span class="token string">'fab fa-github'</span><span class="token punctuation">,</span></span>
+<span class="line">		color<span class="token operator">:</span> <span class="token string">'#333333'</span><span class="token punctuation">,</span></span>
+<span class="line">		enabled<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">{</span></span>
+<span class="line">		name<span class="token operator">:</span> <span class="token string">'wechat'</span><span class="token punctuation">,</span></span>
+<span class="line">		icon<span class="token operator">:</span> <span class="token string">'fab fa-weixin'</span><span class="token punctuation">,</span></span>
+<span class="line">		color<span class="token operator">:</span> <span class="token string">'#7bb32e'</span><span class="token punctuation">,</span></span>
+<span class="line">		enabled<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">]</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -655,36 +655,36 @@
 		<div class="language-scss line-numbers-mode" data-highlighter="prismjs" data-ext="scss">
 			<pre v-pre><code><span class="line"><span class="token comment">// 登录页面主题变量</span></span>
 <span class="line"><span class="token selector">:root </span><span class="token punctuation">{</span></span>
-<span class="line">  <span class="token comment">// 主色调</span></span>
-<span class="line">  <span class="token property">--login-primary-color</span><span class="token punctuation">:</span> #1890ff<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-success-color</span><span class="token punctuation">:</span> #52c41a<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-warning-color</span><span class="token punctuation">:</span> #faad14<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-error-color</span><span class="token punctuation">:</span> #f5222d<span class="token punctuation">;</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 背景配置</span></span>
-<span class="line">  <span class="token property">--login-bg-color</span><span class="token punctuation">:</span> #f0f2f5<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-card-bg</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-input-bg</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 文字颜色</span></span>
-<span class="line">  <span class="token property">--login-text-color</span><span class="token punctuation">:</span> #000000d9<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-text-secondary</span><span class="token punctuation">:</span> #00000073<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-placeholder-color</span><span class="token punctuation">:</span> #bfbfbf<span class="token punctuation">;</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 边框和阴影</span></span>
-<span class="line">  <span class="token property">--login-border-color</span><span class="token punctuation">:</span> #d9d9d9<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-box-shadow</span><span class="token punctuation">:</span> 0 4px 12px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.15<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">	<span class="token comment">// 主色调</span></span>
+<span class="line">	<span class="token property">--login-primary-color</span><span class="token punctuation">:</span> #1890ff<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-success-color</span><span class="token punctuation">:</span> #52c41a<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-warning-color</span><span class="token punctuation">:</span> #faad14<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-error-color</span><span class="token punctuation">:</span> #f5222d<span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 背景配置</span></span>
+<span class="line">	<span class="token property">--login-bg-color</span><span class="token punctuation">:</span> #f0f2f5<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-card-bg</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-input-bg</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 文字颜色</span></span>
+<span class="line">	<span class="token property">--login-text-color</span><span class="token punctuation">:</span> #000000d9<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-text-secondary</span><span class="token punctuation">:</span> #00000073<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-placeholder-color</span><span class="token punctuation">:</span> #bfbfbf<span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 边框和阴影</span></span>
+<span class="line">	<span class="token property">--login-border-color</span><span class="token punctuation">:</span> #d9d9d9<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-box-shadow</span><span class="token punctuation">:</span> 0 4px 12px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.15<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 暗色主题</span></span>
 <span class="line"><span class="token selector">[data-theme='dark'] </span><span class="token punctuation">{</span></span>
-<span class="line">  <span class="token property">--login-bg-color</span><span class="token punctuation">:</span> #141414<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-card-bg</span><span class="token punctuation">:</span> #1f1f1f<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-input-bg</span><span class="token punctuation">:</span> #262626<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-text-color</span><span class="token punctuation">:</span> #ffffffd9<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-text-secondary</span><span class="token punctuation">:</span> #ffffff73<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--login-border-color</span><span class="token punctuation">:</span> #434343<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-bg-color</span><span class="token punctuation">:</span> #141414<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-card-bg</span><span class="token punctuation">:</span> #1f1f1f<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-input-bg</span><span class="token punctuation">:</span> #262626<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-text-color</span><span class="token punctuation">:</span> #ffffffd9<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-text-secondary</span><span class="token punctuation">:</span> #ffffff73<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--login-border-color</span><span class="token punctuation">:</span> #434343<span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -732,12 +732,12 @@
 <span class="line"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> yup <span class="token keyword">from</span> <span class="token string">'yup'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">const</span> schema <span class="token operator">=</span> yup<span class="token punctuation">.</span><span class="token function">object</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
-<span class="line">  username<span class="token operator">:</span> yup<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">required</span><span class="token punctuation">(</span><span class="token string">'用户名不能为空'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'用户名至少3个字符'</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
-<span class="line">  password<span class="token operator">:</span> yup<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">required</span><span class="token punctuation">(</span><span class="token string">'密码不能为空'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token string">'密码至少8个字符'</span><span class="token punctuation">)</span></span>
+<span class="line">	username<span class="token operator">:</span> yup<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">required</span><span class="token punctuation">(</span><span class="token string">'用户名不能为空'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'用户名至少3个字符'</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">	password<span class="token operator">:</span> yup<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">required</span><span class="token punctuation">(</span><span class="token string">'密码不能为空'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token string">'密码至少8个字符'</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">const</span> <span class="token punctuation">{</span> handleSubmit<span class="token punctuation">,</span> errors <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useForm</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
-<span class="line">  validationSchema<span class="token operator">:</span> schema</span>
+<span class="line">	validationSchema<span class="token operator">:</span> schema<span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// React 使用 React Hook Form</span></span>
@@ -745,11 +745,11 @@
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> yupResolver <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@hookform/resolvers/yup'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">const</span> <span class="token punctuation">{</span></span>
-<span class="line">  register<span class="token punctuation">,</span></span>
-<span class="line">  handleSubmit<span class="token punctuation">,</span></span>
-<span class="line">  formState<span class="token operator">:</span> <span class="token punctuation">{</span> errors <span class="token punctuation">}</span></span>
+<span class="line">	register<span class="token punctuation">,</span></span>
+<span class="line">	handleSubmit<span class="token punctuation">,</span></span>
+<span class="line">	formState<span class="token operator">:</span> <span class="token punctuation">{</span> errors <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useForm</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
-<span class="line">  resolver<span class="token operator">:</span> <span class="token function">yupResolver</span><span class="token punctuation">(</span>schema<span class="token punctuation">)</span></span>
+<span class="line">	resolver<span class="token operator">:</span> <span class="token function">yupResolver</span><span class="token punctuation">(</span>schema<span class="token punctuation">)</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -892,95 +892,93 @@
 			<pre
 				v-pre
 			><code><span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span></span>
-<span class="line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>login-page<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
-<span class="line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BackgroundLogin</span></span>
-<span class="line">      <span class="token attr-name">:config</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>loginConfig<span class="token punctuation">"</span></span></span>
-<span class="line">      <span class="token attr-name">:loading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>loginLoading<span class="token punctuation">"</span></span></span>
-<span class="line">      <span class="token attr-name">@submit</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleLogin<span class="token punctuation">"</span></span></span>
-<span class="line">      <span class="token attr-name">@register</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleRegister<span class="token punctuation">"</span></span></span>
-<span class="line">      <span class="token attr-name">@forgot-password</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleForgotPassword<span class="token punctuation">"</span></span></span>
-<span class="line">      <span class="token attr-name">@social-login</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleSocialLogin<span class="token punctuation">"</span></span></span>
-<span class="line">    <span class="token punctuation">></span></span></span>
-<span class="line">      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">#header</span><span class="token punctuation">></span></span></span>
-<span class="line">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
-<span class="line">          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>欢迎使用 Web Boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span></span>
-<span class="line">          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>开始您的开发之旅<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></span>
-<span class="line">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
-<span class="line">      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></span>
-<span class="line">      </span>
-<span class="line">      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">#footer</span><span class="token punctuation">></span></span></span>
-<span class="line">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom-footer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
-<span class="line">          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token entity named-entity" title="&copy;">&amp;copy;</span> 2024 Web Boot. All rights reserved.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></span>
-<span class="line">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
-<span class="line">      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></span>
-<span class="line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>BackgroundLogin</span><span class="token punctuation">></span></span></span>
-<span class="line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="line">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>login-page<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
+<span class="line">		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BackgroundLogin</span></span>
+<span class="line">			<span class="token attr-name">:config</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>loginConfig<span class="token punctuation">"</span></span></span>
+<span class="line">			<span class="token attr-name">:loading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>loginLoading<span class="token punctuation">"</span></span></span>
+<span class="line">			<span class="token attr-name">@submit</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleLogin<span class="token punctuation">"</span></span></span>
+<span class="line">			<span class="token attr-name">@register</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleRegister<span class="token punctuation">"</span></span></span>
+<span class="line">			<span class="token attr-name">@forgot-password</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleForgotPassword<span class="token punctuation">"</span></span></span>
+<span class="line">			<span class="token attr-name">@social-login</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleSocialLogin<span class="token punctuation">"</span></span></span>
+<span class="line">		<span class="token punctuation">></span></span></span>
+<span class="line">			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">#header</span><span class="token punctuation">></span></span></span>
+<span class="line">				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
+<span class="line">					<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>欢迎使用 Web Boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span></span>
+<span class="line">					<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>开始您的开发之旅<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></span>
+<span class="line">				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="line">			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></span>
+<span class="line"></span>
+<span class="line">			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">#footer</span><span class="token punctuation">></span></span></span>
+<span class="line">				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom-footer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
+<span class="line">					<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token entity named-entity" title="&copy;">&amp;copy;</span> 2024 Web Boot. All rights reserved.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></span>
+<span class="line">				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="line">			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></span>
+<span class="line">		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>BackgroundLogin</span><span class="token punctuation">></span></span></span>
+<span class="line">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
 <span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></span>
 <span class="line"></span>
 <span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ts<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"></span>
-<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> reactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></span>
-<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> useRouter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue-router'</span></span>
-<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> BackgroundLogin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'mqy-background-login'</span></span>
-<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> loginApi <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/api/auth'</span></span>
+<span class="line">	<span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> reactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></span>
+<span class="line">	<span class="token keyword">import</span> <span class="token punctuation">{</span> useRouter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue-router'</span></span>
+<span class="line">	<span class="token keyword">import</span> <span class="token punctuation">{</span> BackgroundLogin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'mqy-background-login'</span></span>
+<span class="line">	<span class="token keyword">import</span> <span class="token punctuation">{</span> loginApi <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/api/auth'</span></span>
 <span class="line"></span>
-<span class="line"><span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">useRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
-<span class="line"><span class="token keyword">const</span> loginLoading <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">useRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token keyword">const</span> loginLoading <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="token keyword">const</span> loginConfig <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
-<span class="line">  <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Web Boot'</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">subtitle</span><span class="token operator">:</span> <span class="token string">'一键式任何前端语言开发后端管理系统'</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">theme</span><span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">loginMethods</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">,</span> <span class="token string">'email'</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">showRegister</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">showForgotPassword</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">showSocialLogin</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">socialProviders</span><span class="token operator">:</span> <span class="token punctuation">[</span></span>
-<span class="line">    <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'github'</span><span class="token punctuation">,</span> <span class="token literal-property property">icon</span><span class="token operator">:</span> <span class="token string">'fab fa-github'</span><span class="token punctuation">,</span> <span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token string">'#333'</span><span class="token punctuation">,</span> <span class="token literal-property property">enabled</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
-<span class="line">    <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'google'</span><span class="token punctuation">,</span> <span class="token literal-property property">icon</span><span class="token operator">:</span> <span class="token string">'fab fa-google'</span><span class="token punctuation">,</span> <span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token string">'#db4437'</span><span class="token punctuation">,</span> <span class="token literal-property property">enabled</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span></span>
-<span class="line">  <span class="token punctuation">]</span></span>
-<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token keyword">const</span> loginConfig <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">		<span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Web Boot'</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">subtitle</span><span class="token operator">:</span> <span class="token string">'一键式任何前端语言开发后端管理系统'</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">theme</span><span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">loginMethods</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">,</span> <span class="token string">'email'</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">showRegister</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">showForgotPassword</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">showSocialLogin</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">socialProviders</span><span class="token operator">:</span> <span class="token punctuation">[</span></span>
+<span class="line">			<span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'github'</span><span class="token punctuation">,</span> <span class="token literal-property property">icon</span><span class="token operator">:</span> <span class="token string">'fab fa-github'</span><span class="token punctuation">,</span> <span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token string">'#333'</span><span class="token punctuation">,</span> <span class="token literal-property property">enabled</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">			<span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'google'</span><span class="token punctuation">,</span> <span class="token literal-property property">icon</span><span class="token operator">:</span> <span class="token string">'fab fa-google'</span><span class="token punctuation">,</span> <span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token string">'#db4437'</span><span class="token punctuation">,</span> <span class="token literal-property property">enabled</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="token keyword">const</span> <span class="token function-variable function">handleLogin</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">formData</span><span class="token operator">:</span> LoginFormData</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  loginLoading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token keyword">try</span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> loginApi<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>formData<span class="token punctuation">)</span></span>
-<span class="line">    </span>
-<span class="line">    <span class="token comment">// 保存用户信息和 Token</span></span>
-<span class="line">    localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'token'</span><span class="token punctuation">,</span> response<span class="token punctuation">.</span>token<span class="token punctuation">)</span></span>
-<span class="line">    localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'userInfo'</span><span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>user<span class="token punctuation">)</span><span class="token punctuation">)</span></span>
-<span class="line">    </span>
-<span class="line">    <span class="token comment">// 跳转到首页</span></span>
-<span class="line">    router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span></span>
-<span class="line">    </span>
-<span class="line">  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'登录失败:'</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span></span>
-<span class="line">    <span class="token comment">// 显示错误信息</span></span>
-<span class="line">  <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span></span>
-<span class="line">    loginLoading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">false</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token function-variable function">handleLogin</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">formData</span><span class="token operator">:</span> LoginFormData</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">		loginLoading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span></span>
 <span class="line"></span>
-<span class="line"><span class="token keyword">const</span> <span class="token function-variable function">handleRegister</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'/register'</span><span class="token punctuation">)</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">		<span class="token keyword">try</span> <span class="token punctuation">{</span></span>
+<span class="line">			<span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> loginApi<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>formData<span class="token punctuation">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="token keyword">const</span> <span class="token function-variable function">handleForgotPassword</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'/forgot-password'</span><span class="token punctuation">)</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">			<span class="token comment">// 保存用户信息和 Token</span></span>
+<span class="line">			localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'token'</span><span class="token punctuation">,</span> response<span class="token punctuation">.</span>token<span class="token punctuation">)</span></span>
+<span class="line">			localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'userInfo'</span><span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>user<span class="token punctuation">)</span><span class="token punctuation">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="token keyword">const</span> <span class="token function-variable function">handleSocialLogin</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">provider</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token keyword">try</span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token comment">// 处理第三方登录</span></span>
-<span class="line">    window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/api/auth/social/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>provider<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span></span>
-<span class="line">  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'第三方登录失败:'</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">			<span class="token comment">// 跳转到首页</span></span>
+<span class="line">			router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span></span>
+<span class="line">		<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">			console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'登录失败:'</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span></span>
+<span class="line">			<span class="token comment">// 显示错误信息</span></span>
+<span class="line">		<span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span></span>
+<span class="line">			loginLoading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">false</span></span>
+<span class="line">		<span class="token punctuation">}</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token function-variable function">handleRegister</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">		router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'/register'</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token function-variable function">handleForgotPassword</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">		router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'/forgot-password'</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token function-variable function">handleSocialLogin</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">provider</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">		<span class="token keyword">try</span> <span class="token punctuation">{</span></span>
+<span class="line">			<span class="token comment">// 处理第三方登录</span></span>
+<span class="line">			window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/api/auth/social/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>provider<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span></span>
+<span class="line">		<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">			console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'第三方登录失败:'</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span></span>
+<span class="line">		<span class="token punctuation">}</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
-				<div class="line-number"></div>
 				<div class="line-number"></div>
 				<div class="line-number"></div>
 				<div class="line-number"></div>

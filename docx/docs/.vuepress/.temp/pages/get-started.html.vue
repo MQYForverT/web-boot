@@ -52,7 +52,7 @@
 <span class="line"><span class="token function">pnpm</span> <span class="token function">install</span></span>
 <span class="line"><span class="token function">pnpm</span> dev</span>
 <span class="line"></span>
-<span class="line"><span class="token comment"># React 模板  </span></span>
+<span class="line"><span class="token comment"># React 模板</span></span>
 <span class="line"><span class="token builtin class-name">cd</span> templates/react</span>
 <span class="line"><span class="token function">pnpm</span> <span class="token function">install</span></span>
 <span class="line"><span class="token function">pnpm</span> dev</span>
@@ -180,7 +180,7 @@
 <span class="line"></span>
 <span class="line"><span class="token comment">// 自定义配置</span></span>
 <span class="line"><span class="token keyword">const</span> layoutConfig <span class="token operator">=</span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token comment">// 您的配置选项</span></span>
+<span class="line">	<span class="token comment">// 您的配置选项</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">

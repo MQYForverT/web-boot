@@ -1,60 +1,280 @@
-# 配置说明
+# 开发工具集
 
-Web Boot 提供了灵活的配置系统，让您能够根据项目需求自定义各种功能和行为。
+**Web Boot 的核心工具** - 提供统一的开发配置、构建工具和实用函数，确保项目开发的一致性和效率。
 
-## 配置文件结构
+## 🛠️ 工具包概览
 
-### 主配置文件
+Web Boot 提供了完整的开发工具生态系统：
 
-```typescript
-// config/config.ts
-export const config = {
-	// 应用基础配置
-	app: {
-		title: 'Web Boot',
-		description: '一键式任何前端语言开发后端管理系统',
-		version: '2.0.0',
-		author: 'Web Boot Team',
-	},
+### 📏 [@mqy/eslint-config](https://github.com/your-org/web-boot/tree/main/internal/eslint-config)
 
-	// API 配置
-	api: {
-		baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
-		timeout: 10000,
-		withCredentials: true,
-	},
+**统一的代码规范配置**
 
-	// 路由配置
-	router: {
-		mode: 'history',
-		base: '/',
-		loginPath: '/login',
-		homePath: '/',
-		errorPath: '/error',
-	},
+- 支持 Vue、React、Svelte 三大框架
+- TypeScript 严格模式支持
+- Prettier 集成
+- UnoCSS 规则支持
 
-	// 布局配置
-	layout: {
-		theme: 'light',
-		layout: 'default',
-		sidebar: {
-			collapsed: false,
-			width: 240,
-			collapsedWidth: 64,
-		},
-		header: {
-			height: 64,
-			fixed: true,
-		},
-		tabs: {
-			enabled: true,
-			persistent: true,
-		},
-	},
+### 🎨 [@mqy/stylelint-config](https://github.com/your-org/web-boot/tree/main/internal/stylelint-config)
 
-	// 其他配置...
+**统一的样式规范配置**
+
+- SCSS/CSS 规则统一
+- Vue SFC 样式支持
+- 选择器命名规范
+- 代码格式化规则
+
+### ⚡ [@mqy/vite-config](https://github.com/your-org/web-boot/tree/main/internal/vite-config)
+
+**优化的构建配置**
+
+- 框架特定优化
+- 自动导入配置
+- 打包分析工具
+- 性能优化插件
+
+### 🧰 [@mqy/utils](https://github.com/your-org/web-boot/tree/main/internal/utils)
+
+**实用工具函数库**
+
+- HTTP 请求封装
+- 进度条工具
+- 打字机效果
+- 兼容性工具
+
+## 🚀 快速开始
+
+### 安装工具包
+
+```bash
+# 代码规范工具
+npm install @mqy/eslint-config --save-dev
+npm install @mqy/stylelint-config --save-dev
+
+# 构建工具
+npm install @mqy/vite-config --save-dev
+
+# 实用函数
+npm install @mqy/utils
+```
+
+### 配置使用
+
+**ESLint 配置**
+
+```javascript
+// eslint.config.mjs
+import { defineConfig } from '@mqy/eslint-config'
+
+export default defineConfig({
+	// Vue 项目
+	extends: ['@mqy/eslint-config/vue'],
+
+	// React 项目
+	extends: ['@mqy/eslint-config/react'],
+
+	// Svelte 项目
+	extends: ['@mqy/eslint-config/svelte'],
+})
+```
+
+**Stylelint 配置**
+
+```javascript
+// stylelint.config.mjs
+export default {
+	extends: ['@mqy/stylelint-config/vue'],
 }
 ```
+
+**Vite 配置**
+
+```typescript
+// vite.config.ts
+import { defineConfig } from '@mqy/vite-config/vue'
+
+export default defineConfig({
+	// 项目特定配置
+})
+```
+
+**工具函数使用**
+
+```typescript
+import { httpRequest, nprogress, typewriter } from '@mqy/utils'
+
+// HTTP 请求
+const data = await httpRequest.get('/api/users')
+
+// 进度条
+nprogress.start()
+nprogress.done()
+
+// 打字机效果
+typewriter.type('Hello World!')
+```
+
+## 📖 详细文档
+
+### ESLint 配置详解
+
+**支持的规则集**：
+
+- **JavaScript/TypeScript 基础规则**：代码质量、最佳实践
+- **Vue 3 规则集**：Composition API、SFC 规范
+- **React 规则集**：Hooks、JSX 规范
+- **Svelte 规则集**：组件规范、响应式语法
+
+**自定义配置**：
+
+```javascript
+export default defineConfig({
+	extends: ['@mqy/eslint-config/vue'],
+	rules: {
+		// 覆盖或添加自定义规则
+		'vue/component-name-in-template-casing': ['error', 'PascalCase'],
+	},
+})
+```
+
+### Vite 配置详解
+
+**内置插件**：
+
+- **UnoCSS**：原子化 CSS 框架
+- **Auto Import**：自动导入 API
+- **Components**：组件自动注册
+- **Bundle Analyzer**：打包分析
+- **Compression**：资源压缩
+
+**框架特定优化**：
+
+```typescript
+// Vue 项目配置
+import { defineConfig } from '@mqy/vite-config/vue'
+
+export default defineConfig({
+	server: {
+		port: 3000,
+	},
+	build: {
+		target: 'es2015',
+	},
+})
+```
+
+### 工具函数详解
+
+**HTTP 请求工具**：
+
+```typescript
+import { httpRequest } from '@mqy/utils'
+
+// GET 请求
+const users = await httpRequest.get('/api/users')
+
+// POST 请求
+const newUser = await httpRequest.post('/api/users', userData)
+
+// 文件上传
+const result = await httpRequest.upload('/api/upload', file)
+
+// 文件下载
+await httpRequest.download('/api/download/file.pdf')
+```
+
+**进度条工具**：
+
+```typescript
+import { nprogress } from '@mqy/utils'
+
+// 启动进度条
+nprogress.start()
+
+// 设置进度
+nprogress.set(0.5)
+
+// 完成进度
+nprogress.done()
+
+// 自定义配置
+nprogress.configure({
+	showSpinner: false,
+	speed: 200,
+})
+```
+
+**打字机效果**：
+
+```typescript
+import { typewriter } from '@mqy/utils'
+
+// 基础用法
+await typewriter.type('Hello World!')
+
+// 高级配置
+await typewriter.type('Hello World!', {
+	speed: 100,
+	cursor: true,
+	loop: true,
+	delay: 1000,
+})
+```
+
+## 💡 最佳实践
+
+### 项目初始化
+
+// config/config.ts
+export const config = {
+// 应用基础配置
+app: {
+title: 'Web Boot',
+description: '一键式任何前端语言开发后端管理系统',
+version: '2.0.0',
+author: 'Web Boot Team',
+},
+
+    // API 配置
+    api: {
+    	baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
+    	timeout: 10000,
+    	withCredentials: true,
+    },
+
+    // 路由配置
+    router: {
+    	mode: 'history',
+    	base: '/',
+    	loginPath: '/login',
+    	homePath: '/',
+    	errorPath: '/error',
+    },
+
+    // 布局配置
+    layout: {
+    	theme: 'light',
+    	layout: 'default',
+    	sidebar: {
+    		collapsed: false,
+    		width: 240,
+    		collapsedWidth: 64,
+    	},
+    	header: {
+    		height: 64,
+    		fixed: true,
+    	},
+    	tabs: {
+    		enabled: true,
+    		persistent: true,
+    	},
+    },
+
+    // 其他配置...
+
+}
+
+````
 
 ### 环境变量配置
 
@@ -73,7 +293,7 @@ VITE_APP_DEBUG=false
 VITE_API_BASE_URL=http://test-api.example.com
 VITE_APP_TITLE=Web Boot Test
 VITE_APP_DEBUG=true
-```
+````
 
 ## 详细配置选项
 

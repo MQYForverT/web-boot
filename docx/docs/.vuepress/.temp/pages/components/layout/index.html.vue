@@ -41,22 +41,22 @@
 			<pre
 				v-pre
 			><code><span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span></span>
-<span class="line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BackgroundLayout</span> <span class="token attr-name">:config</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>layoutConfig<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
-<span class="line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span> <span class="token punctuation">/></span></span></span>
-<span class="line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>BackgroundLayout</span><span class="token punctuation">></span></span></span>
+<span class="line">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BackgroundLayout</span> <span class="token attr-name">:config</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>layoutConfig<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
+<span class="line">		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span> <span class="token punctuation">/></span></span></span>
+<span class="line">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>BackgroundLayout</span><span class="token punctuation">></span></span></span>
 <span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></span>
 <span class="line"></span>
 <span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ts<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"></span>
-<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> ref <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></span>
-<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> BackgroundLayout <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'mqy-background-layout'</span></span>
+<span class="line">	<span class="token keyword">import</span> <span class="token punctuation">{</span> ref <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></span>
+<span class="line">	<span class="token keyword">import</span> <span class="token punctuation">{</span> BackgroundLayout <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'mqy-background-layout'</span></span>
 <span class="line"></span>
-<span class="line"><span class="token keyword">const</span> layoutConfig <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
-<span class="line">  <span class="token literal-property property">theme</span><span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">layout</span><span class="token operator">:</span> <span class="token string">'default'</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">sidebar</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token literal-property property">collapsed</span><span class="token operator">:</span> <span class="token boolean">false</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
-<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token keyword">const</span> layoutConfig <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">		<span class="token literal-property property">theme</span><span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">layout</span><span class="token operator">:</span> <span class="token string">'default'</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token literal-property property">sidebar</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">			<span class="token literal-property property">collapsed</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -90,26 +90,18 @@
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> BackgroundLayout <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'mqy-background-layout'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">const</span> App<span class="token operator">:</span> React<span class="token punctuation">.</span><span class="token function-variable function">FC</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token keyword">const</span> <span class="token punctuation">[</span>layoutConfig<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
-<span class="line">    theme<span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">,</span></span>
-<span class="line">    layout<span class="token operator">:</span> <span class="token string">'default'</span><span class="token punctuation">,</span></span>
-<span class="line">    sidebar<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">      collapsed<span class="token operator">:</span> <span class="token boolean">false</span></span>
-<span class="line">    <span class="token punctuation">}</span></span>
-<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token punctuation">[</span>layoutConfig<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">		theme<span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">,</span></span>
+<span class="line">		layout<span class="token operator">:</span> <span class="token string">'default'</span><span class="token punctuation">,</span></span>
+<span class="line">		sidebar<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">			collapsed<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span>
-<span class="line">  <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
-<span class="line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">BackgroundLayout</span></span> <span class="token attr-name">config</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>layoutConfig<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span>
-<span class="line">      </span><span class="token punctuation">{</span><span class="token comment">/* 您的应用内容 */</span><span class="token punctuation">}</span><span class="token plain-text"></span>
-<span class="line">    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">BackgroundLayout</span></span><span class="token punctuation">></span></span></span>
-<span class="line">  <span class="token punctuation">)</span></span>
+<span class="line">	<span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">BackgroundLayout</span></span> <span class="token attr-name">config</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>layoutConfig<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span><span class="token comment">/* 您的应用内容 */</span><span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">BackgroundLayout</span></span><span class="token punctuation">></span></span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
-				<div class="line-number"></div>
-				<div class="line-number"></div>
-				<div class="line-number"></div>
-				<div class="line-number"></div>
 				<div class="line-number"></div>
 				<div class="line-number"></div>
 				<div class="line-number"></div>
@@ -132,7 +124,7 @@
 		<div class="language-svelte line-numbers-mode" data-highlighter="prismjs" data-ext="svelte">
 			<pre v-pre><code><span class="line">&lt;script lang=&quot;ts&quot;&gt;</span>
 <span class="line">  import { BackgroundLayout } from 'mqy-background-layout'</span>
-<span class="line">  </span>
+<span class="line"></span>
 <span class="line">  let layoutConfig = {</span>
 <span class="line">    theme: 'light',</span>
 <span class="line">    layout: 'default',</span>
@@ -176,64 +168,64 @@
 			<pre
 				v-pre
 			><code><span class="line"><span class="token keyword">interface</span> <span class="token class-name">LayoutConfig</span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token comment">// 主题配置</span></span>
-<span class="line">  theme<span class="token operator">:</span> <span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'auto'</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 布局模式</span></span>
-<span class="line">  layout<span class="token operator">:</span> <span class="token string">'default'</span> <span class="token operator">|</span> <span class="token string">'vertical'</span> <span class="token operator">|</span> <span class="token string">'horizontal'</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 侧边栏配置</span></span>
-<span class="line">  sidebar<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    collapsed<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">    width<span class="token operator">:</span> <span class="token builtin">number</span></span>
-<span class="line">    collapsedWidth<span class="token operator">:</span> <span class="token builtin">number</span></span>
-<span class="line">    position<span class="token operator">:</span> <span class="token string">'left'</span> <span class="token operator">|</span> <span class="token string">'right'</span></span>
-<span class="line">    fixed<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 头部配置</span></span>
-<span class="line">  header<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    height<span class="token operator">:</span> <span class="token builtin">number</span></span>
-<span class="line">    fixed<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">    showBreadcrumb<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">    showUserInfo<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 标签页配置</span></span>
-<span class="line">  tabs<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    enabled<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">    persistent<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">    closable<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">    maxCount<span class="token operator">:</span> <span class="token builtin">number</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 底部配置</span></span>
-<span class="line">  footer<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    enabled<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">    height<span class="token operator">:</span> <span class="token builtin">number</span></span>
-<span class="line">    fixed<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">    text<span class="token operator">:</span> <span class="token builtin">string</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 菜单配置</span></span>
-<span class="line">  menu<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    data<span class="token operator">:</span> MenuItem<span class="token punctuation">[</span><span class="token punctuation">]</span></span>
-<span class="line">    accordion<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">    openKeys<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span>
-<span class="line">    selectedKeys<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 其他配置</span></span>
-<span class="line">  watermark<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    enabled<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">    text<span class="token operator">:</span> <span class="token builtin">string</span></span>
-<span class="line">    opacity<span class="token operator">:</span> <span class="token builtin">number</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
-<span class="line">  </span>
-<span class="line">  animation<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    enabled<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">    duration<span class="token operator">:</span> <span class="token builtin">number</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">	<span class="token comment">// 主题配置</span></span>
+<span class="line">	theme<span class="token operator">:</span> <span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'auto'</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 布局模式</span></span>
+<span class="line">	layout<span class="token operator">:</span> <span class="token string">'default'</span> <span class="token operator">|</span> <span class="token string">'vertical'</span> <span class="token operator">|</span> <span class="token string">'horizontal'</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 侧边栏配置</span></span>
+<span class="line">	sidebar<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		collapsed<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">		width<span class="token operator">:</span> <span class="token builtin">number</span></span>
+<span class="line">		collapsedWidth<span class="token operator">:</span> <span class="token builtin">number</span></span>
+<span class="line">		position<span class="token operator">:</span> <span class="token string">'left'</span> <span class="token operator">|</span> <span class="token string">'right'</span></span>
+<span class="line">		fixed<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 头部配置</span></span>
+<span class="line">	header<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		height<span class="token operator">:</span> <span class="token builtin">number</span></span>
+<span class="line">		fixed<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">		showBreadcrumb<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">		showUserInfo<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 标签页配置</span></span>
+<span class="line">	tabs<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		enabled<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">		persistent<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">		closable<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">		maxCount<span class="token operator">:</span> <span class="token builtin">number</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 底部配置</span></span>
+<span class="line">	footer<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		enabled<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">		height<span class="token operator">:</span> <span class="token builtin">number</span></span>
+<span class="line">		fixed<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">		text<span class="token operator">:</span> <span class="token builtin">string</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 菜单配置</span></span>
+<span class="line">	menu<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		data<span class="token operator">:</span> MenuItem<span class="token punctuation">[</span><span class="token punctuation">]</span></span>
+<span class="line">		accordion<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">		openKeys<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span>
+<span class="line">		selectedKeys<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 其他配置</span></span>
+<span class="line">	watermark<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		enabled<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">		text<span class="token operator">:</span> <span class="token builtin">string</span></span>
+<span class="line">		opacity<span class="token operator">:</span> <span class="token builtin">number</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">	animation<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		enabled<span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">		duration<span class="token operator">:</span> <span class="token builtin">number</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -306,19 +298,19 @@
 			<pre
 				v-pre
 			><code><span class="line"><span class="token keyword">interface</span> <span class="token class-name">MenuItem</span> <span class="token punctuation">{</span></span>
-<span class="line">  key<span class="token operator">:</span> <span class="token builtin">string</span></span>
-<span class="line">  title<span class="token operator">:</span> <span class="token builtin">string</span></span>
-<span class="line">  icon<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span></span>
-<span class="line">  path<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span></span>
-<span class="line">  children<span class="token operator">?</span><span class="token operator">:</span> MenuItem<span class="token punctuation">[</span><span class="token punctuation">]</span></span>
-<span class="line">  disabled<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">  hidden<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">  badge<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">number</span></span>
-<span class="line">  meta<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    requiresAuth<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">    roles<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span>
-<span class="line">    keepAlive<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">	key<span class="token operator">:</span> <span class="token builtin">string</span></span>
+<span class="line">	title<span class="token operator">:</span> <span class="token builtin">string</span></span>
+<span class="line">	icon<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span></span>
+<span class="line">	path<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span></span>
+<span class="line">	children<span class="token operator">?</span><span class="token operator">:</span> MenuItem<span class="token punctuation">[</span><span class="token punctuation">]</span></span>
+<span class="line">	disabled<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">	hidden<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">	badge<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">number</span></span>
+<span class="line">	meta<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		requiresAuth<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">		roles<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span>
+<span class="line">		keepAlive<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -467,37 +459,37 @@
 		<div class="language-scss line-numbers-mode" data-highlighter="prismjs" data-ext="scss">
 			<pre v-pre><code><span class="line"><span class="token comment">// 自定义主题变量</span></span>
 <span class="line"><span class="token selector">:root </span><span class="token punctuation">{</span></span>
-<span class="line">  <span class="token comment">// 主色调</span></span>
-<span class="line">  <span class="token property">--layout-primary-color</span><span class="token punctuation">:</span> #1890ff<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--layout-success-color</span><span class="token punctuation">:</span> #52c41a<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--layout-warning-color</span><span class="token punctuation">:</span> #faad14<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--layout-error-color</span><span class="token punctuation">:</span> #f5222d<span class="token punctuation">;</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 背景色</span></span>
-<span class="line">  <span class="token property">--layout-bg-color</span><span class="token punctuation">:</span> #f0f2f5<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--layout-content-bg</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--layout-sidebar-bg</span><span class="token punctuation">:</span> #001529<span class="token punctuation">;</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 文字颜色</span></span>
-<span class="line">  <span class="token property">--layout-text-color</span><span class="token punctuation">:</span> #000000d9<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--layout-text-color-secondary</span><span class="token punctuation">:</span> #00000073<span class="token punctuation">;</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 边框和分割线</span></span>
-<span class="line">  <span class="token property">--layout-border-color</span><span class="token punctuation">:</span> #d9d9d9<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--layout-border-radius</span><span class="token punctuation">:</span> 6px<span class="token punctuation">;</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token comment">// 阴影</span></span>
-<span class="line">  <span class="token property">--layout-shadow</span><span class="token punctuation">:</span> 0 2px 8px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.15<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">	<span class="token comment">// 主色调</span></span>
+<span class="line">	<span class="token property">--layout-primary-color</span><span class="token punctuation">:</span> #1890ff<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--layout-success-color</span><span class="token punctuation">:</span> #52c41a<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--layout-warning-color</span><span class="token punctuation">:</span> #faad14<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--layout-error-color</span><span class="token punctuation">:</span> #f5222d<span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 背景色</span></span>
+<span class="line">	<span class="token property">--layout-bg-color</span><span class="token punctuation">:</span> #f0f2f5<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--layout-content-bg</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--layout-sidebar-bg</span><span class="token punctuation">:</span> #001529<span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 文字颜色</span></span>
+<span class="line">	<span class="token property">--layout-text-color</span><span class="token punctuation">:</span> #000000d9<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--layout-text-color-secondary</span><span class="token punctuation">:</span> #00000073<span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 边框和分割线</span></span>
+<span class="line">	<span class="token property">--layout-border-color</span><span class="token punctuation">:</span> #d9d9d9<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--layout-border-radius</span><span class="token punctuation">:</span> 6px<span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token comment">// 阴影</span></span>
+<span class="line">	<span class="token property">--layout-shadow</span><span class="token punctuation">:</span> 0 2px 8px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.15<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 暗色主题</span></span>
 <span class="line"><span class="token selector">[data-theme='dark'] </span><span class="token punctuation">{</span></span>
-<span class="line">  <span class="token property">--layout-bg-color</span><span class="token punctuation">:</span> #141414<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--layout-content-bg</span><span class="token punctuation">:</span> #1f1f1f<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--layout-sidebar-bg</span><span class="token punctuation">:</span> #141414<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--layout-text-color</span><span class="token punctuation">:</span> #ffffffd9<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--layout-text-color-secondary</span><span class="token punctuation">:</span> #ffffff73<span class="token punctuation">;</span></span>
-<span class="line">  <span class="token property">--layout-border-color</span><span class="token punctuation">:</span> #434343<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--layout-bg-color</span><span class="token punctuation">:</span> #141414<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--layout-content-bg</span><span class="token punctuation">:</span> #1f1f1f<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--layout-sidebar-bg</span><span class="token punctuation">:</span> #141414<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--layout-text-color</span><span class="token punctuation">:</span> #ffffffd9<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--layout-text-color-secondary</span><span class="token punctuation">:</span> #ffffff73<span class="token punctuation">;</span></span>
+<span class="line">	<span class="token property">--layout-border-color</span><span class="token punctuation">:</span> #434343<span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -545,19 +537,19 @@
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> reactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">const</span> layoutConfig <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
-<span class="line">  theme<span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">,</span></span>
-<span class="line">  sidebar<span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    collapsed<span class="token operator">:</span> <span class="token boolean">false</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">	theme<span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">,</span></span>
+<span class="line">	sidebar<span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">		collapsed<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 动态修改配置</span></span>
 <span class="line"><span class="token keyword">const</span> <span class="token function-variable function">toggleTheme</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  layoutConfig<span class="token punctuation">.</span>theme <span class="token operator">=</span> layoutConfig<span class="token punctuation">.</span>theme <span class="token operator">===</span> <span class="token string">'light'</span> <span class="token operator">?</span> <span class="token string">'dark'</span> <span class="token operator">:</span> <span class="token string">'light'</span></span>
+<span class="line">	layoutConfig<span class="token punctuation">.</span>theme <span class="token operator">=</span> layoutConfig<span class="token punctuation">.</span>theme <span class="token operator">===</span> <span class="token string">'light'</span> <span class="token operator">?</span> <span class="token string">'dark'</span> <span class="token operator">:</span> <span class="token string">'light'</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">const</span> <span class="token function-variable function">toggleSidebar</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  layoutConfig<span class="token punctuation">.</span>sidebar<span class="token punctuation">.</span>collapsed <span class="token operator">=</span> <span class="token operator">!</span>layoutConfig<span class="token punctuation">.</span>sidebar<span class="token punctuation">.</span>collapsed</span>
+<span class="line">	layoutConfig<span class="token punctuation">.</span>sidebar<span class="token punctuation">.</span>collapsed <span class="token operator">=</span> <span class="token operator">!</span>layoutConfig<span class="token punctuation">.</span>sidebar<span class="token punctuation">.</span>collapsed</span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -591,9 +583,9 @@
 <span class="line"><span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">useRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">const</span> <span class="token function-variable function">handleMenuClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span>menuItem<span class="token operator">:</span> MenuItem<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>menuItem<span class="token punctuation">.</span>path<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">    router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>menuItem<span class="token punctuation">.</span>path<span class="token punctuation">)</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">	<span class="token keyword">if</span> <span class="token punctuation">(</span>menuItem<span class="token punctuation">.</span>path<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">		router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>menuItem<span class="token punctuation">.</span>path<span class="token punctuation">)</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// React Router 集成</span></span>
@@ -602,9 +594,9 @@
 <span class="line"><span class="token keyword">const</span> navigate <span class="token operator">=</span> <span class="token function">useNavigate</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">const</span> <span class="token function-variable function">handleMenuClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span>menuItem<span class="token operator">:</span> MenuItem<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>menuItem<span class="token punctuation">.</span>path<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token function">navigate</span><span class="token punctuation">(</span>menuItem<span class="token punctuation">.</span>path<span class="token punctuation">)</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">	<span class="token keyword">if</span> <span class="token punctuation">(</span>menuItem<span class="token punctuation">.</span>path<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">		<span class="token function">navigate</span><span class="token punctuation">(</span>menuItem<span class="token punctuation">.</span>path<span class="token punctuation">)</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -637,18 +629,22 @@
 		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
 			<pre v-pre><code><span class="line"><span class="token comment">// 菜单权限过滤</span></span>
 <span class="line"><span class="token keyword">const</span> <span class="token function-variable function">filterMenuByPermission</span> <span class="token operator">=</span> <span class="token punctuation">(</span>menus<span class="token operator">:</span> MenuItem<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> userRoles<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token keyword">return</span> menus<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>menu <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>menu<span class="token punctuation">.</span>meta<span class="token operator">?.</span>roles <span class="token operator">&amp;&amp;</span> menu<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>roles<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">      <span class="token keyword">return</span> menu<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>roles<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span>role <span class="token operator">=></span> userRoles<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>role<span class="token punctuation">)</span><span class="token punctuation">)</span></span>
-<span class="line">    <span class="token punctuation">}</span></span>
-<span class="line">    <span class="token keyword">return</span> <span class="token boolean">true</span></span>
-<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>menu <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span></span>
-<span class="line">    <span class="token operator">...</span>menu<span class="token punctuation">,</span></span>
-<span class="line">    children<span class="token operator">:</span> menu<span class="token punctuation">.</span>children <span class="token operator">?</span> <span class="token function">filterMenuByPermission</span><span class="token punctuation">(</span>menu<span class="token punctuation">.</span>children<span class="token punctuation">,</span> userRoles<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token keyword">undefined</span></span>
-<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span>
+<span class="line">	<span class="token keyword">return</span> menus</span>
+<span class="line">		<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span>menu<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">			<span class="token keyword">if</span> <span class="token punctuation">(</span>menu<span class="token punctuation">.</span>meta<span class="token operator">?.</span>roles <span class="token operator">&amp;&amp;</span> menu<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>roles<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">				<span class="token keyword">return</span> menu<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>roles<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span><span class="token punctuation">(</span>role<span class="token punctuation">)</span> <span class="token operator">=></span> userRoles<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>role<span class="token punctuation">)</span><span class="token punctuation">)</span></span>
+<span class="line">			<span class="token punctuation">}</span></span>
+<span class="line">			<span class="token keyword">return</span> <span class="token boolean">true</span></span>
+<span class="line">		<span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line">		<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>menu<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">			<span class="token operator">...</span>menu<span class="token punctuation">,</span></span>
+<span class="line">			children<span class="token operator">:</span> menu<span class="token punctuation">.</span>children <span class="token operator">?</span> <span class="token function">filterMenuByPermission</span><span class="token punctuation">(</span>menu<span class="token punctuation">.</span>children<span class="token punctuation">,</span> userRoles<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span></span>
+<span class="line">		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
+				<div class="line-number"></div>
+				<div class="line-number"></div>
 				<div class="line-number"></div>
 				<div class="line-number"></div>
 				<div class="line-number"></div>
@@ -790,17 +786,17 @@
 		<div class="language-vue line-numbers-mode" data-highlighter="prismjs" data-ext="vue">
 			<pre v-pre><code><span class="line"><span class="token comment">&lt;!-- 自定义头部组件 --></span></span>
 <span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span></span>
-<span class="line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
-<span class="line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></span>
-<span class="line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header-center<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
-<span class="line">      <span class="token comment">&lt;!-- 自定义中间内容 --></span></span>
-<span class="line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
-<span class="line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></span>
-<span class="line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="line">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
+<span class="line">		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></span>
+<span class="line">		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header-center<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span>
+<span class="line">			<span class="token comment">&lt;!-- 自定义中间内容 --></span></span>
+<span class="line">		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="line">		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></span>
+<span class="line">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
 <span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></span>
 <span class="line"></span>
 <span class="line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ts<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"></span>
-<span class="line"><span class="token comment">// 自定义头部逻辑</span></span>
+<span class="line">	<span class="token comment">// 自定义头部逻辑</span></span>
 <span class="line"></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -826,16 +822,16 @@
 		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
 			<pre v-pre><code><span class="line"><span class="token comment">// 添加新的 Hook</span></span>
 <span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">useCustomFeature</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token keyword">const</span> <span class="token punctuation">[</span>state<span class="token punctuation">,</span> setState<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>initialState<span class="token punctuation">)</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token keyword">const</span> <span class="token function-variable function">customMethod</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token comment">// 自定义功能实现</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
-<span class="line">  </span>
-<span class="line">  <span class="token keyword">return</span> <span class="token punctuation">{</span></span>
-<span class="line">    state<span class="token punctuation">,</span></span>
-<span class="line">    customMethod</span>
-<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token punctuation">[</span>state<span class="token punctuation">,</span> setState<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>initialState<span class="token punctuation">)</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token keyword">const</span> <span class="token function-variable function">customMethod</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">		<span class="token comment">// 自定义功能实现</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">	<span class="token keyword">return</span> <span class="token punctuation">{</span></span>
+<span class="line">		state<span class="token punctuation">,</span></span>
+<span class="line">		customMethod<span class="token punctuation">,</span></span>
+<span class="line">	<span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -863,9 +859,9 @@
 		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
 			<pre v-pre><code><span class="line"><span class="token comment">// 大数据量菜单优化</span></span>
 <span class="line"><span class="token keyword">const</span> VirtualMenu <span class="token operator">=</span> <span class="token punctuation">{</span></span>
-<span class="line">  itemHeight<span class="token operator">:</span> <span class="token number">40</span><span class="token punctuation">,</span></span>
-<span class="line">  visibleCount<span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span></span>
-<span class="line">  buffer<span class="token operator">:</span> <span class="token number">5</span></span>
+<span class="line">	itemHeight<span class="token operator">:</span> <span class="token number">40</span><span class="token punctuation">,</span></span>
+<span class="line">	visibleCount<span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span></span>
+<span class="line">	buffer<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -882,13 +878,9 @@
 		</h3>
 		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
 			<pre v-pre><code><span class="line"><span class="token comment">// 组件懒加载</span></span>
-<span class="line"><span class="token keyword">const</span> LazyComponent <span class="token operator">=</span> <span class="token function">defineAsyncComponent</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span></span>
-<span class="line">  <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./LazyComponent.vue'</span><span class="token punctuation">)</span></span>
-<span class="line"><span class="token punctuation">)</span></span>
+<span class="line"><span class="token keyword">const</span> LazyComponent <span class="token operator">=</span> <span class="token function">defineAsyncComponent</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./LazyComponent.vue'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
-				<div class="line-number"></div>
-				<div class="line-number"></div>
 				<div class="line-number"></div>
 				<div class="line-number"></div>
 			</div>
@@ -899,8 +891,8 @@
 		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
 			<pre v-pre><code><span class="line"><span class="token comment">// 页面缓存配置</span></span>
 <span class="line"><span class="token keyword">const</span> cacheConfig <span class="token operator">=</span> <span class="token punctuation">{</span></span>
-<span class="line">  max<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span></span>
-<span class="line">  exclude<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'login'</span><span class="token punctuation">,</span> <span class="token string">'error'</span><span class="token punctuation">]</span></span>
+<span class="line">	max<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span></span>
+<span class="line">	exclude<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'login'</span><span class="token punctuation">,</span> <span class="token string">'error'</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
@@ -953,8 +945,8 @@
 		<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts">
 			<pre v-pre><code><span class="line"><span class="token comment">// 开启调试模式</span></span>
 <span class="line"><span class="token keyword">const</span> layoutConfig <span class="token operator">=</span> <span class="token punctuation">{</span></span>
-<span class="line">  debug<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 开启调试信息</span></span>
-<span class="line">  <span class="token comment">// 其他配置...</span></span>
+<span class="line">	debug<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 开启调试信息</span></span>
+<span class="line">	<span class="token comment">// 其他配置...</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 			<div class="line-numbers" aria-hidden="true" style="counter-reset: line-number 0">
