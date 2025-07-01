@@ -2,12 +2,12 @@
 
 ## 技术栈
 
-- Svelte 5.23
-- TypeScript 5.7
-- Vite 6.3
+- Svelte 5.23.1
+- TypeScript 5.7.2
+- Vite 6.3.1
 - Svelte SPA Router 4.0
 - Svelte Use
-- Page.js 1.11
+- Page.js 1.11.6
 
 ## 项目结构
 
@@ -177,9 +177,10 @@ pnpm lint:format
 
 1. 版本兼容
 
-   - Svelte 5.23+
+   - Svelte 5.23.1+
    - Node.js 16+
-   - TypeScript 5.7+
+   - TypeScript 5.7.2+
+   - Vite 6.3.1+
 
 2. 开发规范
 

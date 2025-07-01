@@ -12,7 +12,7 @@ export default defineConfig({
 	themeConfig: {
 		// https://vitepress.dev/reference/default-theme-config
 		siteTitle: 'Web Boot',
-		logo: '/logo.svg',
+		logo: '/logo.png',
 
 		nav: [
 			{ text: '首页', link: '/' },
@@ -101,7 +101,7 @@ export default defineConfig({
 			],
 		},
 
-		socialLinks: [{ icon: 'github', link: 'https://github.com/your-username/web-boot' }],
+		socialLinks: [{ icon: 'github', link: 'https://github.com/MQYForverT/web-boot' }],
 
 		footer: {
 			message: '基于 MIT 许可发布',
