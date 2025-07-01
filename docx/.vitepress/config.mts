@@ -18,7 +18,7 @@ export default defineConfig({
 			{ text: '首页', link: '/' },
 			{ text: '指南', link: '/guide/getting-started' },
 			{ text: '模板', link: '/templates/' },
-			{ text: '组件', link: '/components/' },
+			{ text: 'Components', link: '/components/' },
 			{ text: 'API', link: '/api/' },
 			{ text: '示例', link: '/examples/' },
 		],
@@ -48,12 +48,23 @@ export default defineConfig({
 			],
 			'/components/': [
 				{
-					text: '组件库',
+					text: 'Components',
 					items: [
 						{ text: '概述', link: '/components/' },
-						{ text: 'BackgroundLayout', link: '/components/background-layout' },
-						{ text: 'BackgroundLogin', link: '/components/background-login' },
-						{ text: '公共组件', link: '/components/common' },
+						{
+							text: '私有组件库',
+							collapsed: false,
+							items: [
+								{ text: 'BackgroundLayout', link: '/components/background-layout' },
+								{ text: 'BackgroundLogin', link: '/components/background-login' },
+								{ text: 'Common Components', link: '/components/common' },
+							],
+						},
+						{
+							text: '公共组件库',
+							collapsed: false,
+							items: [{ text: '开发中...', link: '#' }],
+						},
 					],
 				},
 			],
