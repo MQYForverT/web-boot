@@ -18,8 +18,8 @@ export default defineConfig({
 			{ text: '首页', link: '/' },
 			{ text: '指南', link: '/guide/getting-started' },
 			{ text: '模板', link: '/templates/' },
-			{ text: 'Components', link: '/components/' },
-			{ text: 'API', link: '/api/' },
+			{ text: '组件', link: '/components/' },
+			{ text: '工具', link: '/api/' },
 			{ text: '示例', link: '/examples/' },
 		],
 
@@ -70,21 +70,33 @@ export default defineConfig({
 			],
 			'/api/': [
 				{
-					text: 'API 参考',
+					text: '工具',
 					items: [
 						{ text: '概述', link: '/api/' },
-						{ text: '配置管理', link: '/api/config' },
-						{ text: '用户管理', link: '/api/user' },
-						{ text: '项目管理', link: '/api/project' },
-						{ text: '布局组件', link: '/api/layout' },
-						{ text: '登录组件', link: '/api/login' },
-						{ text: '公共组件', link: '/api/common' },
-						{ text: '文件处理', link: '/api/file' },
-						{ text: '数据处理', link: '/api/data' },
-						{ text: '缓存管理', link: '/api/cache' },
-						{ text: '性能监控', link: '/api/performance' },
-						{ text: '错误追踪', link: '/api/error' },
-						{ text: '用户行为', link: '/api/analytics' },
+						{
+							text: '代码规范',
+							collapsed: false,
+							items: [
+								{ text: 'ESLint 配置', link: '/api/eslint' },
+								{ text: 'StyleLint 配置', link: '/api/stylelint' },
+							],
+						},
+						{
+							text: '构建工具',
+							collapsed: false,
+							items: [{ text: 'Vite 配置', link: '/api/vite' }],
+						},
+						{
+							text: '工具函数',
+							collapsed: false,
+							items: [
+								{ text: 'Axios 封装', link: '/api/axios' },
+								{ text: '滚动处理', link: '/api/scroll' },
+								{ text: '函数重载', link: '/api/overload' },
+								{ text: '进度条', link: '/api/progress' },
+								{ text: '打字机效果', link: '/api/typewriter' },
+							],
+						},
 					],
 				},
 			],
