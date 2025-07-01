@@ -20,7 +20,6 @@ export default defineConfig({
 			{ text: '模板', link: '/templates/' },
 			{ text: '组件', link: '/components/' },
 			{ text: '工具', link: '/api/' },
-			{ text: '示例', link: '/examples/' },
 		],
 
 		sidebar: {
@@ -97,15 +96,6 @@ export default defineConfig({
 								{ text: '打字机效果', link: '/api/typewriter' },
 							],
 						},
-					],
-				},
-			],
-			'/examples/': [
-				{
-					text: '示例',
-					items: [
-						{ text: 'Markdown 示例', link: '/examples/markdown' },
-						{ text: 'API 示例', link: '/examples/api' },
 					],
 				},
 			],
