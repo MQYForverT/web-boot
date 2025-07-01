@@ -1,7 +1,7 @@
 {
 	"name": "@mqy/eslint-config",
 	"version": "1.0.0",
-	"description": "",
+	"description": "统一的 ESLint 配置 - 支持 Vue、React、Svelte 多框架",
 	"type": "module",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -12,9 +12,26 @@
 		"./vue": "./vue/index.mjs",
 		"./svelte": "./svelte/index.mjs"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"keywords": [
+		"eslint",
+		"eslint-config",
+		"vue",
+		"react",
+		"svelte",
+		"typescript",
+		"code-quality"
+	],
+	"author": "MQYForverT",
+	"license": "MIT",
+	"homepage": "https://github.com/MQYForverT/web-boot/tree/main/internal/eslint-config#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MQYForverT/web-boot.git",
+		"directory": "internal/eslint-config"
+	},
+	"bugs": {
+		"url": "https://github.com/MQYForverT/web-boot/issues"
+	},
 	"devDependencies": {
 		"@eslint/js": "^9.24.0",
 		"@typescript-eslint/eslint-plugin": "^8.30.1",

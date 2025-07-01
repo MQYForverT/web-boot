@@ -1,7 +1,7 @@
 {
 	"name": "@mqy/stylelint-config",
 	"version": "1.0.0",
-	"description": "",
+	"description": "统一的 Stylelint 配置 - 支持 CSS、SCSS、Vue 等样式规范",
 	"main": "index.mjs",
 	"type": "module",
 	"exports": {
@@ -12,9 +12,27 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"keywords": [
+		"stylelint",
+		"stylelint-config",
+		"css",
+		"scss",
+		"vue",
+		"react",
+		"html",
+		"code-style"
+	],
+	"author": "MQYForverT",
+	"license": "MIT",
+	"homepage": "https://github.com/MQYForverT/web-boot/tree/main/internal/stylelint-config#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MQYForverT/web-boot.git",
+		"directory": "internal/stylelint-config"
+	},
+	"bugs": {
+		"url": "https://github.com/MQYForverT/web-boot/issues"
+	},
 	"devDependencies": {
 		"postcss-scss": "^4.0.9",
 		"stylelint": "^16.18.0",

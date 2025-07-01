@@ -1,7 +1,7 @@
 {
 	"name": "web-boot",
 	"version": "1.0.0",
-	"description": "",
+	"description": "通用 Web Components 组件库和开发工具集 - 支持 Vue、React、Svelte 多框架",
 	"main": "index.js",
 	"type": "module",
 	"engines": {
@@ -38,9 +38,27 @@
 		"reinstall": "pnpm run clean && pnpm install",
 		"check-deps": "depcheck"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"keywords": [
+		"vue",
+		"react",
+		"svelte",
+		"vite",
+		"web-components",
+		"ui-library",
+		"typescript",
+		"eslint",
+		"monorepo"
+	],
+	"author": "MQYForverT",
+	"license": "MIT",
+	"homepage": "https://github.com/MQYForverT/web-boot#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MQYForverT/web-boot.git"
+	},
+	"bugs": {
+		"url": "https://github.com/MQYForverT/web-boot/issues"
+	},
 	"packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879",
 	"dependencies": {
 		"inquirer": "^12.5.2",

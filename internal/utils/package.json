@@ -1,7 +1,7 @@
 {
 	"name": "@mqy/utils",
 	"version": "1.0.0",
-	"description": "",
+	"description": "实用工具函数库 - 包含 Axios 封装、NProgress、Typewriter、兼容性滚动、函数重载等工具",
 	"type": "module",
 	"scripts": {
 		"build": "rimraf dist && vue-tsc && vite build --configLoader runner"
@@ -11,9 +11,30 @@
 	"files": [
 		"dist"
 	],
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"keywords": [
+		"utils",
+		"utilities",
+		"typescript",
+		"axios",
+		"nprogress",
+		"typewriter",
+		"scroll",
+		"overload",
+		"vue",
+		"react",
+		"svelte"
+	],
+	"author": "MQYForverT",
+	"license": "MIT",
+	"homepage": "https://github.com/MQYForverT/web-boot/tree/main/internal/utils#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MQYForverT/web-boot.git",
+		"directory": "internal/utils"
+	},
+	"bugs": {
+		"url": "https://github.com/MQYForverT/web-boot/issues"
+	},
 	"dependencies": {
 		"axios": "^1.8.4",
 		"nprogress": "^0.2.0",
