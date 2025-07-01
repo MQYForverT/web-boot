@@ -15,9 +15,7 @@
 	"dependencies": {
 		"@mqy/component-private": "workspace:^",
 		"@mqy/utils": "workspace:^",
-		"page": "^1.11.6",
-		"svelte-spa-router": "^4.0.1",
-		"svelte-use": "^0.0.1"
+		"page": "^1.11.6"
 	},
 	"devDependencies": {
 		"@mqy/eslint-config": "workspace:^",
@@ -27,7 +25,6 @@
 		"@tsconfig/svelte": "^5.0.4",
 		"@types/page": "^1.11.9",
 		"svelte": "^5.23.1",
-		"svelte-check": "^4.1.5",
 		"typescript": "~5.7.2",
 		"vite": "^6.3.1"
 	}
