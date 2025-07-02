@@ -1,7 +1,7 @@
 {
 	"name": "@tsoul/component-private",
-	"version": "1.0.0",
-	"description": "项目模板使用的公共私有组件（如果企业搭建了私服，请发布到npm私服）",
+	"version": "1.0.1",
+	"description": "Web Boot 项目的私有组件库，基于 Vue 3 + Element Plus，提供了布局、登录等业务组件",
 	"type": "module",
 	"scripts": {
 		"start": "vite --configLoader runner",
@@ -18,9 +18,29 @@
 	"files": [
 		"dist"
 	],
-	"keywords": [],
-	"author": "",
+	"keywords": [
+		"vue3",
+		"element-plus",
+		"components",
+		"typescript",
+		"web-boot",
+		"layout",
+		"login"
+	],
+	"author": "MQYForverT",
 	"license": "ISC",
+	"homepage": "https://mqyforvert.github.io/web-boot/templates/",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MQYForverT/web-boot.git"
+	},
+	"bugs": {
+		"url": "https://github.com/MQYForverT/web-boot/issues"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
 	"dependencies": {
 		"element-plus": "^2.9.7",
 		"react": "^19.1.0",

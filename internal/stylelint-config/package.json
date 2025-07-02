@@ -1,6 +1,6 @@
 {
 	"name": "@tsoul/stylelint-config",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Stylelint configuration for Web Boot projects",
 	"homepage": "https://mqyforvert.github.io/web-boot/api/stylelint",
 	"repository": {

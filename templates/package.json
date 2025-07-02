@@ -1,8 +1,8 @@
 {
-	"name": "create-webboot-template",
+	"name": "@tsoul/create-webboot-template",
 	"version": "1.0.0",
 	"type": "module",
-	"description": "A CLI tool to create web projects with different templates",
+	"description": "快速创建 Web Boot 项目的命令行工具，支持 Vue、React、Svelte 等多种框架模板",
 	"main": "index.js",
 	"bin": {
 		"create-webboot-template": "./index.js"
@@ -15,10 +15,26 @@
 		"template",
 		"vue",
 		"react",
-		"svelte"
+		"svelte",
+		"web-boot",
+		"typescript",
+		"vite",
+		"scaffold"
 	],
-	"author": "",
+	"author": "MQYForverT",
 	"license": "ISC",
+	"homepage": "https://mqyforvert.github.io/web-boot/templates/",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MQYForverT/web-boot.git"
+	},
+	"bugs": {
+		"url": "https://github.com/MQYForverT/web-boot/issues"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
 	"dependencies": {
 		"chalk": "^5.3.0",
 		"fs-extra": "^11.2.0",

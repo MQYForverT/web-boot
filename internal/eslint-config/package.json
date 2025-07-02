@@ -1,6 +1,6 @@
 {
 	"name": "@tsoul/eslint-config",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "ESLint configuration for Web Boot projects",
 	"homepage": "https://mqyforvert.github.io/web-boot/api/eslint",
 	"repository": {

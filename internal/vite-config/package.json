@@ -1,6 +1,6 @@
 {
 	"name": "@tsoul/vite-config",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Vite configuration for Web Boot projects",
 	"homepage": "https://mqyforvert.github.io/web-boot/api/vite",
 	"repository": {
