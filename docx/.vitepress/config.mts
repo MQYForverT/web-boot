@@ -2,13 +2,20 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+	base: '/web-boot/',
 	title: 'Web Boot',
 	description: '现代化的前端项目脚手架工具，支持Vue、React、Svelte等多种框架',
 	lang: 'zh-CN',
 	head: [
 		['link', { rel: 'icon', href: '/favicon.ico' }],
 		['meta', { name: 'keywords', content: '前端脚手架,Vue,React,Svelte,Vite,TypeScript' }],
+		['meta', { name: 'author', content: 'MQYForverT' }],
+		['meta', { name: 'og:title', content: 'Web Boot - 现代化的前端项目脚手架' }],
+		['meta', { name: 'og:description', content: '支持Vue、React、Svelte等多种框架的前端项目脚手架工具' }],
+		['meta', { name: 'og:image', content: 'https://mqyforvert.github.io/web-boot/logo.png' }],
 	],
+	lastUpdated: true,
+	cleanUrls: true,
 	themeConfig: {
 		// https://vitepress.dev/reference/default-theme-config
 		siteTitle: 'Web Boot',
@@ -111,5 +118,32 @@ export default defineConfig({
 		search: {
 			provider: 'local',
 		},
+
+		editLink: {
+			pattern: 'https://github.com/MQYForverT/web-boot/edit/main/docx/:path',
+			text: '在 GitHub 上编辑此页',
+		},
+
+		docFooter: {
+			prev: '上一页',
+			next: '下一页',
+		},
+
+		outline: {
+			level: [2, 3],
+			label: '页面导航',
+		},
+
+		lastUpdated: {
+			text: '最后更新于',
+			formatOptions: {
+				dateStyle: 'full',
+				timeStyle: 'medium',
+			},
+		},
+
+		returnToTopLabel: '返回顶部',
+		sidebarMenuLabel: '菜单',
+		darkModeSwitchLabel: '主题',
 	},
 })

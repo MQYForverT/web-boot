@@ -67,5 +67,5 @@ registerAll()
 ## 🔗 相关资源
 
 - [API 文档](../api/index.md)
-- [示例代码](../examples/index.md)
-- [更新日志](../guide/changelog.md)
+- [组件配置](../api/config.md)
+- [工具函数](../api/index.md#工具函数)

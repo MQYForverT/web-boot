@@ -1,0 +1,64 @@
+name: Deploy VitePress site to Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docx/**' # 只在 docx 目录发生变化时触发
+
+# 设置token访问权限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 只允许同时进行一次部署，跳过正在运行和最新队列之间的运行队列
+# 但是，不要取消正在进行的运行，因为我们希望允许这些生产部署完成
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # 构建工作
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 获取完整的git历史用于最后更新时间
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9.6.0 # 使用项目要求的pnpm版本
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.11.0 # 使用项目要求的Node.js版本
+          cache: 'pnpm'
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build with VitePress
+        run: |
+          cd docx  # 进入docx目录
+          pnpm run build
+          touch .vitepress/dist/.nojekyll  # 防止GitHub Pages使用Jekyll处理
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docx/.vitepress/dist # 指定正确的构建输出目录
+
+  # 部署工作
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }} # 从后续的输出中获取部署后的页面URL
+    needs: build # 在build后面完成
+    runs-on: ubuntu-latest # 运行在最新版本的ubuntu系统上
+    name: Deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment # 指定id
+        uses: actions/deploy-pages@v4 # 将之前的构建产物部署到github pages中
