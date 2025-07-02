@@ -14,7 +14,43 @@
 - **编辑器**: VS Code
 - **操作系统**: Windows 10+ / macOS / Linux
 
-## 安装
+## 使用脚手架
+
+### 1. 安装脚手架
+
+```bash
+# 全局安装脚手架工具
+npm install create-webboot-template -g
+```
+
+### 2. 创建项目
+
+```bash
+# 创建新项目
+create-webboot-template
+```
+
+按照提示输入以下信息：
+
+- 项目名称
+- 选择框架模板（Vue/React/Svelte）
+
+### 3. 启动项目
+
+```bash
+# 进入项目目录
+cd your-project-name
+
+# 安装依赖
+pnpm install
+
+# 启动开发服务器
+pnpm dev
+```
+
+## 从源码开始
+
+如果你想参与 Web Boot 的开发或需要修改模板，可以从源码开始：
 
 ### 1. 克隆项目
 
@@ -57,29 +93,6 @@ web-boot/
 │   └── utils/         # 工具函数
 ├── docx/              # 文档站点
 └── scripts/           # 构建脚本
-```
-
-## 使用模板
-
-### 创建 Vue 项目
-
-```bash
-# 使用 Vue 模板创建新项目
-pnpm create:vue my-vue-app
-```
-
-### 创建 React 项目
-
-```bash
-# 使用 React 模板创建新项目
-pnpm create:react my-react-app
-```
-
-### 创建 Svelte 项目
-
-```bash
-# 使用 Svelte 模板创建新项目
-pnpm create:svelte my-svelte-app
 ```
 
 ## 开发工具配置

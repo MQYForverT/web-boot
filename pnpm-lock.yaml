@@ -346,6 +346,21 @@ importers:
         specifier: ^2.2.8
         version: 2.2.10(typescript@5.8.3)
 
+  templates:
+    dependencies:
+      fs-extra:
+        specifier: ^11.3.0
+        version: 11.3.0
+      inquirer:
+        specifier: ^12.5.2
+        version: 12.6.3(@types/node@22.15.32)
+      kolorist:
+        specifier: ^1.8.0
+        version: 1.8.0
+      minimist:
+        specifier: ^1.2.8
+        version: 1.2.8
+
   templates/react:
     dependencies:
       '@ant-design/v5-patch-for-react-19':

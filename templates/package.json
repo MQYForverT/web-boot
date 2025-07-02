@@ -1,0 +1,30 @@
+{
+	"name": "create-webboot-template",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "A CLI tool to create web projects with different templates",
+	"main": "index.js",
+	"bin": {
+		"create-webboot-template": "./index.js"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"cli",
+		"template",
+		"vue",
+		"react",
+		"svelte"
+	],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"chalk": "^5.3.0",
+		"fs-extra": "^11.2.0",
+		"inquirer": "^9.2.14"
+	},
+	"engines": {
+		"node": ">=14.18.0"
+	}
+}
