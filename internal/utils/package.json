@@ -1,39 +1,38 @@
 {
-	"name": "@mqy/utils",
+	"name": "@tsoul/utils",
 	"version": "1.0.0",
-	"description": "实用工具函数库 - 包含 Axios 封装、NProgress、Typewriter、兼容性滚动、函数重载等工具",
-	"type": "module",
-	"scripts": {
-		"build": "rimraf dist && vue-tsc && vite build --configLoader runner"
+	"description": "Utility functions for Web Boot projects",
+	"homepage": "https://mqyforvert.github.io/web-boot/api/",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MQYForverT/web-boot.git"
 	},
+	"bugs": {
+		"url": "https://github.com/MQYForverT/web-boot/issues"
+	},
+	"keywords": [
+		"utils",
+		"utilities",
+		"web-boot",
+		"axios",
+		"nprogress",
+		"typewriter",
+		"scroll",
+		"overload"
+	],
+	"author": "MQYForverT",
+	"license": "MIT",
+	"type": "module",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"files": [
 		"dist"
 	],
-	"keywords": [
-		"utils",
-		"utilities",
-		"typescript",
-		"axios",
-		"nprogress",
-		"typewriter",
-		"scroll",
-		"overload",
-		"vue",
-		"react",
-		"svelte"
-	],
-	"author": "MQYForverT",
-	"license": "MIT",
-	"homepage": "https://github.com/MQYForverT/web-boot/tree/main/internal/utils#readme",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/MQYForverT/web-boot.git",
-		"directory": "internal/utils"
+	"scripts": {
+		"build": "rimraf dist && vue-tsc && vite build --configLoader runner"
 	},
-	"bugs": {
-		"url": "https://github.com/MQYForverT/web-boot/issues"
+	"publishConfig": {
+		"access": "public"
 	},
 	"dependencies": {
 		"axios": "^1.8.4",
@@ -41,7 +40,7 @@
 		"qs": "^6.14.0"
 	},
 	"devDependencies": {
-		"@mqy/vite-config": "workspace:^",
+		"@tsoul/vite-config": "workspace:^",
 		"vite": "^6.3.2",
 		"vue-tsc": "^2.2.8"
 	}

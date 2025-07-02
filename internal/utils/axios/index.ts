@@ -7,7 +7,7 @@
  * 支持form请求，二进制文件请求
  */
 
-import axios, { CancelTokenSource } from 'axios'
+import axios, { type CancelTokenSource } from 'axios'
 import type { AxiosInstance, AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios'
 import qs from 'qs'
 import downBlobFile from './downBlobFile'

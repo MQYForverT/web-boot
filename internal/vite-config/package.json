@@ -1,12 +1,30 @@
 {
-	"name": "@mqy/vite-config",
+	"name": "@tsoul/vite-config",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Vite configuration for Web Boot projects",
+	"homepage": "https://mqyforvert.github.io/web-boot/api/vite",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MQYForverT/web-boot.git"
+	},
+	"bugs": {
+		"url": "https://github.com/MQYForverT/web-boot/issues"
+	},
+	"keywords": [
+		"vite",
+		"vite-config",
+		"web-boot",
+		"build-tools"
+	],
+	"author": "MQYForverT",
+	"license": "MIT",
 	"type": "module",
-	"scripts": {},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"publishConfig": {
+		"access": "public"
+	},
+	"peerDependencies": {
+		"vite": "^6.0.0"
+	},
 	"dependencies": {
 		"@vueuse/core": "^13.1.0",
 		"ahooks": "^3.8.4",

@@ -67,8 +67,8 @@
 	"devDependencies": {
 		"@commitlint/cli": "^19.8.0",
 		"@commitlint/config-conventional": "^19.8.0",
-		"@mqy/eslint-config": "workspace:^",
-		"@mqy/stylelint-config": "workspace:^",
+		"@tsoul/eslint-config": "workspace:^",
+		"@tsoul/stylelint-config": "workspace:^",
 		"@types/inquirer": "^9.0.7",
 		"@types/node": "^22.14.1",
 		"commitlint": "^19.8.0",

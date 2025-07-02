@@ -1,11 +1,11 @@
 <template>
-	<mqy-background-login :account="JSON.stringify(config.account)" :layout="config.layout" @submit="submit">
-	</mqy-background-login>
+	<tsoul-background-login :account="JSON.stringify(config.account)" :layout="config.layout" @submit="submit">
+	</tsoul-background-login>
 </template>
 
 <script setup lang="ts">
 	import { HOME_URL } from '@/config/config'
-	import { layoutEnum } from '@mqy/component-private/dist/BackgroundLogin'
+	import { layoutEnum } from '@tsoul/component-private/dist/BackgroundLogin'
 	import { ApiPostLogin } from '@/api/global'
 
 	const router = useRouter()

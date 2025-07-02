@@ -2,7 +2,7 @@
 
 ## 📖 概述
 
-`@mqy/utils/axios` 是一个强大的 Axios 封装工具，提供了请求拦截、响应处理、文件下载等功能。它专注于请求的通用处理，而不涉及具体的业务逻辑。
+`@tsoul/utils/axios` 是一个强大的 Axios 封装工具，提供了请求拦截、响应处理、文件下载等功能。它专注于请求的通用处理，而不涉及具体的业务逻辑。
 
 ## 🎯 特性
 
@@ -18,13 +18,13 @@
 ### 安装
 
 ```bash
-npm install @mqy/utils -D
+npm install @tsoul/utils -D
 ```
 
 ### 基础使用
 
 ```typescript
-import { createAxiosInstance } from '@mqy/utils/axios'
+import { createAxiosInstance } from '@tsoul/utils/axios'
 
 const axios = createAxiosInstance({
 	timeout: 5000,

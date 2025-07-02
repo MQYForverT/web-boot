@@ -7,6 +7,6 @@ register()
 describe('BackgroundLayout', () => {
 	// 检查wc是否以及注册
 	it('should be registered', () => {
-		expect(customElements.get('mqy-background-layout')).toBeDefined()
+		expect(customElements.get('tsoul-background-layout')).toBeDefined()
 	})
 })

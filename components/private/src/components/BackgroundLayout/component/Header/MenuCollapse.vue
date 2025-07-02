@@ -6,8 +6,8 @@
 </template>
 
 <script lang="ts" setup>
-	import alignLeft from '~icons/mqy-icon/align-left'
-	import alignRight from '~icons/mqy-icon/align-right'
+	import alignLeft from '~icons/tsoul-icon/align-left'
+	import alignRight from '~icons/tsoul-icon/align-right'
 	import useState from '../../hooks/useState'
 
 	const { state } = useState()

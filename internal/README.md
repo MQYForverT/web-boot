@@ -8,24 +8,24 @@
 
 ```
 internal/
-├── eslint-config/          # ESLint 配置包 (@mqy/eslint-config)
+├── eslint-config/          # ESLint 配置包 (@tsoul/eslint-config)
 │   ├── common/             # 通用配置
 │   ├── vue/                # Vue 专用配置
 │   ├── react/              # React 专用配置
 │   ├── svelte/             # Svelte 专用配置
 │   └── index.mjs           # 入口文件
-├── stylelint-config/       # Stylelint 配置包 (@mqy/stylelint-config)
+├── stylelint-config/       # Stylelint 配置包 (@tsoul/stylelint-config)
 │   ├── vue/                # Vue 样式规范
 │   ├── react/              # React 样式规范
 │   └── index.mjs           # 入口文件
-├── utils/                  # 工具函数库 (@mqy/utils)
+├── utils/                  # 工具函数库 (@tsoul/utils)
 │   ├── axios/              # HTTP 请求封装
 │   ├── nprogress/          # 进度条工具
 │   ├── typewriter/         # 打字机效果
 │   ├── funcOverload/       # 函数重载工具
 │   ├── compatibleScrollTo/ # 兼容性滚动
 │   └── index.ts            # 导出入口
-├── vite-config/            # Vite 配置包 (@mqy/vite-config)
+├── vite-config/            # Vite 配置包 (@tsoul/vite-config)
 │   ├── common/             # 通用 Vite 配置
 │   ├── vue/                # Vue 项目配置
 │   ├── react/              # React 项目配置
@@ -35,7 +35,7 @@ internal/
 
 ## 📦 工具包详情
 
-### 🔧 ESLint 配置 (`@mqy/eslint-config`)
+### 🔧 ESLint 配置 (`@tsoul/eslint-config`)
 
 **功能**：提供统一的代码规范检查配置
 
@@ -50,17 +50,17 @@ internal/
 
 ```javascript
 // eslint.config.mjs
-import { defineConfig } from '@mqy/eslint-config'
+import { defineConfig } from '@tsoul/eslint-config'
 
 export default defineConfig({
 	// Vue 项目
-	extends: ['@mqy/eslint-config/vue'],
+	extends: ['@tsoul/eslint-config/vue'],
 
 	// React 项目
-	extends: ['@mqy/eslint-config/react'],
+	extends: ['@tsoul/eslint-config/react'],
 
 	// Svelte 项目
-	extends: ['@mqy/eslint-config/svelte'],
+	extends: ['@tsoul/eslint-config/svelte'],
 })
 ```
 
@@ -71,7 +71,7 @@ export default defineConfig({
 - 🔍 Import 规则优化
 - ⚡ UnoCSS 规则支持
 
-### 🎨 Stylelint 配置 (`@mqy/stylelint-config`)
+### 🎨 Stylelint 配置 (`@tsoul/stylelint-config`)
 
 **功能**：提供统一的样式代码规范
 
@@ -85,7 +85,7 @@ export default defineConfig({
 ```javascript
 // stylelint.config.mjs
 export default {
-	extends: ['@mqy/stylelint-config/vue'],
+	extends: ['@tsoul/stylelint-config/vue'],
 }
 ```
 
@@ -96,7 +96,7 @@ export default {
 - 📐 代码格式化规则
 - 🎭 Vue SFC 样式支持
 
-### 🛠️ 工具函数库 (`@mqy/utils`)
+### 🛠️ 工具函数库 (`@tsoul/utils`)
 
 **功能**：提供项目中常用的工具函数
 
@@ -146,7 +146,7 @@ export default {
 **使用方式**：
 
 ```typescript
-import { httpRequest, downBlobFile, nprogress, typewriter } from '@mqy/utils'
+import { httpRequest, downBlobFile, nprogress, typewriter } from '@tsoul/utils'
 
 // HTTP 请求
 const data = await httpRequest.get('/api/users')
@@ -159,7 +159,7 @@ nprogress.start()
 nprogress.done()
 ```
 
-### ⚡ Vite 配置 (`@mqy/vite-config`)
+### ⚡ Vite 配置 (`@tsoul/vite-config`)
 
 **功能**：提供统一的 Vite 构建配置
 
@@ -184,7 +184,7 @@ nprogress.done()
 
 ```typescript
 // vite.config.ts
-import { defineConfig } from '@mqy/vite-config/vue'
+import { defineConfig } from '@tsoul/vite-config/vue'
 
 export default defineConfig({
 	// 项目特定配置
@@ -247,17 +247,17 @@ npm publish --registry=https://your-private-registry.com
 ### 配置包使用情况
 
 ```
-templates/vue/     ✅ 使用 @mqy/eslint-config/vue
-templates/react/   ✅ 使用 @mqy/eslint-config/react
-templates/svelte/  ✅ 使用 @mqy/eslint-config/svelte
-components/        ✅ 使用 @mqy/vite-config/vue
+templates/vue/     ✅ 使用 @tsoul/eslint-config/vue
+templates/react/   ✅ 使用 @tsoul/eslint-config/react
+templates/svelte/  ✅ 使用 @tsoul/eslint-config/svelte
+components/        ✅ 使用 @tsoul/vite-config/vue
 ```
 
 ### 工具函数集成
 
 ```
-所有模板项目    ✅ 集成 @mqy/utils
-组件库项目      ✅ 集成 @mqy/vite-config
+所有模板项目    ✅ 集成 @tsoul/utils
+组件库项目      ✅ 集成 @tsoul/vite-config
 ```
 
 ## 🚀 最佳实践

@@ -18,7 +18,7 @@ const entries = {
 	funcOverload: getPath('funcOverload/index.ts'),
 }
 
-import { setupViteLib, dts, compress, visualizer } from '@mqy/vite-config/common'
+import { setupViteLib, dts, compress, visualizer } from '@tsoul/vite-config/common'
 
 // https://vitejs.dev/config/
 const config: UserConfig = {

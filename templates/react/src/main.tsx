@@ -8,8 +8,8 @@ import 'virtual:uno.css'
 import '@/styles/index.scss'
 
 // 全局注册所有
-import { registerAll, setGlobalConfig } from '@mqy/component-private'
-import type { Global } from '@mqy/component-private/dist/common/global'
+import { registerAll, setGlobalConfig } from '@tsoul/component-private'
+import type { Global } from '@tsoul/component-private/dist/common/global'
 
 registerAll()
 

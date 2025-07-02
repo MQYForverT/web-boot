@@ -72,8 +72,8 @@
 	import Top from './component/Top/index.vue'
 	import Form from './component/Form/index.vue'
 
-	import LogoIcon from '~icons/mqy-icon/logo'
-	import LayoutImageIcon from '~icons/mqy-icon/layoutImage'
+	import LogoIcon from '~icons/tsoul-icon/logo'
+	import LayoutImageIcon from '~icons/tsoul-icon/layoutImage'
 
 	const { globalState } = useGlobalStore()
 

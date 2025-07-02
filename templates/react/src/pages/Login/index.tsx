@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { notification } from 'antd'
-import { layoutEnum } from '@mqy/component-private/dist/BackgroundLogin'
+import { layoutEnum } from '@tsoul/component-private/dist/BackgroundLogin'
 import { HOME_URL } from '@/config/config'
 import { ApiPostLogin } from '@/api/global'
 import { observer } from 'mobx-react-lite'
@@ -75,7 +75,7 @@ const Login: React.FC = () => {
 		{ target: ref },
 	)
 
-	return <mqy-background-login ref={ref} account={JSON.stringify(config.account)} layout={config.layout} />
+	return <tsoul-background-login ref={ref} account={JSON.stringify(config.account)} layout={config.layout} />
 }
 
 export default observer(Login)

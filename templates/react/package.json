@@ -1,5 +1,5 @@
 {
-	"name": "@mqy/template-react",
+	"name": "@tsoul/template-react",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
@@ -13,8 +13,8 @@
 	},
 	"dependencies": {
 		"@ant-design/v5-patch-for-react-19": "^1.0.3",
-		"@mqy/component-private": "workspace:^",
-		"@mqy/utils": "workspace:^",
+		"@tsoul/component-private": "workspace:^",
+		"@tsoul/utils": "workspace:^",
 		"antd": "^5.24.7",
 		"keepalive-for-react": "^4.0.2",
 		"mobx": "^6.13.7",
@@ -24,9 +24,9 @@
 		"react-router-dom": "^7.5.1"
 	},
 	"devDependencies": {
-		"@mqy/eslint-config": "workspace:^",
-		"@mqy/stylelint-config": "workspace:^",
-		"@mqy/vite-config": "workspace:^",
+		"@tsoul/eslint-config": "workspace:^",
+		"@tsoul/stylelint-config": "workspace:^",
+		"@tsoul/vite-config": "workspace:^",
 		"@types/react": "^19.1.2",
 		"@types/react-dom": "^19.1.2",
 		"typescript": "^5.8.3",

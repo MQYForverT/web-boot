@@ -1,5 +1,5 @@
 <template>
-	<mqy-background-login
+	<tsoul-background-login
 		:account="JSON.stringify(config.account)"
 		:tip="JSON.stringify(config.tip)"
 		:layout="config.layout"
@@ -14,7 +14,7 @@
 		<div slot="body" v-if="!isShowDefaultBody">body</div>
 		<div slot="footer" @click="isShowDefaultBody = false">footer</div> -->
 		<!-- <div slot="layoutImage">layoutImage</div> -->
-	</mqy-background-login>
+	</tsoul-background-login>
 </template>
 
 <script setup lang="ts">

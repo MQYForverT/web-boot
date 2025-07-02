@@ -43,7 +43,7 @@ export default defineFlatConfig([
 			'vue/no-undef-components': [
 				'error',
 				{
-					ignorePatterns: ['(mqy|el|router)(\\-\\w+)+'],
+					ignorePatterns: ['(tsoul|el|router)(\\-\\w+)+'],
 				},
 			],
 		},

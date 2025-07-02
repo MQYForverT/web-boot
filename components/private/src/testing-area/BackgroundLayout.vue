@@ -1,7 +1,7 @@
 <template>
 	<!--不能使用ref、不能v-modal:updateModel-->
-	<!-- <mqy-example id="example" ref="mqy" title="title1" style="margin-top: 20px" /> -->
-	<mqy-background-layout
+	<!-- <tsoul-example id="example" ref="tsoul" title="title1" style="margin-top: 20px" /> -->
+	<tsoul-background-layout
 		:containerBackground="JSON.stringify(themeConfig.containerBackground)"
 		:layout="themeConfig.layout"
 		:menuList="JSON.stringify(themeConfig.menuList)"
@@ -23,7 +23,7 @@
 			<div style="height: 120px">hello</div>
 			<div style="height: 120px">hello</div>
 		</div>
-	</mqy-background-layout>
+	</tsoul-background-layout>
 </template>
 
 <script setup lang="ts">

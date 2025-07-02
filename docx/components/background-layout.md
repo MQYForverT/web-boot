@@ -32,18 +32,18 @@
 ### 安装
 
 ```bash
-npm install @mqy/component-private
+npm install @tsoul/component-private
 ```
 
 ### 基础用法
 
 ```vue
 <template>
-	<mqy-background-layout :menu-list="menuList" :active-path="'/dashboard'" :container-size="{ height: '100vh' }">
+	<tsoul-background-layout :menu-list="menuList" :active-path="'/dashboard'" :container-size="{ height: '100vh' }">
 		<template #main>
 			<router-view />
 		</template>
-	</mqy-background-layout>
+	</tsoul-background-layout>
 </template>
 
 <script setup lang="ts">
@@ -211,15 +211,15 @@ const theme = {
 ### React
 
 ```tsx
-import '@mqy/component-private'
+import '@tsoul/component-private'
 
 const App: React.FC = () => {
 	return (
-		<mqy-background-layout menu-list={JSON.stringify(menuList)} active-path="/dashboard">
+		<tsoul-background-layout menu-list={JSON.stringify(menuList)} active-path="/dashboard">
 			<div slot="main">
 				<Outlet />
 			</div>
-		</mqy-background-layout>
+		</tsoul-background-layout>
 	)
 }
 ```
@@ -228,19 +228,19 @@ const App: React.FC = () => {
 
 ```svelte
 <script lang="ts">
-  import '@mqy/component-private'
+  import '@tsoul/component-private'
 
   const menuList = [...]
 </script>
 
-<mqy-background-layout
+<tsoul-background-layout
   menu-list={JSON.stringify(menuList)}
   active-path="/dashboard"
 >
   <div slot="main">
     <slot />
   </div>
-</mqy-background-layout>
+</tsoul-background-layout>
 ```
 
 ## 📋 最佳实践

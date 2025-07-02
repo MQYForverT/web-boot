@@ -1,4 +1,4 @@
-import { createAxiosInstance } from '@mqy/utils/dist/axios'
+import { createAxiosInstance } from '@tsoul/utils/dist/axios'
 // import { createAxiosInstance } from '../../../../internal/utils/axios'
 
 /**

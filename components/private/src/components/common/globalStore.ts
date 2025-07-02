@@ -9,7 +9,7 @@ export enum themeModeEnum {
 
 // 全部组件共有的状态，如果调用这个函数
 export default createGlobalState((config?: Global.setting, cb?: (key: keyof Global.setting, val: any) => void) => {
-	const prefix = '@mqy/component-private-background'
+	const prefix = '@tsoul/component-private-background'
 
 	const state = reactive<Global.setting>({
 		theme: themeModeEnum.light,

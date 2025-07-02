@@ -9,8 +9,8 @@ export const BackgroundLoginElement = defineCustomElement(BackgroundLogin)
 
 // 注册
 export function register() {
-	if (!customElements.get('mqy-background-login')) {
-		customElements.define('mqy-background-login', BackgroundLoginElement)
+	if (!customElements.get('tsoul-background-login')) {
+		customElements.define('tsoul-background-login', BackgroundLoginElement)
 	}
 }
 
@@ -23,7 +23,7 @@ declare module 'vue' {
 declare global {
 	namespace JSX {
 		interface IntrinsicElements {
-			'mqy-background-login': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & PublicProps
+			'tsoul-background-login': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & PublicProps
 		}
 	}
 }

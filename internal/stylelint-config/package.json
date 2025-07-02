@@ -1,37 +1,40 @@
 {
-	"name": "@mqy/stylelint-config",
+	"name": "@tsoul/stylelint-config",
 	"version": "1.0.0",
-	"description": "统一的 Stylelint 配置 - 支持 CSS、SCSS、Vue 等样式规范",
-	"main": "index.mjs",
+	"description": "Stylelint configuration for Web Boot projects",
+	"homepage": "https://mqyforvert.github.io/web-boot/api/stylelint",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MQYForverT/web-boot.git"
+	},
+	"bugs": {
+		"url": "https://github.com/MQYForverT/web-boot/issues"
+	},
+	"keywords": [
+		"stylelint",
+		"stylelintconfig",
+		"web-boot",
+		"css"
+	],
+	"author": "MQYForverT",
+	"license": "MIT",
 	"type": "module",
+	"main": "./index.mjs",
 	"exports": {
 		".": "./index.mjs",
 		"./react": "./react/index.mjs",
 		"./vue": "./vue/index.mjs"
 	},
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"keywords": [
-		"stylelint",
-		"stylelint-config",
-		"css",
-		"scss",
-		"vue",
+	"files": [
 		"react",
-		"html",
-		"code-style"
+		"vue",
+		"*.mjs"
 	],
-	"author": "MQYForverT",
-	"license": "MIT",
-	"homepage": "https://github.com/MQYForverT/web-boot/tree/main/internal/stylelint-config#readme",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/MQYForverT/web-boot.git",
-		"directory": "internal/stylelint-config"
+	"publishConfig": {
+		"access": "public"
 	},
-	"bugs": {
-		"url": "https://github.com/MQYForverT/web-boot/issues"
+	"peerDependencies": {
+		"stylelint": "^16.0.0"
 	},
 	"devDependencies": {
 		"postcss-scss": "^4.0.9",

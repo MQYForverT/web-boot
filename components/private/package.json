@@ -1,5 +1,5 @@
 {
-	"name": "@mqy/component-private",
+	"name": "@tsoul/component-private",
 	"version": "1.0.0",
 	"description": "项目模板使用的公共私有组件（如果企业搭建了私服，请发布到npm私服）",
 	"type": "module",
@@ -29,9 +29,9 @@
 	},
 	"devDependencies": {
 		"@iconify-json/ep": "^1.2.2",
-		"@mqy/eslint-config": "workspace:^",
-		"@mqy/stylelint-config": "workspace:^",
-		"@mqy/vite-config": "workspace:^",
+		"@tsoul/eslint-config": "workspace:^",
+		"@tsoul/stylelint-config": "workspace:^",
+		"@tsoul/vite-config": "workspace:^",
 		"@types/sortablejs": "^1.15.8",
 		"@vitejs/plugin-vue": "^5.2.3",
 		"@vue/test-utils": "^2.4.6",

@@ -21,8 +21,8 @@ const entries: Record<string, string> = componentDirs.reduce((acc: Record<string
 
 entries['index'] = resolve(__dirname, 'src/components/index.ts')
 // {
-//   BackgroundLayout: '/Users/bytedance/mqy/web-boot/components/private/src/components/BackgroundLayout/index.ts',
-//   index: '/Users/bytedance/mqy/web-boot/components/private/src/components/index.ts'
+//   BackgroundLayout: '/Users/bytedance/tsoul/web-boot/components/private/src/components/BackgroundLayout/index.ts',
+//   index: '/Users/bytedance/tsoul/web-boot/components/private/src/components/index.ts'
 // }
 
 // 目前这种导入方式需要tsx支持
@@ -40,9 +40,9 @@ import {
 	visualizer,
 	// cssInJs
 	CssInJs,
-} from '@mqy/vite-config/common'
-import { ElementPlusResolver } from '@mqy/vite-config/common/autoImport/components_vue'
-import { presetIcons } from '@mqy/vite-config/common/plugins/unocss'
+} from '@tsoul/vite-config/common'
+import { ElementPlusResolver } from '@tsoul/vite-config/common/autoImport/components_vue'
+import { presetIcons } from '@tsoul/vite-config/common/plugins/unocss'
 
 // loader helpers
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
@@ -85,7 +85,7 @@ const config: UserConfig = {
 			template: {
 				compilerOptions: {
 					// 将所有带短横线的标签名都视为自定义元素
-					isCustomElement: (tag) => tag.startsWith('mqy-'),
+					isCustomElement: (tag) => tag.startsWith('tsoul-'),
 				},
 			},
 		}),
@@ -110,7 +110,7 @@ const config: UserConfig = {
 				// 自动注册图标组件，以及自定义本地图标。ep：element-plus的图标，下面设置autoInstall，会自动下载，就不用单独去引入element-plus-icons依赖了
 				IconsResolver({
 					enabledCollections: ['ep'],
-					customCollections: ['mqy-icon'],
+					customCollections: ['tsoul-icon'],
 				}),
 			],
 		}),
@@ -139,7 +139,7 @@ const config: UserConfig = {
 			// 上面使用了element-plus的图标，这里设置autoInstall，会自动下载上面enabledCollections中配置的图标
 			autoInstall: true,
 			customCollections: {
-				'mqy-icon': FileSystemIconLoader('./src/assets/svg', (svg) =>
+				'tsoul-icon': FileSystemIconLoader('./src/assets/svg', (svg) =>
 					svg.replace(/^<svg /, '<svg fill="currentColor" '),
 				),
 			},

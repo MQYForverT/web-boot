@@ -3,15 +3,18 @@ import fs from 'fs'
 import { execFileSync, execSync } from 'child_process'
 
 // 定义包含项目名称的数组
-const projects: Record<string,string>[] = []
+const projects: Record<string, string>[] = []
 
 // 读取 templates 目录
 fs.readdirSync('./templates').forEach((file) => {
+	if (file === 'lib') {
+		return
+	}
 	// 将子目录名称添加到数组中
 	if (!fs.statSync(`./templates/${file}`).isDirectory()) {
 		return
 	}
-	projects.push({name:file, value: file})
+	projects.push({ name: file, value: file })
 })
 
 // 读取 components 目录
@@ -35,7 +38,7 @@ const questions = [
 		type: 'list',
 		name: 'type',
 		message: '官人想启动哪个项目',
-		choices: projects
+		choices: projects,
 	},
 ]
 

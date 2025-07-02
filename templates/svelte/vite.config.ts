@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv } from 'vite'
 import { resolve } from 'path'
 import { fileURLToPath } from 'url'
-import svelteConfig from '@mqy/vite-config/svelte'
+import svelteConfig from '@tsoul/vite-config/svelte'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 

@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
-// import viteConfig from '@mqy/vite-config/vue'
+// import viteConfig from '@tsoul/vite-config/vue'
 
 // https://vitejs.dev/config/
 export default {
@@ -32,7 +32,7 @@ export default {
 			template: {
 				compilerOptions: {
 					// 将所有带短横线的标签名都视为自定义元素
-					isCustomElement: (tag) => tag.startsWith('mqy-'),
+					isCustomElement: (tag) => tag.startsWith('tsoul-'),
 				},
 			},
 		}),
@@ -45,7 +45,7 @@ export default {
 		lib: {
 			entry: resolve(__dirname, 'src/components/index.ts'), // 设置入口文件
 			name: 'mqyComponentInternal', // 起个名字，安装、引入用
-			fileName: () => 'mqy-component-internal.js',
+			fileName: () => 'tsoul-component-internal.js',
 			formats: ['es'],
 		},
 		rollupOptions: {

@@ -9,8 +9,8 @@ export const BackgroundLayoutElement = defineCustomElement(BackgroundLayout)
 
 // 注册
 export function register() {
-	if (!customElements.get('mqy-background-layout')) {
-		customElements.define('mqy-background-layout', BackgroundLayoutElement)
+	if (!customElements.get('tsoul-background-layout')) {
+		customElements.define('tsoul-background-layout', BackgroundLayoutElement)
 	}
 }
 
@@ -23,7 +23,7 @@ declare module 'vue' {
 declare global {
 	namespace JSX {
 		interface IntrinsicElements {
-			'mqy-background-layout': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> &
+			'tsoul-background-layout': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> &
 				LayoutPublicProps
 		}
 	}

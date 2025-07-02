@@ -5,7 +5,7 @@
 	import { HOME_URL } from '@/config/config'
 	import { globalStore } from '@/stores/index'
 	import { routesStore } from '@/stores/modules/routes'
-	import type { Layout } from '@mqy/component-private/dist/BackgroundLayout/layout'
+	import type { Layout } from '@tsoul/component-private/dist/BackgroundLayout/layout'
 	
 	let ref: HTMLElement
 	let routeList: any[] = []
@@ -142,7 +142,7 @@
 </script>
 
 {#if themeConfig.menuList.length > 0}
-	<mqy-background-layout
+	<tsoul-background-layout
 		bind:this={ref}
 		menu-list={JSON.stringify(themeConfig.menuList)}
 		user-avatar={JSON.stringify(themeConfig.userAvatar)}
@@ -153,7 +153,7 @@
 			<!-- 在Svelte中，我们使用slot来渲染子组件 -->
 			<slot />
 		</div>
-	</mqy-background-layout>
+	</tsoul-background-layout>
 {/if}
 
 

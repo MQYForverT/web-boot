@@ -17,7 +17,7 @@ Web-Boot 工具集是一个完整的前端开发工具链，提供了统一的�
 
 ### 代码规范
 
-#### ESLint 配置 (`@mqy/eslint-config`)
+#### ESLint 配置 (`@tsoul/eslint-config`)
 
 - 支持多框架的代码规范配置
 - TypeScript 严格模式支持
@@ -25,7 +25,7 @@ Web-Boot 工具集是一个完整的前端开发工具链，提供了统一的�
 - Import 规则优化
 - UnoCSS 规则支持
 
-#### StyleLint 配置 (`@mqy/stylelint-config`)
+#### StyleLint 配置 (`@tsoul/stylelint-config`)
 
 - Vue SFC 样式规范
 - CSS/SCSS 规范统一
@@ -34,7 +34,7 @@ Web-Boot 工具集是一个完整的前端开发工具链，提供了统一的�
 
 ### 构建工具
 
-#### Vite 配置 (`@mqy/vite-config`)
+#### Vite 配置 (`@tsoul/vite-config`)
 
 - 多框架构建配置
 - 丰富的插件集成
@@ -43,32 +43,32 @@ Web-Boot 工具集是一个完整的前端开发工具链，提供了统一的�
 
 ### 工具函数
 
-#### HTTP 请求 (`@mqy/utils/axios`)
+#### HTTP 请求 (`@tsoul/utils/axios`)
 
 - 请求/响应拦截器
 - 错误统一处理
 - 文件下载支持
 - 取消请求机制
 
-#### 进度条 (`@mqy/utils/nprogress`)
+#### 进度条 (`@tsoul/utils/nprogress`)
 
 - 页面加载进度显示
 - 自定义样式支持
 - 轻量级实现
 
-#### 打字机效果 (`@mqy/utils/typewriter`)
+#### 打字机效果 (`@tsoul/utils/typewriter`)
 
 - 可配置打字速度
 - 支持删除效果
 - 循环播放支持
 
-#### 函数重载 (`@mqy/utils/funcOverload`)
+#### 函数重载 (`@tsoul/utils/funcOverload`)
 
 - TypeScript 类型安全
 - 参数类型推断
 - 多种调用方式支持
 
-#### 滚动处理 (`@mqy/utils/compatibleScrollTo`)
+#### 滚动处理 (`@tsoul/utils/compatibleScrollTo`)
 
 - 浏览器兼容性处理
 - 平滑滚动动画
@@ -80,16 +80,16 @@ Web-Boot 工具集是一个完整的前端开发工具链，提供了统一的�
 
 ```bash
 # ESLint 配置
-npm install @mqy/eslint-config -D
+npm install @tsoul/eslint-config -D
 
 # StyleLint 配置
-npm install @mqy/stylelint-config -D
+npm install @tsoul/stylelint-config -D
 
 # 工具函数
-npm install @mqy/utils
+npm install @tsoul/utils
 
 # Vite 配置
-npm install @mqy/vite-config -D
+npm install @tsoul/vite-config -D
 ```
 
 ### 基础使用
@@ -97,24 +97,24 @@ npm install @mqy/vite-config -D
 ```typescript
 // ESLint 配置
 // eslint.config.mjs
-import { defineConfig } from '@mqy/eslint-config'
+import { defineConfig } from '@tsoul/eslint-config'
 
 export default defineConfig({
-	extends: ['@mqy/eslint-config/vue'], // 或 react, svelte
+	extends: ['@tsoul/eslint-config/vue'], // 或 react, svelte
 })
 
 // StyleLint 配置
 // stylelint.config.mjs
 export default {
-	extends: ['@mqy/stylelint-config/vue'], // 或 react
+	extends: ['@tsoul/stylelint-config/vue'], // 或 react
 }
 
 // 工具函数使用
-import { httpRequest, nprogress, typewriter } from '@mqy/utils'
+import { httpRequest, nprogress, typewriter } from '@tsoul/utils'
 
 // Vite 配置
 // vite.config.ts
-import { defineConfig } from '@mqy/vite-config/vue' // 或 react, svelte
+import { defineConfig } from '@tsoul/vite-config/vue' // 或 react, svelte
 
 export default defineConfig({
 	// 项目配置

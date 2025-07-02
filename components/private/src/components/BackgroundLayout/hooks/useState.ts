@@ -1,11 +1,12 @@
-import { LayoutEmits, layoutEnum, menuModeEnum, propPrecessType, propsEnum } from '../BackgroundLayout'
+import type { LayoutEmits, propPrecessType } from '../BackgroundLayout'
+import { layoutEnum, menuModeEnum, propsEnum } from '../BackgroundLayout'
 import useContainer from './useContainer'
 import useInject from './useInject'
 import packageJson from '../../../../package.json'
 import type { Layout } from '../layout'
 
 export default createGlobalState((proxyProps?: propPrecessType, initEmits?: LayoutEmits, root?: HTMLElement | null) => {
-	const prefix = '@mqy/component-private-background-layout'
+	const prefix = '@tsoul/component-private-background-layout'
 
 	let props, emits, rootElement
 

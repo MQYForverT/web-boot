@@ -39,8 +39,8 @@ function processDependencies(dependencies) {
 
 	const processed = {}
 	for (const [name, version] of Object.entries(dependencies)) {
-		if (name.startsWith('@mqy/')) {
-			processed[name] = '^1.0.0' // 将所有 @mqy 包的版本设为 ^1.0.0
+		if (name.startsWith('@tsoul/')) {
+			processed[name] = '^1.0.0' // 将所有 @tsoul 包的版本设为 ^1.0.0
 		} else {
 			processed[name] = version
 		}

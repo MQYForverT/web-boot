@@ -32,18 +32,18 @@
 ### 安装
 
 ```bash
-npm install @mqy/component-private
+npm install @tsoul/component-private
 ```
 
 ### 基础用法
 
 ```vue
 <template>
-	<mqy-background-login :account="accountConfig" title="系统登录" layout="center" @submit="handleSubmit">
+	<tsoul-background-login :account="accountConfig" title="系统登录" layout="center" @submit="handleSubmit">
 		<template #logo>
 			<img src="/logo.png" alt="logo" />
 		</template>
-	</mqy-background-login>
+	</tsoul-background-login>
 </template>
 
 <script setup lang="ts">
@@ -171,7 +171,7 @@ interface Account {
 ### React
 
 ```tsx
-import '@mqy/component-private'
+import '@tsoul/component-private'
 
 const App: React.FC = () => {
 	const handleSubmit = (formData) => {
@@ -179,14 +179,14 @@ const App: React.FC = () => {
 	}
 
 	return (
-		<mqy-background-login
+		<tsoul-background-login
 			account={JSON.stringify(accountConfig)}
 			title="系统登录"
 			layout="center"
 			onSubmit={handleSubmit}
 		>
 			<img slot="logo" src="/logo.png" alt="logo" />
-		</mqy-background-login>
+		</tsoul-background-login>
 	)
 }
 ```
@@ -195,7 +195,7 @@ const App: React.FC = () => {
 
 ```svelte
 <script lang="ts">
-  import '@mqy/component-private'
+  import '@tsoul/component-private'
 
   const accountConfig = {
     username: {
@@ -215,14 +215,14 @@ const App: React.FC = () => {
   }
 </script>
 
-<mqy-background-login
+<tsoul-background-login
   account={JSON.stringify(accountConfig)}
   title="系统登录"
   layout="center"
   on:submit={handleSubmit}
 >
   <img slot="logo" src="/logo.png" alt="logo" />
-</mqy-background-login>
+</tsoul-background-login>
 ```
 
 ## 📋 最佳实践

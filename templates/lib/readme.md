@@ -66,7 +66,7 @@ async function create() {
 
 ### 4. 依赖处理
 
-- 处理 @mqy 相关依赖
+- 处理 @tsoul 相关依赖
   - 从 workspace:^ 改为固定版本
   - 版本号从项目根目录的 package.json 中读取
 

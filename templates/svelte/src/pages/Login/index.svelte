@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte'
 	// @ts-ignore
 	import router from 'page'
-	import { layoutEnum } from '@mqy/component-private/dist/BackgroundLogin'
+	import { layoutEnum } from '@tsoul/component-private/dist/BackgroundLogin'
 	import { HOME_URL } from '@/config/config'
 	import { ApiPostLogin } from '@/api/global'
 	import { globalStore } from '@/stores/index'
@@ -112,7 +112,7 @@
 
 <!-- 不需要额外的UI - 使用原生浏览器通知和alert -->
 
-<mqy-background-login 
+<tsoul-background-login 
 	bind:this={ref} 
 	account={JSON.stringify(config.account)} 
 	layout={config.layout} 

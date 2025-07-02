@@ -6,5 +6,5 @@ export const ExampleElement = defineCustomElement(Example)
 
 // 注册
 export function register() {
-	customElements.define('mqy-example', ExampleElement)
+	customElements.define('tsoul-example', ExampleElement)
 }

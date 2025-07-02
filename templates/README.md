@@ -9,7 +9,7 @@
 - **学习参考**：展示 Web Boot 组件在不同框架中的集成方法
 - **快速上手**：提供完整的集成流程和最佳实践
 - **对比学习**：通过对比了解各框架的差异和特点
-- **组件演示**：展示 `@mqy/component-private` 组件库的完整功能
+- **组件演示**：展示 `@tsoul/component-private` 组件库的完整功能
 - **工具集成**：演示如何使用 Web Boot 开发工具集
 
 ## 📁 示例列表
@@ -183,10 +183,10 @@ npm run lint:fix     # 修复代码问题
 
 ## 🎨 集成要点
 
-所有示例都展示了如何集成 `@mqy/component-private` 组件库：
+所有示例都展示了如何集成 `@tsoul/component-private` 组件库：
 
-- **mqy-background-layout** - 中后台布局组件的使用方法
-- **mqy-background-login** - 登录页面组件的集成方式
+- **tsoul-background-layout** - 中后台布局组件的使用方法
+- **tsoul-background-login** - 登录页面组件的集成方式
 - **主题配置** - 如何配置和切换主题
 - **路由集成** - 如何与各框架路由系统结合
 

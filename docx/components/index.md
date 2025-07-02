@@ -6,7 +6,7 @@ Web-Boot 组件库是一个企业级中后台应用组件解决方案，采用�
 
 ## 🗺️ 组件导航
 
-### 🔒 私有组件库 (@mqy/component-private)
+### 🔒 私有组件库 (@tsoul/component-private)
 
 #### 布局组件
 
@@ -34,7 +34,7 @@ Web-Boot 组件库是一个企业级中后台应用组件解决方案，采用�
   - 全局状态
   - 工具函数
 
-### 🌐 公共组件库 (@mqy/component-public)
+### 🌐 公共组件库 (@tsoul/component-public)
 
 > 🚧 开发中，敬请期待...
 
@@ -51,10 +51,10 @@ Web-Boot 组件库是一个企业级中后台应用组件解决方案，采用�
 
 ```bash
 # 安装私有组件库
-npm install @mqy/component-private
+npm install @tsoul/component-private
 
 # 注册组件
-import { registerAll } from '@mqy/component-private'
+import { registerAll } from '@tsoul/component-private'
 registerAll()
 ```
 

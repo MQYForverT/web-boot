@@ -2,7 +2,7 @@
 
 ## 📖 概述
 
-`@mqy/utils/compatibleScrollTo` 是一个兼容性的滚动处理工具，提供了平滑滚动功能，并保持与原生 `scrollTo` 接口一致。它解决了浏览器兼容性问题，并提供了更多的控制选项。
+`@tsoul/utils/compatibleScrollTo` 是一个兼容性的滚动处理工具，提供了平滑滚动功能，并保持与原生 `scrollTo` 接口一致。它解决了浏览器兼容性问题，并提供了更多的控制选项。
 
 ## 🎯 特性
 
@@ -18,13 +18,13 @@
 ### 安装
 
 ```bash
-npm install @mqy/utils -D
+npm install @tsoul/utils -D
 ```
 
 ### 基础使用
 
 ```typescript
-import { compatibleScrollTo } from '@mqy/utils/compatibleScrollTo'
+import { compatibleScrollTo } from '@tsoul/utils/compatibleScrollTo'
 
 // 获取目标元素
 const element = document.querySelector('.scroll-container')

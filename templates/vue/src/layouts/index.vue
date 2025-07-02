@@ -1,5 +1,5 @@
 <template>
-	<mqy-background-layout
+	<tsoul-background-layout
 		:menuList="JSON.stringify(themeConfig.menuList)"
 		:userAvatar="JSON.stringify(themeConfig.userAvatar)"
 		:settingVisible="JSON.stringify(themeConfig.settingVisible)"
@@ -18,12 +18,12 @@
 				</transition>
 			</router-view>
 		</div>
-	</mqy-background-layout>
+	</tsoul-background-layout>
 </template>
 
 <script setup lang="ts">
 	import { HOME_URL } from '@/config/config'
-	import type { Layout } from '@mqy/component-private/dist/BackgroundLayout/layout'
+	import type { Layout } from '@tsoul/component-private/dist/BackgroundLayout/layout'
 	import type { RouteComponent } from 'vue-router'
 
 	const refreshRouterViewKey = ref('')

@@ -5,7 +5,7 @@ import { Modal, message } from 'antd'
 import { HOME_URL } from '@/config/config'
 import globalStore from '@/stores'
 import routesStore from '@/stores/modules/routes'
-import type { Layout } from '@mqy/component-private/dist/BackgroundLayout/layout'
+import type { Layout } from '@tsoul/component-private/dist/BackgroundLayout/layout'
 import { observer } from 'mobx-react-lite'
 import { KeepAlive, useKeepAliveRef } from 'keepalive-for-react'
 
@@ -150,7 +150,7 @@ const LayoutIndex: React.FC = () => {
 	return (
 		<>
 			{themeConfig.menuList.length > 0 ? (
-				<mqy-background-layout
+				<tsoul-background-layout
 					ref={ref}
 					menu-list={JSON.stringify(themeConfig.menuList)}
 					user-avatar={JSON.stringify(themeConfig.userAvatar)}
@@ -162,7 +162,7 @@ const LayoutIndex: React.FC = () => {
 							{outlet}
 						</KeepAlive>
 					</div>
-				</mqy-background-layout>
+				</tsoul-background-layout>
 			) : null}
 		</>
 	)

@@ -8,7 +8,7 @@
 
 ```
 components/
-├── private/               # 私有组件库 (@mqy/component-private)
+├── private/               # 私有组件库 (@tsoul/component-private)
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── BackgroundLayout/    # 中后台布局组件
@@ -18,7 +18,7 @@ components/
 │   │   └── testing-area/            # 组件测试区域
 │   ├── dist/                        # 构建产物
 │   └── package.json
-└── public/                # 公共组件库 (@mqy/component-public) [开发中]
+└── public/                # 公共组件库 (@tsoul/component-public) [开发中]
     ├── src/
     │   └── components/
     │       └── HelloWorld.vue       # 示例组件
@@ -27,7 +27,7 @@ components/
 
 ## 📦 组件库详情
 
-### 🔒 私有组件库 (`@mqy/component-private`)
+### 🔒 私有组件库 (`@tsoul/component-private`)
 
 **定位**：企业内部专用的业务组件库，包含完整的中后台应用解决方案。
 
@@ -79,14 +79,14 @@ components/
 
 ```bash
 # 安装依赖
-npm install @mqy/component-private
+npm install @tsoul/component-private
 
 # 在项目中引入
-import { registerAll } from '@mqy/component-private'
+import { registerAll } from '@tsoul/component-private'
 registerAll()
 ```
 
-### 🌐 公共组件库 (`@mqy/component-public`)
+### 🌐 公共组件库 (`@tsoul/component-public`)
 
 **定位**：面向开源社区的通用组件库
 
@@ -162,16 +162,16 @@ npm run lint:stylelint
 
 ```javascript
 // Vue 中使用
-<mqy-background-layout :menu-list="menuList" />
+<tsoul-background-layout :menu-list="menuList" />
 
 // React 中使用
-<mqy-background-layout menu-list={JSON.stringify(menuList)} />
+<tsoul-background-layout menu-list={JSON.stringify(menuList)} />
 
 // Svelte 中使用
-<mqy-background-layout menu-list={JSON.stringify(menuList)} />
+<tsoul-background-layout menu-list={JSON.stringify(menuList)} />
 
 // 原生 HTML 中使用
-<mqy-background-layout menu-list="[...]"></mqy-background-layout>
+<tsoul-background-layout menu-list="[...]">tsoulsoul-background-layout>
 ```
 
 ### 技术特性
@@ -210,21 +210,21 @@ npm run lint:stylelint
 
 ```typescript
 // Vue 模板
-import { registerAll } from '@mqy/component-private'
+import { registerAll } from '@tsoul/component-private'
 registerAll()
 
 // React 模板
-import '@mqy/component-private'
+import '@tsoul/component-private'
 
 // Svelte 模板
-import { registerAll } from '@mqy/component-private'
+import { registerAll } from '@tsoul/component-private'
 registerAll()
 ```
 
 ### 全局配置
 
 ```typescript
-import { setGlobalConfig } from '@mqy/component-private'
+import { setGlobalConfig } from '@tsoul/component-private'
 
 setGlobalConfig({
 	language: {

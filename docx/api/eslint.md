@@ -2,7 +2,7 @@
 
 ## 📖 概述
 
-`@mqy/eslint-config` 是一个完整的 ESLint 配置解决方案，支持 Vue、React、Svelte 等多个框架，并提供了统一的代码规范和最佳实践。配置基于 ESLint 的 Flat Config 格式，提供了更好的性能和扩展性。
+`@tsoul/eslint-config` 是一个完整的 ESLint 配置解决方案，支持 Vue、React、Svelte 等多个框架，并提供了统一的代码规范和最佳实践。配置基于 ESLint 的 Flat Config 格式，提供了更好的性能和扩展性。
 
 ## 🎯 特性
 
@@ -18,14 +18,14 @@
 ### 安装
 
 ```bash
-npm install @mqy/eslint-config -D
+npm install @tsoul/eslint-config -D
 ```
 
 ### 基础配置
 
 ```javascript
 // eslint.config.mjs
-import { defineFlatConfig } from '@mqy/eslint-config'
+import { defineFlatConfig } from '@tsoul/eslint-config'
 
 export default defineFlatConfig([
 	// 你的配置
@@ -38,7 +38,7 @@ export default defineFlatConfig([
 
 ```javascript
 // eslint.config.mjs
-import vueConfig from '@mqy/eslint-config/vue'
+import vueConfig from '@tsoul/eslint-config/vue'
 
 export default vueConfig
 ```
@@ -55,7 +55,7 @@ export default vueConfig
 
 ```javascript
 // eslint.config.mjs
-import reactConfig from '@mqy/eslint-config/react'
+import reactConfig from '@tsoul/eslint-config/react'
 
 export default reactConfig
 ```
@@ -64,7 +64,7 @@ export default reactConfig
 
 ```javascript
 // eslint.config.mjs
-import svelteConfig from '@mqy/eslint-config/svelte'
+import svelteConfig from '@tsoul/eslint-config/svelte'
 
 export default svelteConfig
 ```
@@ -102,7 +102,7 @@ export default svelteConfig
 
   // 组件定义检查
   'vue/no-undef-components': ['error', {
-    ignorePatterns: ['(mqy|el|router)(\\-\\w+)+']
+    ignorePatterns: ['(tsoul|el|router)(\\-\\w+)+']
   }]
 }
 ```
@@ -113,7 +113,7 @@ export default svelteConfig
 
 ```javascript
 // eslint.config.mjs
-import vueConfig from '@mqy/eslint-config/vue'
+import vueConfig from '@tsoul/eslint-config/vue'
 import { defineFlatConfig } from 'eslint-define-config'
 
 export default defineFlatConfig([

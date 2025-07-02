@@ -2,7 +2,7 @@
 
 ## 📖 概述
 
-`@mqy/vite-config` 是一个功能强大的 Vite 配置解决方案，支持 Vue、React、Svelte 等多个框架。它提供了一套完整的构建工具链，包括自动导入、插件管理、构建优化等功能。
+`@tsoul/vite-config` 是一个功能强大的 Vite 配置解决方案，支持 Vue、React、Svelte 等多个框架。它提供了一套完整的构建工具链，包括自动导入、插件管理、构建优化等功能。
 
 ## 🎯 特性
 
@@ -18,7 +18,7 @@
 ### 安装
 
 ```bash
-npm install @mqy/vite-config -D
+npm install @tsoul/vite-config -D
 ```
 
 ### 基础配置
@@ -26,7 +26,7 @@ npm install @mqy/vite-config -D
 ```typescript
 // vite.config.ts
 import { defineConfig } from 'vite'
-import viteConfig from '@mqy/vite-config'
+import viteConfig from '@tsoul/vite-config'
 
 export default defineConfig((configEnv) => {
 	const viteEnv = loadEnv(configEnv.mode, process.cwd()) as ImportMetaEnv
@@ -39,7 +39,7 @@ export default defineConfig((configEnv) => {
 ### Vue 项目
 
 ```typescript
-import vueConfig from '@mqy/vite-config/vue'
+import vueConfig from '@tsoul/vite-config/vue'
 
 export default defineConfig((configEnv) => {
 	const viteEnv = loadEnv(configEnv.mode, process.cwd()) as ImportMetaEnv
@@ -50,7 +50,7 @@ export default defineConfig((configEnv) => {
 ### React 项目
 
 ```typescript
-import reactConfig from '@mqy/vite-config/react'
+import reactConfig from '@tsoul/vite-config/react'
 
 export default defineConfig((configEnv) => {
 	const viteEnv = loadEnv(configEnv.mode, process.cwd()) as ImportMetaEnv
@@ -61,7 +61,7 @@ export default defineConfig((configEnv) => {
 ### Svelte 项目
 
 ```typescript
-import svelteConfig from '@mqy/vite-config/svelte'
+import svelteConfig from '@tsoul/vite-config/svelte'
 
 export default defineConfig((configEnv) => {
 	const viteEnv = loadEnv(configEnv.mode, process.cwd()) as ImportMetaEnv

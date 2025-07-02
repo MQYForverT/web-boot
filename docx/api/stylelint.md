@@ -2,7 +2,7 @@
 
 ## 📖 概述
 
-`@mqy/stylelint-config` 是一个统一的样式代码规范配置，支持 CSS、SCSS 和各种框架的样式处理。配置基于 StyleLint 标准规范，并针对 Vue 和 React 项目做了特别优化。
+`@tsoul/stylelint-config` 是一个统一的样式代码规范配置，支持 CSS、SCSS 和各种框架的样式处理。配置基于 StyleLint 标准规范，并针对 Vue 和 React 项目做了特别优化。
 
 ## 🎯 特性
 
@@ -18,7 +18,7 @@
 ### 安装
 
 ```bash
-npm install @mqy/stylelint-config -D
+npm install @tsoul/stylelint-config -D
 ```
 
 ### 基础配置
@@ -26,7 +26,7 @@ npm install @mqy/stylelint-config -D
 ```javascript
 // stylelint.config.mjs
 export default {
-	extends: ['@mqy/stylelint-config'],
+	extends: ['@tsoul/stylelint-config'],
 }
 ```
 
@@ -37,7 +37,7 @@ export default {
 ```javascript
 // stylelint.config.mjs
 export default {
-	extends: ['@mqy/stylelint-config/vue'],
+	extends: ['@tsoul/stylelint-config/vue'],
 }
 ```
 
@@ -46,7 +46,7 @@ export default {
 ```javascript
 // stylelint.config.mjs
 export default {
-	extends: ['@mqy/stylelint-config/react'],
+	extends: ['@tsoul/stylelint-config/react'],
 }
 ```
 
@@ -123,7 +123,7 @@ export default {
 ```javascript
 // stylelint.config.mjs
 export default {
-	extends: ['@mqy/stylelint-config'],
+	extends: ['@tsoul/stylelint-config'],
 	rules: {
 		// 你的自定义规则
 	},
@@ -135,7 +135,7 @@ export default {
 ```javascript
 // stylelint.config.mjs
 export default {
-	extends: ['@mqy/stylelint-config'],
+	extends: ['@tsoul/stylelint-config'],
 	plugins: [
 		// 添加额外的插件
 	],

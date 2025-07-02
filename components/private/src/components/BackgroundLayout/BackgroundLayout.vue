@@ -58,7 +58,7 @@
 	import vertical from './component/Layout/vertical.vue'
 	import Logo from './component/LayoutCommon/Logo.vue'
 
-	import LogoIcon from '~icons/mqy-icon/logo'
+	import LogoIcon from '~icons/tsoul-icon/logo'
 
 	const { setAppendEl, watermarkEl, getObserver, setWatermark, updateWatermark } = useWatermark()
 

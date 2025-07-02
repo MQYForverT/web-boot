@@ -2,7 +2,7 @@
 	<el-dropdown :trigger="props.userAvatar.trigger" @command="handleCommand">
 		<div class="flex-center cursor-pointer p-3">
 			<el-avatar :src="props.userAvatar.avatar || state.circleUrl" size="small" class="mr-2 shrink-0" />
-			<span>{{ props.userAvatar.name || 'mqy' }}</span>
+			<span>{{ props.userAvatar.name || 'tsoul' }}</span>
 		</div>
 		<template #dropdown>
 			<el-dropdown-menu>

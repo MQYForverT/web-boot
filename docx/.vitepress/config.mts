@@ -7,7 +7,7 @@ export default defineConfig({
 	description: '现代化的前端项目脚手架工具，支持Vue、React、Svelte等多种框架',
 	lang: 'zh-CN',
 	head: [
-		['link', { rel: 'icon', href: '/favicon.ico' }],
+		['link', { rel: 'icon', href: '/web-boot/favicon.ico' }],
 		['meta', { name: 'keywords', content: '前端脚手架,Vue,React,Svelte,Vite,TypeScript' }],
 		['meta', { name: 'author', content: 'MQYForverT' }],
 		['meta', { name: 'og:title', content: 'Web Boot - 现代化的前端项目脚手架' }],

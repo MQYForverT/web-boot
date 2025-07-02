@@ -1,36 +1,43 @@
 {
-	"name": "@mqy/eslint-config",
+	"name": "@tsoul/eslint-config",
 	"version": "1.0.0",
-	"description": "统一的 ESLint 配置 - 支持 Vue、React、Svelte 多框架",
-	"type": "module",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+	"description": "ESLint configuration for Web Boot projects",
+	"homepage": "https://mqyforvert.github.io/web-boot/api/eslint",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MQYForverT/web-boot.git"
 	},
+	"bugs": {
+		"url": "https://github.com/MQYForverT/web-boot/issues"
+	},
+	"keywords": [
+		"eslint",
+		"eslintconfig",
+		"web-boot",
+		"typescript"
+	],
+	"author": "MQYForverT",
+	"license": "MIT",
+	"type": "module",
+	"main": "./index.mjs",
 	"exports": {
 		".": "./index.mjs",
 		"./react": "./react/index.mjs",
 		"./vue": "./vue/index.mjs",
 		"./svelte": "./svelte/index.mjs"
 	},
-	"keywords": [
-		"eslint",
-		"eslint-config",
-		"vue",
+	"files": [
+		"common",
 		"react",
 		"svelte",
-		"typescript",
-		"code-quality"
+		"vue",
+		"*.mjs"
 	],
-	"author": "MQYForverT",
-	"license": "MIT",
-	"homepage": "https://github.com/MQYForverT/web-boot/tree/main/internal/eslint-config#readme",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/MQYForverT/web-boot.git",
-		"directory": "internal/eslint-config"
+	"publishConfig": {
+		"access": "public"
 	},
-	"bugs": {
-		"url": "https://github.com/MQYForverT/web-boot/issues"
+	"peerDependencies": {
+		"eslint": "^9.0.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.24.0",

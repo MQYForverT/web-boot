@@ -75,14 +75,14 @@ command + shift + p 输入：restart ESlint server
 5. ref可以起作用，可以通过`_instance`属性拿到所有子组件属性
 
 ```
-<parent ref="mqy" @click="handClick"/>
+<parent ref="tsoul" @click="handClick"/>
 
-const mqy = ref(null)
+const tsoul = ref(null)
 
 onMounted(() => {
-    mqy.value._instance.devtoolsRawSetupState.say()
-    mqy.value._instance.exposed.say()
-    console.log(mqy.value._instance)
+    tsoul.value._instance.devtoolsRawSetupState.say()
+    tsoul.value._instance.exposed.say()
+    console.log(tsoul.value._instance)
 })
 ```
 

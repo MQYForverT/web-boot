@@ -1,5 +1,5 @@
-import NProgress from '@mqy/utils/dist/nprogress'
-import '@mqy/utils/dist/nprogress/nprogress.css'
+import NProgress from '@tsoul/utils/dist/nprogress'
+import '@tsoul/utils/dist/nprogress/nprogress.css'
 import { errorRouter, staticRouter, notFoundRouter } from '@/routers/modules/staticRouter'
 import { LOGIN_URL, TABS_WHITE_LIST } from '@/config/config'
 import { menuList } from './modules/owner'
