@@ -1,12 +1,20 @@
 {
 	"name": "@tsoul/create-webboot-template",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"type": "module",
 	"description": "快速创建 Web Boot 项目的命令行工具，支持 Vue、React、Svelte 等多种框架模板",
 	"main": "index.js",
 	"bin": {
 		"create-webboot-template": "./index.js"
 	},
+	"files": [
+		"index.js",
+		"lib/**/*",
+		"vue/!(node_modules)/**/*",
+		"react/!(node_modules)/**/*",
+		"svelte/!(node_modules)/**/*",
+		"README.md"
+	],
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
