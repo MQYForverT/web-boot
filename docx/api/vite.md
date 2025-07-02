@@ -19,6 +19,8 @@
 
 ```bash
 npm install @tsoul/vite-config -D
+# 或
+pnpm add @tsoul/vite-config -D
 ```
 
 ### 基础配置

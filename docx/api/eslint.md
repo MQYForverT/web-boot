@@ -19,6 +19,8 @@
 
 ```bash
 npm install @tsoul/eslint-config -D
+# 或
+pnpm add @tsoul/eslint-config -D
 ```
 
 ### 基础配置

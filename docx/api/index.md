@@ -81,15 +81,23 @@ Web-Boot 工具集是一个完整的前端开发工具链，提供了统一的�
 ```bash
 # ESLint 配置
 npm install @tsoul/eslint-config -D
+# 或
+pnpm add @tsoul/eslint-config -D
 
 # StyleLint 配置
 npm install @tsoul/stylelint-config -D
+# 或
+pnpm add @tsoul/stylelint-config -D
 
 # 工具函数
 npm install @tsoul/utils
+# 或
+pnpm add @tsoul/utils
 
 # Vite 配置
 npm install @tsoul/vite-config -D
+# 或
+pnpm add @tsoul/vite-config -D
 ```
 
 ### 基础使用

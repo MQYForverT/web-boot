@@ -52,6 +52,8 @@ Web-Boot 组件库是一个企业级中后台应用组件解决方案，采用�
 ```bash
 # 安装私有组件库
 npm install @tsoul/component-private
+# 或
+pnpm add @tsoul/component-private
 
 # 注册组件
 import { registerAll } from '@tsoul/component-private'

@@ -19,6 +19,8 @@
 
 ```bash
 npm install @tsoul/stylelint-config -D
+# 或
+pnpm add @tsoul/stylelint-config -D
 ```
 
 ### 基础配置
@@ -153,6 +155,8 @@ export default {
 
 ```bash
 npm install postcss postcss-scss -D
+# 或
+pnpm add postcss postcss-scss -D
 ```
 
 ### 2. Vue 单文件组件样式检查
@@ -165,6 +169,8 @@ Vue SFC 的样式检查已经配置好了 `postcss-html` 解析器，无需额�
 
 ```bash
 npm install prettier -D
+# 或
+pnpm add prettier -D
 ```
 
 ## 📚 相关资源

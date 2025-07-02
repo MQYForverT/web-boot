@@ -33,6 +33,8 @@
 
 ```bash
 npm install @tsoul/component-private
+# 或
+pnpm add @tsoul/component-private
 ```
 
 ### 基础用法

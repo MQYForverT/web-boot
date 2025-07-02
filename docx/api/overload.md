@@ -19,6 +19,8 @@
 
 ```bash
 npm install @tsoul/utils -D
+# 或
+pnpm add @tsoul/utils -D
 ```
 
 ### 基础使用
