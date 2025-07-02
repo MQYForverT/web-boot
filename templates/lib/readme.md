@@ -70,6 +70,10 @@ async function create() {
   - 从 workspace:^ 改为固定版本
   - 版本号从项目根目录的 package.json 中读取
 
+## 发布前模拟
+
+npm pack --dry-run：模拟打包 npm 包的过程，但不会实际创建包文件。这个命令非常有用
+
 ## 使用方法
 
 1. 安装
