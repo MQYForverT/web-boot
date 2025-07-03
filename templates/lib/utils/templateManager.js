@@ -40,7 +40,7 @@ function processDependencies(dependencies) {
 	const processed = {}
 	for (const [name, version] of Object.entries(dependencies)) {
 		if (name.startsWith('@tsoul/')) {
-			processed[name] = '^1.0.0' // 将所有 @tsoul 包的版本设为 ^1.0.0
+			processed[name] = 'latest' // 将所有 @tsoul 包的版本设为 latest
 		} else {
 			processed[name] = version
 		}

@@ -1,6 +1,5 @@
 import fs from 'fs-extra'
 import path from 'path'
-import logger from './logger.js'
 
 /**
  * 文件过滤规则
@@ -85,7 +84,6 @@ async function copyTemplate(templateDir, targetDir) {
 				return !shouldExcludeFile(filename)
 			},
 		})
-		logger.success('模板文件复制完成')
 	} catch (err) {
 		throw new Error(`复制模板文件失败: ${err.message}`)
 	}
@@ -99,10 +97,13 @@ async function copyTemplate(templateDir, targetDir) {
 async function createProjectDir(targetDir) {
 	try {
 		if (await fs.pathExists(targetDir)) {
-			throw new Error(`目录 ${targetDir} 已存在`)
+			const files = await fs.readdir(targetDir)
+			if (files.length > 0) {
+				throw new Error(`目标目录 ${targetDir} 已存在且不为空`)
+			}
+		} else {
+			await fs.mkdir(targetDir, { recursive: true })
 		}
-		await fs.ensureDir(targetDir)
-		logger.success(`创建项目目录成功: ${targetDir}`)
 	} catch (err) {
 		throw new Error(`创建项目目录失败: ${err.message}`)
 	}
@@ -116,11 +117,9 @@ async function createProjectDir(targetDir) {
  */
 async function writePackageJson(targetDir, packageJson) {
 	try {
-		const packageJsonPath = path.join(targetDir, 'package.json')
-		await fs.writeJSON(packageJsonPath, packageJson, { spaces: 2 })
-		logger.success('package.json 创建成功')
+		await fs.writeJSON(path.join(targetDir, 'package.json'), packageJson, { spaces: 2 })
 	} catch (err) {
-		throw new Error(`创建 package.json 失败: ${err.message}`)
+		throw new Error(`写入 package.json 失败: ${err.message}`)
 	}
 }
 
