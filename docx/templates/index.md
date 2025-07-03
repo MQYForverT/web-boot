@@ -11,17 +11,16 @@ Web Boot 提供了三种主流前端框架的完整项目模板，每个模板�
 ```bash
 # 全局安装脚手架工具
 npm install @tsoul/create-webboot-template -g
-# 或
-pnpm add -g @tsoul/create-webboot-template
 ```
 
 #### 2. 创建项目
 
 ```bash
-# 创建新项目
-npm create-webboot-template
-# 或
-pnpm create-webboot-template
+# 方式一：使用全局命令
+create-webboot-template
+
+# 方式二：使用 npx（无需全局安装）
+npx create-webboot-template
 ```
 
 脚手架会引导您完成以下步骤：
@@ -102,11 +101,11 @@ pnpm dev
 我们提供了一个交互式的脚手架工具来创建项目：
 
 ```bash
-# 进入项目目录
-cd web-boot
+# 方式一：使用全局命令
+create-webboot-template
 
-# 运行创建命令
-pnpm create
+# 方式二：使用 npx（无需全局安装）
+npx create-webboot-template
 ```
 
 脚手架会引导您完成以下步骤：

@@ -21,17 +21,16 @@
 ```bash
 # 全局安装脚手架工具
 npm install @tsoul/create-webboot-template -g
-# 或
-pnpm add -g @tsoul/create-webboot-template
 ```
 
 ### 2. 创建项目
 
 ```bash
-# 创建新项目
-npm create-webboot-template
-# 或
-pnpm create-webboot-template
+# 方式一：使用全局命令
+create-webboot-template
+
+# 方式二：使用 npx（无需全局安装）
+npx create-webboot-template
 ```
 
 按照提示输入以下信息：
