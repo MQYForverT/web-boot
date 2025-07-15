@@ -121,11 +121,17 @@ export default {
 
 #### ⌨️ Typewriter
 
-- **功能**：打字机文字效果
+- **功能**：高级打字机文字效果
 - **特性**：
-  - 可配置打字速度
-  - 支持删除效果
-  - 循环播放支持
+  - 🎨 支持彩色文本显示
+  - 📝 类型分组管理（可按类型显示不同文本）
+  - ⚡ Promise 异步控制（waitForComplete）
+  - 🔄 队列管理和实时状态监控
+  - ⏸️ 支持暂停、删除、清除操作
+  - 🎯 itemKey 标识支持
+  - 📊 完整的生命周期回调
+  - 🚀 即时模式和渐进模式
+  - 🔧 灵活的配置选项
 
 #### 🔄 FuncOverload
 
@@ -146,7 +152,7 @@ export default {
 **使用方式**：
 
 ```typescript
-import { httpRequest, downBlobFile, nprogress, typewriter } from '@tsoul/utils'
+import { httpRequest, downBlobFile, nprogress, Typewriter } from '@tsoul/utils'
 
 // HTTP 请求
 const data = await httpRequest.get('/api/users')
@@ -157,6 +163,18 @@ downBlobFile(blob, 'filename.pdf')
 // 进度条
 nprogress.start()
 nprogress.done()
+
+// 高级打字机效果
+const typewriter = new Typewriter({
+	speed: 50,
+	onUpdate: (data) => console.log('文本更新:', data.textMap),
+	onTypeComplete: (data) => console.log('类型完成:', data.type),
+})
+
+// 添加彩色文本
+await typewriter.append({ text: '成功!', color: '#00ff00' }, 'success', {
+	waitForComplete: true,
+})
 ```
 
 ### ⚡ Vite 配置 (`@tsoul/vite-config`)

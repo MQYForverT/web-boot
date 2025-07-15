@@ -58,9 +58,12 @@ Web-Boot 工具集是一个完整的前端开发工具链，提供了统一的�
 
 #### 打字机效果 (`@tsoul/utils/typewriter`)
 
-- 可配置打字速度
-- 支持删除效果
-- 循环播放支持
+- 彩色文本支持
+- 类型分组管理
+- Promise 异步控制
+- 队列管理和状态监控
+- itemKey 项目标识
+- 完整的生命周期回调
 
 #### 函数重载 (`@tsoul/utils/funcOverload`)
 

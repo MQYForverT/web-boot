@@ -3,6 +3,7 @@ interface TypewriterChar {
 	color?: string
 	type?: string
 	itemKey?: string
+	promiseId?: string
 }
 
 interface ChangeText {
@@ -23,6 +24,12 @@ export interface TypewriterOptions {
 	onTypeComplete?: (obj: ChangeText) => void
 }
 
+// append方法的选项参数接口
+export interface AppendOptions {
+	itemKey?: string
+	waitForComplete?: boolean
+}
+
 export class Typewriter {
 	private queue: TypewriterChar[] = []
 	private isProcessing: boolean = false
@@ -30,6 +37,7 @@ export class Typewriter {
 	private lastChar: TypewriterChar | undefined = undefined
 	private options: Required<TypewriterOptions>
 	private immediateMode: boolean = false
+	private promiseResolvers: Map<string, Function> = new Map()
 
 	constructor(options?: TypewriterOptions & { immediateMode?: boolean }) {
 		this.options = {
@@ -45,39 +53,68 @@ export class Typewriter {
 		this.immediateMode = options?.immediateMode ?? false
 	}
 
-	public async append(
-		text: string | { text?: string; content?: string; color?: string; type?: string },
+	/**
+	 * 向队列中添加文本
+	 * @param text 要添加的文本内容或包含文本和颜色的对象
+	 * @param type 文本类型（可选）
+	 * @param options 附加选项（可选），包含itemKey和waitForComplete
+	 * @returns 如果waitForComplete为true，返回Promise，否则返回void
+	 */
+	public append(
+		text: string | { text: string; color?: string },
 		type?: string,
-		itemKey?: string,
-	): Promise<void> {
+		options: AppendOptions = {},
+	): Promise<void> | void {
+		// 提取文本内容和颜色
+		let content: string
+		let color: string | undefined
+
 		if (typeof text === 'string') {
-			const chars = text.split('').map((char) => ({
+			content = text
+		} else {
+			content = text.text
+			color = text.color
+		}
+
+		const { itemKey, waitForComplete = false } = options
+
+		// 创建字符数组
+		const createChars = (promiseId?: string): TypewriterChar[] => {
+			return content.split('').map((char) => ({
 				text: char,
+				color,
 				type,
 				itemKey,
+				promiseId,
 			}))
-			this.queue.push(...chars)
-		} else {
-			const content = text.text || text.content || ''
-			const chars = content.split('').map((char) => ({
-				text: char,
-				color: text.color,
-				type: text.type || type,
-				itemKey,
-			}))
-			this.queue.push(...chars)
 		}
-		this.options.onUpdate({
-			textMap: this.textMap,
-			lastChar: undefined,
-			queueSize: this.queue.length,
-			itemKey: itemKey,
-		})
+
+		// 处理Promise情况
+		if (waitForComplete) {
+			const promiseId = `promise_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+			const promise = new Promise<void>((resolve) => {
+				this.promiseResolvers.set(promiseId, resolve)
+			})
+
+			this.queue.push(...createChars(promiseId))
+			this.startProcessingIfNeeded(itemKey)
+
+			return promise
+		}
+
+		// 常规处理，不需要Promise
+		this.queue.push(...createChars())
+		this.startProcessingIfNeeded(itemKey)
+	}
+
+	private startProcessingIfNeeded(itemKey?: string): void {
+		this.options.onUpdate({ textMap: this.textMap, lastChar: undefined, queueSize: this.queue.length, itemKey })
+
 		if (!this.isProcessing) {
 			if (this.immediateMode) {
 				this.process()
 			} else {
-				await this.process()
+				this.process()
 			}
 		}
 	}
@@ -103,7 +140,9 @@ export class Typewriter {
 		this.textMap = {}
 		this.isProcessing = false
 		this.lastChar = undefined
-		this.options.onUpdate({ textMap: this.textMap, lastChar: undefined, queueSize: this.queue.length })
+		// 清除所有未完成的Promise
+		this.resolveAllPromises()
+		this.options.onUpdate({ textMap: this.textMap, lastChar: undefined, queueSize: 0 })
 	}
 
 	public clear(type?: string): void {
@@ -123,14 +162,73 @@ export class Typewriter {
 		return new Promise((resolve) => setTimeout(resolve, time))
 	}
 
+	private resolveAllPromises(): void {
+		this.promiseResolvers.forEach((resolve) => resolve())
+		this.promiseResolvers.clear()
+	}
+
+	private checkAndResolvePromise(char: TypewriterChar): void {
+		if (!char.promiseId) return
+
+		// 检查队列中是否还有相同promiseId的字符
+		const hasMoreOfSamePromiseId = this.queue.some((qChar) => qChar.promiseId === char.promiseId)
+		if (!hasMoreOfSamePromiseId && this.promiseResolvers.has(char.promiseId)) {
+			const resolve = this.promiseResolvers.get(char.promiseId)
+			if (resolve) {
+				resolve()
+				this.promiseResolvers.delete(char.promiseId)
+			}
+		}
+	}
+
+	private checkAndTriggerTypeComplete(char: TypewriterChar): void {
+		const type = char.type || 'default'
+		// 检查队列中是否还有相同type的字符
+		const hasMoreOfSameType = this.queue.some((qChar) => (qChar.type || 'default') === type)
+		if (!hasMoreOfSameType) {
+			// 如果队列中没有更多相同type的字符，触发type完成事件
+			this.options.onTypeComplete({
+				textMap: this.textMap,
+				lastChar: this.lastChar,
+				queueSize: this.queue.length,
+				itemKey: char.itemKey,
+				type,
+			})
+		}
+	}
+
+	private processChar(char: TypewriterChar): void {
+		const type = char.type || 'default'
+		if (!this.textMap[type]) {
+			this.textMap[type] = []
+		}
+		this.textMap[type].push(char)
+		this.lastChar = char
+
+		// 处理Promise完成逻辑
+		this.checkAndResolvePromise(char)
+
+		// 更新状态
+		this.options.onUpdate({
+			textMap: this.textMap,
+			lastChar: this.lastChar,
+			queueSize: this.queue.length,
+			itemKey: char.itemKey,
+		})
+
+		// 检查类型完成
+		this.checkAndTriggerTypeComplete(char)
+	}
+
 	private async process(): Promise<void> {
 		if (this.queue.length === 0) {
 			this.isProcessing = false
+			this.resolveAllPromises()
 			this.options.onComplete(
 				{
 					textMap: this.textMap,
 					lastChar: this.lastChar,
-					queueSize: this.queue.length,
+					queueSize: 0,
 					itemKey: this.lastChar?.itemKey,
 				},
 				'process',
@@ -144,31 +242,7 @@ export class Typewriter {
 			await this.sleep(this.options.speed)
 			const char = this.queue.shift()
 			if (char) {
-				const type = char.type || 'default'
-				if (!this.textMap[type]) {
-					this.textMap[type] = []
-				}
-				this.textMap[type].push(char)
-				this.lastChar = char
-				this.options.onUpdate({
-					textMap: this.textMap,
-					lastChar: this.lastChar,
-					queueSize: this.queue.length,
-					itemKey: char.itemKey,
-				})
-
-				// 检查队列中是否还有相同type的字符
-				const hasMoreOfSameType = this.queue.some((qChar) => (qChar.type || 'default') === type)
-				if (!hasMoreOfSameType) {
-					// 如果队列中没有更多相同type的字符，触发type完成事件
-					this.options.onTypeComplete({
-						textMap: this.textMap,
-						lastChar: this.lastChar,
-						queueSize: this.queue.length,
-						itemKey: char.itemKey,
-						type,
-					})
-				}
+				this.processChar(char)
 			}
 		}
 
@@ -180,11 +254,12 @@ export class Typewriter {
 	public async flush(): Promise<void> {
 		if (this.queue.length === 0) {
 			this.isProcessing = false
+			this.resolveAllPromises()
 			this.options.onComplete(
 				{
 					textMap: this.textMap,
 					lastChar: this.lastChar,
-					queueSize: this.queue.length,
+					queueSize: 0,
 					itemKey: this.lastChar?.itemKey,
 				},
 				'flush',
@@ -196,36 +271,18 @@ export class Typewriter {
 			await this.sleep(this.options.speed)
 			const char = this.queue.shift()
 			if (char) {
-				const type = char.type || 'default'
-				if (!this.textMap[type]) {
-					this.textMap[type] = []
-				}
-				this.textMap[type].push(char)
-				this.lastChar = char
-				this.options.onUpdate({
-					textMap: this.textMap,
-					lastChar: this.lastChar,
-					queueSize: this.queue.length,
-					itemKey: char.itemKey,
-				})
-
-				// 检查队列中是否还有相同type的字符
-				const hasMoreOfSameType = this.queue.some((qChar) => (qChar.type || 'default') === type)
-				if (!hasMoreOfSameType) {
-					// 如果队列中没有更多相同type的字符，触发type完成事件
-					this.options.onTypeComplete({
-						textMap: this.textMap,
-						lastChar: this.lastChar,
-						queueSize: this.queue.length,
-						itemKey: char.itemKey,
-						type,
-					})
-				}
+				this.processChar(char)
 			}
 		}
 
+		this.resolveAllPromises()
 		this.options.onComplete(
-			{ textMap: this.textMap, lastChar: this.lastChar, queueSize: this.queue.length, itemKey: this.lastChar?.itemKey },
+			{
+				textMap: this.textMap,
+				lastChar: this.lastChar,
+				queueSize: 0,
+				itemKey: this.lastChar?.itemKey,
+			},
 			'flush',
 		)
 		this.isProcessing = false

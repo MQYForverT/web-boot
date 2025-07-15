@@ -71,21 +71,202 @@ NProgress.start()
 NProgress.done()
 ```
 
-### 打字机效果
+### 打字机效果 (Typewriter)
 
-创建打字机动画效果。
+先进的打字机动画效果工具，支持多种高级功能。
 
 ```typescript
-import { createTypewriter } from '@tsoul/utils'
+import { Typewriter } from '@tsoul/utils'
 
-const typewriter = createTypewriter({
-	text: 'Hello, World!',
-	speed: 100,
-	onFinish: () => console.log('打字完成'),
+// 基础用法
+const typewriter = new Typewriter({
+	speed: 50, // 打字速度 (ms)
+	deleteSpeed: 25, // 删除速度 (ms)
+	pauseDuration: 1500, // 暂停时长 (ms)
 })
 
-typewriter.start()
+// 添加文本
+typewriter.append('Hello, World!')
 ```
+
+#### 高级功能
+
+**1. 彩色文本支持**
+
+```typescript
+// 普通文本
+typewriter.append('Normal text')
+
+// 彩色文本
+typewriter.append({ text: 'Error message', color: '#ff0000' }, 'error')
+typewriter.append({ text: 'Success message', color: '#00ff00' }, 'success')
+```
+
+**2. 类型分组管理**
+
+```typescript
+// 不同类型的文本会分组存储
+typewriter.append('标题文本', 'title')
+typewriter.append('内容文本', 'content')
+typewriter.append('错误信息', 'error')
+
+// 可以单独清除某个类型
+typewriter.clear('error') // 只清除错误信息
+```
+
+**3. Promise 异步控制**
+
+```typescript
+// 等待文本完全输出后再继续
+await typewriter.append('第一段文本', 'paragraph', {
+	waitForComplete: true,
+})
+
+// 继续添加下一段
+await typewriter.append('第二段文本', 'paragraph', {
+	waitForComplete: true,
+})
+```
+
+**4. 实时状态监控**
+
+```typescript
+const typewriter = new Typewriter({
+	onUpdate: (data) => {
+		// 实时获取文本状态
+		console.log('文本映射:', data.textMap)
+		console.log('当前字符:', data.lastChar)
+		console.log('队列大小:', data.queueSize)
+		console.log('项目标识:', data.itemKey)
+	},
+
+	onComplete: (data, type) => {
+		// 完成回调 ('process' | 'flush')
+		console.log('输出完成:', type)
+	},
+
+	onTypeComplete: (data) => {
+		// 特定类型完成回调
+		console.log('类型完成:', data.type)
+	},
+})
+```
+
+**5. 队列管理**
+
+```typescript
+// 立即输出所有队列内容
+await typewriter.flush()
+
+// 删除所有已显示的文本
+await typewriter.delete()
+
+// 清除所有内容和队列
+typewriter.clearAll()
+
+// 暂停指定时间
+await typewriter.pause()
+```
+
+**6. ItemKey 标识**
+
+```typescript
+// 为文本添加标识，方便追踪
+typewriter.append('Loading...', 'status', {
+	itemKey: 'loading-indicator',
+	waitForComplete: true,
+})
+```
+
+#### 完整示例
+
+```typescript
+import { Typewriter } from '@tsoul/utils'
+
+const typewriter = new Typewriter({
+	speed: 30,
+	deleteSpeed: 15,
+	onUpdate: (data) => {
+		// 更新UI显示
+		updateDisplay(data.textMap)
+	},
+	onTypeComplete: (data) => {
+		if (data.type === 'title') {
+			console.log('标题输出完成')
+		}
+	},
+})
+
+// 演示完整流程
+async function demo() {
+	// 1. 输出标题
+	await typewriter.append('📝 打字机演示', 'title', {
+		waitForComplete: true,
+		itemKey: 'demo-title',
+	})
+
+	// 2. 暂停
+	await typewriter.pause()
+
+	// 3. 输出彩色内容
+	await typewriter.append(
+		{
+			text: '这是成功消息',
+			color: '#00ff00',
+		},
+		'success',
+		{
+			waitForComplete: true,
+		},
+	)
+
+	// 4. 输出错误信息
+	await typewriter.append(
+		{
+			text: '这是错误消息',
+			color: '#ff0000',
+		},
+		'error',
+		{
+			waitForComplete: true,
+		},
+	)
+
+	// 5. 删除错误信息
+	typewriter.clear('error')
+
+	// 6. 添加更多内容
+	typewriter.append('演示完成！', 'content')
+}
+
+demo()
+```
+
+#### API 参考
+
+**构造函数选项**
+
+```typescript
+interface TypewriterOptions {
+	speed?: number // 打字速度 (默认: 10ms)
+	deleteSpeed?: number // 删除速度 (默认: 25ms)
+	pauseDuration?: number // 暂停时长 (默认: 1500ms)
+	immediateMode?: boolean // 立即模式 (默认: false)
+	onUpdate?: (data: ChangeText) => void // 更新回调
+	onComplete?: (data: ChangeText, type: 'process' | 'flush') => void // 完成回调
+	onStart?: () => void // 开始回调
+	onTypeComplete?: (data: ChangeText) => void // 类型完成回调
+}
+```
+
+**方法**
+
+- `append(text, type?, options?)` - 添加文本到队列
+- `delete()` - 删除所有显示的文本
+- `pause()` - 暂停指定时间
+- `clear(type?)` - 清除指定类型或所有内容
+- `clearAll()` - 清除所有内容和队列
+- `flush()` - 立即输出所有队列内容
 
 ### 兼容滚动
 
@@ -152,7 +333,7 @@ type MyFunc = Overload<
 
 ### createTypewriter(options)
 
-创建打字机实例。
+⚠️ **已废弃**: 请使用新的 `Typewriter` 类替代。
 
 **参数：**
 
