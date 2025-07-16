@@ -1,6 +1,6 @@
 {
 	"name": "@tsoul/utils",
-	"version": "1.0.1",
+	"version": "1.0.3",
 	"description": "Utility functions for Web Boot projects",
 	"homepage": "https://mqyforvert.github.io/web-boot/api/",
 	"repository": {
