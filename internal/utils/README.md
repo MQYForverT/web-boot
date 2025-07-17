@@ -164,6 +164,9 @@ await typewriter.delete()
 // 清除所有内容和队列
 typewriter.clearAll()
 
+// 清除指定类型的内容
+typewriter.clear('error')
+
 // 暂停指定时间
 await typewriter.pause()
 ```
@@ -176,6 +179,48 @@ typewriter.append('Loading...', 'status', {
 	itemKey: 'loading-indicator',
 	waitForComplete: true,
 })
+```
+
+#### 核心接口
+
+```typescript
+interface TypewriterOptions {
+	speed?: number // 打字速度 (默认: 10ms)
+	deleteSpeed?: number // 删除速度 (默认: 25ms)
+	pauseDuration?: number // 暂停时长 (默认: 1500ms)
+	onUpdate?: (obj: ChangeText) => void // 更新回调
+	onComplete?: (obj: ChangeText, type: 'process' | 'flush') => void // 完成回调
+	onStart?: () => void // 开始回调
+	onTypeComplete?: (obj: ChangeText) => void // 类型完成回调
+}
+
+interface AppendOptions {
+	itemKey?: string // 项目标识
+	waitForComplete?: boolean // 是否等待完成，返回 Promise
+}
+```
+
+**AppendOptions 详细说明:**
+
+- **`itemKey`**: 为文本添加唯一标识符，用于追踪特定文本片段，便于在回调中识别
+- **`waitForComplete`**: 控制异步行为，设为 `true` 时返回 Promise 并等待文本输出完成
+
+```typescript
+interface ChangeText {
+	textMap: Record<string, TypewriterChar[]> // 按类型分组的文本映射
+	lastChar?: TypewriterChar // 最后输出的字符
+	queueSize?: number // 当前队列大小
+	itemKey?: string // 项目标识
+	type?: string // 触发事件的类型
+}
+
+interface TypewriterChar {
+	text: string // 字符内容
+	color?: string // 字符颜色
+	type?: string // 字符类型
+	itemKey?: string // 项目标识
+	promiseId?: string // Promise 标识（内部使用）
+}
 ```
 
 #### 完整示例
@@ -242,32 +287,6 @@ async function demo() {
 demo()
 ```
 
-#### API 参考
-
-**构造函数选项**
-
-```typescript
-interface TypewriterOptions {
-	speed?: number // 打字速度 (默认: 10ms)
-	deleteSpeed?: number // 删除速度 (默认: 25ms)
-	pauseDuration?: number // 暂停时长 (默认: 1500ms)
-	immediateMode?: boolean // 立即模式 (默认: false)
-	onUpdate?: (data: ChangeText) => void // 更新回调
-	onComplete?: (data: ChangeText, type: 'process' | 'flush') => void // 完成回调
-	onStart?: () => void // 开始回调
-	onTypeComplete?: (data: ChangeText) => void // 类型完成回调
-}
-```
-
-**方法**
-
-- `append(text, type?, options?)` - 添加文本到队列
-- `delete()` - 删除所有显示的文本
-- `pause()` - 暂停指定时间
-- `clear(type?)` - 清除指定类型或所有内容
-- `clearAll()` - 清除所有内容和队列
-- `flush()` - 立即输出所有队列内容
-
 ### 兼容滚动
 
 支持平滑滚动和即时滚动的滚动函数。
@@ -330,20 +349,6 @@ type MyFunc = Overload<
 - `start()`: 开始进度条
 - `done()`: 完成进度条
 - `configure(options)`: 配置进度条
-
-### createTypewriter(options)
-
-⚠️ **已废弃**: 请使用新的 `Typewriter` 类替代。
-
-**参数：**
-
-- `options.text`: 要显示的文本
-- `options.speed`: 打字速度（毫秒）
-- `options.onFinish`: 完成回调
-
-**返回值：**
-
-- 打字机实例，包含 `start`、`pause`、`resume` 方法
 
 ### compatibleScrollTo(element, options)
 

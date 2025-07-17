@@ -36,10 +36,9 @@ export class Typewriter {
 	private textMap: Record<string, TypewriterChar[]> = {}
 	private lastChar: TypewriterChar | undefined = undefined
 	private options: Required<TypewriterOptions>
-	private immediateMode: boolean = false
 	private promiseResolvers: Map<string, Function> = new Map()
 
-	constructor(options?: TypewriterOptions & { immediateMode?: boolean }) {
+	constructor(options?: TypewriterOptions) {
 		this.options = {
 			speed: 10,
 			deleteSpeed: 25,
@@ -50,7 +49,6 @@ export class Typewriter {
 			onTypeComplete: () => {},
 			...options,
 		}
-		this.immediateMode = options?.immediateMode ?? false
 	}
 
 	/**
@@ -111,11 +109,7 @@ export class Typewriter {
 		this.options.onUpdate({ textMap: this.textMap, lastChar: undefined, queueSize: this.queue.length, itemKey })
 
 		if (!this.isProcessing) {
-			if (this.immediateMode) {
-				this.process()
-			} else {
-				this.process()
-			}
+			this.process()
 		}
 	}
 

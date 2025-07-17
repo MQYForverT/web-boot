@@ -13,7 +13,6 @@
 - **🎯 标识跟踪**: itemKey 支持项目标识
 - **📊 生命周期**: 完整的回调事件系统
 - **⏸️ 灵活控制**: 暂停、删除、清除等操作
-- **🚀 双模式**: 渐进模式和即时模式
 - **🔧 高度可配**: 丰富的配置选项
 
 ## 🚀 快速开始
@@ -46,7 +45,7 @@ typewriter.append('Hello, World!')
 ### 构造函数
 
 ```typescript
-constructor(options?: TypewriterOptions & { immediateMode?: boolean })
+constructor(options?: TypewriterOptions)
 ```
 
 #### TypewriterOptions
@@ -56,10 +55,10 @@ interface TypewriterOptions {
 	speed?: number // 打字速度，默认 10ms
 	deleteSpeed?: number // 删除速度，默认 25ms
 	pauseDuration?: number // 暂停时长，默认 1500ms
-	onUpdate?: (data: ChangeText) => void // 实时更新回调
-	onComplete?: (data: ChangeText, type: 'process' | 'flush') => void // 完成回调
+	onUpdate?: (obj: ChangeText) => void // 实时更新回调
+	onComplete?: (obj: ChangeText, type: 'process' | 'flush') => void // 完成回调
 	onStart?: () => void // 开始回调
-	onTypeComplete?: (data: ChangeText) => void // 特定类型完成回调
+	onTypeComplete?: (obj: ChangeText) => void // 特定类型完成回调
 }
 ```
 
@@ -95,9 +94,9 @@ interface TypewriterChar {
 
 ```typescript
 append(
-  text: string | { text: string; color?: string },
-  type?: string,
-  options?: AppendOptions
+	text: string | { text: string; color?: string },
+	type?: string,
+	options?: AppendOptions,
 ): Promise<void> | void
 ```
 
@@ -116,19 +115,50 @@ interface AppendOptions {
 }
 ```
 
+**配置说明:**
+
+- **`itemKey`** (可选): 为当前文本添加唯一标识符，用于追踪和管理特定的文本片段。当触发回调事件时，可以通过此标识符识别是哪个文本触发的事件。
+- **`waitForComplete`** (可选): 控制 `append` 方法的返回行为：
+  - `true`: 返回 Promise，等待当前文本完全输出后才 resolve
+  - `false` (默认): 立即返回 void，文本异步输出
+
 **使用示例:**
 
 ```typescript
-// 基本用法
-typewriter.append('Hello')
+// 基本用法 - 无配置选项
+typewriter.append('Hello World')
 
-// 彩色文本
+// 彩色文本 - 无配置选项
 typewriter.append({ text: 'Error', color: '#ff0000' }, 'error')
 
-// 异步等待
+// 使用 itemKey - 便于追踪特定文本
+typewriter.append('User login successful', 'notification', {
+	itemKey: 'login-success',
+})
+
+// 使用 waitForComplete - 等待输出完成
 await typewriter.append('Loading...', 'status', {
 	waitForComplete: true,
-	itemKey: 'loading-1',
+})
+
+// 同时使用两个选项
+await typewriter.append('Processing data...', 'process', {
+	waitForComplete: true,
+	itemKey: 'data-processing',
+})
+
+// 在回调中使用 itemKey 识别文本
+const typewriter = new Typewriter({
+	onUpdate: (data) => {
+		if (data.itemKey === 'login-success') {
+			console.log('登录成功消息正在显示')
+		}
+	},
+	onTypeComplete: (data) => {
+		if (data.itemKey === 'data-processing') {
+			console.log('数据处理提示已完成显示')
+		}
+	},
 })
 ```
 
@@ -508,19 +538,6 @@ typewriter.append(
 ```
 
 ## 🔧 高级配置
-
-### 即时模式
-
-```typescript
-// 启用即时模式，跳过渐进动画
-const instantTypewriter = new Typewriter({
-	immediateMode: true,
-	onUpdate: (data) => {
-		// 文本会立即显示，无打字动画
-		displayText(data.textMap)
-	},
-})
-```
 
 ### 自定义渲染器
 
