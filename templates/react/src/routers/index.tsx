@@ -7,7 +7,7 @@ import { LOGIN_URL, TABS_WHITE_LIST } from '@/config/config'
 import { menuList } from './modules/owner'
 import $axios from '@/config/request'
 import { rootRoute } from './modules/staticRouter'
-import { RouteObject } from 'react-router-dom'
+import type { RouteObject } from 'react-router-dom'
 import routesStore from '@/stores/modules/routes'
 
 // 自己的所有页面

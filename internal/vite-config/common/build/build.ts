@@ -7,7 +7,6 @@ export function setupViteBuild(): BuildOptions {
 		chunkSizeWarningLimit: 500,
 		// https://rollupjs.org/configuration-options/
 		rollupOptions: {
-			external: ['vue'],
 			output: {
 				globals: {
 					vue: 'Vue',

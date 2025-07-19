@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "vite --configLoader runner",
 		"build": "rimraf dist && vue-tsc && vite build --configLoader runner",
-		"preview": "vite preview",
+		"preview": "vite preview --configLoader runner",
 		"lint:eslint": "eslint --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
 		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix"
