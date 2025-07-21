@@ -3,7 +3,13 @@
 	"compilerOptions": {
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		// 要包含的类型声明文件名列表
-		"types": ["vite/client", "element-plus/global", "../../types/env.d.ts", "../../types/route.d.ts"],
+		"types": [
+			"vite/client",
+			"element-plus/global",
+			"@tsoul/component-private/type",
+			"../../types/env.d.ts",
+			"../../types/route.d.ts"
+		],
 		"baseUrl": "./",
 		"paths": {
 			"@/*": ["src/*"]

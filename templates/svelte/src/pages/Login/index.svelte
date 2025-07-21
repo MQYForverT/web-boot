@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte'
 	// @ts-ignore
 	import router from 'page'
-	import { layoutEnum } from '@tsoul/component-private/dist/BackgroundLogin'
+	import type { layoutEnum } from '@tsoul/component-private/BackgroundLogin/BackgroundLogin'
 	import { HOME_URL } from '@/config/config'
 	import { ApiPostLogin } from '@/api/global'
 	import { globalStore } from '@/stores/index'
@@ -26,7 +26,7 @@
 				validate: { required: true, message: '必须输入密码' },
 			},
 		},
-		layout: layoutEnum.right,
+		layout: 'right' as layoutEnum,
 	}
 	
 	const formatAxis = (param: Date) => {

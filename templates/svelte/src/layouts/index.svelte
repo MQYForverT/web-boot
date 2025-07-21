@@ -5,7 +5,7 @@
 	import { HOME_URL } from '@/config/config'
 	import { globalStore } from '@/stores/index'
 	import { routesStore } from '@/stores/modules/routes'
-	import type { Layout } from '@tsoul/component-private/dist/BackgroundLayout/layout'
+	import type { Layout } from '@tsoul/component-private/BackgroundLayout/layout'
 	
 	let ref: HTMLElement
 	let routeList: any[] = []

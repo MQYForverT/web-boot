@@ -6,7 +6,7 @@ import '@/styles/index.scss'
 
 // 全局注册所有
 import { registerAll, setGlobalConfig } from '@tsoul/component-private'
-import type { Global } from '@tsoul/component-private/dist/common/global'
+import type { Global } from '@tsoul/component-private/common/global'
 
 registerAll()
 

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { notification } from 'antd'
-import { layoutEnum } from '@tsoul/component-private/dist/BackgroundLogin'
+import type { layoutEnum } from '@tsoul/component-private/BackgroundLogin/BackgroundLogin'
 import { HOME_URL } from '@/config/config'
 import { ApiPostLogin } from '@/api/global'
 import { observer } from 'mobx-react-lite'
@@ -29,7 +29,7 @@ const Login: React.FC = () => {
 				validate: { required: true, message: '必须输入密码' },
 			},
 		},
-		layout: layoutEnum.right,
+		layout: 'right' as layoutEnum,
 	}
 
 	const formatAxis = (param: Date) => {

@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 	import { HOME_URL } from '@/config/config'
-	import { layoutEnum } from '@tsoul/component-private/dist/BackgroundLogin'
+	import type { layoutEnum } from '@tsoul/component-private/BackgroundLogin/BackgroundLogin'
 	import { ApiPostLogin } from '@/api/global'
 
 	const router = useRouter()
@@ -28,7 +28,7 @@
 				validate: { required: true, message: '必须输入密码' },
 			},
 		},
-		layout: layoutEnum.right,
+		layout: 'right' as layoutEnum,
 	})
 
 	const formatAxis = (param: Date) => {

@@ -20,8 +20,8 @@
 		// 强制对Types使用“import type”而不是“import”
 		"verbatimModuleSyntax": true,
 		/* Bundler mode */
-		// 用于选择模块解析策略，有'node'和'classic'两种类型
-		"moduleResolution": "node",
+		// 用于选择模块解析策略，有'node'和'bundler'两种类型
+		"moduleResolution": "bundler",
 		"allowImportingTsExtensions": true,
 		// 允许引入 .json 模块
 		"resolveJsonModule": true,

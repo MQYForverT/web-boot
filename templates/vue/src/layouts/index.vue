@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 	import { HOME_URL } from '@/config/config'
-	import type { Layout } from '@tsoul/component-private/dist/BackgroundLayout/layout'
+	import type { Layout } from '@tsoul/component-private/BackgroundLayout/layout'
 	import type { KeepAliveProps } from 'vue'
 	import type { RouteComponent } from 'vue-router'
 

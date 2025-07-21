@@ -81,7 +81,7 @@ export type Emits = {
 
 export const emitsKey = Symbol() as InjectionKey<Emits>
 
-export type PublicProps = ExtractPublicPropTypes<typeof initProps>
+export type LoginPublicProps = ExtractPublicPropTypes<typeof initProps>
 
 // 排除掉string类型
 export type propPrecessType = {

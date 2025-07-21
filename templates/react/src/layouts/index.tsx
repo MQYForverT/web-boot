@@ -5,7 +5,7 @@ import { Modal, message } from 'antd'
 import { HOME_URL } from '@/config/config'
 import globalStore from '@/stores'
 import routesStore from '@/stores/modules/routes'
-import type { Layout } from '@tsoul/component-private/dist/BackgroundLayout/layout'
+import type { Layout } from '@tsoul/component-private/BackgroundLayout/layout'
 import { observer } from 'mobx-react-lite'
 import { KeepAlive, useKeepAliveRef } from 'keepalive-for-react'
 

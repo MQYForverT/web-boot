@@ -4,7 +4,7 @@ const prefix = import.meta.env.VITE_PROJECT_NAME
 
 // 定义全局状态store
 const createGlobalStore = () => {
-	const { subscribe, set, update } = writable<string>(localStorage.getItem(`${prefix}-token`) || '')
+	const { subscribe, set } = writable<string>(localStorage.getItem(`${prefix}-token`) || '')
 
 	return {
 		subscribe,

@@ -2,7 +2,13 @@
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
-		"types": ["vite/client", "../../types/env.d.ts", "../../types/route.d.ts", "../../internal/utils/global.d.ts"],
+		"types": [
+			"vite/client",
+			"@tsoul/component-private/type",
+			"../../types/env.d.ts",
+			"../../types/route.d.ts",
+			"../../internal/utils/global.d.ts"
+		],
 		"baseUrl": "./",
 		"paths": {
 			"@/*": ["src/*"]

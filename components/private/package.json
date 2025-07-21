@@ -13,8 +13,21 @@
 		"test": "vitest --coverage.enabled --configLoader runner",
 		"test:ui": "vitest --ui --open --coverage.enabled --configLoader runner"
 	},
-	"main": "./dist/index.js",
-	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.js"
+		},
+		"./*": {
+			"types": "./dist/*.d.ts",
+			"import": "./dist/*.js",
+			"require": "./dist/*.js"
+		},
+		"./type": {
+			"types": "./dist/type.d.ts"
+		}
+	},
 	"files": [
 		"dist"
 	],
@@ -43,7 +56,6 @@
 	},
 	"dependencies": {
 		"element-plus": "^2.9.7",
-		"react": "^19.1.0",
 		"sortablejs": "^1.15.6",
 		"vue": "^3.5.13"
 	},

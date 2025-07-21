@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url'
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 // 入口文件的白名单，白名单成员不成为入口文件
-const whiteList = ['index.ts', 'Example', 'common']
+const whiteList = ['index.ts', 'type.d.ts', 'Example', 'common']
 // 获取所有组件目录
 const componentDirs = readdirSync(resolve(__dirname, 'src/components')).filter((dir) => !whiteList.includes(dir))
 
@@ -159,11 +159,6 @@ const config: UserConfig = {
 	}),
 	build: setupViteLib({
 		entries: entries,
-		/**
-		 * 1、这里还是不能排除vue，毕竟wc的vue版本没必要和宿主环境的vue版本一致，所以这里还是要用自己的，只是会增加打包体积
-		 * 2、但是要排除react，引入只是为了构造类型不报错，但是打包时是不需要的
-		 */
-		external: ['react'],
 		// outputGlobals: {
 		// 	vue: 'Vue',
 		// },
