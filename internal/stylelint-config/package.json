@@ -23,7 +23,8 @@
 	"exports": {
 		".": "./index.mjs",
 		"./react": "./react/index.mjs",
-		"./vue": "./vue/index.mjs"
+		"./vue": "./vue/index.mjs",
+		"./svelte": "./svelte/index.mjs"
 	},
 	"files": [
 		"react",

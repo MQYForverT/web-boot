@@ -1,5 +1,5 @@
 import $axios from '@/config/request'
-import type { myRequestConfig } from '@tsoul/utils/dist/axios'
+import type { myRequestConfig } from '@tsoul/utils/axios'
 
 interface LoginResponse {
 	id: number

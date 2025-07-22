@@ -1,6 +1,6 @@
 {
 	"name": "@tsoul/utils",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "Utility functions for Web Boot projects",
 	"homepage": "https://mqyforvert.github.io/web-boot/api/",
 	"repository": {
@@ -23,8 +23,19 @@
 	"author": "MQYForverT",
 	"license": "MIT",
 	"type": "module",
-	"main": "./dist/index.js",
-	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		},
+		"./*": {
+			"import": "./dist/*/index.js",
+			"require": "./dist/*/index.js",
+			"types": "./dist/*/index.d.ts"
+		},
+		"./nprogress.css": "./dist/nprogress/nprogress.css"
+	},
 	"files": [
 		"dist"
 	],
@@ -41,7 +52,9 @@
 	},
 	"devDependencies": {
 		"@tsoul/vite-config": "workspace:^",
-		"vite": "^7.0.5",
-		"typescript": "^5.8.3"
+		"@types/nprogress": "^0.2.3",
+		"@types/qs": "^6.14.0",
+		"typescript": "^5.8.3",
+		"vite": "^7.0.5"
 	}
 }

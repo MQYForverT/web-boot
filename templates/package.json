@@ -1,6 +1,6 @@
 {
 	"name": "@tsoul/create-webboot-template",
-	"version": "1.0.9",
+	"version": "1.0.10",
 	"type": "module",
 	"description": "快速创建 Web Boot 项目的命令行工具，支持 Vue、React、Svelte 等多种框架模板",
 	"main": "index.js",
