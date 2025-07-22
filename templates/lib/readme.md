@@ -74,8 +74,10 @@ async function create() {
 第二种方式：
 
 - template目录下执行：npm link：执行成功后，npm 会创建了链接，你的电脑已经“学会”了 create-webboot-template 这个命令
+- 验证是否本地:npm list -g --depth=0 @tsoul/create-webboot-template,如果发现指向本地,则成功
 - 找个新文件夹，运行 create-webboot-template
 - 测试完毕，回到template目录，清理环境断开这个全局链接：npm unlink @tsoul/create-webboot-template
+- 防止污染,删除该包:npm uninstall -g @tsoul/create-webboot-template
 
 ## 使用方法
 

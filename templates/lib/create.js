@@ -5,271 +5,128 @@ import { getTemplatePath, generatePackageJson } from './utils/templateManager.js
 import { createProjectDir, writePackageJson, copyTemplate } from './utils/fileOperations.js'
 import fs from 'fs-extra'
 import { fileURLToPath } from 'url'
-import { execSync } from 'child_process'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-// 获取包根目录路径
 const packageRoot = path.resolve(__dirname, '..')
 
 /**
- * 获取项目根目录
- * 如果是从git仓库安装的，则返回git仓库根目录
- * 否则返回包根目录
- * @returns {string} 项目根目录路径
- */
-function getProjectRoot() {
-	try {
-		// 尝试从当前目录向上查找git仓库根目录
-		const gitRoot = path.resolve(
-			execSync('git rev-parse --show-toplevel', {
-				cwd: __dirname,
-				stdio: ['ignore', 'pipe', 'ignore'],
-				encoding: 'utf-8',
-			}).trim(),
-		)
-		return gitRoot
-	} catch {
-		// 如果不是git仓库，则返回包根目录
-		return packageRoot
-	}
-}
-
-// 获取项目根目录
-const projectRoot = getProjectRoot()
-
-/**
- * 复制根目录的配置文件
+ * 复制公共配置文件到项目根目录
+ * 包括 uno.config.ts 和环境变量文件
  * @param {string} targetDir 目标目录
  */
-// async function copyRootConfigFiles(targetDir) {
-// 	try {
-// 		const filesToCopy = ['uno.config.ts'] // 将来可以扩展更多文件
-
-// 		for (const file of filesToCopy) {
-// 			const sourcePath = path.join(projectRoot, file)
-// 			if (await fs.pathExists(sourcePath)) {
-// 				await fs.copy(sourcePath, path.join(targetDir, file))
-// 			} else {
-// 				logger.warn(`根配置文件 ${file} 未找到，跳过复制。`)
-// 			}
-// 		}
-// 	} catch (err) {
-// 		throw new Error(`复制根配置文件失败: ${err.message}`)
-// 	}
-// }
-
-/**
- * 复制环境变量文件并更新 vite.config.ts
- * @param {string} targetDir 目标目录
- */
-async function copyEnvAndUpdateConfig(targetDir) {
+async function copyCommonFiles(targetDir) {
 	try {
-		// 复制环境变量文件
+		// 复制 uno.config.ts 配置文件
+		const unoConfigPath = path.join(packageRoot, 'uno.config.ts')
+		if (await fs.pathExists(unoConfigPath)) {
+			await fs.copy(unoConfigPath, path.join(targetDir, 'uno.config.ts'))
+		}
+
+		// 从 templates 目录复制环境变量文件
 		const envFiles = ['.env', '.env.development', '.env.production']
-		let foundEnvFiles = false
 
-		for (const file of envFiles) {
-			const sourcePath = path.join(projectRoot, file)
+		const copyTasks = envFiles.map(async (envFile) => {
+			const sourcePath = path.join(packageRoot, envFile)
 			if (await fs.pathExists(sourcePath)) {
-				await fs.copy(sourcePath, path.join(targetDir, file))
-				foundEnvFiles = true
+				await fs.copy(sourcePath, path.join(targetDir, envFile))
 			}
-		}
+		})
 
-		// 如果没有找到环境变量文件，则创建一个简单的版本
-		if (!foundEnvFiles) {
-			// 创建一个基本的 .env 文件
-			await fs.writeFile(
-				path.join(targetDir, '.env'),
-				'# 环境变量\n' + 'VITE_APP_TITLE=Web Boot\n' + 'VITE_APP_BASE_URL=/\n',
-			)
-		}
-
-		// 更新 vite.config.ts
-		const viteConfigPath = path.join(targetDir, 'vite.config.ts')
-		if (await fs.pathExists(viteConfigPath)) {
-			let content = await fs.readFile(viteConfigPath, 'utf-8')
-
-			// 删除 envDir 配置及其注释
-			content = content.replace(/\s*\/\/[^\n]*环境变量[^\n]*\n\s*envDir:\s*resolve\([^)]+\),/, '')
-
-			await fs.writeFile(viteConfigPath, content)
-		}
+		await Promise.all(copyTasks)
 	} catch (err) {
-		throw new Error(`处理环境变量文件失败: ${err.message}`)
+		throw new Error(`复制公共配置文件失败: ${err.message}`)
 	}
 }
 
 /**
- * 复制类型定义文件并更新 tsconfig.json
+ * 清理 vite.config.ts，删除 envDir 配置
  * @param {string} targetDir 目标目录
- * @param {string} template 模板名称
  */
-async function copyTypeDefinitions(targetDir, template) {
+async function cleanupViteConfig(targetDir) {
 	try {
-		// 确保 types 目录存在
-		const targetTypesDir = path.join(targetDir, 'types')
-		await fs.ensureDir(targetTypesDir)
-
-		// 尝试从项目根目录复制 types 文件夹
-		const typesDir = path.join(projectRoot, 'types')
-		let foundTypesFiles = false
-
-		if (await fs.pathExists(typesDir)) {
-			await fs.copy(typesDir, targetTypesDir)
-			foundTypesFiles = true
+		const viteConfigPath = path.join(targetDir, 'vite.config.ts')
+		if (!(await fs.pathExists(viteConfigPath))) {
+			return // 文件不存在，跳过处理
 		}
 
-		// 如果没有找到 types 文件，则创建基本的类型定义文件
-		if (!foundTypesFiles) {
-			// 创建 env.d.ts
-			await fs.writeFile(
-				path.join(targetTypesDir, 'env.d.ts'),
-				'/// <reference types="vite/client" />\n\n' +
-					'interface ImportMetaEnv {\n' +
-					'  readonly VITE_APP_TITLE: string\n' +
-					'  readonly VITE_APP_BASE_URL: string\n' +
-					'}\n\n' +
-					'interface ImportMeta {\n' +
-					'  readonly env: ImportMetaEnv\n' +
-					'}\n',
-			)
+		let content = await fs.readFile(viteConfigPath, 'utf-8')
 
-			// 创建 route.d.ts
-			await fs.writeFile(
-				path.join(targetTypesDir, 'route.d.ts'),
-				'declare namespace Route {\n' +
-					'  interface Meta {\n' +
-					'    title?: string\n' +
-					'    icon?: string\n' +
-					'    hidden?: boolean\n' +
-					'    roles?: string[]\n' +
-					'    keepAlive?: boolean\n' +
-					'  }\n\n' +
-					'  interface Item {\n' +
-					'    path: string\n' +
-					'    name?: string\n' +
-					'    redirect?: string\n' +
-					'    component?: any\n' +
-					'    meta?: Meta\n' +
-					'    children?: Item[]\n' +
-					'  }\n' +
-					'}\n',
-			)
-		}
+		// 删除 envDir 相关的配置和注释
+		content = content
+			.replace(/\s*\/\/[^\n]*环境变量[^\n]*\n/g, '') // 删除注释
+			.replace(/\s*envDir:\s*resolve\([^)]+\),?\n?/g, '') // 删除 envDir 配置
+			.replace(/,(\s*})/g, '$1') // 清理尾随逗号
 
-		// 确保 types/internal 目录存在
-		const internalTypesDir = path.join(targetDir, 'types/internal')
-		await fs.ensureDir(internalTypesDir)
+		await fs.writeFile(viteConfigPath, content)
+	} catch (err) {
+		throw new Error(`清理 vite.config.ts 失败: ${err.message}`)
+	}
+}
 
-		// 尝试复制 global.d.ts 文件
-		const globalDtsPath = path.join(projectRoot, 'internal/utils/global.d.ts')
-		if (await fs.pathExists(globalDtsPath)) {
-			await fs.copy(globalDtsPath, path.join(internalTypesDir, 'global.d.ts'))
-		} else {
-			// 如果项目中没有 global.d.ts，则创建一个简单的版本
-			await fs.writeFile(
-				path.join(internalTypesDir, 'global.d.ts'),
-				"declare module 'nprogress'\ndeclare module 'qs'\n",
-			)
-		}
+/**
+ * 复制类型定义文件到 src 目录
+ * 将 templates/types 目录下的文件复制到项目的 src 目录（不保留 types 文件夹结构）
+ * @param {string} targetDir 目标目录
+ */
+async function copyTypeDefinitions(targetDir) {
+	try {
+		const templatesTypesDir = path.join(packageRoot, 'types')
+		const targetSrcDir = path.join(targetDir, 'src')
 
-		// 尝试复制 tsconfig.base.json
-		const baseTsconfigPath = path.join(projectRoot, 'tsconfig.base.json')
-		if (await fs.pathExists(baseTsconfigPath)) {
-			await fs.copy(baseTsconfigPath, path.join(targetDir, 'tsconfig.base.json'))
-		} else {
-			// 如果项目中没有 tsconfig.base.json，则创建一个简单的版本
-			await fs.writeFile(
-				path.join(targetDir, 'tsconfig.base.json'),
-				'{\n' +
-					'  "compilerOptions": {\n' +
-					'    "target": "ESNext",\n' +
-					'    "sourceMap": false,\n' +
-					'    "removeComments": false,\n' +
-					'    "useDefineForClassFields": true,\n' +
-					'    "esModuleInterop": true,\n' +
-					'    "allowSyntheticDefaultImports": true,\n' +
-					'    "strictNullChecks": true,\n' +
-					'    "forceConsistentCasingInFileNames": true,\n' +
-					'    "module": "ESNext",\n' +
-					'    "lib": [],\n' +
-					'    "skipLibCheck": true,\n' +
-					'    "verbatimModuleSyntax": true,\n' +
-					'    "moduleResolution": "node",\n' +
-					'    "allowImportingTsExtensions": true,\n' +
-					'    "resolveJsonModule": true,\n' +
-					'    "isolatedModules": true,\n' +
-					'    "noEmit": true,\n' +
-					'    "jsx": "preserve",\n' +
-					'    "experimentalDecorators": true,\n' +
-					'    "emitDecoratorMetadata": true,\n' +
-					'    "strict": true,\n' +
-					'    "noUnusedLocals": true,\n' +
-					'    "noUnusedParameters": true,\n' +
-					'    "noFallthroughCasesInSwitch": true,\n' +
-					'    "baseUrl": "."\n' +
-					'  }\n' +
-					'}\n',
-			)
-		}
+		await fs.ensureDir(targetSrcDir)
 
-		// 更新 tsconfig.json 中的类型引用路径
-		const tsconfigPath = path.join(targetDir, 'tsconfig.json')
-		if (await fs.pathExists(tsconfigPath)) {
-			// 读取原始文件内容
-			const tsconfigContent = await fs.readFile(tsconfigPath, 'utf-8')
+		// 复制 types 目录下的所有文件到 src 目录
+		const typeFiles = await fs.readdir(templatesTypesDir)
+		const copyTasks = typeFiles.map(async (file) => {
+			const sourcePath = path.join(templatesTypesDir, file)
+			const targetPath = path.join(targetSrcDir, file)
 
-			// 移除注释并解析 JSON
-			const tsconfig = JSON.parse(
-				tsconfigContent
-					.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => (g ? '' : m))
-					.replace(/,(\s*[}\]])/g, '$1'), // 移除尾随逗号
-			)
-
-			// 更新 extends 路径
-			tsconfig.extends = './tsconfig.base.json'
-
-			// 根据不同模板设置不同的类型引用
-			const baseTypes = ['vite/client']
-			if (template === 'vue') {
-				baseTypes.push('element-plus/global')
+			// 只复制文件，跳过目录
+			if ((await fs.stat(sourcePath)).isFile()) {
+				await fs.copy(sourcePath, targetPath)
 			}
+		})
 
-			tsconfig.compilerOptions.types = [
-				...baseTypes,
-				'./types/env.d.ts',
-				'./types/route.d.ts',
-				'./types/internal/global.d.ts',
-			]
-
-			// 保持原有的格式写回文件
-			const updatedContent = tsconfigContent
-				// 更新 extends 路径
-				.replace(/"extends"\s*:\s*"[^"]*"/, `"extends": "./tsconfig.base.json"`)
-				// 更新 types 数组
-				.replace(
-					/"types"\s*:\s*\[[^\]]*\]/,
-					`"types": ${JSON.stringify(tsconfig.compilerOptions.types, null, '\t\t\t')}`,
-				)
-
-			await fs.writeFile(tsconfigPath, updatedContent)
-		}
+		await Promise.all(copyTasks)
 	} catch (err) {
 		throw new Error(`复制类型定义文件失败: ${err.message}`)
 	}
 }
 
 /**
+ * 更新 tsconfig.json 配置
+ * 删除对 ../types/route.d.ts 的引用，因为文件已经移动到 src 目录
+ * @param {string} targetDir 目标目录
+ */
+async function updateTsConfig(targetDir) {
+	try {
+		const tsconfigPath = path.join(targetDir, 'tsconfig.json')
+		if (!(await fs.pathExists(tsconfigPath))) {
+			return // 文件不存在，跳过处理
+		}
+
+		let content = await fs.readFile(tsconfigPath, 'utf-8')
+
+		// 删除 ../types/route.d.ts 引用
+		content = content.replace(/,?\s*"\.\.\/types\/route\.d\.ts"/g, '').replace(/,(\s*])/g, '$1') // 清理尾随逗号
+
+		await fs.writeFile(tsconfigPath, content)
+	} catch (err) {
+		throw new Error(`更新 tsconfig.json 失败: ${err.message}`)
+	}
+}
+
+/**
  * 创建新项目
+ * 主要流程：选择模板 -> 复制文件 -> 配置环境 -> 清理配置
  */
 async function create() {
 	try {
 		// 1. 获取项目信息
 		const { projectName, template, packageManager } = await promptForProjectInfo()
 
-		// 2. 获取模板路径
+		// 2. 获取模板路径和目标路径
 		const templateDir = getTemplatePath(template)
 		const targetDir = path.resolve(process.cwd(), projectName)
 
@@ -283,16 +140,19 @@ async function create() {
 		// 5. 复制模板文件
 		await copyTemplate(templateDir, targetDir)
 
-		// 新增步骤：复制根目录配置文件
-		// await copyRootConfigFiles(targetDir)
+		// 6. 复制公共配置文件（uno.config.ts 和环境变量）
+		await copyCommonFiles(targetDir)
 
-		// 6. 复制类型定义文件并更新配置
-		await copyTypeDefinitions(targetDir, template)
+		// 7. 清理 vite.config.ts（删除 envDir 配置）
+		await cleanupViteConfig(targetDir)
 
-		// 7. 复制环境变量文件并更新 vite 配置
-		await copyEnvAndUpdateConfig(targetDir)
+		// 8. 复制类型定义文件到 src 目录
+		await copyTypeDefinitions(targetDir)
 
-		// 8. 显示成功信息和后续步骤
+		// 9. 更新 tsconfig.json（删除 types 引用）
+		await updateTsConfig(targetDir)
+
+		// 10. 显示成功信息
 		logger.success(`项目 ${projectName} 创建成功！
 
 请执行以下命令开始开发：

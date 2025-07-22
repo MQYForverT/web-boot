@@ -7,7 +7,7 @@ const projects: Record<string, string>[] = []
 
 // 读取 templates 目录
 fs.readdirSync('./templates').forEach((file) => {
-	if (['lib', 'types'].includes(file)) {
+	if (['lib', 'types', 'node_modules'].includes(file)) {
 		return
 	}
 	// 将子目录名称添加到数组中
