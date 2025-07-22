@@ -30,11 +30,11 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 9.6.0 # 使用项目要求的pnpm版本
+          version: 10.13.1 # 使用项目要求的pnpm版本
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.11.0 # 使用项目要求的Node.js版本
+          node-version: 22.17.1 # 使用项目要求的Node.js版本
           cache: 'pnpm'
       - name: Setup Pages
         uses: actions/configure-pages@v4

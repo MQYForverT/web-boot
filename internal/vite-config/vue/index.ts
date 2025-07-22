@@ -17,6 +17,14 @@ import {
 	IconsResolver,
 } from '../common'
 import { ElementPlusResolver } from '../common/autoImport/components_vue'
+import { checkPeerDeps } from '../common/checkPeerDeps'
+
+// 检查必需的对等依赖
+checkPeerDeps({
+	packageName: '@tsoul/vite-config/vue',
+	devDeps: ['@vitejs/plugin-vue', 'vite-plugin-vue-devtools'],
+	deps: ['@vueuse/core'],
+})
 
 // https://vitejs.dev/config/
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {

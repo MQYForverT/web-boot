@@ -1,3 +1,4 @@
+import { createRequire } from 'module'
 import pluginSvelte from 'eslint-plugin-svelte'
 import * as parserTypeScript from '@typescript-eslint/parser'
 import getJsConfig from '../common/js-config.mjs'
@@ -5,6 +6,27 @@ import getTsConfig from '../common/ts-config.mjs'
 import ignores from '../common/ignores.mjs'
 import unocss from '@unocss/eslint-config/flat'
 import { defineFlatConfig } from 'eslint-define-config'
+
+const require = createRequire(import.meta.url)
+// 检查必需的对等依赖
+const requiredDeps = ['eslint-plugin-svelte']
+const missingDeps = []
+
+for (const dep of requiredDeps) {
+	try {
+		require.resolve(dep, { paths: [process.cwd()] })
+	} catch {
+		missingDeps.push(dep)
+	}
+}
+
+if (missingDeps.length > 0) {
+	throw new Error(
+		`[@tsoul/eslint-config/svelte] The following peer dependencies are not installed: ${missingDeps.join(
+			', ',
+		)}. Please run "pnpm add -D ${missingDeps.join(' ')}"`,
+	)
+}
 
 // 详细配置：https://eslint.nodejs.cn/docs/latest/use/configure/configuration-files
 // 参考 Svelte ESLint 官方文档：https://sveltejs.github.io/eslint-plugin-svelte/user-guide/

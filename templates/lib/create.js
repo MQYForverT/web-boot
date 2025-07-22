@@ -39,6 +39,27 @@ function getProjectRoot() {
 const projectRoot = getProjectRoot()
 
 /**
+ * 复制根目录的配置文件
+ * @param {string} targetDir 目标目录
+ */
+async function copyRootConfigFiles(targetDir) {
+	try {
+		const filesToCopy = ['uno.config.ts'] // 将来可以扩展更多文件
+
+		for (const file of filesToCopy) {
+			const sourcePath = path.join(projectRoot, file)
+			if (await fs.pathExists(sourcePath)) {
+				await fs.copy(sourcePath, path.join(targetDir, file))
+			} else {
+				logger.warn(`根配置文件 ${file} 未找到，跳过复制。`)
+			}
+		}
+	} catch (err) {
+		throw new Error(`复制根配置文件失败: ${err.message}`)
+	}
+}
+
+/**
  * 复制环境变量文件并更新 vite.config.ts
  * @param {string} targetDir 目标目录
  */
@@ -261,6 +282,9 @@ async function create() {
 
 		// 5. 复制模板文件
 		await copyTemplate(templateDir, targetDir)
+
+		// 新增步骤：复制根目录配置文件
+		await copyRootConfigFiles(targetDir)
 
 		// 6. 复制类型定义文件并更新配置
 		await copyTypeDefinitions(targetDir, template)

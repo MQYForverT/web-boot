@@ -18,7 +18,7 @@
 
 ### Node.js
 
-**版本要求**: 20.11.0 或更高版本
+**版本要求**: 22.17.1 或更高版本
 
 #### 安装方法
 
@@ -61,7 +61,7 @@ npm --version
 
 ### pnpm
 
-**版本要求**: 9.6.0 或更高版本
+**版本要求**: 10.13.1 或更高版本
 
 #### 安装方法
 
@@ -133,20 +133,16 @@ git --version
 安装以下插件以获得最佳开发体验：
 
 1. **ESLint** - JavaScript 代码检查
-
    - 插件 ID: `dbaeumer.vscode-eslint`
    - 记得切换到预发布版本以获得最新功能
 
 2. **Stylelint** - CSS 代码检查
-
    - 插件 ID: `stylelint.vscode-stylelint`
 
 3. **Prettier** - 代码格式化
-
    - 插件 ID: `esbenp.prettier-vscode`
 
 4. **Prettier ESLint** - 解决格式规则冲突
-
    - 插件 ID: `rvest.vs-code-prettier-eslint`
 
 5. **UnoCSS** - 原子化 CSS 支持
@@ -205,7 +201,7 @@ code --version
 
 ### Node.js 版本过低
 
-如果遇到 Node.js 版本过低的问题，请升级到 20.11.0 或更高版本。
+如果遇到 Node.js 版本过低的问题，请升级到 22.17.1 或更高版本。
 
 ### pnpm 命令未找到
 

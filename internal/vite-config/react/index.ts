@@ -12,6 +12,15 @@ import {
 	IconsResolver,
 } from '../common'
 
+import { checkPeerDeps } from '../common/checkPeerDeps'
+
+// 检查必需的对等依赖
+checkPeerDeps({
+	packageName: '@tsoul/vite-config/react',
+	devDeps: ['@vitejs/plugin-react-swc'],
+	deps: ['ahooks'],
+})
+
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {
 	const { server, css, plugins = [], build, ...config } = customConfig ?? {}
 	return {

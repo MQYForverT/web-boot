@@ -5,20 +5,17 @@
 ## 功能特性
 
 1. 支持多框架模板
-
    - Vue 3 + TypeScript + Vite
    - React + TypeScript + Vite
    - Svelte + TypeScript + Vite
 
 2. 项目配置继承
-
    - 继承基础 TypeScript 配置（tsconfig.base.json）
    - 继承基础 ESLint 配置
    - 继承基础 Stylelint 配置
    - 继承基础 Vite 配置
 
 3. 类型定义支持
-
    - 复制并配置全局类型定义
    - 复制环境变量类型定义
    - 复制路由类型定义
@@ -70,9 +67,15 @@ async function create() {
   - 从 workspace:^ 改为固定版本
   - 版本号从项目根目录的 package.json 中读取
 
-## 发布前模拟
+## -------------------发布前模拟！------------------------
 
-npm pack --dry-run：模拟打包 npm 包的过程，但不会实际创建包文件。这个命令非常有用
+第一种方式、npm pack --dry-run：模拟打包 npm 包的过程，但不会实际创建包文件。这个命令非常有用
+
+第二种方式：
+
+- template目录下执行：npm link：执行成功后，npm 会创建了链接，你的电脑已经“学会”了 create-webboot-template 这个命令
+- 找个新文件夹，运行 create-webboot-template
+- 测试完毕，回到template目录，清理环境断开这个全局链接：npm unlink @tsoul/create-webboot-template
 
 ## 使用方法
 
@@ -95,12 +98,10 @@ create-webboot-template
 ## 注意事项
 
 1. 项目要求
-
-   - Node.js >= 20.11.0
-   - pnpm >= 9.6.0
+   - Node.js >= 22.17.1
+   - pnpm >= 10.13.1
 
 2. 模板特性
-
    - 基于 Vite 构建
    - TypeScript 支持
    - ESLint + Stylelint + Prettier
@@ -119,13 +120,11 @@ create-webboot-template
 ## 未来计划
 
 1. 功能增强
-
    - [ ] 支持自定义模板
    - [ ] 支持模板配置选项
    - [ ] 支持插件系统
 
 2. 工具改进
-
    - [ ] 优化错误处理
    - [ ] 添加单元测试
    - [ ] 添加 CI/CD 支持

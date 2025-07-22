@@ -1,6 +1,6 @@
 {
 	"name": "@tsoul/stylelint-config",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Stylelint configuration for Web Boot projects",
 	"homepage": "https://mqyforvert.github.io/web-boot/api/stylelint",
 	"repository": {
@@ -34,15 +34,22 @@
 		"access": "public"
 	},
 	"peerDependencies": {
-		"stylelint": "^16.0.0"
-	},
-	"devDependencies": {
-		"postcss-scss": "^4.0.9",
-		"stylelint": "^16.18.0",
 		"stylelint-config-html": "^1.1.0",
-		"stylelint-config-recess-order": "^6.0.0",
-		"stylelint-config-recommended-scss": "^14.1.0",
-		"stylelint-config-recommended-vue": "^1.6.0",
+		"stylelint-config-recommended-vue": "^1.6.1"
+	},
+	"peerDependenciesMeta": {
+		"stylelint-config-html": {
+			"optional": true
+		},
+		"stylelint-config-recommended-vue": {
+			"optional": true
+		}
+	},
+	"dependencies": {
+		"stylelint": "^16.22.0",
+		"postcss-scss": "^4.0.9",
+		"stylelint-config-recess-order": "^7.1.0",
+		"stylelint-config-recommended-scss": "^15.0.1",
 		"stylelint-config-standard": "^38.0.0"
 	}
 }

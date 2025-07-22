@@ -5,9 +5,10 @@
 	"main": "index.js",
 	"type": "module",
 	"engines": {
-		"node": ">=20.0.0",
-		"pnpm": ">=9.0.0"
+		"node": ">=22.17.1",
+		"pnpm": ">=10.13.1"
 	},
+	"packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad",
 	"scripts": {
 		"start": "tsx ./scripts/start.ts",
 		"start:vue": "cd templates/vue && pnpm run start",
@@ -59,28 +60,27 @@
 	"bugs": {
 		"url": "https://github.com/MQYForverT/web-boot/issues"
 	},
-	"packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879",
 	"dependencies": {
-		"inquirer": "^12.5.2",
+		"inquirer": "^12.8.2",
 		"rimraf": "^6.0.1"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^19.8.0",
-		"@commitlint/config-conventional": "^19.8.0",
+		"@commitlint/cli": "^19.8.1",
+		"@commitlint/config-conventional": "^19.8.1",
 		"@tsoul/eslint-config": "workspace:^",
 		"@tsoul/stylelint-config": "workspace:^",
-		"@types/inquirer": "^9.0.7",
-		"@types/node": "^22.14.1",
-		"commitlint": "^19.8.0",
+		"@types/inquirer": "^9.0.8",
+		"@types/node": "^24.0.15",
+		"commitlint": "^19.8.1",
 		"depcheck": "^1.4.7",
-		"eslint": "^9.24.0",
+		"eslint": "^9.31.0",
 		"eslint-define-config": "^2.1.0",
 		"husky": "^9.1.7",
-		"lint-staged": "^15.5.1",
-		"prettier": "3.5.3",
-		"stylelint": "^16.18.0",
+		"lint-staged": "^16.1.2",
+		"prettier": "3.6.2",
+		"stylelint": "^16.22.0",
 		"ts-node": "^10.9.2",
-		"tsx": "^4.19.3",
+		"tsx": "^4.20.3",
 		"typescript": "^5.8.3"
 	},
 	"lint-staged": {

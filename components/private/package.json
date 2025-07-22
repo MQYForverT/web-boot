@@ -1,6 +1,6 @@
 {
 	"name": "@tsoul/component-private",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Web Boot 项目的私有组件库，基于 Vue 3 + Element Plus，提供了布局、登录等业务组件",
 	"type": "module",
 	"scripts": {
@@ -54,10 +54,12 @@
 		"access": "public",
 		"registry": "https://registry.npmjs.org/"
 	},
+	"peerDependencies": {
+		"vue": "^3.5.17",
+		"element-plus": "^2.10.4"
+	},
 	"dependencies": {
-		"element-plus": "^2.9.7",
-		"sortablejs": "^1.15.6",
-		"vue": "^3.5.13"
+		"sortablejs": "^1.15.6"
 	},
 	"devDependencies": {
 		"@iconify-json/ep": "^1.2.2",
@@ -65,12 +67,12 @@
 		"@tsoul/stylelint-config": "workspace:^",
 		"@tsoul/vite-config": "workspace:^",
 		"@types/sortablejs": "^1.15.8",
-		"@vitejs/plugin-vue": "^5.2.3",
+		"@vitejs/plugin-vue": "^6.0.0",
 		"@vue/test-utils": "^2.4.6",
 		"rollup-plugin-copy": "^3.5.0",
-		"sass": "^1.86.3",
+		"sass": "^1.89.2",
 		"typescript": "^5.8.3",
-		"vite": "^6.3.2",
-		"vue-tsc": "^2.2.8"
+		"vite": "^7.0.5",
+		"vue-tsc": "^3.0.3"
 	}
 }
