@@ -4,6 +4,30 @@
 
 `templates` 目录提供了三个主流前端框架的**完整集成示例**，展示如何在不同技术栈中使用 Web Boot 的组件库和开发工具。这些不是独立的项目模板，而是学习和参考的示例代码。
 
+## 🚀 快速创建项目
+
+如果您想直接创建一个新项目，可以使用我们的脚手架工具：
+
+```bash
+# 方式一：npx 直接创建（推荐）
+npx @tsoul/create-webboot-template
+
+# 方式二：使用 pnpm 创建
+pnpm create @tsoul/webboot-template
+
+# 方式三：全局安装后使用
+npm install -g @tsoul/create-webboot-template
+create-webboot-template
+```
+
+脚手架会自动为您：
+
+- ✅ 创建完整的项目结构
+- ✅ 复制环境变量文件（`.env`、`.env.development`、`.env.production`）
+- ✅ 复制 UnoCSS 配置文件（`uno.config.ts`）
+- ✅ 复制类型定义文件到 `src` 目录
+- ✅ 优化 Vite 和 TypeScript 配置
+
 ## 🎯 示例目标
 
 - **学习参考**：展示 Web Boot 组件在不同框架中的集成方法

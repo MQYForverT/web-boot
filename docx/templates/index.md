@@ -6,21 +6,28 @@ Web Boot 提供了三种主流前端框架的完整项目模板，每个模板�
 
 ### 创建方式
 
-#### 1. 安装脚手架
+#### 1. 使用 npx 直接创建（推荐）
+
+```bash
+# 无需安装，直接运行脚手架
+npx @tsoul/create-webboot-template
+```
+
+#### 2. 全局安装后使用
 
 ```bash
 # 全局安装脚手架工具
-npm install @tsoul/create-webboot-template -g
+npm install -g @tsoul/create-webboot-template
+
+# 运行脚手架
+create-webboot-template
 ```
 
-#### 2. 创建项目
+#### 3. 使用 pnpm 创建
 
 ```bash
-# 方式一：使用全局命令
-create-webboot-template
-
-# 方式二：使用 npx（无需全局安装）
-npx create-webboot-template
+# 使用 pnpm 创建（推荐）
+pnpm create @tsoul/webboot-template
 ```
 
 脚手架会引导您完成以下步骤：
@@ -29,7 +36,7 @@ npx create-webboot-template
 - 选择项目模板（Vue/React/Svelte）
 - 选择包管理器（推荐使用 pnpm）
 
-#### 3. 启动项目
+#### 4. 启动项目
 
 ```bash
 # 进入项目目录
@@ -40,6 +47,47 @@ pnpm install
 
 # 启动开发服务器
 pnpm dev
+```
+
+## 脚手架特性
+
+### 🎯 智能文件管理
+
+脚手架会自动为您设置完整的项目环境：
+
+- **环境变量文件**: 自动复制 `.env`、`.env.development`、`.env.production` 到项目根目录
+- **UnoCSS 配置**: 自动复制 `uno.config.ts` 配置文件
+- **类型定义**: 自动将类型定义文件复制到 `src` 目录，无需额外引用
+- **配置清理**: 自动清理 `vite.config.ts` 中的 `envDir` 配置
+- **TypeScript 优化**: 自动更新 `tsconfig.json`，删除不必要的类型引用
+
+### 📁 完整的项目结构
+
+创建的项目包含完整的目录结构和配置文件：
+
+```
+your-project-name/
+├── src/
+│   ├── api/              # API 接口
+│   ├── assets/           # 静态资源
+│   ├── config/           # 配置文件
+│   ├── layouts/          # 布局组件
+│   ├── pages/            # 页面组件
+│   ├── routers/          # 路由配置
+│   ├── stores/           # 状态管理
+│   ├── styles/           # 样式文件
+│   ├── route.d.ts        # 路由类型定义（自动复制）
+│   ├── App.*            # 根组件
+│   └── main.*           # 入口文件
+├── public/              # 静态资源
+├── .env                 # 环境变量（自动复制）
+├── .env.development     # 开发环境变量（自动复制）
+├── .env.production      # 生产环境变量（自动复制）
+├── uno.config.ts        # UnoCSS 配置（自动复制）
+├── package.json         # 依赖配置
+├── vite.config.ts       # Vite 配置（已优化）
+├── tsconfig.json        # TypeScript 配置（已优化）
+└── README.md           # 项目说明
 ```
 
 ## 模板列表
@@ -101,22 +149,24 @@ pnpm dev
 我们提供了一个交互式的脚手架工具来创建项目：
 
 ```bash
-# 方式一：使用全局命令
-create-webboot-template
+# 方式一：npx 直接创建（推荐）
+npx @tsoul/create-webboot-template
 
-# 方式二：使用 npx（无需全局安装）
-npx create-webboot-template
+# 方式二：使用 pnpm
+pnpm create @tsoul/webboot-template
+
+# 方式三：全局安装后使用
+npm install -g @tsoul/create-webboot-template
+create-webboot-template
 ```
 
 脚手架会引导您完成以下步骤：
 
 1. **输入项目名称**：
-
    - 只能包含小写字母、数字和连字符
    - 例如：my-vue-app
 
 2. **选择项目模板**：
-
    - Vue (Vue 3 + TypeScript + Vite)
    - React (React + TypeScript + Vite)
    - Svelte (Svelte + TypeScript + Vite)
@@ -130,9 +180,44 @@ npx create-webboot-template
 
 - 创建项目目录结构
 - 复制模板文件
-- 配置 TypeScript
-- 设置环境变量
-- 生成 package.json
+- 复制环境变量文件到项目根目录
+- 复制 UnoCSS 配置文件
+- 将类型定义文件复制到 src 目录
+- 清理和优化 Vite 配置
+- 更新 TypeScript 配置
+- 生成完整的 package.json
+
+### 环境变量配置
+
+脚手架会自动为您创建三个环境变量文件：
+
+#### `.env` - 基础环境变量
+
+```bash
+# 基础环境变量
+VITE_APP_TITLE=Web Boot
+VITE_APP_BASE_URL=/
+```
+
+#### `.env.development` - 开发环境变量
+
+```bash
+# 开发环境变量
+VITE_APP_TITLE=Web Boot (Development)
+VITE_APP_BASE_URL=/
+VITE_APP_API_URL=http://localhost:3000/api
+VITE_APP_ENV=development
+```
+
+#### `.env.production` - 生产环境变量
+
+```bash
+# 生产环境变量
+VITE_APP_TITLE=Web Boot
+VITE_APP_BASE_URL=/
+VITE_APP_API_URL=https://api.yourdomain.com
+VITE_APP_ENV=production
+```
 
 ### 启动项目
 
@@ -147,31 +232,6 @@ pnpm install  # 或 npm install / yarn
 
 # 启动开发服务器
 pnpm dev      # 或 npm run dev / yarn dev
-```
-
-## 模板结构
-
-所有模板都遵循统一的项目结构：
-
-```
-template-name/
-├── src/
-│   ├── api/              # API 接口
-│   ├── assets/           # 静态资源
-│   ├── config/           # 配置文件
-│   ├── layouts/          # 布局组件
-│   ├── pages/            # 页面组件
-│   ├── routers/          # 路由配置
-│   ├── stores/           # 状态管理
-│   ├── styles/           # 样式文件
-│   ├── types/            # 类型定义
-│   ├── App.*            # 根组件
-│   └── main.*           # 入口文件
-├── public/              # 静态资源
-├── package.json         # 依赖配置
-├── vite.config.ts       # Vite 配置
-├── tsconfig.json        # TypeScript 配置
-└── README.md           # 项目说明
 ```
 
 ## 共同特性
@@ -190,7 +250,7 @@ template-name/
 ### 2. 构建工具
 
 - **Vite 6.3**: 极速构建工具
-- **UnoCSS**: 原子化 CSS
+- **UnoCSS**: 原子化 CSS（自动配置）
 - **自动导入**: 组件和 API 自动导入
 - **热更新**: 开发时热更新
 - **代码分割**: 生产环境代码分割
@@ -198,7 +258,7 @@ template-name/
 ### 3. 项目结构
 
 - **模块化**: 清晰的目录结构
-- **类型安全**: 完整的 TypeScript 支持
+- **类型安全**: 完整的 TypeScript 支持（类型文件自动复制到 src）
 - **路由管理**: 现代化的路由系统
 - **状态管理**: 轻量级状态管理
 - **API 封装**: 统一的 API 请求封装
@@ -236,22 +296,6 @@ template-name/
 - 喜欢简洁的语法
 - 需要轻量级应用
 - 想要更少的样板代码
-
-## 自定义模板
-
-### 修改现有模板
-
-1. 在 `templates/` 目录下找到对应模板
-2. 根据需要修改配置和代码
-3. 测试修改后的模板
-4. 提交更改
-
-### 创建新模板
-
-1. 在 `templates/` 目录下创建新文件夹
-2. 复制现有模板作为基础
-3. 根据框架特性进行调整
-4. 更新文档和配置
 
 ## 最佳实践
 
@@ -309,7 +353,30 @@ test
 2. 检查配置文件语法
 3. 查看错误日志
 
+### 环境变量不生效
+
+1. 确保文件名正确（`.env`、`.env.development`、`.env.production`）
+2. 确保变量名以 `VITE_` 开头
+3. 重启开发服务器
+
+### TypeScript 类型错误
+
+1. 确保 `src/route.d.ts` 文件存在
+2. 重启 TypeScript 服务器
+3. 检查 `tsconfig.json` 配置
+
 ## 更新日志
+
+### v1.0.12
+
+- **重大更新**: 重构脚手架文件管理逻辑
+- **新增**: 自动复制环境变量文件到项目根目录
+- **新增**: 自动复制 UnoCSS 配置文件
+- **新增**: 类型文件自动迁移到 src 目录
+- **优化**: 自动清理 vite.config.ts 中的 envDir 配置
+- **优化**: 自动更新 tsconfig.json 配置
+- **改进**: 使用 Promise.all 并行处理文件操作，提升性能
+- **修复**: 解决类型文件引用路径问题
 
 ### v1.0.0
 
