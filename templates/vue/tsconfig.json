@@ -7,8 +7,8 @@
 			"vite/client",
 			"element-plus/global",
 			"@tsoul/component-private/type",
-			"../../types/env.d.ts",
-			"../../types/route.d.ts"
+			"@tsoul/vite-config/env.d.ts",
+			"../types/route.d.ts"
 		],
 		"baseUrl": "./",
 		"paths": {

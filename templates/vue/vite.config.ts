@@ -14,7 +14,7 @@ export default defineConfig((configEnv: ConfigEnv) => {
 	// viteConfig内部默认打包排除了vue，所以请在html中使用cdn引入vue
 	return viteConfig(viteEnv, {
 		// 拉具体代码的时候需要把环境变量复制过来，并把这个属性删除
-		envDir: resolve(__dirname, '../../'),
+		envDir: resolve(__dirname, '../'),
 		resolve: {
 			alias: {
 				'@': resolve(__dirname, './src'),

@@ -1,4 +1,4 @@
-namespace Menu {
+declare namespace Menu {
 	interface MenuOptions<Component = any, Element = any> {
 		path?: string
 		name?: string

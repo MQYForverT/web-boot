@@ -14,7 +14,7 @@ export default defineConfig((configEnv: ConfigEnv) => {
 
 	return viteConfig(viteEnv, {
 		// 拉具体代码的时候需要把环境变量复制过来，并把这个属性删除
-		envDir: resolve(__dirname, '../../'),
+		envDir: resolve(__dirname, '../'),
 		resolve: {
 			alias: {
 				'@': resolve(__dirname, './src'),
