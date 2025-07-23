@@ -4,18 +4,23 @@
 
 Web Boot 提供了三种主流前端框架的完整项目模板，每个模板都包含现代化的开发工具链和最佳实践。模板使用最新的框架版本，并保持定期更新。
 
-### 创建方式
+> 💡 **想要体验模板效果？** 请访问 [🎯 首页在线演示](/) 查看完整的功能展示
 
-#### 1. 使用 npx 直接创建（推荐）
+## 创建方式
 
-```bash
+::: code-group
+
+```bash [npx (推荐)]
 # 无需安装，直接运行脚手架
 npx @tsoul/create-webboot-template
 ```
 
-#### 2. 全局安装后使用
+```bash [pnpm]
+# 使用 pnpm 创建
+pnpm create @tsoul/webboot-template
+```
 
-```bash
+```bash [npm]
 # 全局安装脚手架工具
 npm install -g @tsoul/create-webboot-template
 
@@ -23,12 +28,7 @@ npm install -g @tsoul/create-webboot-template
 create-webboot-template
 ```
 
-#### 3. 使用 pnpm 创建
-
-```bash
-# 使用 pnpm 创建（推荐）
-pnpm create @tsoul/webboot-template
-```
+:::
 
 脚手架会引导您完成以下步骤：
 
@@ -94,15 +94,15 @@ your-project-name/
 
 ### 🟢 Vue 模板
 
-基于 Vue 3.5 + TypeScript 5.8 + Vite 6.3 的现代化项目模板。
+基于 Vue 3.5 + TypeScript 5.8 + Vite 7.0 的现代化项目模板。
 
 **特性**:
 
 - Vue 3.5 Composition API
 - TypeScript 5.8 支持
-- Vite 6.3 构建工具
+- Vite 7.0 构建工具
 - Vue Router 4.5 路由管理
-- Element Plus 2.9 UI 组件库
+- Element Plus 2.10 UI 组件库
 - UnoCSS 原子化 CSS
 - ESLint + Prettier 代码规范
 
@@ -110,16 +110,16 @@ your-project-name/
 
 ### 🔵 React 模板
 
-基于 React 19 + TypeScript 5.8 + Vite 6.3 的现代化项目模板。
+基于 React 19 + TypeScript 5.8 + Vite 7.0 的现代化项目模板。
 
 **特性**:
 
 - React 19 Hooks
 - TypeScript 5.8 支持
-- Vite 6.3 构建工具
-- React Router 7.5 路由管理
+- Vite 7.0 构建工具
+- React Router 7.7 路由管理
 - MobX 6.13 状态管理
-- Ant Design 5.24 UI 组件库
+- Ant Design 5.26 UI 组件库
 - UnoCSS 原子化 CSS
 - ESLint + Prettier 代码规范
 
@@ -127,13 +127,13 @@ your-project-name/
 
 ### 🟡 Svelte 模板
 
-基于 Svelte 5.23 + TypeScript 5.7 + Vite 6.3 的现代化项目模板。
+基于 Svelte 5.36 + TypeScript 5.8 + Vite 7.0 的现代化项目模板。
 
 **特性**:
 
-- Svelte 5.23 响应式系统
-- TypeScript 5.7 支持
-- Vite 6.3 构建工具
+- Svelte 5.36 响应式系统
+- TypeScript 5.8 支持
+- Vite 7.0 构建工具
 - Svelte SPA Router 路由管理
 - Svelte Stores 状态管理
 - 轻量级 UI 组件
@@ -249,7 +249,7 @@ pnpm dev      # 或 npm run dev / yarn dev
 
 ### 2. 构建工具
 
-- **Vite 6.3**: 极速构建工具
+- **Vite 7.0**: 极速构建工具
 - **UnoCSS**: 原子化 CSS（自动配置）
 - **自动导入**: 组件和 API 自动导入
 - **热更新**: 开发时热更新

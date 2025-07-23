@@ -275,12 +275,21 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^6.0.0
         version: 6.0.0(vite@7.0.5(@types/node@24.1.0)(jiti@2.4.2)(sass@1.89.2)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))
+      '@vitest/coverage-v8':
+        specifier: ^3.2.4
+        version: 3.2.4(vitest@3.2.4)
+      '@vitest/ui':
+        specifier: ^3.2.4
+        version: 3.2.4(vitest@3.2.4)
       '@vueuse/core':
         specifier: ^13.5.0
         version: 13.5.0(vue@3.5.17(typescript@5.8.3))
       ahooks:
         specifier: ^3.9.0
         version: 3.9.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      happy-dom:
+        specifier: ^18.0.1
+        version: 18.0.1
       rollup-plugin-external-globals:
         specifier: ^0.13.0
         version: 0.13.0(rollup@4.45.1)
@@ -305,6 +314,9 @@ importers:
       vite-plugin-compression2:
         specifier: ^2.2.0
         version: 2.2.0(rollup@4.45.1)
+      vite-plugin-dts:
+        specifier: ^4.5.4
+        version: 4.5.4(@types/node@24.1.0)(rollup@4.45.1)(typescript@5.8.3)(vite@7.0.5(@types/node@24.1.0)(jiti@2.4.2)(sass@1.89.2)(tsx@4.20.3)(yaml@2.8.0))
       vite-plugin-inspect:
         specifier: ^11.3.0
         version: 11.3.0(vite@7.0.5(@types/node@24.1.0)(jiti@2.4.2)(sass@1.89.2)(tsx@4.20.3)(yaml@2.8.0))
@@ -323,28 +335,16 @@ importers:
       vite-plugin-vue-devtools:
         specifier: ^7.7.7
         version: 7.7.7(rollup@4.45.1)(vite@7.0.5(@types/node@24.1.0)(jiti@2.4.2)(sass@1.89.2)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))
+      vitest:
+        specifier: ^3.2.4
+        version: 3.2.4(@types/node@24.1.0)(@vitest/ui@3.2.4)(happy-dom@18.0.1)(jiti@2.4.2)(sass@1.89.2)(tsx@4.20.3)(yaml@2.8.0)
     devDependencies:
-      '@vitest/coverage-v8':
-        specifier: ^3.2.4
-        version: 3.2.4(vitest@3.2.4)
-      '@vitest/ui':
-        specifier: ^3.2.4
-        version: 3.2.4(vitest@3.2.4)
-      happy-dom:
-        specifier: ^18.0.1
-        version: 18.0.1
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
       vite:
         specifier: ^7.0.5
         version: 7.0.5(@types/node@24.1.0)(jiti@2.4.2)(sass@1.89.2)(tsx@4.20.3)(yaml@2.8.0)
-      vite-plugin-dts:
-        specifier: ^4.5.4
-        version: 4.5.4(@types/node@24.1.0)(rollup@4.45.1)(typescript@5.8.3)(vite@7.0.5(@types/node@24.1.0)(jiti@2.4.2)(sass@1.89.2)(tsx@4.20.3)(yaml@2.8.0))
-      vitest:
-        specifier: ^3.2.4
-        version: 3.2.4(@types/node@24.1.0)(@vitest/ui@3.2.4)(happy-dom@18.0.1)(jiti@2.4.2)(sass@1.89.2)(tsx@4.20.3)(yaml@2.8.0)
       vue-tsc:
         specifier: ^3.0.3
         version: 3.0.3(typescript@5.8.3)
@@ -360,6 +360,9 @@ importers:
       '@tsoul/utils':
         specifier: workspace:^
         version: link:../../internal/utils
+      ahooks:
+        specifier: ^3.9.0
+        version: 3.9.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       antd:
         specifier: ^5.26.6
         version: 5.26.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -381,6 +384,9 @@ importers:
       react-router-dom:
         specifier: ^7.7.0
         version: 7.7.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
     devDependencies:
       '@tsoul/eslint-config':
         specifier: workspace:^
@@ -397,6 +403,9 @@ importers:
       '@types/react-dom':
         specifier: ^19.1.6
         version: 19.1.6(@types/react@19.1.8)
+      '@vitejs/plugin-react-swc':
+        specifier: ^3.11.0
+        version: 3.11.0(vite@7.0.5(@types/node@24.1.0)(jiti@2.4.2)(sass@1.89.2)(tsx@4.20.3)(yaml@2.8.0))
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -415,7 +424,13 @@ importers:
       page:
         specifier: ^1.11.6
         version: 1.11.6
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
     devDependencies:
+      '@sveltejs/vite-plugin-svelte':
+        specifier: ^6.1.0
+        version: 6.1.0(svelte@5.36.13)(vite@7.0.5(@types/node@24.1.0)(jiti@2.4.2)(sass@1.89.2)(tsx@4.20.3)(yaml@2.8.0))
       '@tsconfig/svelte':
         specifier: ^5.0.4
         version: 5.0.4
@@ -449,9 +464,15 @@ importers:
       '@tsoul/utils':
         specifier: workspace:^
         version: link:../../internal/utils
+      '@vueuse/core':
+        specifier: ^13.5.0
+        version: 13.5.0(vue@3.5.17(typescript@5.8.3))
       element-plus:
         specifier: ^2.10.4
         version: 2.10.4(vue@3.5.17(typescript@5.8.3))
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
       vue:
         specifier: ^3.5.17
         version: 3.5.17(typescript@5.8.3)
@@ -468,6 +489,9 @@ importers:
       '@tsoul/vite-config':
         specifier: workspace:^
         version: link:../../internal/vite-config
+      '@vitejs/plugin-vue':
+        specifier: ^6.0.0
+        version: 6.0.0(vite@7.0.5(@types/node@24.1.0)(jiti@2.4.2)(sass@1.89.2)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))
       '@vue/test-utils':
         specifier: ^2.4.6
         version: 2.4.6
@@ -477,6 +501,9 @@ importers:
       vite:
         specifier: ^7.0.5
         version: 7.0.5(@types/node@24.1.0)(jiti@2.4.2)(sass@1.89.2)(tsx@4.20.3)(yaml@2.8.0)
+      vite-plugin-vue-devtools:
+        specifier: ^7.7.7
+        version: 7.7.7(rollup@4.45.1)(vite@7.0.5(@types/node@24.1.0)(jiti@2.4.2)(sass@1.89.2)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))
       vue-tsc:
         specifier: ^3.0.3
         version: 3.0.3(typescript@5.8.3)

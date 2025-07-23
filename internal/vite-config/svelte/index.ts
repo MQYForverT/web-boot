@@ -19,6 +19,7 @@ import { setupViteServer, commonVitePlugins, setupViteBuild, AutoImport, Icons, 
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {
 	const { server, css, plugins = [], build, ...config } = customConfig ?? {}
 	return {
+		base: './',
 		// 开发服务器选项
 		server: {
 			...setupViteServer(),

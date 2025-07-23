@@ -4,15 +4,15 @@
 
 - React 19.1
 - TypeScript 5.8
-- Vite 6.3
-- React Router 7.5
+- Vite 7.0
+- React Router 7.7
 - MobX 6.13
-- Ant Design 5.24
+- Ant Design 5.26
 
 ## 项目结构
 
 ```bash
-templates/react/
+your-project-name/
 ├── src/
 │   ├── api/              # API 接口
 │   ├── assets/           # 静态资源
@@ -28,8 +28,24 @@ templates/react/
 │   │   ├── modules/      # 状态模块
 │   │   └── index.ts      # 全局状态
 │   ├── styles/           # 样式文件
+│   ├── types/            # 类型定义
 │   ├── App.tsx          # 根组件
-│   └── main.tsx         # 入口文件
+│   ├── main.tsx         # 入口文件
+│   └── vite-env.d.ts     # Vite 环境类型定义
+├── public/              # 静态资源
+│   └── favicon.ico      # 网站图标
+├── .env                 # 环境变量（自动创建）
+├── .env.development     # 开发环境变量（自动创建）
+├── .env.production      # 生产环境变量（自动创建）
+├── auto-imports.d.ts    # 自动导入类型定义
+├── eslint.config.mjs    # ESLint 配置
+├── index.html           # HTML 模板
+├── package.json         # 依赖配置
+├── README.md           # 项目说明
+├── stylelint.config.mjs # Stylelint 配置
+├── tsconfig.json        # TypeScript 配置
+├── uno.config.ts        # UnoCSS 配置（自动复制）
+└── vite.config.ts       # Vite 配置
 ```
 
 ## 特性
@@ -37,13 +53,11 @@ templates/react/
 ### 1. 开发体验
 
 - TypeScript 支持
-
   - 完整的类型定义
   - 智能提示
   - 类型检查
 
 - 代码规范
-
   - ESLint 配置
   - Prettier 格式化
   - StyleLint 样式检查
@@ -55,7 +69,7 @@ templates/react/
 
 ### 2. 路由系统
 
-- React Router 7.5 配置
+- React Router 7.7 配置
   - 动态路由支持
   - 路由守卫
   - 路由懒加载
@@ -84,8 +98,7 @@ templates/react/
 
 ### 5. UI 功能
 
-- Ant Design 5.24 集成
-
+- Ant Design 5.26 集成
   - React 19 兼容补丁
   - 组件按需加载
   - 主题定制
@@ -143,21 +156,18 @@ pnpm lint:format
 ### 开发建议
 
 1. 组件开发
-
    - 使用函数组件
    - 使用 React Hooks
    - 保持组件纯函数
    - 使用 TypeScript 类型
 
 2. 状态管理
-
    - 使用 MobX 装饰器
    - 按模块拆分状态
    - 遵循响应式原则
    - 合理使用计算属性
 
 3. 路由开发
-
    - 使用路由懒加载
    - 实现路由守卫
    - 处理异常情况
@@ -172,13 +182,12 @@ pnpm lint:format
 ## 注意事项
 
 1. 版本兼容
-
    - React 19+
-   - Node.js 16+
+   - Node.js 22+
    - TypeScript 5.8+
+   - Vite 7.0+
 
 2. 开发规范
-
    - 遵循 ESLint 规则
    - 使用 Prettier 格式化
    - 遵循 Git 提交规范

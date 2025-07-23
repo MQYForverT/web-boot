@@ -18,17 +18,25 @@
 
 ### 1. 创建项目（推荐方式）
 
-```bash
-# 方式一：npx 直接创建（推荐，无需安装）
+::: code-group
+
+```bash [npx (推荐)]
+# 无需安装，直接运行脚手架
 npx @tsoul/create-webboot-template
+```
 
-# 方式二：使用 pnpm 创建
+```bash [pnpm]
+# 使用 pnpm 创建
 pnpm create @tsoul/webboot-template
+```
 
-# 方式三：全局安装后使用
+```bash [npm]
+# 全局安装后使用
 npm install -g @tsoul/create-webboot-template
 create-webboot-template
 ```
+
+:::
 
 ### 2. 脚手架交互流程
 

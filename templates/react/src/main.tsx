@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import App from './App'
 /**
  * 入 Ant Design React 19 兼容补丁
@@ -40,10 +40,11 @@ setGlobalConfig(themeConfig, (key, val) => {
 	themeConfig[key] = val
 })
 
+// 使用BrowserRouter需要服务器配置
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
-		<BrowserRouter>
+		<HashRouter>
 			<App />
-		</BrowserRouter>
+		</HashRouter>
 	</React.StrictMode>,
 )

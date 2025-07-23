@@ -91,15 +91,22 @@ async function generatePackageJson(projectName, templateName) {
 	const templatePath = getTemplatePath(templateName)
 	const templatePackageJson = await fs.readJSON(path.join(templatePath, 'package.json'))
 
-	return {
-		name: projectName,
-		version: '0.0.0',
-		private: true,
-		type: 'module',
-		scripts: templatePackageJson.scripts,
-		dependencies: processDependencies(templatePackageJson.dependencies),
-		devDependencies: processDependencies(templatePackageJson.devDependencies),
+	// 以模板为准，只覆盖必要的项目特定属性
+	const packageJson = { ...templatePackageJson }
+
+	// 覆盖项目特定的属性
+	packageJson.name = projectName
+	packageJson.version = '0.0.0'
+
+	// 处理依赖版本
+	if (packageJson.dependencies) {
+		packageJson.dependencies = processDependencies(packageJson.dependencies)
 	}
+	if (packageJson.devDependencies) {
+		packageJson.devDependencies = processDependencies(packageJson.devDependencies)
+	}
+
+	return packageJson
 }
 
 export { getTemplateChoices, getTemplatePath, generatePackageJson }

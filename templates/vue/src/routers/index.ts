@@ -1,5 +1,5 @@
 import type { RouteLocationNormalized } from 'vue-router'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import type { RouteComponent } from 'vue-router'
 import NProgress from '@tsoul/utils/nprogress'
 import '@tsoul/utils/nprogress.css'
@@ -12,7 +12,8 @@ import $axios from '@/config/request'
 export const localRoutes: Menu.MenuOptions<RouteComponent>[] = menuList
 
 const router = createRouter({
-	history: createWebHistory(),
+	// createWebHistory：需要服务器支持
+	history: createWebHashHistory(),
 	routes: [...staticRouter, ...errorRouter],
 	strict: false,
 	scrollBehavior: () => ({ left: 0, top: 0 }),

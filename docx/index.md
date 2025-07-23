@@ -19,26 +19,29 @@ hero:
     - theme: alt
       text: 组件库
       link: /components/
+---
 
-features:
-  - icon: 🚀
-    title: 智能脚手架
-    details: 一键创建项目，自动配置环境变量、UnoCSS、类型定义，智能优化配置文件，开箱即用
-  - icon: 📝
-    title: 多框架支持
-    details: 内置Vue、React、Svelte三种主流框架的完整项目模板，提供统一的开发体验
-  - icon: ⚡️
-    title: 组件库
-    details: 提供BackgroundLayout、BackgroundLogin等高质量组件，支持主题定制和布局切换
-  - icon: 🛠️
-    title: 工具函数
-    details: 封装常用的工具函数，如Axios请求、滚动处理、进度条、打字机效果等
-  - icon: 🎯
-    title: 构建工具
-    details: 基于Vite构建，提供自动导入、插件管理、构建优化等完整配置
-  - icon: 📦
-    title: 代码规范
-    details: 集成ESLint、Stylelint配置，支持多框架、TypeScript、Prettier集成
+## 🎯 在线体验
+
+### 🔥 革命性的 Web Components 技术
+
+**一套组件，三端通用**  
+Vue · React · Svelte **完全一致**的体验
+
+> _一次编写，处处运行_
+
+<iframe 
+  src="/web-boot/demo/index.html" 
+  width="100%" 
+  height="600px" 
+  frameborder="0"
+  style="border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 20px 0;">
+</iframe>
+
+> 🚀 **核心优势**：基于标准 Web Components，实现真正的**跨框架兼容**！同一套组件在 Vue、React、Svelte 中表现完全一致，大幅降低开发成本，提升团队效率！
+
+---
+
 ---
 
 <style>
@@ -200,12 +203,12 @@ Web Boot 是一个现代化的前端项目脚手架工具，旨在为开发者�
 ### 📈 技术栈
 
 - **包管理**: pnpm workspace
-- **构建工具**: Vite 6.x
-- **框架**: Vue 3.5 / React 19.x / Svelte 5.23.1
+- **构建工具**: Vite 7.x
+- **框架**: Vue 3.5 / React 19.x / Svelte 5.36
 - **UI框架**: Element Plus 2.x / Ant Design 5.x
 - **状态管理**: Mobx 6.x
 - **路由**: Vue Router 4.x / React Router 7.x / Page.js 1.11.6
-- **语言**: TypeScript 5.7.2
+- **语言**: TypeScript 5.8
 - **代码规范**: ESLint 9.x / Stylelint 16.x / Prettier 3.x
 - **Git规范**: Husky / Commitlint
 - **文档**: VitePress

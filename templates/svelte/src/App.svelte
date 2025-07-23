@@ -142,8 +142,9 @@
 			currentChildComponent = null
 			needsLayout = false
 		})
-
-		router.start()
+ 
+    // 使用hashbang模式
+		router.start({ hashbang: true })
 	}
 
 	// 订阅路由列表变化

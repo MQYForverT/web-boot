@@ -38,6 +38,7 @@ import { ElementPlusResolver } from '../common/autoImport/components_vue'
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {
 	const { server, css, plugins = [], esbuild, build, ...config } = customConfig ?? {}
 	return {
+		base: './',
 		// 开发服务器选项
 		server: {
 			...setupViteServer(),

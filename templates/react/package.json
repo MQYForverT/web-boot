@@ -20,17 +20,18 @@
 		"reinstall": "pnpm run clean && pnpm install"
 	},
 	"dependencies": {
-		"rimraf": "^6.0.1",
 		"@ant-design/v5-patch-for-react-19": "^1.0.3",
 		"@tsoul/component-private": "workspace:^",
 		"@tsoul/utils": "workspace:^",
+		"ahooks": "^3.9.0",
 		"antd": "^5.26.6",
 		"keepalive-for-react": "^4.0.2",
 		"mobx": "^6.13.7",
 		"mobx-react-lite": "^4.1.0",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
-		"react-router-dom": "^7.7.0"
+		"react-router-dom": "^7.7.0",
+		"rimraf": "^6.0.1"
 	},
 	"devDependencies": {
 		"@tsoul/eslint-config": "workspace:^",
@@ -38,6 +39,7 @@
 		"@tsoul/vite-config": "workspace:^",
 		"@types/react": "^19.1.8",
 		"@types/react-dom": "^19.1.6",
+		"@vitejs/plugin-react-swc": "^3.11.0",
 		"typescript": "^5.8.3",
 		"vite": "^7.0.5"
 	}
