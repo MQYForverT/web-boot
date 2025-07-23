@@ -13,15 +13,33 @@
 - **灵活扩展**: 支持自定义规则配置
 - **性能优化**: 智能文件过滤
 
-## 🚀 快速开始
+## 📦 安装
 
-### 安装
+### 包信息
 
-```bash
-npm install @tsoul/stylelint-config -D
-# 或
-pnpm add @tsoul/stylelint-config -D
+- **包名**：`@tsoul/stylelint-config`
+- **类型**：开发依赖
+- **最新版本**：1.0.2
+
+### 安装命令
+
+::: code-group
+
+```bash [pnpm (推荐)]
+pnpm add -D @tsoul/stylelint-config
 ```
+
+```bash [npm]
+npm install -D @tsoul/stylelint-config
+```
+
+```bash [yarn]
+yarn add -D @tsoul/stylelint-config
+```
+
+:::
+
+## 🚀 快速开始
 
 ### 基础配置
 
@@ -49,6 +67,15 @@ export default {
 // stylelint.config.mjs
 export default {
 	extends: ['@tsoul/stylelint-config/react'],
+}
+```
+
+### Svelte 项目
+
+```javascript
+// stylelint.config.mjs
+export default {
+	extends: ['@tsoul/stylelint-config/svelte'],
 }
 ```
 
@@ -153,11 +180,21 @@ export default {
 
 确保安装了正确的依赖：
 
-```bash
-npm install postcss postcss-scss -D
-# 或
+::: code-group
+
+```bash [pnpm (推荐)]
 pnpm add postcss postcss-scss -D
 ```
+
+```bash [npm]
+npm install postcss postcss-scss -D
+```
+
+```bash [yarn]
+yarn add postcss postcss-scss -D
+```
+
+:::
 
 ### 2. Vue 单文件组件样式检查
 
@@ -167,11 +204,21 @@ Vue SFC 的样式检查已经配置好了 `postcss-html` 解析器，无需额�
 
 建议同时使用 Prettier 进行代码格式化：
 
-```bash
-npm install prettier -D
-# 或
+::: code-group
+
+```bash [pnpm (推荐)]
 pnpm add prettier -D
 ```
+
+```bash [npm]
+npm install prettier -D
+```
+
+```bash [yarn]
+yarn add prettier -D
+```
+
+:::
 
 ## 📚 相关资源
 

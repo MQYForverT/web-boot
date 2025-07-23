@@ -13,15 +13,33 @@
 - **开发增强**: 开发工具、热更新等功能
 - **类型支持**: 完整的 TypeScript 支持
 
-## 🚀 快速开始
+## 📦 安装
 
-### 安装
+### 包信息
 
-```bash
-npm install @tsoul/vite-config -D
-# 或
-pnpm add @tsoul/vite-config -D
+- **包名**：`@tsoul/vite-config`
+- **类型**：开发依赖
+- **最新版本**：1.0.7
+
+### 安装命令
+
+::: code-group
+
+```bash [pnpm (推荐)]
+pnpm add -D @tsoul/vite-config
 ```
+
+```bash [npm]
+npm install -D @tsoul/vite-config
+```
+
+```bash [yarn]
+yarn add -D @tsoul/vite-config
+```
+
+:::
+
+## 🚀 快速开始
 
 ### 基础配置
 

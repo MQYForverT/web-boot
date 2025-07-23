@@ -65,13 +65,21 @@ npm --version
 
 #### 安装方法
 
-```bash
-# 使用 npm 安装
-npm install -g pnpm
+::: code-group
 
-# 或使用官方安装脚本
+```bash [npm]
+npm install -g pnpm
+```
+
+```bash [官方脚本 (推荐)]
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 ```
+
+```powershell [Windows PowerShell]
+iwr https://get.pnpm.io/install.ps1 -useb | iex
+```
+
+:::
 
 #### 验证安装
 

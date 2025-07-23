@@ -56,11 +56,11 @@ export default defineConfig({
 				{
 					text: 'Components',
 					items: [
-						{ text: '概述', link: '/components/' },
 						{
 							text: '私有组件库',
 							collapsed: false,
 							items: [
+								{ text: '概述', link: '/components/private/' },
 								{ text: 'BackgroundLayout', link: '/components/background-layout' },
 								{ text: 'BackgroundLogin', link: '/components/background-login' },
 								{ text: 'Common Components', link: '/components/common' },
@@ -69,7 +69,10 @@ export default defineConfig({
 						{
 							text: '公共组件库',
 							collapsed: false,
-							items: [{ text: '开发中...', link: '#' }],
+							items: [
+								{ text: '概述', link: '/components/public/' },
+								{ text: '开发中...', link: '#' },
+							],
 						},
 					],
 				},
@@ -78,7 +81,6 @@ export default defineConfig({
 				{
 					text: '工具',
 					items: [
-						{ text: '概述', link: '/api/' },
 						{
 							text: '代码规范',
 							collapsed: false,
@@ -96,6 +98,7 @@ export default defineConfig({
 							text: '工具函数',
 							collapsed: false,
 							items: [
+								{ text: '概述', link: '/api/utils/' },
 								{ text: 'Axios 封装', link: '/api/axios' },
 								{ text: '滚动处理', link: '/api/scroll' },
 								{ text: '函数重载', link: '/api/overload' },

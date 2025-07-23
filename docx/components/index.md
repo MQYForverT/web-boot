@@ -1,73 +1,50 @@
 # Web-Boot 组件库
 
-## 📖 概述
+## 📖 总览
 
-Web-Boot 组件库是一个企业级中后台应用组件解决方案，采用模块化设计，分为私有组件库和公共组件库。组件库基于 Vue 3.x + TypeScript 构建，提供了丰富的功能组件和完整的类型支持。
+Web-Boot 组件库是一个企业级前端组件解决方案，采用模块化设计，基于 Web Components 技术实现跨框架兼容。
 
-## 🗺️ 组件导航
+## 🏗️ 组件库架构
 
-### 🔒 私有组件库 (@tsoul/component-private)
+### 🔒 私有组件库
 
-#### 布局组件
+**`@tsoul/component-private`** - 企业级中后台应用组件
 
-- [BackgroundLayout](./background-layout.md) - 中后台布局解决方案
-  - 响应式侧边栏
-  - 顶部导航栏
-  - 页面标签管理
-  - 主题设置
-  - 水印功能
-  - 多语言支持
+- 🏢 **布局组件**：完整的后台布局解决方案
+- 🔐 **认证组件**：登录页面和权限管理
+- 🛠️ **通用组件**：主题配置和工具函数
 
-#### 认证组件
+👉 [查看私有组件库详情](./private/)
 
+### 🌐 公共组件库
+
+**`@tsoul/component-public`** - 基础 UI 组件库（开发中）
+
+- 🎯 **基础组件**：按钮、输入框、选择器等
+- 📐 **布局组件**：栅格系统、容器组件等
+- 💬 **反馈组件**：提示、对话框、警告等
+
+👉 [查看公共组件库详情](./public/)
+
+## ⚡ 快速访问
+
+### 🚀 立即开始
+
+- [私有组件库概述](./private/) - 企业级组件使用指南
+- [公共组件库概述](./public/) - 基础组件开发计划
+
+### 📖 组件文档
+
+- [BackgroundLayout](./background-layout.md) - 后台布局组件
 - [BackgroundLogin](./background-login.md) - 登录页面组件
-  - 多种布局模式
-  - 表单验证
-  - 第三方登录
-  - 响应式设计
+- [Common Components](./common.md) - 通用工具组件
 
-#### 通用组件
+### 🔗 相关资源
 
-- [Common](./common.md) - 通用工具组件
-  - 主题配置
-  - 语言切换
-  - 全局状态
-  - 工具函数
+- [开发指南](../guide/getting-started.md) - 环境搭建和快速开始
+- [工具文档](../api/) - 配套工具和函数库
+- [模板项目](../templates/) - 完整项目模板
 
-### 🌐 公共组件库 (@tsoul/component-public)
+---
 
-> 🚧 开发中，敬请期待...
-
-## 🎯 特性亮点
-
-- **Web Components**: 支持跨框架使用，一次开发多处复用
-- **TypeScript**: 完整的类型定义，提供优秀的开发体验
-- **主题定制**: 灵活的主题配置，支持深色模式
-- **响应式**: 自适应不同屏幕尺寸
-- **性能优化**: 按需加载，优化渲染性能
-- **可扩展**: 丰富的插槽和自定义选项
-
-## 🚀 快速开始
-
-```bash
-# 安装私有组件库
-npm install @tsoul/component-private
-# 或
-pnpm add @tsoul/component-private
-
-# 注册组件
-import { registerAll } from '@tsoul/component-private'
-registerAll()
-```
-
-## 📚 开发指南
-
-- [开发环境搭建](../guide/getting-started.md)
-- [项目结构说明](../guide/structure.md)
-- [开发工具配置](../guide/dev-tools.md)
-
-## 🔗 相关资源
-
-- [API 文档](../api/index.md)
-- [组件配置](../api/config.md)
-- [工具函数](../api/index.md#工具函数)
+> 💡 **建议**：新项目推荐从 [私有组件库](./private/) 开始，它提供了完整的企业级解决方案

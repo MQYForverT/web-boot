@@ -17,7 +17,7 @@ Web-Boot 工具集是一个完整的前端开发工具链，提供了统一的�
 
 ### 代码规范
 
-#### ESLint 配置 (`@tsoul/eslint-config`)
+#### [ESLint 配置](./eslint.md)
 
 - 支持多框架的代码规范配置
 - TypeScript 严格模式支持
@@ -25,16 +25,16 @@ Web-Boot 工具集是一个完整的前端开发工具链，提供了统一的�
 - Import 规则优化
 - UnoCSS 规则支持
 
-#### StyleLint 配置 (`@tsoul/stylelint-config`)
+#### [StyleLint 配置](./stylelint.md)
 
-- Vue SFC 样式规范
+- Vue/React/Svelte 样式规范
 - CSS/SCSS 规范统一
 - 选择器命名规范
 - 代码格式化规则
 
 ### 构建工具
 
-#### Vite 配置 (`@tsoul/vite-config`)
+#### [Vite 配置](./vite.md)
 
 - 多框架构建配置
 - 丰富的插件集成
@@ -43,95 +43,16 @@ Web-Boot 工具集是一个完整的前端开发工具链，提供了统一的�
 
 ### 工具函数
 
-#### HTTP 请求 (`@tsoul/utils/axios`)
+#### [工具函数库](./utils/)
 
-- 请求/响应拦截器
-- 错误统一处理
-- 文件下载支持
-- 取消请求机制
+包含一系列实用的工具函数：
 
-#### 进度条 (`@tsoul/utils/nprogress`)
-
-- 页面加载进度显示
-- 自定义样式支持
-- 轻量级实现
-
-#### 打字机效果 (`@tsoul/utils/typewriter`)
-
-- 彩色文本支持
-- 类型分组管理
-- Promise 异步控制
-- 队列管理和状态监控
-- itemKey 项目标识
-- 完整的生命周期回调
-
-#### 函数重载 (`@tsoul/utils/funcOverload`)
-
-- TypeScript 类型安全
-- 参数类型推断
-- 多种调用方式支持
-
-#### 滚动处理 (`@tsoul/utils/compatibleScrollTo`)
-
-- 浏览器兼容性处理
-- 平滑滚动动画
-- 位置精确控制
-
-## 🚀 快速开始
-
-### 安装依赖
-
-```bash
-# ESLint 配置
-npm install @tsoul/eslint-config -D
-# 或
-pnpm add @tsoul/eslint-config -D
-
-# StyleLint 配置
-npm install @tsoul/stylelint-config -D
-# 或
-pnpm add @tsoul/stylelint-config -D
-
-# 工具函数
-npm install @tsoul/utils
-# 或
-pnpm add @tsoul/utils
-
-# Vite 配置
-npm install @tsoul/vite-config -D
-# 或
-pnpm add @tsoul/vite-config -D
-```
-
-### 基础使用
-
-```typescript
-// ESLint 配置
-// eslint.config.mjs
-import { defineConfig } from '@tsoul/eslint-config'
-
-export default defineConfig({
-	extends: ['@tsoul/eslint-config/vue'], // 或 react, svelte
-})
-
-// StyleLint 配置
-// stylelint.config.mjs
-export default {
-	extends: ['@tsoul/stylelint-config/vue'], // 或 react
-}
-
-// 工具函数使用
-import { httpRequest, nprogress, typewriter } from '@tsoul/utils'
-
-// Vite 配置
-// vite.config.ts
-import { defineConfig } from '@tsoul/vite-config/vue' // 或 react, svelte
-
-export default defineConfig({
-	// 项目配置
-})
-```
+- **[HTTP 请求](./axios.md)** - 基于 Axios 的请求封装
+- **[进度条](./progress.md)** - 页面加载进度显示
+- **[打字机效果](./typewriter.md)** - 文字逐字显示动画
+- **[函数重载](./overload.md)** - TypeScript 类型安全的函数重载
+- **[滚动处理](./scroll.md)** - 兼容性滚动解决方案
 
 ## 📚 使用指南
 
-请查看左侧菜单中的具体工具文档，了解详细的使用方法和最佳实践。每个工具都提供了完整的配置选项和示例代码。
+请查看左侧菜单中的具体工具文档，了解详细的配置方法、安装步骤和使用示例。每个工具都提供了完整的说明和最佳实践。

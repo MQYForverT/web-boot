@@ -14,12 +14,15 @@
 - 🌐 **国际化** - 支持多语言切换
 - ♿ **无障碍支持** - 符合 WCAG 2.1 标准
 
-## 安装
+### 包信息
 
-```bash
-# 安装组件库
-pnpm add @web-boot/common-components
-```
+- **包名**：`@tsoul/component-private`
+- **类型**：运行依赖
+- **命令**：`pnpm add @tsoul/component-private`
+
+> 📦 **安装说明**：请参考 [组件概述](/components/) 页面的统一安装指南
+
+> 💡 **提示**：Common Components 是私有组件库的一部分，无需单独安装
 
 ## 组件列表
 
@@ -354,7 +357,7 @@ const App: React.FC = () => {
 
 ```typescript
 // 按需导入组件
-import { LanguageSelector, ThemeSwitcher } from '@web-boot/common-components'
+import { LanguageSelector, ThemeSwitcher } from '@tsoul/component-private'
 
 // 注册组件
 app.component('language-selector', LanguageSelector)

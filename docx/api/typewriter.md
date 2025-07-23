@@ -17,13 +17,33 @@
 
 ## 🚀 快速开始
 
-### 安装
+## 📦 安装
 
-```bash
-npm install @tsoul/utils
-# 或
+### 包信息
+
+- **包名**：`@tsoul/utils`
+- **类型**：运行依赖
+- **最新版本**：1.0.6
+
+### 安装命令
+
+::: code-group
+
+```bash [pnpm (推荐)]
 pnpm add @tsoul/utils
 ```
+
+```bash [npm]
+npm install @tsoul/utils
+```
+
+```bash [yarn]
+yarn add @tsoul/utils
+```
+
+:::
+
+## 🚀 快速开始
 
 ### 基础使用
 

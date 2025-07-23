@@ -13,15 +13,33 @@
 - **自动修复**: 支持自动修复常见问题
 - **性能优化**: 使用 Flat Config 提升性能
 
-## 🚀 快速开始
+## 📦 安装
 
-### 安装
+### 包信息
 
-```bash
-npm install @tsoul/eslint-config -D
-# 或
-pnpm add @tsoul/eslint-config -D
+- **包名**：`@tsoul/eslint-config`
+- **类型**：开发依赖
+- **最新版本**：1.0.2
+
+### 安装命令
+
+::: code-group
+
+```bash [pnpm (推荐)]
+pnpm add -D @tsoul/eslint-config
 ```
+
+```bash [npm]
+npm install -D @tsoul/eslint-config
+```
+
+```bash [yarn]
+yarn add -D @tsoul/eslint-config
+```
+
+:::
+
+## 🚀 快速开始
 
 ### 基础配置
 

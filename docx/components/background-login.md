@@ -29,13 +29,13 @@
 
 ## 🚀 快速开始
 
-### 安装
+### 包信息
 
-```bash
-npm install @tsoul/component-private
-# 或
-pnpm add @tsoul/component-private
-```
+- **包名**：`@tsoul/component-private`
+- **类型**：运行依赖
+- **命令**：`pnpm add @tsoul/component-private`
+
+> 📦 **安装说明**：请参考 [组件概述](/components/) 页面的统一安装指南
 
 ### 基础用法
 
