@@ -3,6 +3,10 @@
 	"private": true,
 	"version": "1.0.0",
 	"type": "module",
+	"engines": {
+		"node": ">=22.17.1",
+		"pnpm": ">=10.13.1"
+	},
 	"scripts": {
 		"start": "vite --configLoader runner",
 		"build": "rimraf dist && vue-tsc && vite build --configLoader runner",
@@ -11,11 +15,14 @@
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
 		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix",
 		"test": "vitest --coverage.enabled --configLoader runner",
-		"test:ui": "vitest --ui --open --coverage.enabled --configLoader runner"
+		"test:ui": "vitest --ui --open --coverage.enabled --configLoader runner",
+		"clean": "npm cache clean -f && rimraf pnpm-lock.yaml && rimraf -g \"**/node_modules\" && pnpm store prune",
+		"reinstall": "pnpm run clean && pnpm install"
 	},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"rimraf": "^6.0.1",
 		"@tsoul/component-private": "workspace:^",
 		"@tsoul/utils": "workspace:^",
 		"element-plus": "^2.10.4",

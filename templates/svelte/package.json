@@ -3,6 +3,10 @@
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
+	"engines": {
+		"node": ">=22.17.1",
+		"pnpm": ">=10.13.1"
+	},
 	"scripts": {
 		"start": "vite --configLoader runner",
 		"build": "rimraf dist && tsc && vite build --configLoader runner",
@@ -12,9 +16,12 @@
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,html,md}\"",
 		"lint:stylelint": "stylelint \"**/*.{css,scss,html}\" --cache --fix",
 		"test": "vitest --coverage.enabled --configLoader runner",
-		"test:ui": "vitest --ui --open --coverage.enabled --configLoader runner"
+		"test:ui": "vitest --ui --open --coverage.enabled --configLoader runner",
+		"clean": "npm cache clean -f && rimraf pnpm-lock.yaml && rimraf -g \"**/node_modules\" && pnpm store prune",
+		"reinstall": "pnpm run clean && pnpm install"
 	},
 	"dependencies": {
+		"rimraf": "^6.0.1",
 		"@tsoul/component-private": "workspace:^",
 		"@tsoul/utils": "workspace:^",
 		"page": "^1.11.6"
