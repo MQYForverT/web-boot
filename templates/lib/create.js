@@ -12,7 +12,7 @@ const packageRoot = path.resolve(__dirname, '..')
 
 /**
  * 复制公共配置文件到项目根目录
- * 包括 uno.config.ts 和环境变量文件
+ * 包括 uno.config.ts、tsconfig.base.json 和环境变量文件
  * @param {string} targetDir 目标目录
  */
 async function copyCommonFiles(targetDir) {
@@ -21,6 +21,12 @@ async function copyCommonFiles(targetDir) {
 		const unoConfigPath = path.join(packageRoot, 'uno.config.ts')
 		if (await fs.pathExists(unoConfigPath)) {
 			await fs.copy(unoConfigPath, path.join(targetDir, 'uno.config.ts'))
+		}
+
+		// 复制 tsconfig.base.json 配置文件
+		const tsconfigBasePath = path.join(packageRoot, 'tsconfig.base.json')
+		if (await fs.pathExists(tsconfigBasePath)) {
+			await fs.copy(tsconfigBasePath, path.join(targetDir, 'tsconfig.base.json'))
 		}
 
 		// 从 templates 目录复制环境变量文件
@@ -96,7 +102,8 @@ async function copyTypeDefinitions(targetDir) {
 
 /**
  * 更新 tsconfig.json 配置
- * 删除对 ../types/route.d.ts 的引用，因为文件已经移动到 src 目录
+ * 1. 删除对 ../types/route.d.ts 的引用，因为文件已经移动到 src 目录
+ * 2. 更新 extends 路径指向根目录的 tsconfig.base.json
  * @param {string} targetDir 目标目录
  */
 async function updateTsConfig(targetDir) {
@@ -110,6 +117,9 @@ async function updateTsConfig(targetDir) {
 
 		// 删除 ../types/route.d.ts 引用
 		content = content.replace(/,?\s*"\.\.\/types\/route\.d\.ts"/g, '').replace(/,(\s*])/g, '$1') // 清理尾随逗号
+
+		// 更新 extends 路径，将相对路径改为指向根目录的 tsconfig.base.json
+		content = content.replace(/"extends":\s*"[^"]*tsconfig\.base\.json"/g, '"extends": "./tsconfig.base.json"')
 
 		await fs.writeFile(tsconfigPath, content)
 	} catch (err) {

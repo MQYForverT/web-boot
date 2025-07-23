@@ -1,15 +1,20 @@
-import { svelte, vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 import type { UserConfig } from 'vite'
-
-import { setupViteServer, commonVitePlugins, setupViteBuild, AutoImport, Icons, IconsResolver } from '../common'
-
+import { createRequire } from 'module'
 import { checkPeerDeps } from '../common/checkPeerDeps'
+import type ISvelteVitePlugin from '@sveltejs/vite-plugin-svelte'
 
 // 检查必需的对等依赖
 checkPeerDeps({
 	packageName: '@tsoul/vite-config/svelte',
 	devDeps: ['@sveltejs/vite-plugin-svelte'],
 })
+
+// 依赖检查通过后，使用 require 安全导入
+const require = createRequire(import.meta.url)
+const svelteModule = require('@sveltejs/vite-plugin-svelte')
+const { svelte, vitePreprocess } = (svelteModule.default || svelteModule) as typeof ISvelteVitePlugin
+
+import { setupViteServer, commonVitePlugins, setupViteBuild, AutoImport, Icons, IconsResolver } from '../common'
 
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {
 	const { server, css, plugins = [], build, ...config } = customConfig ?? {}

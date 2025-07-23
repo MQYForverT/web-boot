@@ -1,5 +1,5 @@
 {
-	"extends": "../../tsconfig.base.json",
+	"extends": "../tsconfig.base.json",
 	"compilerOptions": {
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		"types": ["vite/client", "@tsoul/component-private/type", "@tsoul/vite-config/env.d.ts", "../types/route.d.ts"],

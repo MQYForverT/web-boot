@@ -10,7 +10,9 @@
 		"check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
 		"lint:eslint": "eslint --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,html,md}\"",
-		"lint:stylelint": "stylelint \"**/*.{css,scss,html}\" --cache --fix"
+		"lint:stylelint": "stylelint \"**/*.{css,scss,html}\" --cache --fix",
+		"test": "vitest --coverage.enabled --configLoader runner",
+		"test:ui": "vitest --ui --open --coverage.enabled --configLoader runner"
 	},
 	"dependencies": {
 		"@tsoul/component-private": "workspace:^",

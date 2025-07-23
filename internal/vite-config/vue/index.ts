@@ -1,6 +1,22 @@
 import type { UserConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import VueDevTools from 'vite-plugin-vue-devtools'
+import { createRequire } from 'module'
+import { checkPeerDeps } from '../common/checkPeerDeps'
+import type IPluginVue from '@vitejs/plugin-vue'
+import type IVitePluginVueDevtools from 'vite-plugin-vue-devtools'
+
+// 🔥 关键：先检查依赖，再做任何其他操作
+checkPeerDeps({
+	packageName: '@tsoul/vite-config/vue',
+	devDeps: ['@vitejs/plugin-vue', 'vite-plugin-vue-devtools'],
+	deps: ['@vueuse/core'],
+})
+
+// 依赖检查通过后，使用 require 安全导入
+const require = createRequire(import.meta.url)
+const vueModule = require('@vitejs/plugin-vue')
+const vue = (vueModule.default || vueModule) as typeof IPluginVue
+const vueDevToolsModule = require('vite-plugin-vue-devtools')
+const VueDevTools = (vueDevToolsModule.default || vueDevToolsModule) as typeof IVitePluginVueDevtools
 
 import {
 	setupViteServer,
@@ -17,14 +33,6 @@ import {
 	IconsResolver,
 } from '../common'
 import { ElementPlusResolver } from '../common/autoImport/components_vue'
-import { checkPeerDeps } from '../common/checkPeerDeps'
-
-// 检查必需的对等依赖
-checkPeerDeps({
-	packageName: '@tsoul/vite-config/vue',
-	devDeps: ['@vitejs/plugin-vue', 'vite-plugin-vue-devtools'],
-	deps: ['@vueuse/core'],
-})
 
 // https://vitejs.dev/config/
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {

@@ -1,9 +1,9 @@
-import inquirer from 'inquirer'
+import inquirer, { type DistinctQuestion } from 'inquirer'
 import fs from 'fs'
-import { execFileSync, execSync } from 'child_process'
+import { execSync } from 'child_process'
 
 // 定义包含项目名称的数组
-const projects: Record<string, string>[] = []
+const projects: { name: string; value: string }[] = []
 
 // 读取 templates 目录
 fs.readdirSync('./templates').forEach((file) => {
@@ -40,14 +40,13 @@ const questions = [
 		message: '官人想启动哪个项目',
 		choices: projects,
 	},
-]
+] satisfies DistinctQuestion[]
 
 inquirer
 	.prompt(questions)
 	.then((answers) => {
 		const { type } = answers
 		execSync(`npm run start:${type}`, { stdio: 'inherit' })
-		execFileSync(`npm run start:${type}`, { stdio: 'inherit' })
 	})
 	.catch((err) => {
 		console.error(err.message)

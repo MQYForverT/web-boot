@@ -1,8 +1,21 @@
-import react from '@vitejs/plugin-react-swc'
 import type { UserConfig } from 'vite'
+import { createRequire } from 'module'
+import { checkPeerDeps } from '../common/checkPeerDeps'
+import type IPluginReactSwc from '@vitejs/plugin-react-swc'
+
+// 检查必需的对等依赖
+checkPeerDeps({
+	packageName: '@tsoul/vite-config/react',
+	devDeps: ['@vitejs/plugin-react-swc'],
+	deps: ['ahooks'],
+})
+
+// 依赖检查通过后，使用 require 安全导入
+const require = createRequire(import.meta.url)
+const reactModule = require('@vitejs/plugin-react-swc')
+const react = (reactModule.default || reactModule) as typeof IPluginReactSwc
 
 import { reactClickToComponent } from 'vite-plugin-react-click-to-component'
-
 import {
 	setupViteServer,
 	commonVitePlugins,
@@ -11,15 +24,6 @@ import {
 	Icons,
 	IconsResolver,
 } from '../common'
-
-import { checkPeerDeps } from '../common/checkPeerDeps'
-
-// 检查必需的对等依赖
-checkPeerDeps({
-	packageName: '@tsoul/vite-config/react',
-	devDeps: ['@vitejs/plugin-react-swc'],
-	deps: ['ahooks'],
-})
 
 export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig => {
 	const { server, css, plugins = [], build, ...config } = customConfig ?? {}

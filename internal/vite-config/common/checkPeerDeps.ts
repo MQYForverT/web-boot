@@ -1,6 +1,5 @@
-import { createRequire } from 'module'
-
-const require = createRequire(import.meta.url)
+import { existsSync } from 'fs'
+import { join } from 'path'
 
 interface CheckDepsParams {
 	packageName: string
@@ -11,19 +10,20 @@ interface CheckDepsParams {
 export function checkPeerDeps({ packageName, devDeps = [], deps = [] }: CheckDepsParams) {
 	const missingDevDeps: string[] = []
 	const missingDeps: string[] = []
+	const projectRoot = process.cwd()
+	const projectNodeModules = join(projectRoot, 'node_modules')
 
+	// 更严格的检查：直接检查项目 node_modules 目录
 	for (const dep of devDeps) {
-		try {
-			require.resolve(dep, { paths: [process.cwd()] })
-		} catch {
+		const depPath = join(projectNodeModules, dep)
+		if (!existsSync(depPath)) {
 			missingDevDeps.push(dep)
 		}
 	}
 
 	for (const dep of deps) {
-		try {
-			require.resolve(dep, { paths: [process.cwd()] })
-		} catch {
+		const depPath = join(projectNodeModules, dep)
+		if (!existsSync(depPath)) {
 			missingDeps.push(dep)
 		}
 	}
