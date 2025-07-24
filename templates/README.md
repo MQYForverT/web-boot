@@ -43,7 +43,7 @@ create-webboot-template
 **技术选型：**
 
 - **框架**：Vue 3.x + Composition API
-- **构建工具**：Vite 5.x
+- **构建工具**：Vite 7.x
 - **语言**：TypeScript 5.x
 - **路由**：Vue Router 4.x
 - **状态管理**：Pinia
@@ -65,7 +65,7 @@ create-webboot-template
 **技术选型：**
 
 - **框架**：React 18.x + Hooks
-- **构建工具**：Vite 5.x
+- **构建工具**：Vite 7.x
 - **语言**：TypeScript 5.x
 - **路由**：React Router DOM 6.x
 - **状态管理**：MobX
@@ -88,7 +88,7 @@ create-webboot-template
 **技术选型：**
 
 - **框架**：Svelte 5.x + TypeScript
-- **构建工具**：Vite 5.x
+- **构建工具**：Vite 7.x
 - **语言**：TypeScript 5.x
 - **路由**：Page.js
 - **状态管理**：Svelte Stores

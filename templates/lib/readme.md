@@ -207,14 +207,14 @@ npm uninstall -g @tsoul/create-webboot-template
 
 ### 2. 模板特性
 
-- 基于 **Vite 6.3** 构建
+- 基于 **Vite 7.0** 构建
 - **TypeScript 5.8** 支持
 - **ESLint + Stylelint + Prettier** 代码规范
 - **自动导入** 组件和 API
 - **UnoCSS** 原子化 CSS
 - **组件库集成**:
-  - Vue: Element Plus 2.9
-  - React: Ant Design 5.24
+  - Vue: Element Plus 2.10
+  - React: Ant Design 5.26
   - Svelte: 原生轻量组件
 
 ### 3. 开发建议
