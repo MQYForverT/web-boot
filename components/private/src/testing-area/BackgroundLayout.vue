@@ -29,7 +29,7 @@
 <script setup lang="ts">
 	import { menuList } from '@/assets/menuList'
 	const imgUrl = new URL('@/assets/home.jpg', import.meta.url).href
-	// import { register } from '@/components/Example'
+
 	// register()
 	onMounted(() => {
 		setTimeout(() => {

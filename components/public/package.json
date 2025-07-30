@@ -9,7 +9,24 @@
 		"preview": "vite preview",
 		"lint:eslint": "eslint --cache --fix",
 		"lint:format": "prettier --write --log-level warn \"**/*.{js,ts,json,jsx,tsx,css,sass,less,vue,html,md}\"",
-		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix"
+		"lint:stylelint": "stylelint \"**/*.{css,scss,vue,html}\" --cache --fix",
+		"test": "vitest --coverage.enabled --configLoader runner",
+		"test:ui": "vitest --ui --open --coverage.enabled --configLoader runner"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.js"
+		},
+		"./*": {
+			"types": "./dist/*.d.ts",
+			"import": "./dist/*.js",
+			"require": "./dist/*.js"
+		},
+		"./type": {
+			"types": "./dist/type.d.ts"
+		}
 	},
 	"keywords": [],
 	"author": "",

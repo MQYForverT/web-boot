@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url'
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 // 入口文件的白名单，白名单成员不成为入口文件
-const whiteList = ['index.ts', 'type.d.ts', 'Example', 'common']
+const whiteList = ['index.ts', 'type.d.ts', 'common']
 // 获取所有组件目录
 const componentDirs = readdirSync(resolve(__dirname, 'src/components')).filter((dir) => !whiteList.includes(dir))
 
@@ -116,7 +116,7 @@ const config: UserConfig = {
 		}),
 		dts({
 			include: ['src/components/**/*.ts'],
-			exclude: ['src/components/Example', '**/__tests__'],
+			exclude: ['**/__tests__'],
 			entryRoot: 'src/components',
 		}),
 		compress(),
@@ -154,7 +154,7 @@ const config: UserConfig = {
 		},
 		coverage: {
 			include: ['src/components'],
-			exclude: ['src/components/index.ts', 'src/components/Example', '**/*.d.ts'],
+			exclude: ['src/components/index.ts', '**/*.d.ts'],
 		},
 	}),
 	build: setupViteLib({
