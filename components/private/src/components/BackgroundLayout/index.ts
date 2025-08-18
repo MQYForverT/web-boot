@@ -8,8 +8,8 @@ export type BackgroundLayoutElement = typeof BackgroundLayoutElement
 
 // 注册
 export function register() {
-	if (!customElements.get('tsoul-background-layout')) {
-		customElements.define('tsoul-background-layout', BackgroundLayoutElement)
+	if (!customElements.get('ts-background-layout')) {
+		customElements.define('ts-background-layout', BackgroundLayoutElement)
 	}
 }
 

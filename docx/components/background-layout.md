@@ -41,11 +41,11 @@
 
 ```vue
 <template>
-	<tsoul-background-layout :menu-list="menuList" :active-path="'/dashboard'" :container-size="{ height: '100vh' }">
+	<ts-background-layout :menu-list="menuList" :active-path="'/dashboard'" :container-size="{ height: '100vh' }">
 		<template #main>
 			<router-view />
 		</template>
-	</tsoul-background-layout>
+	</ts-background-layout>
 </template>
 
 <script setup lang="ts">
@@ -217,11 +217,11 @@ import '@tsoul/component-private'
 
 const App: React.FC = () => {
 	return (
-		<tsoul-background-layout menu-list={JSON.stringify(menuList)} active-path="/dashboard">
+		<ts-background-layout menu-list={JSON.stringify(menuList)} active-path="/dashboard">
 			<div slot="main">
 				<Outlet />
 			</div>
-		</tsoul-background-layout>
+		</ts-background-layout>
 	)
 }
 ```
@@ -235,14 +235,14 @@ const App: React.FC = () => {
   const menuList = [...]
 </script>
 
-<tsoul-background-layout
+<ts-background-layout
   menu-list={JSON.stringify(menuList)}
   active-path="/dashboard"
 >
   <div slot="main">
     <slot />
   </div>
-</tsoul-background-layout>
+</ts-background-layout>
 ```
 
 ## 📋 最佳实践

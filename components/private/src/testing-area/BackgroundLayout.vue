@@ -1,7 +1,7 @@
 <template>
 	<!--不能使用ref、不能v-modal:updateModel-->
-	<!-- <tsoul-example id="example" ref="tsoul" title="title1" style="margin-top: 20px" /> -->
-	<tsoul-background-layout
+	<!-- <ts-example id="example" ref="tsoul" title="title1" style="margin-top: 20px" /> -->
+	<ts-background-layout
 		:containerBackground="JSON.stringify(themeConfig.containerBackground)"
 		:layout="themeConfig.layout"
 		:menuList="JSON.stringify(themeConfig.menuList)"
@@ -23,7 +23,7 @@
 			<div style="height: 120px">hello</div>
 			<div style="height: 120px">hello</div>
 		</div>
-	</tsoul-background-layout>
+	</ts-background-layout>
 </template>
 
 <script setup lang="ts">

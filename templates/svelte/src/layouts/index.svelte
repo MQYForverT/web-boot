@@ -142,7 +142,7 @@
 </script>
 
 {#if themeConfig.menuList.length > 0}
-	<tsoul-background-layout
+	<ts-background-layout
 		bind:this={ref}
 		menu-list={JSON.stringify(themeConfig.menuList)}
 		user-avatar={JSON.stringify(themeConfig.userAvatar)}
@@ -153,7 +153,7 @@
 			<!-- 在Svelte中，我们使用slot来渲染子组件 -->
 			<slot />
 		</div>
-	</tsoul-background-layout>
+	</ts-background-layout>
 {/if}
 
 

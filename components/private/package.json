@@ -1,6 +1,6 @@
 {
 	"name": "@tsoul/component-private",
-	"version": "1.0.2",
+	"version": "1.0.4",
 	"description": "Web Boot 项目的私有组件库，基于 Vue 3 + Element Plus，提供了布局、登录等业务组件",
 	"type": "module",
 	"scripts": {

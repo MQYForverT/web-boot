@@ -150,7 +150,7 @@ const LayoutIndex: React.FC = () => {
 	return (
 		<>
 			{themeConfig.menuList.length > 0 ? (
-				<tsoul-background-layout
+				<ts-background-layout
 					ref={ref}
 					menu-list={JSON.stringify(themeConfig.menuList)}
 					user-avatar={JSON.stringify(themeConfig.userAvatar)}
@@ -162,7 +162,7 @@ const LayoutIndex: React.FC = () => {
 							{outlet}
 						</KeepAlive>
 					</div>
-				</tsoul-background-layout>
+				</ts-background-layout>
 			) : null}
 		</>
 	)

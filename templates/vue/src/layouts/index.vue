@@ -1,5 +1,5 @@
 <template>
-	<tsoul-background-layout
+	<ts-background-layout
 		:menuList="JSON.stringify(themeConfig.menuList)"
 		:userAvatar="JSON.stringify(themeConfig.userAvatar)"
 		:settingVisible="JSON.stringify(themeConfig.settingVisible)"
@@ -18,7 +18,7 @@
 				</transition>
 			</router-view>
 		</div>
-	</tsoul-background-layout>
+	</ts-background-layout>
 </template>
 
 <script setup lang="ts">

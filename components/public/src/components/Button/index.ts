@@ -7,8 +7,8 @@ export type ButtonElement = typeof ButtonElement
 
 // 注册
 export function register() {
-	if (!customElements.get('tsoul-button')) {
-		customElements.define('tsoul-button', ButtonElement)
+	if (!customElements.get('ts-button')) {
+		customElements.define('ts-button', ButtonElement)
 	}
 }
 

@@ -112,7 +112,7 @@ const U = ['menuList', 'userAvatar', 'settingVisible', 'watermark'],
 					return (
 						i(),
 						C(
-							'tsoul-background-layout',
+							'ts-background-layout',
 							{
 								menuList: JSON.stringify(s(t).menuList),
 								userAvatar: JSON.stringify(s(t).userAvatar),

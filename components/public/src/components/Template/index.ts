@@ -7,8 +7,8 @@ export type ConfigProviderElement = typeof ConfigProviderElement
 
 // 注册
 export function register() {
-	if (!customElements.get('tsoul-config-provider')) {
-		customElements.define('tsoul-config-provider', ConfigProviderElement)
+	if (!customElements.get('ts-config-provider')) {
+		customElements.define('ts-config-provider', ConfigProviderElement)
 	}
 }
 

@@ -84,7 +84,7 @@ const config: UserConfig = {
 			template: {
 				compilerOptions: {
 					// 将所有带短横线的标签名都视为自定义元素
-					isCustomElement: (tag) => tag.startsWith('tsoul-'),
+					isCustomElement: (tag) => tag.startsWith('ts-'),
 				},
 			},
 		}),
@@ -109,7 +109,7 @@ const config: UserConfig = {
 				// 自动注册图标组件，以及自定义本地图标。ep：element-plus的图标，下面设置autoInstall，会自动下载，就不用单独去引入element-plus-icons依赖了
 				IconsResolver({
 					enabledCollections: ['ep'],
-					customCollections: ['tsoul-icon'],
+					customCollections: ['ts-icon'],
 				}),
 			],
 		}),
@@ -124,7 +124,7 @@ const config: UserConfig = {
 			// 上面使用了element-plus的图标，这里设置autoInstall，会自动下载上面enabledCollections中配置的图标
 			autoInstall: true,
 			customCollections: {
-				'tsoul-icon': FileSystemIconLoader('./src/assets/svg', (svg) =>
+				'ts-icon': FileSystemIconLoader('./src/assets/svg', (svg) =>
 					svg.replace(/^<svg /, '<svg fill="currentColor" '),
 				),
 			},

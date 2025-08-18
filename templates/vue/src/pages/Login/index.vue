@@ -1,6 +1,6 @@
 <template>
-	<tsoul-background-login :account="JSON.stringify(config.account)" :layout="config.layout" @submit="submit">
-	</tsoul-background-login>
+	<ts-background-login :account="JSON.stringify(config.account)" :layout="config.layout" @submit="submit">
+	</ts-background-login>
 </template>
 
 <script setup lang="ts">

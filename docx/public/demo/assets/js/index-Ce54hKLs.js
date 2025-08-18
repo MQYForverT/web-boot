@@ -4386,7 +4386,7 @@ const d1 = $u(() => {
 		}
 		return { routeListFlat: e, routeList: t, keepAliveNames: o, tagsViewRoutes: r, resetRoute: n, getPermission: l }
 	}),
-	Fu = $u(() => ({ token: Nl('tsoul-token', '') })),
+	Fu = $u(() => ({ token: Nl('ts-token', '') })),
 	T2 = Hm({
 		__name: 'App',
 		setup(e) {
@@ -16732,7 +16732,7 @@ function J9(e, t) {
 		)
 	)
 }
-const X9 = Fr({ name: 'tsoul-icon-language', render: J9 }),
+const X9 = Fr({ name: 'ts-icon-language', render: J9 }),
 	Z9 = { class: 'h-6.5 w-6.5 flex-center cursor-pointer rounded-6px hover:bg-fill' },
 	Q9 = K({
 		__name: 'Language',
@@ -16847,7 +16847,7 @@ function ik(e, t) {
 		)
 	)
 }
-const lm = Fr({ name: 'tsoul-icon-logo', render: ik })
+const lm = Fr({ name: 'ts-icon-logo', render: ik })
 let Gl
 const ak = (e) => {
 		var t
@@ -19335,7 +19335,7 @@ function eS(e, t) {
 		)
 	)
 }
-const tS = Fr({ name: 'tsoul-icon-fullscreen', render: eS }),
+const tS = Fr({ name: 'ts-icon-fullscreen', render: eS }),
 	rS = {
 		fill: 'currentColor',
 		t: '1691402359762',
@@ -19368,7 +19368,7 @@ function oS(e, t) {
 		)
 	)
 }
-const nS = Fr({ name: 'tsoul-icon-fullscreen-exit', render: oS }),
+const nS = Fr({ name: 'ts-icon-fullscreen-exit', render: oS }),
 	lS = K({
 		__name: 'FullScreen',
 		setup(e) {
@@ -19478,7 +19478,7 @@ function fS(e, t) {
 		)
 	)
 }
-const hS = Fr({ name: 'tsoul-icon-align-left', render: fS }),
+const hS = Fr({ name: 'ts-icon-align-left', render: fS }),
 	gS = { fill: 'currentColor', xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', viewBox: '0 0 24 24' }
 function mS(e, t) {
 	return (
@@ -19496,7 +19496,7 @@ function mS(e, t) {
 		)
 	)
 }
-const vS = Fr({ name: 'tsoul-icon-align-right', render: mS }),
+const vS = Fr({ name: 'ts-icon-align-right', render: mS }),
 	bS = K({
 		__name: 'MenuCollapse',
 		setup(e) {
@@ -20471,7 +20471,7 @@ function k$(e, t) {
 		)
 	)
 }
-const S$ = Fr({ name: 'tsoul-icon-layout-defaults', render: k$ }),
+const S$ = Fr({ name: 'ts-icon-layout-defaults', render: k$ }),
 	$$ = { fill: 'currentColor', height: '66', width: '104', xmlns: 'http://www.w3.org/2000/svg' }
 function z$(e, t) {
 	return (
@@ -20489,7 +20489,7 @@ function z$(e, t) {
 		)
 	)
 }
-const M$ = Fr({ name: 'tsoul-icon-layout-vertical', render: z$ }),
+const M$ = Fr({ name: 'ts-icon-layout-vertical', render: z$ }),
 	C$ = { key: 0, class: 'flex-y-center' },
 	O$ = { class: 'flex flex-wrap gap-5' },
 	I$ = { class: 'flex-y-center' },
@@ -20973,7 +20973,7 @@ const M$ = Fr({ name: 'tsoul-icon-layout-vertical', render: z$ }),
 	X$ = rt(Y$, [['styles', [J$]]]),
 	Z$ = Fh(X$)
 function Q$() {
-	customElements.get('tsoul-background-layout') || customElements.define('tsoul-background-layout', Z$)
+	customElements.get('ts-background-layout') || customElements.define('ts-background-layout', Z$)
 }
 var mu = Ko(Tr, 'WeakMap'),
 	o0 = Object.create,
@@ -30741,7 +30741,7 @@ function rL(e, t) {
 	)
 }
 const oL = Fr({
-		name: 'tsoul-icon-layoutImage',
+		name: 'ts-icon-layoutImage',
 		render: rL,
 		setup() {
 			const e = () => Math.random().toString(36).substr(2, 10)
@@ -31104,7 +31104,7 @@ const oL = Fr({
 	cL = rt(aL, [['styles', [sL, uL]]]),
 	dL = Fh(cL)
 function pL() {
-	customElements.get('tsoul-background-login') || customElements.define('tsoul-background-login', dL)
+	customElements.get('ts-background-login') || customElements.define('ts-background-login', dL)
 }
 ;(function () {
 	try {

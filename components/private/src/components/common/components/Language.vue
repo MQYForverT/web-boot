@@ -20,7 +20,7 @@
 
 <script lang="ts" setup>
 	import useGlobalStore from '@/components/common/globalStore'
-	import Language from '~icons/tsoul-icon/language'
+	import Language from '~icons/ts-icon/language'
 
 	const { globalState } = useGlobalStore()
 

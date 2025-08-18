@@ -112,7 +112,7 @@
 
 <!-- 不需要额外的UI - 使用原生浏览器通知和alert -->
 
-<tsoul-background-login 
+<ts-background-login 
 	bind:this={ref} 
 	account={JSON.stringify(config.account)} 
 	layout={config.layout} 

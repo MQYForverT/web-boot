@@ -41,11 +41,11 @@
 
 ```vue
 <template>
-	<tsoul-background-login :account="accountConfig" title="系统登录" layout="center" @submit="handleSubmit">
+	<ts-background-login :account="accountConfig" title="系统登录" layout="center" @submit="handleSubmit">
 		<template #logo>
 			<img src="/logo.png" alt="logo" />
 		</template>
-	</tsoul-background-login>
+	</ts-background-login>
 </template>
 
 <script setup lang="ts">
@@ -181,14 +181,14 @@ const App: React.FC = () => {
 	}
 
 	return (
-		<tsoul-background-login
+		<ts-background-login
 			account={JSON.stringify(accountConfig)}
 			title="系统登录"
 			layout="center"
 			onSubmit={handleSubmit}
 		>
 			<img slot="logo" src="/logo.png" alt="logo" />
-		</tsoul-background-login>
+		</ts-background-login>
 	)
 }
 ```
@@ -217,14 +217,14 @@ const App: React.FC = () => {
   }
 </script>
 
-<tsoul-background-login
+<ts-background-login
   account={JSON.stringify(accountConfig)}
   title="系统登录"
   layout="center"
   on:submit={handleSubmit}
 >
   <img slot="logo" src="/logo.png" alt="logo" />
-</tsoul-background-login>
+</ts-background-login>
 ```
 
 ## 📋 最佳实践

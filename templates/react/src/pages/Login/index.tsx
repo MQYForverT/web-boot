@@ -75,7 +75,7 @@ const Login: React.FC = () => {
 		{ target: ref },
 	)
 
-	return <tsoul-background-login ref={ref} account={JSON.stringify(config.account)} layout={config.layout} />
+	return <ts-background-login ref={ref} account={JSON.stringify(config.account)} layout={config.layout} />
 }
 
 export default observer(Login)

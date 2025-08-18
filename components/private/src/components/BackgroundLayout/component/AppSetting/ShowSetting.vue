@@ -75,8 +75,8 @@
 
 	import RectItem from './RectItem.vue'
 	import { Sunny, Moon, Sunrise } from '@element-plus/icons-vue'
-	import LayoutDefaults from '~icons/tsoul-icon/layout-defaults'
-	import LayoutVertical from '~icons/tsoul-icon/layout-vertical'
+	import LayoutDefaults from '~icons/ts-icon/layout-defaults'
+	import LayoutVertical from '~icons/ts-icon/layout-vertical'
 
 	const { state, handMenuMode } = useState()
 

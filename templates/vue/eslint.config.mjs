@@ -9,7 +9,7 @@ export default defineFlatConfig([
 			'vue/no-deprecated-slot-attribute': [
 				'error',
 				{
-					ignore: ['tsoul-background-layout'],
+					ignore: ['ts-background-layout'],
 				},
 			],
 		},

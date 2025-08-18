@@ -209,8 +209,8 @@ npm run lint:fix     # 修复代码问题
 
 所有示例都展示了如何集成 `@tsoul/component-private` 组件库：
 
-- **tsoul-background-layout** - 中后台布局组件的使用方法
-- **tsoul-background-login** - 登录页面组件的集成方式
+- **ts-background-layout** - 中后台布局组件的使用方法
+- **ts-background-login** - 登录页面组件的集成方式
 - **主题配置** - 如何配置和切换主题
 - **路由集成** - 如何与各框架路由系统结合
 

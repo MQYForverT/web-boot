@@ -6,8 +6,8 @@
 </template>
 
 <script lang="ts" setup>
-	import fullscreen from '~icons/tsoul-icon/fullscreen'
-	import fullscreenExit from '~icons/tsoul-icon/fullscreen-exit'
+	import fullscreen from '~icons/ts-icon/fullscreen'
+	import fullscreenExit from '~icons/ts-icon/fullscreen-exit'
 	import { useFullscreen } from '@vueuse/core'
 
 	const { isFullscreen, toggle } = useFullscreen()

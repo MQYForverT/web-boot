@@ -60,7 +60,7 @@ const w = (r, o) => c.post('/auth/login', r, o),
 			return (t, e) => (
 				b(),
 				y(
-					'tsoul-background-login',
+					'ts-background-login',
 					{ account: JSON.stringify(n(s).account), layout: n(s).layout, onSubmit: i },
 					null,
 					40,

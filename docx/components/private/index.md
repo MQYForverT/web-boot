@@ -89,11 +89,11 @@ registerAll()
 ```vue
 <template>
 	<!-- 使用布局组件 -->
-	<tsoul-background-layout :menu-list="menuList" :active-path="currentPath" :container-size="{ height: '100vh' }">
+	<ts-background-layout :menu-list="menuList" :active-path="currentPath" :container-size="{ height: '100vh' }">
 		<template #main>
 			<router-view />
 		</template>
-	</tsoul-background-layout>
+	</ts-background-layout>
 </template>
 ```
 

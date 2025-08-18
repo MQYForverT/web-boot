@@ -67,9 +67,9 @@ async function createComponent() {
 			// 替换所有 ConfigProvider 为组件名称
 			content = content.replace(/ConfigProvider/g, componentName)
 
-			// 替换 tsoul-config-provider 为 tsoul-组件名称小写连字符格式
+			// 替换 ts-config-provider 为 ts-组件名称小写连字符格式
 			const kebabCaseName = componentName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
-			content = content.replace(/tsoul-config-provider/g, `tsoul-${kebabCaseName}`)
+			content = content.replace(/ts-config-provider/g, `ts-${kebabCaseName}`)
 
 			// 创建新文件名 (Template.vue -> Button.vue)
 			const newFileName = file.replace(/Template/g, componentName)

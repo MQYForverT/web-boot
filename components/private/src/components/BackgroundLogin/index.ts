@@ -8,8 +8,8 @@ export type BackgroundLoginElement = typeof BackgroundLoginElement
 
 // 注册
 export function register() {
-	if (!customElements.get('tsoul-background-login')) {
-		customElements.define('tsoul-background-login', BackgroundLoginElement)
+	if (!customElements.get('ts-background-login')) {
+		customElements.define('ts-background-login', BackgroundLoginElement)
 	}
 }
 

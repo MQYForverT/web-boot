@@ -53,7 +53,7 @@ export default (viteEnv: ImportMetaEnv, customConfig?: UserConfig): UserConfig =
 				template: {
 					compilerOptions: {
 						// 将所有带短横线的标签名都视为自定义元素
-						isCustomElement: (tag) => tag.startsWith('tsoul-'),
+						isCustomElement: (tag) => tag.startsWith('ts-'),
 					},
 				},
 			}),
